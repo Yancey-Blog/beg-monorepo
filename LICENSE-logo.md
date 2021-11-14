@@ -1,4 +1,4 @@
-The [Yancey Official Blog Logo](./logos/) is dedicated to the public domain and licensed under [CC0](<[CC0](http://creativecommons.org/publicdomain/zero/1.0/)>).  
+The [BEG Logo](./logos/) is dedicated to the public domain and licensed under [CC0](<[CC0](http://creativecommons.org/publicdomain/zero/1.0/)>).  
 You can copy, modify, and distribute it, even for commercial purposes, all without asking permission.
 
 [Read more about CC0.](http://creativecommons.org/publicdomain/zero/1.0/)  
