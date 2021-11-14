@@ -94,3 +94,9 @@ packages/blog-service/env/.env
 packages/blog-service/env/production.env
 packages/blog-service/env/development.env
 packages/blog-cms/env/.env.development.local
+
+# PWA
+sw.*
+workbox-*
+atom.xml
+rss.xml
