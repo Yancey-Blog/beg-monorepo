@@ -1,10 +1,6 @@
 {
   "extends": [
     "next/core-web-vitals"
-    // "eslint-config-prettier"
-  ],
-  "plugins": [
-    // "eslint-plugin-prettier"
   ],
   "env": {
     "browser": true,
@@ -43,6 +39,5 @@
     "react/require-default-props": "off",
     "jsx-a11y/img-redundant-alt": "off",
     "jsx-a11y/anchor-is-valid": "off"
-    // "prettier/prettier": "error"
   }
 }
