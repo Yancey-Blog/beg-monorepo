@@ -2,28 +2,28 @@
 
 All services for Blog Environment Group. The monorepo system is powered by [rushjs](https://rushjs.io/).
 
-## Sub Project List
+## Sub Projects
 
 - [blog-cms](./packages/blog-cms)
 - [blog-web](./packages/blog-web)
 - [blog-service](./packages/blog-service)
-- [uploader-cms](./packages/uploader-cms)
+- [uploader-service](./packages/uploader-service)
 
 ## Prerequisite
 
-### Installs Node.js v14.x.x and [PNPM](https://pnpm.io)
+### Installing Node.js and [PNPM](https://pnpm.io)
 
-We recommend Node.js 14 LTS and PNPM to Manage dependencies. A better way to manage versions of Node.js is using [nvm](https://github.com/nvm-sh/nvm). PNPM is a fast, disk space efficient package manager, [rushjs](https://rushjs.io/) default uses PNPM to manage dependencies.
+We recommend the basic environment is Node.js 14 LTS and PNPM. A better way to manage versions of Node.js is using [nvm](https://github.com/nvm-sh/nvm). And PNPM is a fast, disk space efficient package manager, [rushjs](https://rushjs.io/) default uses PNPM to manage dependencies.
 
 ```bash
-# Install NVM
+# Installing NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-# Install pnpm
+# Installing pnpm
 npm install -g pnpm
 ```
 
-### Installs [rushjs](https://rushjs.io/)
+### Installing [rushjs](https://rushjs.io/)
 
 This project uses rushjs to manage monorepo. Please install it globally.
 
@@ -31,7 +31,7 @@ This project uses rushjs to manage monorepo. Please install it globally.
 pnpm install -g @microsoft/rush
 ```
 
-### Installs [commitizen](https://github.com/commitizen/cz-cli)
+### Installing [commitizen](https://github.com/commitizen/cz-cli)
 
 This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally.
 
