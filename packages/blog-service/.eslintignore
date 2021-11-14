@@ -1,0 +1,9 @@
+# produtions
+dist/
+build/
+
+# test
+test/
+
+# jest config
+jest.config.js

@@ -25,7 +25,7 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -68,37 +68,29 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-.env.test
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-
-# Next.js build output
+# next.js build output
 .next
 
-# Nuxt.js build / generate output
-.nuxt
-dist
+# OS X temporary files
+.DS_Store
 
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+# Rush temporary files
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+**/.rush/temp/
 
-# vuepress build output
-.vuepress/dist
+# Heft
+.heft
 
-# Serverless directories
-.serverless/
+# Production
+dist/
+build/
 
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
+# Envs
+.env
+.env.test
+packages/blog-service/env/.env
+packages/blog-service/env/production.env
+packages/blog-service/env/development.env
+packages/blog-cms/env/.env.development.local

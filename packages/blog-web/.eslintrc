@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "next/core-web-vitals"
+    // "eslint-config-prettier"
+  ],
+  "plugins": [
+    // "eslint-plugin-prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "__YANCEY_BLOG_VERSION__": true,
+    "__GIT_HASH__": true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "indent": "off",
+    "arrow-parens": "off",
+    "no-underscore-dangle": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "react/jsx-indent": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/button-has-type": [
+      "error",
+      {
+        "reset": true
+      }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/img-redundant-alt": "off",
+    "jsx-a11y/anchor-is-valid": "off"
+    // "prettier/prettier": "error"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base", "plugin:nestjs/recommended"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "nestjs", "jest"],
+  "rules": {
+    "semi": "off",
+    "import/prefer-default-export": "off",
+    "implicit-arrow-linebreak": "off",
+    "camelcase": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "arrow-parens": "off",
+    "space-before-function-paren": "off",
+    "func-names": "off",
+    "operator-linebreak": "off",
+    "indent": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off", // FIXME:
+    "class-methods-use-this": "off", // FIXME:
+    "no-unused-vars": "off" // FIXME:
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
