@@ -1,5 +1,13 @@
 # BEG Monorepo
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![Code Style](https://camo.githubusercontent.com/c83b8df34339bd302b7fd3fbb631f99ba25f87f8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f64655f7374796c652d70726574746965722d6666363962342e737667)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/Yancey-Blog/beg-monorepo/pulls)
+[![Node](https://img.shields.io/badge/node-%3E%3D14.18.1-orange.svg)](https://nodejs.org/en/)
+[![Gitter](https://badges.gitter.im/yancey-official/community.svg)](https://gitter.im/yancey-official/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-ff3f59.svg)](https://www.paypal.me/yanceyleo)
+[![Twitter](https://img.shields.io/twitter/follow/YanceyOfficial.svg?style=social&label=Follow)](https://twitter.com/YanceyOfficial)
+
 All services for Blog Environment Group. The monorepo system is powered by [rushjs](https://rushjs.io/).
 
 ## Sub Projects
@@ -49,7 +57,15 @@ Executing this command after registering a new sub project or modifying `rush.js
 
 ### [`rush build`](https://rushjs.io/pages/commands/rush_build/)
 
-Building **all** sub project. If you want to build `specified` project, use `rush build -o YOUR_SUB_PROJECT`.
+```bash
+# Force all projects to be rebuilt:
+rush rebuild
+
+# Incremental build:
+rush build
+```
+
+If you want to build `specified` project, use `rush build -o YOUR_SUB_PROJECT`.
 
 ### `rushx YOUR_SCRIPT`
 
