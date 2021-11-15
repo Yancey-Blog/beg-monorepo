@@ -18,7 +18,7 @@
       "shellCommand": "node common/autoinstallers/common-work-flow/commit-lint.js"
     },
     {
-      "name": "lint",
+      "name": "lint-stage",
       "commandKind": "global",
       "summary": "Used by the pre-commit Git hook. This command invokes eslint to lint staged changes.",
       "autoinstallerName": "common-work-flow",

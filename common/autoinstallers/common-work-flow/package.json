@@ -5,6 +5,7 @@
   "dependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@microsoft/rush-lib": "^5.56.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.2.0",
     "execa": "^5.1.1",

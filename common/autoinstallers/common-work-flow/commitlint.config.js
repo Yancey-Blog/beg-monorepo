@@ -1,5 +1,4 @@
 const rushLib = require('@microsoft/rush-lib')
-
 const rushConfiguration = rushLib.RushConfiguration.loadFromDefaultLocation()
 
 const packageNames = []
@@ -13,6 +12,8 @@ rushConfiguration.projects.forEach((project) => {
 })
 // 保证 scope 只能为 all/package name/package dir name
 const allScope = ['all', ...packageDirNames, ...packageNames]
+
+console.log(allScope)
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
