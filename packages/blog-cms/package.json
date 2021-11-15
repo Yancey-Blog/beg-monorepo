@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "analyze": "yarn build && source-map-explorer 'build/static/js/*.js'",
+    "analyze": "pnpm run build && source-map-explorer 'build/static/js/*.js'",
     "format": "prettier --write \"src/**/*.tsx\" \"src/**/*.ts\"",
     "commit": "npx git-cz",
     "push": "git push --follow-tags origin master",

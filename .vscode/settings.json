@@ -1,0 +1,6 @@
+{
+	"npm.packageManager": "pnpm",
+	"eslint.packageManager": "pnpm",
+	// "eslint.nodePath": "common/autoinstallers/common-work-flow/node_modules/eslint",
+	"prettier.prettierPath": "common/autoinstallers/common-work-flow/node_modules/prettier"
+}

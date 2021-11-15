@@ -3,7 +3,7 @@
         "allowed_elements": [
             "div",
             "img",
-            "a",
+            "a"
         ]
     },
     "MD013": false
