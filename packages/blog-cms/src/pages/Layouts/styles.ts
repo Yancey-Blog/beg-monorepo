@@ -7,7 +7,8 @@ export const transition = (props: 'margin-left' | 'transform') =>
 const useStyles = makeStyles({
   layouts: {
     display: 'flex',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    backgroundColor: '#fafafa!important'
   },
 
   expand: {

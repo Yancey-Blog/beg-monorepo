@@ -125,6 +125,7 @@ const PlayerModal: FC<Props> = ({
           </DialogContentText>
 
           <TextField
+            variant="standard"
             className={globalClasses.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -136,6 +137,7 @@ const PlayerModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={globalClasses.textFieldSpace}
             error={!!errors.artist}
             helperText={errors.artist}
@@ -146,6 +148,7 @@ const PlayerModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={globalClasses.textFieldSpace}
             error={!!errors.lrc}
             helperText={errors.lrc}
@@ -160,6 +163,7 @@ const PlayerModal: FC<Props> = ({
           <div className={globalClasses.uploaderGroup}>
             <FormLabel required>Cover Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.coverUrl}
               helperText={errors.coverUrl}
               style={{ display: 'none' }}
@@ -183,6 +187,7 @@ const PlayerModal: FC<Props> = ({
           >
             <FormLabel required>Music File Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.musicFileUrl}
               helperText={errors.musicFileUrl}
               style={{ display: 'none' }}

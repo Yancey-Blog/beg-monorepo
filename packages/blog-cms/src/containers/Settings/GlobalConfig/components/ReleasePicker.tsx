@@ -53,6 +53,7 @@ const ReleasePicker: FC<Props> = ({
       <p className={classes.checkedId}>post ID: {releasePostId}</p>
 
       <TextField
+        variant="standard"
         className={classes.input}
         label="Search Posts By Title"
         onChange={handleInputChange}

@@ -126,7 +126,7 @@ const Drawer: FC<Props> = ({ open }) => {
             style={{
               maxHeight: `${
                 foldName === route.name
-                  ? route.routes && 50 * route.routes.length
+                  ? route.routes && 60 * route.routes.length
                   : 0
               }px`
             }}

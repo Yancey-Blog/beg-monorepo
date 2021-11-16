@@ -265,6 +265,7 @@ const PostEditor: FC = () => {
       <form>
         <div className={classes.header}>
           <TextField
+            variant="standard"
             error={!!errors.title}
             helperText={errors.title}
             required
@@ -275,6 +276,7 @@ const PostEditor: FC = () => {
 
           <div className={classes.publishTools}>
             <TextField
+              variant="standard"
               error={!!errors.posterUrl}
               helperText={errors.posterUrl}
               style={{ display: 'none' }}
@@ -336,6 +338,7 @@ const PostEditor: FC = () => {
 
         <div className={classes.summary}>
           <TextField
+            variant="standard"
             className={classes.summaryTxtFiled}
             error={!!errors.summary}
             helperText={errors.summary}

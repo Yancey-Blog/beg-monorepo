@@ -243,6 +243,7 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
               Enter the 6-digit code you see in the app.
             </p>
             <TextField
+              variant="standard"
               className={styles.customInput}
               label="Enter code"
               error={!!errors.code}

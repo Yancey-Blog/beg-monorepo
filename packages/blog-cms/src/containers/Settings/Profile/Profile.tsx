@@ -92,6 +92,7 @@ const Profile: FC = () => {
         <section className={classes.profileContainer}>
           <form onSubmit={handleSubmit}>
             <TextField
+              variant="standard"
               className={classes.input}
               error={!!errors.name}
               helperText={errors.name}
@@ -101,6 +102,7 @@ const Profile: FC = () => {
               {...getFieldProps('name')}
             />
             <TextField
+              variant="standard"
               className={classes.input}
               error={!!errors.location}
               helperText={errors.location}
@@ -110,6 +112,7 @@ const Profile: FC = () => {
               {...getFieldProps('location')}
             />
             <TextField
+              variant="standard"
               className={classes.input}
               error={!!errors.organization}
               helperText={errors.organization}
@@ -119,6 +122,7 @@ const Profile: FC = () => {
               {...getFieldProps('organization')}
             />
             <TextField
+              variant="standard"
               className={classes.input}
               error={!!errors.website}
               helperText={errors.website}
@@ -128,6 +132,7 @@ const Profile: FC = () => {
               {...getFieldProps('website')}
             />
             <TextField
+              variant="standard"
               className={classes.input}
               error={!!errors.bio}
               helperText={errors.bio}

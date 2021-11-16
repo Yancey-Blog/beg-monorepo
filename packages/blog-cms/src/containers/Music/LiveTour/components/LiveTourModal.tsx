@@ -103,6 +103,7 @@ const LiveTourModal: FC<Props> = ({
             fields here. We will send data after clicking the submit button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -119,12 +120,13 @@ const LiveTourModal: FC<Props> = ({
             label="Show Time"
             value={values.showTime}
             onChange={(date) => setFieldValue('showTime', date, true)}
-            inputFormat="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>
             <FormLabel required>Poster Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.posterUrl}
               helperText={errors.posterUrl}
               style={{ display: 'none' }}

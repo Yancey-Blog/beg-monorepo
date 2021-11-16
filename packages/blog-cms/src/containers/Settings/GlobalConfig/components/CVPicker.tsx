@@ -53,6 +53,7 @@ const CVPicker: FC<Props> = ({
       <p className={classes.checkedId}>post ID: {cvPostId}</p>
 
       <TextField
+        variant="standard"
         className={classes.input}
         label="Search Posts By Title"
         onChange={handleInputChange}

@@ -40,6 +40,7 @@ const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
     >
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="standard"
           className={classes.input}
           error={!!errors.email}
           helperText={errors.email}

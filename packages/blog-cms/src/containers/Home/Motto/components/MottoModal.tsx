@@ -12,6 +12,7 @@ import {
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
 import { Open } from 'src/hooks/useOpenModal'
+import useStyles from 'src/shared/globalStyles'
 
 interface Props {
   open: Open
@@ -26,6 +27,8 @@ const MottoModal: FC<Props> = ({
   createMotto,
   updateMottoById
 }) => {
+  const classes = useStyles()
+
   const { isOpen, id } = open
 
   const initialValues = {
@@ -80,6 +83,8 @@ const MottoModal: FC<Props> = ({
             fields here. We will send data after clicking the submit button.
           </DialogContentText>
           <TextField
+            className={classes.textFieldSpace}
+            variant="standard"
             error={!!errors.content}
             helperText={errors.content}
             autoFocus

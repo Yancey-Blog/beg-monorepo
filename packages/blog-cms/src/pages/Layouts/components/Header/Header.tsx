@@ -51,7 +51,7 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
           size="small"
           aria-label="more"
           onClick={() => handleDrawerChange()}
-          className={classes.fabIcon}
+          className={classNames(classes.fabIcon, classes.marginRight)}
         >
           {open ? <MoreVert /> : <ViewList />}
         </Fab>

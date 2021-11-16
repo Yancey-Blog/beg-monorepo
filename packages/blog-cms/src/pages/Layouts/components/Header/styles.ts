@@ -5,14 +5,15 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flexDirection: 'row',
+    // @ts-ignore
+    flexDirection: 'row!important',
     padding: '12px 24px 48px',
-    background: 'transparent',
-    boxShadow: 'none'
+    backgroundColor: 'transparent!important',
+    boxShadow: 'none!important'
   },
   fabIcon: {
-    color: '#999',
-    backgroundColor: '#fff',
+    color: '#999!important',
+    backgroundColor: '#fff!important',
     boxShadow: `0 2px 2px 0 rgba(153, 153, 153, 0.14),
         0 3px 1px -2px rgba(153, 153, 153, 0.2),
         0 1px 5px 0 rgba(153, 153, 153, 0.12)`,
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
   },
 
   marginRight: {
-    marginRight: '24px'
+    marginRight: '24px!important'
   },
 
   anchor: {

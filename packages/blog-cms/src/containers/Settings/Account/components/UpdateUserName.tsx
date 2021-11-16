@@ -40,6 +40,7 @@ const UpdateUserName: FC<Props> = ({ username, updateUserName }) => {
     >
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="standard"
           className={classes.input}
           error={!!errors.username}
           helperText={errors.username}

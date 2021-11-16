@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Switch, Route, Redirect, Router } from 'react-router-dom'
 import loadable from '@loadable/component'
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
 import DateAdapter from '@mui/lab/AdapterLuxon'
@@ -15,6 +16,7 @@ import Loading from './components/Loading/InstagramLoading'
 import client from './graphql/apolloClient'
 import reportWebVitals from './reportWebVitals'
 import history from './shared/history'
+import { tableTheme } from './shared/globalStyles'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
   SNACKBAR_MAX_NUM,
@@ -29,41 +31,45 @@ const Layouts = loadable(() => import('./pages/Layouts/Layouts'), {
 ReactDOM.render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <SnackbarProvider
-        maxSnack={SNACKBAR_MAX_NUM}
-        anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
-        autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-      >
-        <LocalizationProvider dateAdapter={DateAdapter}>
-          <SnackbarUtilsConfigurator />
-          <CssBaseline />
-          <Router history={history}>
-            <Switch>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <Route
-                path="/"
-                render={({ location }) =>
-                  window.localStorage.getItem('token') ? (
-                    <Layouts />
-                  ) : (
-                    <Redirect
-                      to={{
-                        pathname: '/login',
-                        state: { from: location }
-                      }}
-                    />
-                  )
-                }
-              />
-            </Switch>
-          </Router>
-        </LocalizationProvider>
-      </SnackbarProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={tableTheme()}>
+          <SnackbarProvider
+            maxSnack={SNACKBAR_MAX_NUM}
+            anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
+            autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
+          >
+            <LocalizationProvider dateAdapter={DateAdapter}>
+              <SnackbarUtilsConfigurator />
+              <CssBaseline />
+              <Router history={history}>
+                <Switch>
+                  <Route path="/login">
+                    <Login />
+                  </Route>
+                  <Route path="/register">
+                    <Register />
+                  </Route>
+                  <Route
+                    path="/"
+                    render={({ location }) =>
+                      window.localStorage.getItem('token') ? (
+                        <Layouts />
+                      ) : (
+                        <Redirect
+                          to={{
+                            pathname: '/login',
+                            state: { from: location }
+                          }}
+                        />
+                      )
+                    }
+                  />
+                </Switch>
+              </Router>
+            </LocalizationProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </ApolloProvider>
   </StrictMode>,
   document.getElementById('root')

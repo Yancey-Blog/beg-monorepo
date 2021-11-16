@@ -118,6 +118,7 @@ const BestAlbumModal: FC<Props> = ({
             fields here. We will send data after clicking the submit button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -129,6 +130,7 @@ const BestAlbumModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.artist}
             helperText={errors.artist}
@@ -139,6 +141,7 @@ const BestAlbumModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.mvUrl}
             helperText={errors.mvUrl}
@@ -154,12 +157,13 @@ const BestAlbumModal: FC<Props> = ({
             label="Release Date"
             value={values.releaseDate}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            inputFormat="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>
             <FormLabel required>Cover Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.coverUrl}
               helperText={errors.coverUrl}
               style={{ display: 'none' }}

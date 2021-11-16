@@ -67,6 +67,7 @@ const ChangePassword: FC = () => {
     >
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.oldPassword}
@@ -76,6 +77,7 @@ const ChangePassword: FC = () => {
           {...getFieldProps('oldPassword')}
         />
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.newPassword}
@@ -85,6 +87,7 @@ const ChangePassword: FC = () => {
           {...getFieldProps('newPassword')}
         />
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.confirmNewPassword}

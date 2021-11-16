@@ -100,6 +100,7 @@ const CoverModal: FC<Props> = ({
           </DialogContentText>
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -113,6 +114,7 @@ const CoverModal: FC<Props> = ({
           <div className={classes.uploaderGroup}>
             <FormLabel required>Cover Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.coverUrl}
               helperText={errors.coverUrl}
               style={{ display: 'none' }}

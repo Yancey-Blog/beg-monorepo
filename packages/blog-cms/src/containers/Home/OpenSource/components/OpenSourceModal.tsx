@@ -99,6 +99,7 @@ const OpenSourceModal: FC<Props> = ({
             button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -110,6 +111,7 @@ const OpenSourceModal: FC<Props> = ({
             {...getFieldProps('title')}
           />
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.description}
             helperText={errors.description}
@@ -119,6 +121,7 @@ const OpenSourceModal: FC<Props> = ({
             {...getFieldProps('description')}
           />
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.url}
             helperText={errors.url}
@@ -130,6 +133,7 @@ const OpenSourceModal: FC<Props> = ({
           <div className={classes.uploaderGroup}>
             <FormLabel required>Poster Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.posterUrl}
               helperText={errors.posterUrl}
               style={{ display: 'none' }}

@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
+import useStyles from 'src/shared/globalStyles'
 import { AnnouncementModalProps as Props } from '../types'
 
 const AnnouncementModal: FC<Props> = ({
@@ -28,6 +29,8 @@ const AnnouncementModal: FC<Props> = ({
   const validationSchema = Yup.object().shape({
     content: Yup.string().required('Content is required.')
   })
+
+  const classes = useStyles()
 
   const {
     handleSubmit,
@@ -75,6 +78,8 @@ const AnnouncementModal: FC<Props> = ({
             button.
           </DialogContentText>
           <TextField
+            className={classes.textFieldSpace}
+            variant="standard"
             error={!!errors.content}
             helperText={errors.content}
             autoFocus

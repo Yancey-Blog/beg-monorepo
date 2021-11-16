@@ -110,6 +110,7 @@ const YanceyMusicModal: FC<Props> = ({
             button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -121,6 +122,7 @@ const YanceyMusicModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.soundCloudUrl}
             helperText={errors.soundCloudUrl}
@@ -136,12 +138,13 @@ const YanceyMusicModal: FC<Props> = ({
             label="Release Date"
             value={values.releaseDate}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            inputFormat="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>
             <FormLabel required>Poster Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.posterUrl}
               helperText={errors.posterUrl}
               style={{ display: 'none' }}
