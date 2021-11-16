@@ -9,10 +9,7 @@ import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
 import { useSnackbar } from 'notistack'
 import 'codemirror/lib/codemirror.css'
-import 'tui-editor/dist/tui-editor.min.css'
-import 'tui-editor/dist/tui-editor-contents.min.css'
-import 'tui-chart/dist/tui-chart.min.css'
-import 'tui-color-picker/dist/tui-color-picker.min.css'
+import '@toast-ui/editor/dist/toastui-editor.css'
 import { Editor } from '@toast-ui/react-editor'
 import umlPlugin from '@toast-ui/editor-plugin-uml'
 import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
@@ -27,13 +24,11 @@ import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import client from 'src/graphql/apolloClient'
 import {
-  MARKDOWN_EDITOR_TOOLBAR_ITEMS,
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 import { goBack, parseSearch } from 'src/shared/utils'
 import UploaderModal from './components/UploaderModal'
-// import embededPlugin from './editors/editorEmbededPlugin'
 import {
   enhanceUpload,
   insertImage,
@@ -368,14 +363,12 @@ const PostEditor: FC = () => {
         previewStyle="vertical"
         height="1000px"
         initialEditType="markdown"
-        toolbarItems={MARKDOWN_EDITOR_TOOLBAR_ITEMS}
         plugins={[
           chartPlugin,
           umlPlugin,
           colorSyntaxPlugin,
           // @ts-ignore
           tableMergedCellPlugin
-          // embededPlugin,
         ]}
         ref={editorRef}
       />
