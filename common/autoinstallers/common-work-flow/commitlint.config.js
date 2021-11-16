@@ -10,10 +10,8 @@ rushConfiguration.projects.forEach((project) => {
   const dirName = temp[temp.length - 1]
   packageDirNames.push(dirName)
 })
-// 保证 scope 只能为 all/package name/package dir name
-const allScope = ['all', ...packageDirNames, ...packageNames]
 
-console.log(allScope)
+const allScope = ['all', ...packageDirNames, ...packageNames]
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
