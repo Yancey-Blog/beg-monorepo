@@ -1,7 +1,6 @@
 import { FC, useState, MouseEvent } from 'react'
-import { Paper } from '@material-ui/core'
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { Paper, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { makeStyles, createStyles } from '@mui/styles'
 
 interface Props {
   handleToggleChange: Function
@@ -14,27 +13,27 @@ const duration = [24, 12, 1]
 // so 12 data are provided every hour.
 const countByHour = 12
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     paper: {
       position: 'relative',
       padding: 16,
       boxShadow:
         'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px',
-      borderRadius: 16,
+      borderRadius: 16
     },
 
     toggleButtonGroup: {
       position: 'absolute',
       top: 4,
-      right: 16,
+      right: 16
     },
 
     toggleBtn: {
       padding: '0 4px',
-      border: 'none',
-    },
-  }),
+      border: 'none'
+    }
+  })
 )
 
 const ToggleChart: FC<Props> = ({ children, handleToggleChange }) => {

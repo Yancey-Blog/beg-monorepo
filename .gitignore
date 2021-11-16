@@ -93,7 +93,7 @@ build/
 packages/blog-service/env/.env
 packages/blog-service/env/production.env
 packages/blog-service/env/development.env
-packages/blog-cms/env/.env.development.local
+packages/blog-cms/.env.development.local
 
 # PWA
 sw.*

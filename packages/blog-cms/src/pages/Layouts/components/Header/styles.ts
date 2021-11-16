@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
   header: {
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     padding: '12px 24px 48px',
     background: 'transparent',
-    boxShadow: 'none',
+    boxShadow: 'none'
   },
   fabIcon: {
     color: '#999',
@@ -16,35 +16,35 @@ const useStyles = makeStyles({
     boxShadow: `0 2px 2px 0 rgba(153, 153, 153, 0.14),
         0 3px 1px -2px rgba(153, 153, 153, 0.2),
         0 1px 5px 0 rgba(153, 153, 153, 0.12)`,
-    '&:hover': { backgroundColor: '#fff' },
+    '&:hover': { backgroundColor: '#fff' }
   },
   left: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
 
   title: {
     marginLeft: '24px',
-    color: '#000',
+    color: '#000'
   },
 
   marginRight: {
-    marginRight: '24px',
+    marginRight: '24px'
   },
 
   anchor: {
     color: '#000',
 
     '&:hover': {
-      textDecoration: 'none',
-    },
+      textDecoration: 'none'
+    }
   },
 
   menu: {
     '& .MuiListItemIcon-root': {
-      minWidth: 42,
-    },
-  },
+      minWidth: 42
+    }
+  }
 })
 
 export default useStyles

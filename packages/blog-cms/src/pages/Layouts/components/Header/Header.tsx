@@ -6,15 +6,15 @@ import {
   Divider,
   Fade,
   ListItemIcon,
-  ListItemText,
-} from '@material-ui/core'
+  ListItemText
+} from '@mui/material'
 import {
   LockOutlined,
   FaceOutlined,
   PermDataSettingOutlined,
   AccountBalanceOutlined,
-  ExitToAppOutlined,
-} from '@material-ui/icons'
+  ExitToAppOutlined
+} from '@mui/icons-material'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
 import classNames from 'classnames'
 import {
@@ -23,16 +23,16 @@ import {
   Fab,
   Badge,
   Typography,
-  IconButton,
-} from '@material-ui/core'
+  IconButton
+} from '@mui/material'
 import {
   MoreVert,
   Dashboard,
   Notifications,
   Person,
   Search,
-  ViewList,
-} from '@material-ui/icons'
+  ViewList
+} from '@mui/icons-material'
 import { logout } from 'src/shared/utils'
 import useStyles from './styles'
 

@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
   notFound: {
@@ -6,17 +6,17 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
   },
   header: {
     margin: 0,
     fontSize: 36,
-    color: '#263238',
+    color: '#263238'
   },
 
   tips: {
     fontSize: 14,
-    color: '#546e7a',
+    color: '#546e7a'
   },
 
   image: {
@@ -26,9 +26,9 @@ const useStyles = makeStyles({
     '& img': {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
-    },
-  },
+      objectFit: 'cover'
+    }
+  }
 })
 
 export default useStyles

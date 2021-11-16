@@ -1,7 +1,7 @@
 import { FC, useState, ChangeEvent } from 'react'
 import classNames from 'classnames'
-import { Card, CircularProgress, Button } from '@material-ui/core'
-import { Add, CloudUpload } from '@material-ui/icons'
+import { Card, CircularProgress, Button } from '@mui/material'
+import { Add, CloudUpload } from '@mui/icons-material'
 import { useSnackbar } from 'notistack'
 import axios from 'axios'
 import { getURLPathName } from 'src/shared/utils'
@@ -15,7 +15,7 @@ const Uploader: FC<Props> = ({
   defaultFile = '',
   needMarginLeft = true,
   onChange,
-  className,
+  className
 }) => {
   const classes = useclasses()
   const [loading, setLoading] = useState(false)
@@ -34,7 +34,7 @@ const Uploader: FC<Props> = ({
         method: 'post',
         url: `${process.env.REACT_APP_UPLOADER_SERVICE_DOMAIN}/uploadSingleFile`,
         data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' },
+        headers: { 'Content-Type': 'multipart/form-data' }
       })
         .then((res) => {
           setCurrFile(res.data)
@@ -46,8 +46,8 @@ const Uploader: FC<Props> = ({
               been uploaded successfully.
             </span>,
             {
-              variant: 'success',
-            },
+              variant: 'success'
+            }
           )
         })
         .catch((e) => {
@@ -91,7 +91,7 @@ const Uploader: FC<Props> = ({
         <Card
           variant={variant}
           className={classNames(classes.avatarUploader, className, {
-            [classes.simpleUploader]: needMarginLeft,
+            [classes.simpleUploader]: needMarginLeft
           })}
         >
           {avatarContent()}

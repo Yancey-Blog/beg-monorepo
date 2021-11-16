@@ -5,8 +5,8 @@ import {
   DialogTitle,
   Dialog,
   DialogContent,
-  DialogContentText,
-} from '@material-ui/core'
+  DialogContentText
+} from '@mui/material'
 
 interface IConfirmModal {
   onSubmit: (ids: string[]) => void

@@ -9,8 +9,8 @@ import {
   DialogContentText,
   TextField,
   FormLabel,
-  Switch,
-} from '@material-ui/core'
+  Switch
+} from '@mui/material'
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
@@ -29,7 +29,7 @@ const CoverModal: FC<Props> = ({
   open,
   handleOpen,
   createCover,
-  updateCoverById,
+  updateCoverById
 }) => {
   const classes = useStyles()
 
@@ -38,13 +38,13 @@ const CoverModal: FC<Props> = ({
   const initialValues = {
     title: '',
     coverUrl: '',
-    isPublic: true,
+    isPublic: true
   }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required.'),
     coverUrl: Yup.string().required('Cover Url is required.'),
-    isPublic: Yup.boolean().required('Is Public is required.'),
+    isPublic: Yup.boolean().required('Is Public is required.')
   })
 
   const {
@@ -55,14 +55,14 @@ const CoverModal: FC<Props> = ({
     isSubmitting,
     errors,
     setFieldValue,
-    values,
+    values
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateCoverById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createCover({ variables: { input: values } })
@@ -70,7 +70,7 @@ const CoverModal: FC<Props> = ({
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onCoverUrlChange = (data: UploaderResponse) => {

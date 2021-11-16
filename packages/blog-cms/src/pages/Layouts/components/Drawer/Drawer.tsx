@@ -1,7 +1,7 @@
 import { FC, Fragment, useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { Avatar } from '@material-ui/core'
-import { Home, Face } from '@material-ui/icons'
+import { Avatar } from '@mui/material'
+import { Home, Face } from '@mui/icons-material'
 import classNames from 'classnames'
 import routes, { Route } from 'src/routes'
 import client from 'src/graphql/apolloClient'
@@ -37,7 +37,7 @@ const Drawer: FC<Props> = ({ open }) => {
       const curRoute = routeList.find(
         (route) =>
           route.routes &&
-          route.routes.find((childRoute) => pathname.includes(childRoute.path)),
+          route.routes.find((childRoute) => pathname.includes(childRoute.path))
       )
       curRoute && setfoldName(curRoute.name)
     }
@@ -49,20 +49,20 @@ const Drawer: FC<Props> = ({ open }) => {
     <menu
       className={classNames(
         classes.menu,
-        open ? classes.expand : classes.shrink,
+        open ? classes.expand : classes.shrink
       )}
     >
       <div
         className={classNames(classes.drawerTitle, {
           [classes.hidenItem]: !open,
-          [classes.hidenNotItem]: !open,
+          [classes.hidenNotItem]: !open
         })}
       >
         <Home className={classes.logo} />
 
         <div
           className={classNames(classes.detail, {
-            [classes.hideDetail]: !open,
+            [classes.hideDetail]: !open
           })}
         >
           <span className={classes.title}>BLOG CMS</span>
@@ -72,7 +72,7 @@ const Drawer: FC<Props> = ({ open }) => {
       <div
         className={classNames(classes.drawerUser, {
           [classes.hidenItem]: !open,
-          [classes.hidenNotItem]: !open,
+          [classes.hidenNotItem]: !open
         })}
       >
         {avatarUrl ? (
@@ -89,7 +89,7 @@ const Drawer: FC<Props> = ({ open }) => {
 
         <div
           className={classNames(classes.detail, {
-            [classes.hideDetail]: !open,
+            [classes.hideDetail]: !open
           })}
         >
           <span className={classes.userName}>{name ? name : username}</span>
@@ -110,7 +110,7 @@ const Drawer: FC<Props> = ({ open }) => {
             <NavLink
               exact
               activeClassName={classNames(classes.active, {
-                [classes.foldActive]: !open,
+                [classes.foldActive]: !open
               })}
               className={classes.formatArrowTag}
               to={route.path}
@@ -121,19 +121,19 @@ const Drawer: FC<Props> = ({ open }) => {
 
           <div
             className={classNames(classes.childrenGroup, {
-              [classes.unfoldChildren]: foldName === route.name,
+              [classes.unfoldChildren]: foldName === route.name
             })}
             style={{
               maxHeight: `${
                 foldName === route.name
                   ? route.routes && 50 * route.routes.length
                   : 0
-              }px`,
+              }px`
             }}
           >
             {route.routes &&
               !route.routes.some(
-                (childRoute) => childRoute.hideInMenu === true,
+                (childRoute) => childRoute.hideInMenu === true
               ) &&
               route.routes.map((childRoute) =>
                 childRoute.isExternalLink ? (
@@ -150,7 +150,7 @@ const Drawer: FC<Props> = ({ open }) => {
                   <NavLink
                     exact
                     activeClassName={classNames(classes.active, {
-                      [classes.foldActive]: !open,
+                      [classes.foldActive]: !open
                     })}
                     className={classes.formatArrowTag}
                     to={childRoute.path}
@@ -158,7 +158,7 @@ const Drawer: FC<Props> = ({ open }) => {
                   >
                     <ChildItem open={open} childRoute={childRoute} />
                   </NavLink>
-                ),
+                )
               )}
           </div>
         </Fragment>

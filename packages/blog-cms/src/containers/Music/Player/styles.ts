@@ -1,17 +1,17 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     lrcTxt: {
       margin: 0,
       padding: '16px',
-      fontFamily: 'inherit',
+      fontFamily: 'inherit'
     },
 
     btnUploaderGroup: {
-      margin: '40px 0',
-    },
-  }),
+      margin: '40px 0'
+    }
+  })
 )
 
 export default useStyles

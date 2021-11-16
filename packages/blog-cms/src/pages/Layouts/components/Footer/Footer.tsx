@@ -1,16 +1,16 @@
 import { FC } from 'react'
-import { Link } from '@material-ui/core'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { Link } from '@mui/material'
+import { makeStyles, createStyles } from '@mui/styles'
 import { useQuery } from '@apollo/client'
 import {
   YANCEY_BLOG_URL,
   YANCEY_GITHUB_URL,
-  YANCEY_EMAIL_URL,
+  YANCEY_EMAIL_URL
 } from 'src/shared/constants'
 import { GLOBAL_SETTING } from 'src/containers/Settings/GlobalConfig/typeDefs'
 import { Query } from 'src/containers/Settings/GlobalConfig/types'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     footer: {
       display: 'flex',
@@ -20,29 +20,29 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '12px 24px',
       fontSize: '14px',
       textAlign: 'right',
-      color: '#3c4858',
+      color: '#3c4858'
     },
 
     footerList: {
       padding: 0,
-      listStyle: 'none',
+      listStyle: 'none'
     },
 
     footerItem: {
       display: 'inline-block',
-      marginRight: theme.spacing(3.75),
+      marginRight: 60,
       fontSize: '12px',
       fontWeight: 500,
-      color: '#3c4858',
-    },
-  }),
+      color: '#3c4858'
+    }
+  })
 )
 
 const Footer: FC = () => {
   const classes = useStyles()
 
   const { data } = useQuery<Query>(GLOBAL_SETTING, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   return (

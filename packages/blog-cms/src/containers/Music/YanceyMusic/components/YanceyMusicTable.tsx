@@ -2,10 +2,10 @@ import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -36,7 +36,7 @@ const YanceyMusicTable: FC<Props> = ({
   deleteYanceyMusic,
   isFetching,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -53,8 +53,8 @@ const YanceyMusicTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curName = tableMeta.rowData[1]
           return <ImagePopup imgName={curName} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'releaseDate',
@@ -62,8 +62,8 @@ const YanceyMusicTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'createdAt',
@@ -71,8 +71,8 @@ const YanceyMusicTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -80,8 +80,8 @@ const YanceyMusicTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -109,9 +109,9 @@ const YanceyMusicTable: FC<Props> = ({
               </FormControl>
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -125,8 +125,7 @@ const YanceyMusicTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -135,7 +134,7 @@ const YanceyMusicTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

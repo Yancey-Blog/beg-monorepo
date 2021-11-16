@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 interface Props {
   title: string
@@ -15,14 +15,14 @@ const useStyles = makeStyles({
     fontSize: '28px',
     fontWeight: 500,
     lineHeight: 1.3,
-    color: '#202124',
+    color: '#202124'
   },
 
   subTitle: {
     marginBottom: '36px',
     fontSize: '16px',
-    color: '#5f6368',
-  },
+    color: '#5f6368'
+  }
 })
 
 const SettingsHeader: FC<Props> = ({ title, subTitle }) => {

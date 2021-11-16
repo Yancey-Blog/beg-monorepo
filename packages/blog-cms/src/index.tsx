@@ -2,11 +2,10 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Switch, Route, Redirect, Router } from 'react-router-dom'
 import loadable from '@loadable/component'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
-import { MuiPickersUtilsProvider } from '@material-ui/pickers'
-import LuxonUtils from '@date-io/luxon'
-// @ts-ignore
+import DateAdapter from '@mui/lab/AdapterLuxon'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { SnackbarProvider } from 'notistack'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { SnackbarUtilsConfigurator } from './components/Toast/Toast'
@@ -19,12 +18,12 @@ import history from './shared/history'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
   SNACKBAR_MAX_NUM,
-  SNACKBAR_AUTO_HIDE_DURATION,
+  SNACKBAR_AUTO_HIDE_DURATION
 } from './shared/constants'
 import './assets/global.scss'
 
 const Layouts = loadable(() => import('./pages/Layouts/Layouts'), {
-  fallback: <Loading />,
+  fallback: <Loading />
 })
 
 ReactDOM.render(
@@ -35,7 +34,7 @@ ReactDOM.render(
         anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
         autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
       >
-        <MuiPickersUtilsProvider utils={LuxonUtils}>
+        <LocalizationProvider dateAdapter={DateAdapter}>
           <SnackbarUtilsConfigurator />
           <CssBaseline />
           <Router history={history}>
@@ -55,7 +54,7 @@ ReactDOM.render(
                     <Redirect
                       to={{
                         pathname: '/login',
-                        state: { from: location },
+                        state: { from: location }
                       }}
                     />
                   )
@@ -63,11 +62,11 @@ ReactDOM.render(
               />
             </Switch>
           </Router>
-        </MuiPickersUtilsProvider>
+        </LocalizationProvider>
       </SnackbarProvider>
     </ApolloProvider>
   </StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('root')
 )
 
 // If you want your app to work offline and load faster, you can change

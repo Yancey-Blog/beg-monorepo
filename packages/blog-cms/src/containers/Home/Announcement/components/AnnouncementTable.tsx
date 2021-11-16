@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
-  MUIDataTableColumn,
+  MUIDataTableColumn
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -26,7 +26,7 @@ const AnnouncementTable: FC<Props> = ({
   isFetching,
   isDeleting,
   isExchanging,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -42,8 +42,8 @@ const AnnouncementTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -51,8 +51,8 @@ const AnnouncementTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -87,9 +87,9 @@ const AnnouncementTable: FC<Props> = ({
               />
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -103,8 +103,7 @@ const AnnouncementTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -115,7 +114,7 @@ const AnnouncementTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

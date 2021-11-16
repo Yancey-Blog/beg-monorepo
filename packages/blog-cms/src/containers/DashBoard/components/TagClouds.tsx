@@ -1,32 +1,32 @@
 import { FC } from 'react'
-import { Paper, Chip } from '@material-ui/core'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { Paper, Chip } from '@mui/material'
+import { makeStyles, createStyles } from '@mui/styles'
 
 interface Props {
   tags: string[]
   loading: boolean
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     paper: {
       padding: 16,
       overflowY: 'scroll',
       boxShadow:
         'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px',
-      borderRadius: 16,
+      borderRadius: 16
     },
 
     chip: {
-      margin: 8,
+      margin: 8
     },
 
     header: {
       marginBottom: 16,
       fontSize: 16,
-      fontWeight: 600,
-    },
-  }),
+      fontWeight: 600
+    }
+  })
 )
 
 const TagClouds: FC<Props> = ({ tags }) => {

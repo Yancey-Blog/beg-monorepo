@@ -1,16 +1,16 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { TextField, Button, IconButton, Popover } from '@material-ui/core'
+import { TextField, Button, IconButton, Popover } from '@mui/material'
 import ChipInput from 'material-ui-chip-input'
-import { PhotoCamera } from '@material-ui/icons'
+import { PhotoCamera } from '@mui/icons-material'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import 'codemirror/lib/codemirror.css'
 import 'tui-editor/dist/tui-editor.min.css'
 import 'tui-editor/dist/tui-editor-contents.min.css'
-import 'codemirror/lib/codemirror.css'
 import 'tui-chart/dist/tui-chart.min.css'
 import 'tui-color-picker/dist/tui-color-picker.min.css'
 import { Editor } from '@toast-ui/react-editor'
@@ -21,7 +21,7 @@ import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
 import {
   CREATE_ONE_POST,
   UPDATE_ONE_POST,
-  CREATE_POST_STATISTICS,
+  CREATE_POST_STATISTICS
 } from './typeDefs'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
@@ -29,15 +29,15 @@ import client from 'src/graphql/apolloClient'
 import {
   MARKDOWN_EDITOR_TOOLBAR_ITEMS,
   POPOVER_ANCHOR_ORIGIN,
-  POPOVER_TRANSFORM_ORIGIN,
+  POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 import { goBack, parseSearch } from 'src/shared/utils'
 import UploaderModal from './components/UploaderModal'
-import embededPlugin from './editors/editorEmbededPlugin'
+// import embededPlugin from './editors/editorEmbededPlugin'
 import {
   enhanceUpload,
   insertImage,
-  enhancePasteUpload,
+  enhancePasteUpload
 } from './editors/enhanceEditor'
 import { getMarkdown, getHTML, setMarkdown } from './editors/editorIO'
 import { sendPostToAlgolia } from './algolia/algoliaSearch'
@@ -48,7 +48,7 @@ import {
   UpdatePostByIdMutation,
   CreatePostVars,
   UpdatePostVars,
-  CreatePostMutation,
+  CreatePostMutation
 } from './types'
 import useStyles from './styles'
 
@@ -75,9 +75,9 @@ const PostEditor: FC = () => {
           input: {
             postId: _id,
             postName: title,
-            scenes: `created and ${isPublic ? 'public' : 'hide'}`,
-          },
-        },
+            scenes: `created and ${isPublic ? 'public' : 'hide'}`
+          }
+        }
       })
 
       if (isPublic) {
@@ -87,11 +87,11 @@ const PostEditor: FC = () => {
           summary,
           getHTML(editorRef),
           posterUrl,
-          tags,
+          tags
         )
       }
     },
-    onError() {},
+    onError() {}
   })
 
   const [updatePostById, { loading: isUpdatingPost }] = useMutation<
@@ -108,9 +108,9 @@ const PostEditor: FC = () => {
           input: {
             postId: _id,
             postName: title,
-            scenes: `updated and ${isPublic ? 'public' : 'hide'}`,
-          },
-        },
+            scenes: `updated and ${isPublic ? 'public' : 'hide'}`
+          }
+        }
       })
 
       if (isPublic) {
@@ -120,11 +120,11 @@ const PostEditor: FC = () => {
           summary,
           getHTML(editorRef),
           posterUrl,
-          tags,
+          tags
         )
       }
     },
-    onError() {},
+    onError() {}
   })
 
   /* query */
@@ -155,21 +155,21 @@ const PostEditor: FC = () => {
     posterUrl: '',
     title: '',
     summary: '',
-    tags: [],
+    tags: []
   }
 
   const validationSchema = Yup.object().shape({
     posterUrl: Yup.string().url().required('PostUrl is required.'),
     title: Yup.string().required('Title is required.'),
     summary: Yup.string().required('Summary is required.'),
-    tags: Yup.array().required('Tags is required.'),
+    tags: Yup.array().required('Tags is required.')
   })
 
   const { setFieldValue, getFieldProps, setValues, resetForm, values, errors } =
     useFormik({
       initialValues,
       validationSchema,
-      onSubmit() {},
+      onSubmit() {}
     })
 
   const onSubmit = async (type: SaveType) => {
@@ -182,7 +182,7 @@ const PostEditor: FC = () => {
 
     if (values.tags.length === 0) {
       enqueueSnackbar('Please specify at least one tag for the post.', {
-        variant: 'warning',
+        variant: 'warning'
       })
       return
     }
@@ -202,13 +202,13 @@ const PostEditor: FC = () => {
 
     if (id) {
       await updatePostById({
-        variables: { input: { ..._params, id } } as UpdatePostVars,
+        variables: { input: { ..._params, id } } as UpdatePostVars
       })
     } else {
       await createPost({
         variables: {
-          input: _params,
-        },
+          input: _params
+        }
       })
     }
     window.localStorage.removeItem('post_content')
@@ -226,7 +226,7 @@ const PostEditor: FC = () => {
         content,
         summary,
         tags,
-        posterUrl,
+        posterUrl
         // @ts-ignore
       } = client.cache.data.data[`PostItemModel:${id}`]
 
@@ -234,7 +234,7 @@ const PostEditor: FC = () => {
         title,
         summary,
         tags,
-        posterUrl,
+        posterUrl
       })
 
       setMarkdown(editorRef, content)
@@ -371,8 +371,8 @@ const PostEditor: FC = () => {
           umlPlugin,
           colorSyntaxPlugin,
           // @ts-ignore
-          tableMergedCellPlugin,
-          embededPlugin,
+          tableMergedCellPlugin
+          // embededPlugin,
         ]}
         ref={editorRef}
       />

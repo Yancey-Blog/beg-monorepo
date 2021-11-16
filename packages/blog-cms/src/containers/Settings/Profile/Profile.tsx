@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
 import SettingItemWrapper from '../components/SettingItemWrapper/SettingItemWrapper'
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
@@ -25,13 +25,13 @@ const Profile: FC = () => {
   const [updateUser] = useMutation(UPDATE_USER, {
     onCompleted() {
       enqueueSnackbar(`Your profile has been updated!`, {
-        variant: 'success',
+        variant: 'success'
       })
-    },
+    }
   })
 
   const validationSchema = Yup.object().shape({
-    website: Yup.string().url(),
+    website: Yup.string().url()
   })
 
   const initialValues = {
@@ -40,7 +40,7 @@ const Profile: FC = () => {
     organization: '',
     website: '',
     bio: '',
-    avatarUrl: '',
+    avatarUrl: ''
   }
 
   const {
@@ -49,23 +49,23 @@ const Profile: FC = () => {
     getFieldProps,
     setValues,
     isSubmitting,
-    errors,
+    errors
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       await updateUser({
-        variables: { input: values },
+        variables: { input: values }
       })
 
       history.push(pathname)
-    },
+    }
   })
 
   const onChange = async (data: UploaderResponse) => {
     setFieldValue('avatarUrl', data.url)
     await updateUser({
-      variables: { input: { avatarUrl: data.url } },
+      variables: { input: { avatarUrl: data.url } }
     })
 
     history.push(pathname)

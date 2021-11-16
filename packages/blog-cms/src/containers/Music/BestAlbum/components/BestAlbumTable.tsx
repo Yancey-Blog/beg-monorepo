@@ -2,10 +2,10 @@ import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab, Button } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab, Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -36,7 +36,7 @@ const BestAlbumTable: FC<Props> = ({
   deleteBestAlbums,
   isFetching,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -59,8 +59,8 @@ const BestAlbumTable: FC<Props> = ({
           >
             {value.slice(0, 20)}...
           </Button>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'coverUrl',
@@ -69,8 +69,8 @@ const BestAlbumTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curName = tableMeta.rowData[1]
           return <ImagePopup imgName={curName} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'releaseDate',
@@ -78,8 +78,8 @@ const BestAlbumTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'createdAt',
@@ -87,8 +87,8 @@ const BestAlbumTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -96,8 +96,8 @@ const BestAlbumTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -123,9 +123,9 @@ const BestAlbumTable: FC<Props> = ({
               </FormControl>
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -139,8 +139,7 @@ const BestAlbumTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -149,7 +148,7 @@ const BestAlbumTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

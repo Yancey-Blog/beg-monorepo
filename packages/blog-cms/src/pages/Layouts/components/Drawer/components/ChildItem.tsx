@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import classNames from 'classnames'
-import { Link } from '@material-ui/icons'
+import { Link } from '@mui/icons-material'
 import { getInitials } from 'src/shared/utils'
 import { RouteChildren } from 'src/routes'
 import useStyles from '../styles'
@@ -12,26 +12,26 @@ interface ChildItemProps {
 
 const ChildItem: FC<ChildItemProps> = ({
   open,
-  childRoute: { name, isExternalLink },
+  childRoute: { name, isExternalLink }
 }) => {
   const classes = useStyles()
 
   return (
     <div
       className={classNames(classes.item, classes.childItem, {
-        [classes.hidenItem]: !open,
+        [classes.hidenItem]: !open
       })}
     >
       <span
         className={classNames(classes.itemAbbrTxt, {
-          [classes.hidenItem]: !open,
+          [classes.hidenItem]: !open
         })}
       >
         {getInitials(name)}
       </span>
       <div
         className={classNames(classes.detail, {
-          [classes.hideDetail]: !open,
+          [classes.hideDetail]: !open
         })}
       >
         <span className={classes.itemTxt}>{name}</span>

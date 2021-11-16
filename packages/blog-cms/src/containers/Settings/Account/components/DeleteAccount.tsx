@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Button, Checkbox, FormControlLabel } from '@material-ui/core'
+import { Button, Checkbox, FormControlLabel } from '@mui/material'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
 import useStyles from '../styles'

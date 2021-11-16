@@ -4,9 +4,9 @@ import {
   DialogTitle,
   Dialog,
   DialogContent,
-  Button,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+  Button
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import Uploader from '../../../components/Uploader/Uploader'
 
 interface Props {
@@ -18,8 +18,8 @@ interface Props {
 
 const useStyles = makeStyles({
   uploaderModalContent: {
-    margin: '24px auto',
-  },
+    margin: '24px auto'
+  }
 })
 
 const UploaderModal: FC<Props> = ({ open, onOk, onClose, onChange }) => {

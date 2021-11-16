@@ -2,10 +2,10 @@ import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -36,7 +36,7 @@ const LiveTourTable: FC<Props> = ({
   deleteLiveTours,
   isFetching,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -52,8 +52,8 @@ const LiveTourTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curName = tableMeta.rowData[1]
           return <ImagePopup imgName={curName} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'showTime',
@@ -61,8 +61,8 @@ const LiveTourTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'createdAt',
@@ -70,8 +70,8 @@ const LiveTourTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -79,8 +79,8 @@ const LiveTourTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -106,9 +106,9 @@ const LiveTourTable: FC<Props> = ({
               </FormControl>
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -122,8 +122,7 @@ const LiveTourTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -132,7 +131,7 @@ const LiveTourTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

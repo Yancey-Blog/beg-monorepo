@@ -7,34 +7,34 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  Avatar,
-} from '@material-ui/core'
-import { LooksOne, LooksTwo, Looks3, Looks4, Looks5 } from '@material-ui/icons'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+  Avatar
+} from '@mui/material'
+import { LooksOne, LooksTwo, Looks3, Looks4, Looks5 } from '@mui/icons-material'
+import { makeStyles, createStyles } from '@mui/styles'
 import { IPostItem } from 'src/containers/Post/types'
 import PostRankListSkeleton from './PostRankListSkeleton'
 import { PostRankListType } from '../types'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     paper: {
       display: 'grid',
       boxShadow:
         'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px',
-      borderRadius: 16,
+      borderRadius: 16
     },
 
     list: {
-      width: '100%',
+      width: '100%'
     },
 
     header: {
       marginTop: 16,
       marginLeft: 16,
       fontSize: 16,
-      fontWeight: 600,
-    },
-  }),
+      fontWeight: 600
+    }
+  })
 )
 
 interface Props {
@@ -48,7 +48,7 @@ const numbersIcon = [
   <LooksTwo />,
   <Looks3 />,
   <Looks4 />,
-  <Looks5 />,
+  <Looks5 />
 ]
 
 const PostRankList: FC<Props> = ({ type, topPosts, loading }) => {

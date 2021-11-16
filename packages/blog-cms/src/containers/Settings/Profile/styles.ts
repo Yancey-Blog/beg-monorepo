@@ -1,15 +1,15 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     input: {
-      marginBottom: theme.spacing(2.5),
-      flex: 1,
+      marginBottom: 40,
+      flex: 1
     },
 
     profileContainer: {
       display: 'grid',
-      gridTemplateColumns: '2fr 1fr',
+      gridTemplateColumns: '2fr 1fr'
     },
 
     customUploader: {
@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
       '& img': {
         width: '100%',
-        height: '100%',
-      },
-    },
-  }),
+        height: '100%'
+      }
+    }
+  })
 )
 
 export default useStyles

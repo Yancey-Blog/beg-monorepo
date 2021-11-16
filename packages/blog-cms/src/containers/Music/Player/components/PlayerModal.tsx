@@ -9,8 +9,8 @@ import {
   DialogContentText,
   TextField,
   FormLabel,
-  Switch,
-} from '@material-ui/core'
+  Switch
+} from '@mui/material'
 import { useFormik } from 'formik'
 import classNames from 'classnames'
 import client from 'src/graphql/apolloClient'
@@ -31,7 +31,7 @@ const PlayerModal: FC<Props> = ({
   open,
   handleOpen,
   createPlayer,
-  updatePlayerById,
+  updatePlayerById
 }) => {
   const { isOpen, id } = open
 
@@ -44,7 +44,7 @@ const PlayerModal: FC<Props> = ({
     lrc: '[00:00.000]此歌曲为没有填词的纯音乐, 请您欣赏',
     coverUrl: '',
     musicFileUrl: '',
-    isPublic: true,
+    isPublic: true
   }
 
   const validationSchema = Yup.object().shape({
@@ -53,7 +53,7 @@ const PlayerModal: FC<Props> = ({
     lrc: Yup.string().required('LRC is required.'),
     coverUrl: Yup.string().required('CoverUrl is required.'),
     musicFileUrl: Yup.string().required('MusicFileUrl is required.'),
-    isPublic: Yup.boolean().required('IsPublic is required.'),
+    isPublic: Yup.boolean().required('IsPublic is required.')
   })
 
   const {
@@ -64,14 +64,14 @@ const PlayerModal: FC<Props> = ({
     resetForm,
     isSubmitting,
     errors,
-    values,
+    values
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updatePlayerById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createPlayer({ variables: { input: values } })
@@ -79,7 +79,7 @@ const PlayerModal: FC<Props> = ({
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onCoverUrlChange = (data: UploaderResponse) => {
@@ -100,7 +100,7 @@ const PlayerModal: FC<Props> = ({
         lrc,
         coverUrl,
         musicFileUrl,
-        isPublic,
+        isPublic
         // @ts-ignore
       } = client.cache.data.data[`PlayerModel:${id}`]
       setValues({
@@ -109,7 +109,7 @@ const PlayerModal: FC<Props> = ({
         lrc,
         coverUrl,
         musicFileUrl,
-        isPublic,
+        isPublic
       })
     }
   }, [id, resetForm, setValues])
@@ -178,7 +178,7 @@ const PlayerModal: FC<Props> = ({
           <div
             className={classNames(
               globalClasses.uploaderGroup,
-              classes.btnUploaderGroup,
+              classes.btnUploaderGroup
             )}
           >
             <FormLabel required>Music File Url</FormLabel>

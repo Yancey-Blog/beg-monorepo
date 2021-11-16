@@ -1,9 +1,9 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     dashboradWrapper: {
-      width: '100%',
+      width: '100%'
     },
 
     group: {
@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme: Theme) =>
       gridColumnGap: 24,
       gridTemplateRows: '375px 375px 375px',
       gridRowGap: 24,
-      marginBottom: 24,
-    },
-  }),
+      marginBottom: 24
+    }
+  })
 )
 
 export default useStyles

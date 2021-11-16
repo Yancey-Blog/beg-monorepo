@@ -8,8 +8,8 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  FormLabel,
-} from '@material-ui/core'
+  FormLabel
+} from '@mui/material'
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
@@ -28,7 +28,7 @@ const OpenSourceModal: FC<Props> = ({
   open,
   handleOpen,
   createOpenSource,
-  updateOpenSourceById,
+  updateOpenSourceById
 }) => {
   const { isOpen, id } = open
 
@@ -38,14 +38,14 @@ const OpenSourceModal: FC<Props> = ({
     title: '',
     description: '',
     url: '',
-    posterUrl: '',
+    posterUrl: ''
   }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required.'),
     description: Yup.string().required('Description is required.'),
     url: Yup.string().url().required('URL is required.'),
-    posterUrl: Yup.string().url().required('Post Url is required.'),
+    posterUrl: Yup.string().url().required('Post Url is required.')
   })
 
   const {
@@ -55,21 +55,21 @@ const OpenSourceModal: FC<Props> = ({
     setValues,
     resetForm,
     isSubmitting,
-    errors,
+    errors
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateOpenSourceById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createOpenSource({ variables: { input: values } })
       }
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onChange = (data: UploaderResponse) => {

@@ -8,10 +8,10 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  FormLabel,
-} from '@material-ui/core'
+  FormLabel
+} from '@mui/material'
 import { useFormik } from 'formik'
-import { KeyboardDateTimePicker } from '@material-ui/pickers'
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
 import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
@@ -29,7 +29,7 @@ const YanceyMusicModal: FC<Props> = ({
   open,
   handleOpen,
   createYanceyMusic,
-  updateYanceyMusicById,
+  updateYanceyMusicById
 }) => {
   const { isOpen, id } = open
 
@@ -39,14 +39,14 @@ const YanceyMusicModal: FC<Props> = ({
     title: '',
     soundCloudUrl: '',
     releaseDate: new Date(),
-    posterUrl: '',
+    posterUrl: ''
   }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required.'),
     releaseDate: Yup.string().required('Release Date is required.'),
     soundCloudUrl: Yup.string().url().required('SoundCloud Url is required.'),
-    posterUrl: Yup.string().url().required('Post Url is required.'),
+    posterUrl: Yup.string().url().required('Post Url is required.')
   })
 
   const {
@@ -57,14 +57,14 @@ const YanceyMusicModal: FC<Props> = ({
     resetForm,
     isSubmitting,
     errors,
-    values,
+    values
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateYanceyMusicById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createYanceyMusic({ variables: { input: values } })
@@ -72,7 +72,7 @@ const YanceyMusicModal: FC<Props> = ({
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onChange = (data: UploaderResponse) => {
@@ -87,14 +87,14 @@ const YanceyMusicModal: FC<Props> = ({
         title,
         soundCloudUrl,
         releaseDate,
-        posterUrl,
+        posterUrl
         // @ts-ignore
       } = client.cache.data.data[`YanceyMusicModel:${id}`]
       setValues({
         title,
         soundCloudUrl,
         releaseDate,
-        posterUrl,
+        posterUrl
       })
     }
   }, [id, resetForm, setValues])
@@ -130,16 +130,13 @@ const YanceyMusicModal: FC<Props> = ({
             {...getFieldProps('soundCloudUrl')}
           />
 
-          <KeyboardDateTimePicker
+          <DesktopDatePicker
             className={classes.textFieldSpace}
+            renderInput={(props) => <TextField {...props} />}
             label="Release Date"
             value={values.releaseDate}
-            error={!!errors.releaseDate}
-            helperText={errors.releaseDate}
-            showTodayButton={true}
-            ampm={false}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            format="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd HH:mm:ss"
           />
 
           <div className={classes.uploaderGroup}>

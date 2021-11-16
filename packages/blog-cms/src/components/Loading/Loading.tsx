@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import { makeStyles } from '@mui/styles'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const useStyles = makeStyles({
   mask: {
@@ -14,8 +14,8 @@ const useStyles = makeStyles({
     height: '100%',
     background: 'rgba(255, 255, 255, 0.4)',
     borderRadius: '4px',
-    zIndex: 9999,
-  },
+    zIndex: 9999
+  }
 })
 
 const Loading: FC = () => {

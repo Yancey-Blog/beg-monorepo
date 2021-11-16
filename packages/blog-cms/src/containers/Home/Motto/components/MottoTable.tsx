@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
-  MUIDataTableColumn,
+  MUIDataTableColumn
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import MottoModal from './MottoModal'
@@ -39,7 +39,7 @@ const MottoTable: FC<Props> = ({
   isFetching,
   isDeleting,
   isExchanging,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -55,8 +55,8 @@ const MottoTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -64,8 +64,8 @@ const MottoTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -98,9 +98,9 @@ const MottoTable: FC<Props> = ({
               />
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -114,8 +114,7 @@ const MottoTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -124,7 +123,7 @@ const MottoTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

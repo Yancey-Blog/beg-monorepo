@@ -1,40 +1,40 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     editorWrapper: {
       marginTop: '8px',
-      width: '100%',
+      width: '100%'
     },
 
     header: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateColumns: 'repeat(2, 1fr)'
     },
 
     publishTools: {
       display: 'flex',
       justifyContent: 'flex-end',
-      alignItems: 'center',
+      alignItems: 'center'
     },
 
     summary: { width: '50%', margin: '24px 0 48px' },
 
     summaryTxtFiled: {
-      marginBottom: '24px',
+      marginBottom: '24px'
     },
 
-    btn: { marginLeft: theme.spacing(1), marginBottom: theme.spacing(1) },
+    btn: { marginLeft: '16px', marginBottom: '16px' },
 
     pagination: {
       display: 'flex',
       justifyContent: 'flex-end',
-      marginTop: '24px',
+      marginTop: '24px'
     },
 
     uploadImageIcon: {
       position: 'relative',
-      top: '-4px',
+      top: '-4px'
     },
 
     search: {
@@ -45,20 +45,20 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       width: 400,
-      zIndex: 1101,
+      zIndex: 1101
     },
     input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
+      marginLeft: '16px',
+      flex: 1
     },
     iconButton: {
-      padding: 10,
+      padding: 10
     },
     divider: {
       height: 28,
-      margin: 4,
-    },
-  }),
+      margin: 4
+    }
+  })
 )
 
 export default useStyles

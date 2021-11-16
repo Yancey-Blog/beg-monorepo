@@ -7,8 +7,8 @@ import {
   Dialog,
   DialogContent,
   DialogContentText,
-  TextField,
-} from '@material-ui/core'
+  TextField
+} from '@mui/material'
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
 import { Open } from 'src/hooks/useOpenModal'
@@ -24,16 +24,16 @@ const MottoModal: FC<Props> = ({
   open,
   handleOpen,
   createMotto,
-  updateMottoById,
+  updateMottoById
 }) => {
   const { isOpen, id } = open
 
   const initialValues = {
-    content: '',
+    content: ''
   }
 
   const validationSchema = Yup.object().shape({
-    content: Yup.string().required('Content is required.'),
+    content: Yup.string().required('Content is required.')
   })
 
   const {
@@ -42,21 +42,21 @@ const MottoModal: FC<Props> = ({
     setValues,
     resetForm,
     isSubmitting,
-    errors,
+    errors
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateMottoById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createMotto({ variables: { input: values } })
       }
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   useEffect(() => {

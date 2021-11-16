@@ -1,33 +1,33 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     tip: {
       top: 72,
       color: '#5f6368',
       width: 460,
       position: 'absolute',
-      fontSize: 14,
+      fontSize: 14
     },
 
     checkboxLabel: {
       fontSize: 14,
-      color: 'rgba(0,0,0,0.65)',
+      color: 'rgba(0,0,0,0.65)'
     },
 
     sureToDeleteAccount: {
       display: 'block',
       position: 'relative',
       left: -12,
-      margin: '36px 0 12px',
+      margin: '36px 0 12px'
     },
 
     input: {
       display: 'block',
-      marginBottom: theme.spacing(2.5),
-      width: 450,
-    },
-  }),
+      marginBottom: 40,
+      width: 450
+    }
+  })
 )
 
 export default useStyles

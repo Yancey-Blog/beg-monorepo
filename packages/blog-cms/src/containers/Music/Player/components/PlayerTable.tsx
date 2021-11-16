@@ -2,11 +2,11 @@ import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab, Popover, Switch, Button } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab, Popover, Switch, Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import Move from 'src/components/Move/Move'
@@ -17,7 +17,7 @@ import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN,
-  TABLE_OPTIONS,
+  TABLE_OPTIONS
 } from 'src/shared/constants'
 import globalUseStyles from 'src/shared/globalStyles'
 import PlayerModal from './PlayerModal'
@@ -47,7 +47,7 @@ const PlayerTable: FC<Props> = ({
   isFetching,
   isExchanging,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -87,8 +87,8 @@ const PlayerTable: FC<Props> = ({
               )}
             </PopupState>
           )
-        },
-      },
+        }
+      }
     },
     {
       name: 'coverUrl',
@@ -97,8 +97,8 @@ const PlayerTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curName = tableMeta.rowData[1]
           return <ImagePopup imgName={curName} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'musicFileUrl',
@@ -110,8 +110,8 @@ const PlayerTable: FC<Props> = ({
               Your browser does not support the audio element.
             </audio>
           )
-        },
-      },
+        }
+      }
     },
     {
       name: 'isPublic',
@@ -132,15 +132,15 @@ const PlayerTable: FC<Props> = ({
                     updatePlayerById: {
                       id,
                       __typename: 'PlayerModel',
-                      isPublic: e.target.checked,
-                    },
-                  },
+                      isPublic: e.target.checked
+                    }
+                  }
                 })
               }}
             />
           )
-        },
-      },
+        }
+      }
     },
     {
       name: 'createdAt',
@@ -148,8 +148,8 @@ const PlayerTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -157,8 +157,8 @@ const PlayerTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -190,9 +190,9 @@ const PlayerTable: FC<Props> = ({
               />
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -206,8 +206,7 @@ const PlayerTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={globalClasses.addIconFab}>
@@ -216,7 +215,7 @@ const PlayerTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (
