@@ -105,17 +105,5 @@
     "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js}": [
-      "prettier --write",
-      "yarn lint",
-      "git add"
-    ]
   }
 }
