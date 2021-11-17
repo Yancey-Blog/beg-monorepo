@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { MUIDataTableMeta } from 'mui-datatables'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
-import { MoreVert } from '@material-ui/icons'
-import { Menu, MenuItem } from '@material-ui/core'
+import { MoreVert } from '@mui/icons-material'
+import { Menu, MenuItem } from '@mui/material'
 
 interface Props {
   dataSource: any[]
@@ -16,7 +16,7 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
     nextId: string,
     curWeight: number,
     nextWeight: number,
-    closePoper: Function,
+    closePoper: Function
   ) => {
     closePoper()
 
@@ -26,9 +26,9 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
           id: curId,
           exchangedId: nextId,
           weight: curWeight,
-          exchangedWeight: nextWeight,
-        },
-      },
+          exchangedWeight: nextWeight
+        }
+      }
     })
   }
 
@@ -84,7 +84,7 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
                         prevId,
                         curWeight,
                         prevWeight,
-                        popupState.close,
+                        popupState.close
                       )
                     }
                   >
@@ -100,7 +100,7 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
                         nextId,
                         curWeight,
                         nextWeight,
-                        popupState.close,
+                        popupState.close
                       )
                     }
                   >

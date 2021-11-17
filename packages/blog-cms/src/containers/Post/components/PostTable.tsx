@@ -1,8 +1,8 @@
-import { FC, useState, ChangeEvent } from 'react'
+import { FC, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import MUIDataTable, {
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
 import {
   FormControl,
@@ -16,9 +16,10 @@ import {
   IconButton,
   Divider,
   InputBase,
-} from '@material-ui/core'
-import { DeleteOutline, Edit, AddBox, Search, Clear } from '@material-ui/icons'
-import { Pagination } from '@material-ui/lab'
+  SelectChangeEvent,
+  Pagination
+} from '@mui/material'
+import { DeleteOutline, Edit, AddBox, Search, Clear } from '@mui/icons-material'
 import { formatJSONDate } from 'yancey-js-util'
 import { stringfySearch } from 'src/shared/utils'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -54,14 +55,14 @@ const PostTable: FC<Props> = ({
   fetchPostsByPage,
   isFetching,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const history = useHistory()
   const { pathname } = useLocation()
   const toEditPage = (id?: string) => {
     history.push({
       pathname: `${pathname}/edit`,
-      search: stringfySearch({ id }),
+      search: stringfySearch({ id })
     })
   }
 
@@ -76,9 +77,9 @@ const PostTable: FC<Props> = ({
         input: {
           page,
           pageSize,
-          title,
-        },
-      },
+          title
+        }
+      }
     })
   }
 
@@ -90,8 +91,8 @@ const PostTable: FC<Props> = ({
     fetchData(currentPage, pageSize, searchTitle)
   }
 
-  const handlePageSizeChange = (e: ChangeEvent<{ value: unknown }>) => {
-    fetchData(page, e.target.value as number, searchTitle)
+  const handlePageSizeChange = (e: SelectChangeEvent) => {
+    fetchData(page, parseInt(e.target.value, 10), searchTitle)
   }
 
   const columns: MUIDataTableColumn[] = [
@@ -105,8 +106,8 @@ const PostTable: FC<Props> = ({
           <Tooltip title={value} placement="top">
             <span>{value.slice(0, 15)}...</span>
           </Tooltip>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'tags',
@@ -125,8 +126,8 @@ const PostTable: FC<Props> = ({
               />
             ))}
           </>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'posterUrl',
@@ -135,8 +136,8 @@ const PostTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curTitle = tableMeta.rowData[1]
           return <ImagePopup imgName={curTitle} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'isPublic',
@@ -157,15 +158,15 @@ const PostTable: FC<Props> = ({
                     updatePostById: {
                       id,
                       __typename: 'PostItemModel',
-                      isPublic: e.target.checked,
-                    },
-                  },
+                      isPublic: e.target.checked
+                    }
+                  }
                 })
               }}
             />
           )
-        },
-      },
+        }
+      }
     },
     { name: 'like', label: 'Like' },
     { name: 'pv', label: 'PV' },
@@ -175,8 +176,8 @@ const PostTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'lastModifiedDate',
@@ -184,8 +185,8 @@ const PostTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -211,9 +212,9 @@ const PostTable: FC<Props> = ({
               </FormControl>
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   return (
@@ -263,7 +264,7 @@ const PostTable: FC<Props> = ({
             customToolbarSelect(selectedRows) {
               const ids = selectedRows.data.map(
                 (row: { index: number; dataIndex: number }) =>
-                  dataSource[row.index]._id,
+                  dataSource[row.index]._id
               )
               return (
                 <Fab size="medium" className={globalClasses.addIconFab}>
@@ -274,13 +275,13 @@ const PostTable: FC<Props> = ({
                   </ConfirmPoper>
                 </Fab>
               )
-            },
+            }
           }}
         />
 
         {total === 0 || (
           <div className={classes.pagination}>
-            <Select value={pageSize} onChange={handlePageSizeChange}>
+            <Select value={pageSize.toString()} onChange={handlePageSizeChange}>
               <MenuItem value={10}>10</MenuItem>
               <MenuItem value={20}>20</MenuItem>
               <MenuItem value={50}>50</MenuItem>

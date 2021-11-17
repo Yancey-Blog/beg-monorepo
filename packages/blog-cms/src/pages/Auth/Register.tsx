@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import classNames from 'classnames'
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@mui/material'
 import { PASSWORD_REGEXP } from 'src/shared/constants'
 import { getBackgroundUrl } from './utils'
 import { REGISTER } from './typeDefs'
@@ -23,13 +23,13 @@ const Register: FC = () => {
       window.localStorage.setItem('userId', data.register._id)
       history.push('/')
     },
-    onError() {},
+    onError() {}
   })
 
   const initialValues = {
     email: '',
     username: '',
-    password: '',
+    password: ''
   }
 
   const validationSchema = Yup.object().shape({
@@ -37,7 +37,7 @@ const Register: FC = () => {
     username: Yup.string().required('UserName is required.'),
     password: Yup.string()
       .matches(PASSWORD_REGEXP, 'Please enter a more complex password')
-      .required('Password is required.'),
+      .required('Password is required.')
   })
 
   const { handleSubmit, getFieldProps, resetForm, errors } = useFormik({
@@ -46,13 +46,13 @@ const Register: FC = () => {
     onSubmit: async (values) => {
       await register({ variables: { input: values } })
       resetForm()
-    },
+    }
   })
 
   // TODO: support register.
   useEffect(() => {
     enqueueSnackbar('暂不开放注册, 敬请谅解!', {
-      variant: 'error',
+      variant: 'error'
     })
 
     setTimeout(() => {
@@ -80,7 +80,7 @@ const Register: FC = () => {
             type="text"
             className={classNames(
               { [styles.errorInputTxt]: errors.email },
-              styles.inputTxt,
+              styles.inputTxt
             )}
             {...getFieldProps('email')}
           />
@@ -99,7 +99,7 @@ const Register: FC = () => {
             type="text"
             className={classNames(
               { [styles.errorInputTxt]: errors.username },
-              styles.inputTxt,
+              styles.inputTxt
             )}
             {...getFieldProps('username')}
           />
@@ -118,7 +118,7 @@ const Register: FC = () => {
             type="password"
             className={classNames(
               { [styles.errorInputTxt]: errors.password },
-              styles.inputTxt,
+              styles.inputTxt
             )}
             {...getFieldProps('password')}
           />

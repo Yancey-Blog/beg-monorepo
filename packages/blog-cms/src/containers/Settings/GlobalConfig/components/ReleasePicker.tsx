@@ -9,8 +9,8 @@ import {
   ListItemIcon,
   RadioGroup,
   Radio,
-  Card,
-} from '@material-ui/core'
+  Card
+} from '@mui/material'
 import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
 import { PostFilterProps } from '../types'
 import useStyles from '../styles'
@@ -24,7 +24,7 @@ const ReleasePicker: FC<Props> = ({
   isSubmitting,
   fetchPosts,
   releasePostId,
-  updateGlobalSettingById,
+  updateGlobalSettingById
 }) => {
   const classes = useStyles()
 
@@ -44,7 +44,7 @@ const ReleasePicker: FC<Props> = ({
 
   const onSubmit = async () => {
     await updateGlobalSettingById({
-      variables: { input: { releasePostId: checked, id } },
+      variables: { input: { releasePostId: checked, id } }
     })
   }
 
@@ -53,6 +53,7 @@ const ReleasePicker: FC<Props> = ({
       <p className={classes.checkedId}>post ID: {releasePostId}</p>
 
       <TextField
+        variant="standard"
         className={classes.input}
         label="Search Posts By Title"
         onChange={handleInputChange}

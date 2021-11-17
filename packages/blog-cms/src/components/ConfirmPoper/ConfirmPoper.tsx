@@ -5,11 +5,11 @@ import {
   Popover,
   Paper,
   DialogActions,
-  DialogTitle,
-} from '@material-ui/core'
+  DialogTitle
+} from '@mui/material'
 import {
   POPOVER_ANCHOR_ORIGIN,
-  POPOVER_TRANSFORM_ORIGIN,
+  POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 
 interface Props {

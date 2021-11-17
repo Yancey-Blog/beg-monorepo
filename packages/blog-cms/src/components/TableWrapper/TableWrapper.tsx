@@ -1,13 +1,13 @@
 import { FC } from 'react'
-import { Save } from '@material-ui/icons'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { Save } from '@mui/icons-material'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     tableWrapper: {
       position: 'relative',
       width: '100%',
-      marginTop: '4px',
+      marginTop: '4px'
     },
 
     tableIconContainer: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '3px',
       background: 'linear-gradient(60deg, #ec407a, #d81b60)',
       boxShadow: `0 4px 20px 0 rgba(0, 0, 0, 0.14),
-        0 7px 10px -5px rgba(233, 30, 99, 0.4)`,
+        0 7px 10px -5px rgba(233, 30, 99, 0.4)`
     },
 
     tableHeader: {
@@ -30,13 +30,13 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       position: 'relative',
       top: '16px',
-      zIndex: 120,
+      zIndex: 120
     },
 
     tableIcon: {
       width: '20px !important',
       height: '20px',
-      color: '#ffffff',
+      color: '#ffffff'
     },
 
     tableTitle: {
@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: '94px',
       fontSize: '18px',
       fontWeight: 300,
-      color: '#3c4858',
-    },
-  }),
+      color: '#3c4858'
+    }
+  })
 )
 
 interface Props {

@@ -1,13 +1,13 @@
 import { FC } from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     settingWrapper: {
       display: 'block',
-      width: '100%',
-    },
-  }),
+      width: '100%'
+    }
+  })
 )
 
 const SettingWrapper: FC = ({ children }) => {

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField } from '@mui/material'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
 import useStyles from '../styles'
@@ -12,14 +12,14 @@ interface Props {
 }
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email().required(),
+  email: Yup.string().email().required()
 })
 
 const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
   const classes = useStyles()
 
   const initialValues = {
-    email,
+    email
   }
 
   const { handleSubmit, getFieldProps, isSubmitting, errors, values } =
@@ -28,9 +28,9 @@ const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
       validationSchema,
       onSubmit: async (values) => {
         await updateEmail({
-          variables: { email: values.email },
+          variables: { email: values.email }
         })
-      },
+      }
     })
 
   return (
@@ -40,6 +40,7 @@ const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
     >
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="standard"
           className={classes.input}
           error={!!errors.email}
           helperText={errors.email}

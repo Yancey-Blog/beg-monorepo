@@ -4,13 +4,13 @@ import {
   ListItem,
   ListItemText,
   ListItemAvatar,
-  Divider,
-} from '@material-ui/core'
+  Divider
+} from '@mui/material'
 import {
   ArrowForwardIos,
   SentimentVerySatisfied,
-  SentimentDissatisfied,
-} from '@material-ui/icons'
+  SentimentDissatisfied
+} from '@mui/icons-material'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import client from 'src/graphql/apolloClient'
 import SnackbarUtils from 'src/components/Toast/Toast'

@@ -7,27 +7,30 @@ import {
   Dialog,
   DialogContent,
   DialogContentText,
-  TextField,
-} from '@material-ui/core'
+  TextField
+} from '@mui/material'
 import { useFormik } from 'formik'
 import client from 'src/graphql/apolloClient'
+import useStyles from 'src/shared/globalStyles'
 import { AnnouncementModalProps as Props } from '../types'
 
 const AnnouncementModal: FC<Props> = ({
   open,
   handleOpen,
   createAnnouncement,
-  updateAnnouncementById,
+  updateAnnouncementById
 }) => {
   const { isOpen, id } = open
 
   const initialValues = {
-    content: '',
+    content: ''
   }
 
   const validationSchema = Yup.object().shape({
-    content: Yup.string().required('Content is required.'),
+    content: Yup.string().required('Content is required.')
   })
+
+  const classes = useStyles()
 
   const {
     handleSubmit,
@@ -35,14 +38,14 @@ const AnnouncementModal: FC<Props> = ({
     setValues,
     resetForm,
     isSubmitting,
-    errors,
+    errors
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateAnnouncementById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createAnnouncement({ variables: { input: values } })
@@ -50,7 +53,7 @@ const AnnouncementModal: FC<Props> = ({
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   useEffect(() => {
@@ -75,6 +78,8 @@ const AnnouncementModal: FC<Props> = ({
             button.
           </DialogContentText>
           <TextField
+            className={classes.textFieldSpace}
+            variant="standard"
             error={!!errors.content}
             helperText={errors.content}
             autoFocus

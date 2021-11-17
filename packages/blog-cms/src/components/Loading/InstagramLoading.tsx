@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
   mask: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     background: '#ffffff',
-    zIndex: 9999,
+    zIndex: 9999
   },
   instagramLogo: {
     position: 'absolute',
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     left: '50%',
     width: '50px',
     height: '50px',
-    margin: '-25px 0 0 -25px',
+    margin: '-25px 0 0 -25px'
   },
 
   facebookLogo: {
@@ -29,8 +29,8 @@ const useStyles = makeStyles({
     left: '50%',
     width: '82px',
     height: '28px',
-    margin: '-41px 0 30px -41px',
-  },
+    margin: '-41px 0 30px -41px'
+  }
 })
 
 const InstagramLoading: FC = () => {

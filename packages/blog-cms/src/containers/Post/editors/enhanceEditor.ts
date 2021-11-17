@@ -1,71 +1,49 @@
 import { RefObject } from 'react'
 import { Editor } from '@toast-ui/react-editor'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import toast from 'src/components/Toast/Toast'
+
+export const createButton = () => {
+  const button = document.createElement('button')
+  button.style.margin = '0'
+  button.style.backgroundColor = 'transparent'
+
+  return button
+}
 
 export const insertImage = (
   editorRef: RefObject<Editor>,
-  image: UploaderResponse,
+  image: UploaderResponse
 ) => {
   if (editorRef.current) {
     const instance = editorRef.current.getInstance()
-    instance.insertText(`\n\n![${image.name}](${image.url})`)
+    instance.insertText(`\n\n![${image.name}](${image.url})\n\n`)
   }
 }
 
-export const insertEmbeded = (editorRef: RefObject<Editor>) => {
-  if (editorRef.current) {
-    const instance = editorRef.current.getInstance()
-    instance.insertText('```embeded\n\n```')
-  }
+export const insertImageButton = (setOpen: (open: boolean) => void) => {
+  const button = createButton()
+  button.innerHTML = 'IMG'
+  button.addEventListener('click', () => {
+    setOpen(true)
+  })
+
+  return button
 }
 
 export const enhanceUpload = (
   editorRef: RefObject<Editor>,
-  setOpen: Function,
+  setOpen: (open: boolean) => void
 ) => {
   if (editorRef.current) {
     const instance = editorRef.current.getInstance()
-    const toolbar = instance.getUI().getToolbar()
 
-    //@ts-ignore
-    instance.eventManager.addEventType('uploadImg')
-
-    //@ts-ignore
-    instance.eventManager.listen('uploadImg', () => {
-      setOpen(true)
-    })
-
-    //@ts-ignore
-    instance.eventManager.addEventType('insertEmbeded')
-
-    //@ts-ignore
-    instance.eventManager.listen('insertEmbeded', () => {
-      insertEmbeded(editorRef)
-    })
-
-    toolbar.insertItem(16, {
-      type: 'button',
-      options: {
-        className: 'tui-image',
-        event: 'uploadImg',
-        tooltip: 'Insert Image',
-      },
-    })
-
-    toolbar.insertItem(21, {
-      type: 'button',
-      options: {
-        className: 'tui-emebed-icon',
-        event: 'insertEmbeded',
-        tooltip: 'Insert Embeded Block',
-        text: 'EB',
-      },
-    })
+    instance.insertToolbarItem(
+      { groupIndex: 4, itemIndex: 3 },
+      {
+        name: 'IMG',
+        tooltip: 'Insert image',
+        el: insertImageButton(setOpen)
+      }
+    )
   }
-}
-
-export const enhancePasteUpload = (editorRef: RefObject<Editor>) => {
-  // TODO:
-  toast.error('暂不支持复制上传图片')
 }

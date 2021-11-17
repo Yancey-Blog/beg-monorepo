@@ -1,13 +1,8 @@
 import { FC } from 'react'
 import classNames from 'classnames'
-import { Card, LinearProgress, Divider } from '@material-ui/core'
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  withStyles,
-  lighten,
-} from '@material-ui/core/styles'
+import { Card, LinearProgress, Divider } from '@mui/material'
+import { makeStyles, ClassNameMap, createStyles, withStyles } from '@mui/styles'
+import { lighten } from '@mui/material/styles'
 
 interface Props {
   title: string
@@ -21,21 +16,21 @@ const BorderLinearProgress = withStyles({
     width: '100%',
     height: 5,
     backgroundColor: lighten('#eceff1', 0.1),
-    borderRadius: 5,
+    borderRadius: 5
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#3f51b5',
-  },
+    backgroundColor: '#3f51b5'
+  }
 })(LinearProgress)
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     card: {
       padding: 16,
       boxShadow:
-        'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px',
-      borderRadius: 16,
+        'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px!important',
+      borderRadius: '16px!important'
     },
 
     cardTitle: {
@@ -46,33 +41,33 @@ const useStyles = makeStyles((theme: Theme) =>
       textTransform: 'uppercase',
       fontWeight: 500,
       lineHeight: '13px',
-      letterSpacing: '0.33px',
+      letterSpacing: '0.33px'
     },
 
     percent: {
       marginRight: 20,
       fontSize: 24,
       fontWeight: 500,
-      color: '#263238',
+      color: '#263238'
     },
 
     vision: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'center'
     },
 
     divider: {
-      margin: '12px 0 16px',
+      margin: '12px 0 16px'
     },
 
     bottomTxt: {
-      fontSize: 14,
+      fontSize: 14
     },
 
     margin: {
-      marginRight: 16,
-    },
-  }),
+      marginRight: 16
+    }
+  })
 )
 
 const switchUnit = (unit: string, value: number) => {
@@ -96,7 +91,7 @@ const switchUnit = (unit: string, value: number) => {
 }
 
 const StatusCard: FC<Props> = ({ title, used, total, unit }) => {
-  const classes = useStyles()
+  const classes: ClassNameMap = useStyles()
   const percent = (used / total) * 100
 
   return (

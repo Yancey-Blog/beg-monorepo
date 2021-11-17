@@ -1,6 +1,6 @@
 import { FC, ChangeEvent } from 'react'
-import { FormControlLabel, Switch } from '@material-ui/core'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { FormControlLabel, Switch } from '@mui/material'
+import { makeStyles, createStyles } from '@mui/styles'
 import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
 
 interface Props {
@@ -10,19 +10,19 @@ interface Props {
   updateGlobalSettingById: Function
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     label: {
-      marginLeft: 0,
-    },
-  }),
+      marginLeft: 0
+    }
+  })
 )
 
 const GrayTheme: FC<Props> = ({
   id,
   isGrayTheme,
   isSubmitting,
-  updateGlobalSettingById,
+  updateGlobalSettingById
 }) => {
   const classes = useStyles()
 
@@ -34,9 +34,9 @@ const GrayTheme: FC<Props> = ({
         updateGlobalSettingById: {
           id,
           __typename: 'GlobalSettingModel',
-          isGrayTheme: e.target.checked,
-        },
-      },
+          isGrayTheme: e.target.checked
+        }
+      }
     })
   }
 

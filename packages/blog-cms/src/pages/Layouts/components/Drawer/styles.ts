@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   DRAWER_WIDTH,
   FOLDER_DRAWER_WIDTH,
-  AZURE_BLOB_PATH,
+  AZURE_BLOB_PATH
 } from 'src/shared/constants'
 import { transition } from '../../styles'
 
@@ -27,52 +27,52 @@ const useStyles = makeStyles({
       width: '100%',
       height: '100%',
       background: 'rgba(0, 0, 0, 0.8)',
-      zIndex: -1,
+      zIndex: -1
     },
     '&:hover': {
       transform: 'translateX(0)',
-      transition: transition('transform'),
+      transition: transition('transform')
     },
 
     '&:hover $foldActive': {
       width: 'auto',
-      transform: `translateX(0)`,
+      transform: `translateX(0)`
     },
 
     '&:hover $hidenItem': {
       width: 'auto',
-      transform: 'translateX(0)',
+      transform: 'translateX(0)'
     },
 
     '&:hover $hideDetail': {
       opacity: 1,
-      visibility: 'visible',
-    },
+      visibility: 'visible'
+    }
   },
 
   expand: {
     transform: 'translateX(0)',
-    transition: transition('transform'),
+    transition: transition('transform')
   },
 
   shrink: {
     transform: `translateX(-${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`,
-    transition: transition('transform'),
+    transition: transition('transform')
   },
 
   drawerTitle: {
-    display: 'flex',
+    display: 'flex'
   },
 
   logo: {
     marginRight: '20px',
     marginLeft: '12px',
-    width: '24px',
+    width: '24px'
   },
 
   title: {
     fontSize: '18px',
-    fontWeight: 400,
+    fontWeight: 400
   },
 
   drawerUser: {
@@ -87,7 +87,7 @@ const useStyles = makeStyles({
       top: '0',
       width: '100%',
       height: '1px',
-      backgroundColor: 'rgba(255, 255, 255, .3)',
+      backgroundColor: 'rgba(255, 255, 255, .3)'
     },
     '&::after': {
       position: 'absolute',
@@ -95,20 +95,20 @@ const useStyles = makeStyles({
       bottom: 0,
       width: '100%',
       height: '1px',
-      backgroundColor: 'rgba(255, 255, 255, .3)',
-    },
+      backgroundColor: 'rgba(255, 255, 255, .3)'
+    }
   },
 
   avatar: {
     width: '34px',
     height: '34px',
     marginLeft: '8px',
-    marginRight: '12px',
+    marginRight: '12px'
   },
 
   userName: {
     fontSize: '14px',
-    fontWeight: 300,
+    fontWeight: 300
   },
 
   arrow: {
@@ -121,12 +121,12 @@ const useStyles = makeStyles({
     borderLeft: '4px solid transparent',
     borderRight: '4px solid transparent',
     transform: 'rotate(0deg)',
-    transition: 'transform 300ms ease 0ms',
+    transition: 'transform 300ms ease 0ms'
   },
 
   reverseArrow: {
     transform: 'rotate(180deg)',
-    transition: 'transform 300ms ease 0ms',
+    transition: 'transform 300ms ease 0ms'
   },
 
   item: {
@@ -141,12 +141,12 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: 'rgba(200, 200, 200, 0.2)',
       borderRadius: '3px',
-      transition: 'background-color 300ms ease 0ms',
-    },
+      transition: 'background-color 300ms ease 0ms'
+    }
   },
 
   childItem: {
-    padding: '10px 0 10px 12px',
+    padding: '10px 0 10px 12px'
   },
 
   hidenItem: {
@@ -154,26 +154,26 @@ const useStyles = makeStyles({
     whiteSpace: 'nowrap',
     transform: `translateX(${(DRAWER_WIDTH - FOLDER_DRAWER_WIDTH) / 2}px)`,
     textAlign: 'center',
-    transition: 'transform 300ms ease 0ms',
+    transition: 'transform 300ms ease 0ms'
   },
 
   hidenNotItem: {
-    transform: `translateX(${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`,
+    transform: `translateX(${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`
   },
 
   itemIcon: {
-    height: '24px',
+    height: '24px'
   },
 
   itemAbbrTxt: {
     minWidth: '24px',
     marginRight: '18px',
-    textAlign: 'center',
+    textAlign: 'center'
   },
 
   itemTxt: {
     fontSize: '14px',
-    fontWeight: 300,
+    fontWeight: 300
   },
 
   linkIcon: {
@@ -181,7 +181,7 @@ const useStyles = makeStyles({
     top: '-0.2rem',
     width: '1rem',
     height: '1rem',
-    marginLeft: '0.2rem',
+    marginLeft: '0.2rem'
   },
 
   detail: {
@@ -189,13 +189,13 @@ const useStyles = makeStyles({
     alignItems: 'center',
     opacity: 1,
     visibility: 'visible',
-    transition: 'visibility 300ms ease 0ms, opacity 300ms ease 0ms',
+    transition: 'visibility 300ms ease 0ms, opacity 300ms ease 0ms'
   },
 
   hideDetail: {
     opacity: 0,
     visibility: 'hidden',
-    transition: 'visibility 300ms ease 0ms, opacity 300ms ease 0ms',
+    transition: 'visibility 300ms ease 0ms, opacity 300ms ease 0ms'
   },
 
   formatArrowTag: {
@@ -203,8 +203,8 @@ const useStyles = makeStyles({
     textDecoration: 'none',
 
     '&:hover': {
-      textDecoration: 'none',
-    },
+      textDecoration: 'none'
+    }
   },
 
   active: {
@@ -214,8 +214,8 @@ const useStyles = makeStyles({
     boxShadow: `0 12px 20px -10px rgba(76, 175, 80, 0.28),
     0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80,  0.2)`,
     '&:hover': {
-      backgroundColor: 'rgba(76, 175, 80, 1)',
-    },
+      backgroundColor: 'rgba(76, 175, 80, 1)'
+    }
   },
 
   foldActive: {
@@ -223,20 +223,20 @@ const useStyles = makeStyles({
     transform: `translateX(${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`,
 
     '& $hidenItem': {
-      transform: 'translateX(0)',
-    },
+      transform: 'translateX(0)'
+    }
   },
 
   childrenGroup: {
     height: 'auto',
     maxHeight: 0,
     overflow: 'hidden',
-    transition: 'max-height 300ms ease 0ms',
+    transition: 'max-height 300ms ease 0ms'
   },
 
   unfoldChildren: {
-    transition: 'max-height 300ms ease 0ms',
-  },
+    transition: 'max-height 300ms ease 0ms'
+  }
 })
 
 export default useStyles

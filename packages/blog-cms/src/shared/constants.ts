@@ -1,9 +1,9 @@
-import { PopoverOrigin, SnackbarOrigin } from '@material-ui/core'
+import { PopoverOrigin, SnackbarOrigin } from '@mui/material'
 import { MUIDataTableOptions } from 'mui-datatables'
 
 export const SNACKBAR_ANCHOR_ORIGIN: SnackbarOrigin = {
   vertical: 'top',
-  horizontal: 'center',
+  horizontal: 'center'
 }
 
 export const GOOGLE_RECAPTCHA_URL = `https://www.google.com/recaptcha/api.js?render=${process.env.REACT_APP_RECAPTCHA_KEY}`
@@ -14,40 +14,18 @@ export const SNACKBAR_AUTO_HIDE_DURATION = 3000
 
 export const POPOVER_ANCHOR_ORIGIN: PopoverOrigin = {
   vertical: 'bottom',
-  horizontal: 'left',
+  horizontal: 'left'
 }
 
 export const POPOVER_TRANSFORM_ORIGIN: PopoverOrigin = {
   vertical: 'top',
-  horizontal: 'center',
+  horizontal: 'center'
 }
 
 export const RECOVERY_CODES_FILE_NAME = 'yancey-blog-cms-recovery-codes.txt'
 
 export const PASSWORD_REGEXP =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
-
-export const MARKDOWN_EDITOR_TOOLBAR_ITEMS = [
-  'heading',
-  'bold',
-  'italic',
-  'strike',
-  'divider',
-  'hr',
-  'quote',
-  'divider',
-  'ul',
-  'ol',
-  'task',
-  'indent',
-  'outdent',
-  'divider',
-  'table',
-  'link',
-  'divider',
-  'code',
-  'codeblock',
-]
 
 export const DRAWER_WIDTH = 260
 
@@ -59,7 +37,7 @@ export const TABLE_OPTIONS: MUIDataTableOptions = {
   filterType: 'textField',
   rowsPerPage: 10,
   rowsPerPageOptions: [10, 20, 50],
-  searchPlaceholder: 'Search...',
+  searchPlaceholder: 'Search...'
 }
 
 export const AZURE_BLOB_PATH = 'https://edge.yancey.app/beg'

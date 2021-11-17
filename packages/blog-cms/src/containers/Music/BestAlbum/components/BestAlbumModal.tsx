@@ -8,10 +8,10 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  FormLabel,
-} from '@material-ui/core'
+  FormLabel
+} from '@mui/material'
 import { useFormik } from 'formik'
-import { KeyboardDateTimePicker } from '@material-ui/pickers'
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
 import useStyles from 'src/shared/globalStyles'
 import client from 'src/graphql/apolloClient'
 import { Open } from 'src/hooks/useOpenModal'
@@ -29,7 +29,7 @@ const BestAlbumModal: FC<Props> = ({
   open,
   handleOpen,
   createBestAlbum,
-  updateBestAlbumById,
+  updateBestAlbumById
 }) => {
   const { isOpen, id } = open
 
@@ -40,7 +40,7 @@ const BestAlbumModal: FC<Props> = ({
     artist: '',
     mvUrl: '',
     releaseDate: new Date(),
-    coverUrl: '',
+    coverUrl: ''
   }
 
   const validationSchema = Yup.object().shape({
@@ -48,7 +48,7 @@ const BestAlbumModal: FC<Props> = ({
     artist: Yup.string().required('Artist is required.'),
     mvUrl: Yup.string().url().required('Mv Url is required.'),
     releaseDate: Yup.string().required('Release Date is required.'),
-    coverUrl: Yup.string().url().required('Post Url is required.'),
+    coverUrl: Yup.string().url().required('Post Url is required.')
   })
 
   const {
@@ -59,26 +59,26 @@ const BestAlbumModal: FC<Props> = ({
     resetForm,
     isSubmitting,
     errors,
-    values,
+    values
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateBestAlbumById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createBestAlbum({
           variables: {
-            input: { ...values },
-          },
+            input: { ...values }
+          }
         })
       }
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onChange = (data: UploaderResponse) => {
@@ -94,7 +94,7 @@ const BestAlbumModal: FC<Props> = ({
         artist,
         mvUrl,
         releaseDate,
-        coverUrl,
+        coverUrl
         // @ts-ignore
       } = client.cache.data.data[`BestAlbumModel:${id}`]
 
@@ -103,7 +103,7 @@ const BestAlbumModal: FC<Props> = ({
         artist,
         mvUrl,
         releaseDate,
-        coverUrl,
+        coverUrl
       })
     }
   }, [id, resetForm, setValues])
@@ -118,6 +118,7 @@ const BestAlbumModal: FC<Props> = ({
             fields here. We will send data after clicking the submit button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -129,6 +130,7 @@ const BestAlbumModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.artist}
             helperText={errors.artist}
@@ -139,6 +141,7 @@ const BestAlbumModal: FC<Props> = ({
           />
 
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.mvUrl}
             helperText={errors.mvUrl}
@@ -148,21 +151,19 @@ const BestAlbumModal: FC<Props> = ({
             {...getFieldProps('mvUrl')}
           />
 
-          <KeyboardDateTimePicker
+          <DesktopDatePicker
             className={classes.textFieldSpace}
+            renderInput={(props) => <TextField {...props} />}
             label="Release Date"
             value={values.releaseDate}
-            error={!!errors.releaseDate}
-            helperText={errors.releaseDate}
-            showTodayButton={true}
-            ampm={false}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            format="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>
             <FormLabel required>Cover Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.coverUrl}
               helperText={errors.coverUrl}
               style={{ display: 'none' }}

@@ -16,13 +16,13 @@ import {
   FormControl,
   RadioGroup,
   Radio,
-  FormControlLabel,
-} from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+  FormControlLabel
+} from '@mui/material'
+import { Close } from '@mui/icons-material'
 import {
   AZURE_BLOB_PATH,
   GOOGLE_AUTHENTICATOR_FOR_IOS,
-  GOOGLE_AUTHENTICATOR_FOR_ANDROID,
+  GOOGLE_AUTHENTICATOR_FOR_ANDROID
 } from 'src/shared/constants'
 import Transition from 'src/components/Transition/Transition'
 import { CREATE_TOTP, VALIDATE_TOTP } from '../../typeDefs'
@@ -55,21 +55,21 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
   const [validateTOTP] = useMutation(VALIDATE_TOTP, {
     onCompleted() {
       enqueueSnackbar('Two-factor authentication is available now!', {
-        variant: 'success',
+        variant: 'success'
       })
       onClose()
-    },
+    }
   })
 
   const validationSchema = Yup.object().shape({
     code: Yup.string()
       .matches(/^\d{6}$/, 'Invalid code. Please try again.')
-      .required('Please enter your verification code.'),
+      .required('Please enter your verification code.')
   })
 
   const initialValues = {
     code: '',
-    device: 'iPhone',
+    device: 'iPhone'
   }
 
   const {
@@ -78,15 +78,15 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
     getFieldProps,
     isSubmitting,
     errors,
-    resetForm,
+    resetForm
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       await validateTOTP({
-        variables: { input: { code: values.code, key: data.key } },
+        variables: { input: { code: values.code, key: data.key } }
       })
-    },
+    }
   })
 
   useEffect(() => {
@@ -243,6 +243,7 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
               Enter the 6-digit code you see in the app.
             </p>
             <TextField
+              variant="standard"
               className={styles.customInput}
               label="Enter code"
               error={!!errors.code}

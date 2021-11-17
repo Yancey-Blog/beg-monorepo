@@ -4,9 +4,8 @@ import {
   Home,
   Headset,
   PostAdd,
-  Settings,
-  Event,
-} from '@material-ui/icons'
+  Settings
+} from '@mui/icons-material'
 
 export interface RouteChildren {
   hideInMenu?: boolean
@@ -35,7 +34,7 @@ const routes: Route[] = [
     name: 'Dashboard',
     path: '/',
     icon: <Dashboard />,
-    component: 'DashBoard/DashBoard',
+    component: 'DashBoard/DashBoard'
   },
   {
     name: 'Home',
@@ -45,24 +44,24 @@ const routes: Route[] = [
       {
         name: 'Announcement',
         path: '/announcement',
-        component: 'Home/Announcement/Announcement',
+        component: 'Home/Announcement/Announcement'
       },
       {
         name: 'Cover',
         path: '/cover',
-        component: 'Home/Cover/Cover',
+        component: 'Home/Cover/Cover'
       },
       {
         name: 'Motto',
         path: '/motto',
-        component: 'Home/Motto/Motto',
+        component: 'Home/Motto/Motto'
       },
       {
         name: 'Open Source',
         path: '/open-source',
-        component: 'Home/OpenSource/OpenSource',
-      },
-    ],
+        component: 'Home/OpenSource/OpenSource'
+      }
+    ]
   },
   {
     name: 'Music',
@@ -72,24 +71,24 @@ const routes: Route[] = [
       {
         name: 'Best Album',
         path: '/best-album',
-        component: 'Music/BestAlbum/BestAlbum',
+        component: 'Music/BestAlbum/BestAlbum'
       },
       {
         name: 'Live Tour',
         path: '/live-tour',
-        component: 'Music/LiveTour/LiveTour',
+        component: 'Music/LiveTour/LiveTour'
       },
       {
         name: 'Player',
         path: '/player',
-        component: 'Music/Player/Player',
+        component: 'Music/Player/Player'
       },
       {
         name: 'Yancey Music',
         path: '/yancey-music',
-        component: 'Music/YanceyMusic/YanceyMusic',
-      },
-    ],
+        component: 'Music/YanceyMusic/YanceyMusic'
+      }
+    ]
   },
   {
     name: 'Post',
@@ -101,21 +100,9 @@ const routes: Route[] = [
         name: 'Post Editor',
         path: '/post/edit',
         component: 'Post/PostEditor',
-        hideInMenu: true,
-      },
-    ],
-  },
-  {
-    name: 'Events',
-    path: '/events',
-    icon: <Event />,
-    routes: [
-      {
-        name: 'Agenda',
-        path: '/events/agenda',
-        component: 'Events/Agenda',
-      },
-    ],
+        hideInMenu: true
+      }
+    ]
   },
   {
     name: 'Settings',
@@ -125,25 +112,25 @@ const routes: Route[] = [
       {
         name: 'Profile',
         path: '/settings/profile',
-        component: 'Settings/Profile/Profile',
+        component: 'Settings/Profile/Profile'
       },
       {
         name: 'Account',
         path: '/settings/account',
-        component: 'Settings/Account/Account',
+        component: 'Settings/Account/Account'
       },
       {
         name: 'Security',
         path: '/settings/security',
-        component: 'Settings/Security/Security',
+        component: 'Settings/Security/Security'
       },
       {
         name: 'Global Config',
         path: '/settings/global-config',
-        component: 'Settings/GlobalConfig/GlobalConfig',
-      },
-    ],
-  },
+        component: 'Settings/GlobalConfig/GlobalConfig'
+      }
+    ]
+  }
 ]
 
 export function mapRoutes() {
@@ -152,7 +139,7 @@ export function mapRoutes() {
   routes.forEach((route) => {
     routers.push({
       path: route.path,
-      component: route.component as string,
+      component: route.component as string
     })
 
     if (route.routes) {
@@ -160,7 +147,7 @@ export function mapRoutes() {
         if (!routeChild.isExternalLink) {
           routers.push({
             path: routeChild.path,
-            component: routeChild.component as string,
+            component: routeChild.component as string
           })
         }
       })

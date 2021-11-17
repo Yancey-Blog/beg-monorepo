@@ -2,10 +2,10 @@ import { FC } from 'react'
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
-  MUIDataTableMeta,
+  MUIDataTableMeta
 } from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@material-ui/icons'
-import { FormControl, Fab, Button } from '@material-ui/core'
+import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
+import { FormControl, Fab, Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import TableWrapper from 'src/components/TableWrapper/TableWrapper'
@@ -36,7 +36,7 @@ const OpenSourceTable: FC<Props> = ({
   deleteOpenSources,
   isFetching,
   isDeleting,
-  isBatchDeleting,
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
 
@@ -59,8 +59,8 @@ const OpenSourceTable: FC<Props> = ({
           >
             {value}
           </Button>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'posterUrl',
@@ -69,8 +69,8 @@ const OpenSourceTable: FC<Props> = ({
         customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
           const curName = tableMeta.rowData[1]
           return <ImagePopup imgName={curName} imgUrl={value} />
-        },
-      },
+        }
+      }
     },
     {
       name: 'createdAt',
@@ -78,8 +78,8 @@ const OpenSourceTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'updatedAt',
@@ -87,8 +87,8 @@ const OpenSourceTable: FC<Props> = ({
       options: {
         customBodyRender: (value: string) => (
           <span>{formatJSONDate(value)}</span>
-        ),
-      },
+        )
+      }
     },
     {
       name: 'action',
@@ -116,9 +116,9 @@ const OpenSourceTable: FC<Props> = ({
               </FormControl>
             </>
           )
-        },
-      },
-    },
+        }
+      }
+    }
   ]
 
   const options: MUIDataTableOptions = {
@@ -132,8 +132,7 @@ const OpenSourceTable: FC<Props> = ({
     },
     customToolbarSelect(selectedRows) {
       const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) =>
-          dataSource[row.index]._id,
+        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
       )
       return (
         <Fab size="medium" className={classes.addIconFab}>
@@ -142,7 +141,7 @@ const OpenSourceTable: FC<Props> = ({
           </ConfirmPoper>
         </Fab>
       )
-    },
+    }
   }
 
   return (

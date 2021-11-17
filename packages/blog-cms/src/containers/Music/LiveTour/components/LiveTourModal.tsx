@@ -8,10 +8,10 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  FormLabel,
-} from '@material-ui/core'
+  FormLabel
+} from '@mui/material'
 import { useFormik } from 'formik'
-import { KeyboardDateTimePicker } from '@material-ui/pickers'
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
 import useStyles from 'src/shared/globalStyles'
 import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
@@ -29,7 +29,7 @@ const LiveTourModal: FC<Props> = ({
   open,
   handleOpen,
   createLiveTour,
-  updateLiveTourById,
+  updateLiveTourById
 }) => {
   const { isOpen, id } = open
 
@@ -38,13 +38,13 @@ const LiveTourModal: FC<Props> = ({
   const initialValues = {
     title: '',
     showTime: new Date(),
-    posterUrl: '',
+    posterUrl: ''
   }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required.'),
     showTime: Yup.string().required('Show Time is required.'),
-    posterUrl: Yup.string().url().required('Post Url is required.'),
+    posterUrl: Yup.string().url().required('Post Url is required.')
   })
 
   const {
@@ -55,14 +55,14 @@ const LiveTourModal: FC<Props> = ({
     resetForm,
     isSubmitting,
     errors,
-    values,
+    values
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       if (id) {
         await updateLiveTourById({
-          variables: { input: { ...values, id } },
+          variables: { input: { ...values, id } }
         })
       } else {
         await createLiveTour({ variables: { input: values } })
@@ -70,7 +70,7 @@ const LiveTourModal: FC<Props> = ({
 
       resetForm()
       handleOpen()
-    },
+    }
   })
 
   const onChange = (data: UploaderResponse) => {
@@ -88,7 +88,7 @@ const LiveTourModal: FC<Props> = ({
       setValues({
         title,
         showTime,
-        posterUrl,
+        posterUrl
       })
     }
   }, [id, resetForm, setValues])
@@ -103,6 +103,7 @@ const LiveTourModal: FC<Props> = ({
             fields here. We will send data after clicking the submit button.
           </DialogContentText>
           <TextField
+            variant="standard"
             className={classes.textFieldSpace}
             error={!!errors.title}
             helperText={errors.title}
@@ -113,22 +114,19 @@ const LiveTourModal: FC<Props> = ({
             {...getFieldProps('title')}
           />
 
-          <KeyboardDateTimePicker
+          <DesktopDatePicker
             className={classes.textFieldSpace}
+            renderInput={(props) => <TextField {...props} />}
             label="Show Time"
-            required
             value={values.showTime}
-            error={!!errors.showTime}
-            helperText={errors.showTime}
-            showTodayButton={true}
-            ampm={false}
             onChange={(date) => setFieldValue('showTime', date, true)}
-            format="yyyy/LL/dd HH:mm:ss"
+            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>
             <FormLabel required>Poster Url</FormLabel>
             <TextField
+              variant="standard"
               error={!!errors.posterUrl}
               helperText={errors.posterUrl}
               style={{ display: 'none' }}

@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import { useSnackbar } from 'notistack'
 import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button } from '@mui/material'
 import { logout } from 'src/shared/utils'
 import { PASSWORD_REGEXP, AZURE_BLOB_PATH } from 'src/shared/constants'
 import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
@@ -16,19 +16,19 @@ const ChangePassword: FC = () => {
   const [changePassword] = useMutation(CHANGE_PASSWORD, {
     onCompleted() {
       enqueueSnackbar(`Your Password has been changed! Please Re-Login.`, {
-        variant: 'success',
+        variant: 'success'
       })
       const timer = setTimeout(() => {
         logout()
         clearTimeout(timer)
       }, 1000)
-    },
+    }
   })
 
   const initialValues = {
     oldPassword: '',
     newPassword: '',
-    confirmNewPassword: '',
+    confirmNewPassword: ''
   }
 
   const validationSchema = Yup.object().shape({
@@ -43,7 +43,7 @@ const ChangePassword: FC = () => {
       // 'string | Ref | undefined', but `@types/yup` has not
       // been updated.
       .oneOf([Yup.ref('newPassword'), undefined], "Passwords don't match")
-      .required('Confirm Password is required'),
+      .required('Confirm Password is required')
   })
 
   const { handleSubmit, getFieldProps, resetForm, isSubmitting, errors } =
@@ -53,11 +53,11 @@ const ChangePassword: FC = () => {
       onSubmit: async (values) => {
         const { confirmNewPassword, ...rest } = values
         await changePassword({
-          variables: { input: rest },
+          variables: { input: rest }
         })
 
         resetForm()
-      },
+      }
     })
 
   return (
@@ -67,6 +67,7 @@ const ChangePassword: FC = () => {
     >
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.oldPassword}
@@ -76,6 +77,7 @@ const ChangePassword: FC = () => {
           {...getFieldProps('oldPassword')}
         />
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.newPassword}
@@ -85,6 +87,7 @@ const ChangePassword: FC = () => {
           {...getFieldProps('newPassword')}
         />
         <TextField
+          variant="standard"
           type="password"
           className={styles.input}
           error={!!errors.confirmNewPassword}

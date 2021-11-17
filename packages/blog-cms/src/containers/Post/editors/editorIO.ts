@@ -14,7 +14,7 @@ export const getHTML = (editorRef: RefObject<Editor>) => {
   if (editorRef.current) {
     return editorRef.current
       .getInstance()
-      .getHtml()
+      .getHTML()
       .replace(/<pre\b[^>]*>([\s\S]*?)<\/pre>/gi, '')
   }
 
