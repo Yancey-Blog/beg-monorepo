@@ -8,18 +8,18 @@ import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
 import { useSnackbar } from 'notistack'
-import 'codemirror/lib/codemirror.css'
-import '@toast-ui/editor/dist/toastui-editor.css'
+import Prism from 'prismjs'
 import { Editor } from '@toast-ui/react-editor'
+import 'prismjs/themes/prism-dark.css'
+import 'tui-color-picker/dist/tui-color-picker.css'
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css'
+import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css'
+import '@toast-ui/editor/dist/toastui-editor.css'
+import codeSyntaxHighlightPlugin from '@toast-ui/editor-plugin-code-syntax-highlight'
 import umlPlugin from '@toast-ui/editor-plugin-uml'
 import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
 import chartPlugin from '@toast-ui/editor-plugin-chart'
 import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
-import {
-  CREATE_ONE_POST,
-  UPDATE_ONE_POST,
-  CREATE_POST_STATISTICS
-} from './typeDefs'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import client from 'src/graphql/apolloClient'
@@ -28,12 +28,13 @@ import {
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 import { goBack, parseSearch } from 'src/shared/utils'
-import UploaderModal from './components/UploaderModal'
 import {
-  enhanceUpload,
-  insertImage,
-  enhancePasteUpload
-} from './editors/enhanceEditor'
+  CREATE_ONE_POST,
+  UPDATE_ONE_POST,
+  CREATE_POST_STATISTICS
+} from './typeDefs'
+import UploaderModal from './components/UploaderModal'
+import { enhanceUpload, insertImage } from './editors/enhanceEditor'
 import { getMarkdown, getHTML, setMarkdown } from './editors/editorIO'
 import { sendPostToAlgolia } from './algolia/algoliaSearch'
 import {
@@ -213,7 +214,6 @@ const PostEditor: FC = () => {
 
   useEffect(() => {
     enhanceUpload(editorRef, setOpen)
-    enhancePasteUpload(editorRef)
 
     if (id) {
       const {
@@ -367,8 +367,8 @@ const PostEditor: FC = () => {
           chartPlugin,
           umlPlugin,
           colorSyntaxPlugin,
-          // @ts-ignore
-          tableMergedCellPlugin
+          tableMergedCellPlugin,
+          [codeSyntaxHighlightPlugin, { highlighter: Prism }]
         ]}
         ref={editorRef}
       />

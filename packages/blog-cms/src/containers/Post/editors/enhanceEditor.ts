@@ -1,7 +1,6 @@
 import { RefObject } from 'react'
 import { Editor } from '@toast-ui/react-editor'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import toast from 'src/components/Toast/Toast'
 
 export const createButton = () => {
   const button = document.createElement('button')
@@ -39,7 +38,7 @@ export const enhanceUpload = (
     const instance = editorRef.current.getInstance()
 
     instance.insertToolbarItem(
-      { groupIndex: 0, itemIndex: 0 },
+      { groupIndex: 4, itemIndex: 3 },
       {
         name: 'IMG',
         tooltip: 'Insert image',
@@ -47,9 +46,4 @@ export const enhanceUpload = (
       }
     )
   }
-}
-
-export const enhancePasteUpload = (editorRef: RefObject<Editor>) => {
-  // TODO:
-  toast.error('暂不支持复制上传图片')
 }

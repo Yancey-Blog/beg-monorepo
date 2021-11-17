@@ -34,7 +34,7 @@ const useStyles = makeStyles(() =>
 
     uploadImageIcon: {
       position: 'relative',
-      top: '-4px'
+      top: -6
     },
 
     search: {
