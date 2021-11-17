@@ -5,6 +5,7 @@
   "repository": "git@github.com:Yancey-Blog/blog-be-next.git",
   "author": "YanceyOfficial <yanceyofficial@gmail.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "clear": "rimraf dist",
     "build": "NODE_ENV=production pnpm run clear && nest build",
