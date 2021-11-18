@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, ChangeEvent } from 'react'
 import { useRouter } from 'next/router'
 import { useQuery, useLazyQuery } from '@apollo/client'
-import { Pagination } from '@mui/material'
+import Pagination from '@mui/material/Pagination'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
 import PostListStatus from '../components/PostListStatus/PostLIstStatus'

@@ -75,7 +75,6 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-components": "^5.1.15",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "babel-plugin-styled-components": "^1.13.3",
     "babel-plugin-transform-imports": "^2.0.0",
     "eslint-config-next": "^12.0.2",
     "eslint-config-prettier": "^8.3.0",
@@ -87,5 +86,12 @@
     "typescript": "^4.4.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.61.0"
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "yarn format",
+      "yarn lint",
+      "git add"
+    ]
   }
 }

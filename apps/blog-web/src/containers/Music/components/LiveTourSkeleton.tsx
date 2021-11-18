@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Skeleton } from '@mui/material'
+import Skeleton from '@mui/material/Skeleton'
 import styled from 'styled-components'
 
 const LiveTourSkeletonWrapper = styled.div`

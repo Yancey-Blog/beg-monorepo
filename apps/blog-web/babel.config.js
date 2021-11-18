@@ -9,17 +9,8 @@ module.exports = {
         displayName: process.env.NODE_ENV !== 'production',
         fileName: false,
         minify: true,
-        transpileTemplateLiterals: true,
-      },
-    ],
-    [
-      'babel-plugin-transform-imports',
-      {
-        '@mui/material': {
-          transform: '@mui/material/${member}',
-          preventFullImport: true,
-        },
-      },
-    ],
-  ],
+        transpileTemplateLiterals: true
+      }
+    ]
+  ]
 }
