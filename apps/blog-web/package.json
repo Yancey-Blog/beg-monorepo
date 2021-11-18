@@ -18,7 +18,8 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint src --ext .ts,.tsx",
     "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
-    "feed": "node scripts/generatorFeed"
+    "feed": "node scripts/generatorFeed",
+    "lint-staged": "../../common/autoinstallers/common-work-flow/node_modules/.bin/lint-staged"
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
