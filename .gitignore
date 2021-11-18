@@ -90,10 +90,10 @@ build/
 # Envs
 .env
 .env.test
-packages/blog-service/env/.env
-packages/blog-service/env/production.env
-packages/blog-service/env/development.env
-packages/blog-cms/.env.development.local
+apps/blog-service/env/.env
+apps/blog-service/env/production.env
+apps/blog-service/env/development.env
+apps/blog-cms/.env.development.local
 
 # PWA
 sw.*

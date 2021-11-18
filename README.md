@@ -12,10 +12,10 @@ All services for Blog Environment Group. The monorepo system is powered by [rush
 
 ## Sub Projects
 
-- [blog-cms](./packages/blog-cms)
-- [blog-web](./packages/blog-web)
-- [blog-service](./packages/blog-service)
-- [uploader-service](./packages/uploader-service)
+- [blog-cms](./apps/blog-cms)
+- [blog-web](./apps/blog-web)
+- [blog-service](./apps/blog-service)
+- [uploader-service](./apps/uploader-service)
 
 ## Prerequisite
 

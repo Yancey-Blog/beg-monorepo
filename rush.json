@@ -228,16 +228,16 @@
      * IMPORTANT: Because these are regular expressions encoded as JSON string literals,
      * RegExp escapes need two backslashes, and ordinary periods should be "\\.".
      */
-    // "allowedEmailRegExps": [
-    //   "[^@]+@users\\.noreply\\.github\\.com",
-    //   "travis@example\\.org"
-    // ],
+    "allowedEmailRegExps": [
+      "[^@]+@yanceyleo\\.com",
+      "yanceyofficial@gmail\\.com"
+    ],
     /**
      * When Rush reports that the address is malformed, the notice can include an example
      * of a recommended email.  Make sure it conforms to one of the allowedEmailRegExps
      * expressions.
      */
-    // "sampleEmail": "mrexample@users.noreply.github.com",
+    "sampleEmail": "yanceyofficial@gmail.com",
     /**
      * The commit message to use when committing changes during 'rush publish'.
      *
@@ -245,7 +245,7 @@
      * you might configure your system's trigger to look for a special string such as "[skip-ci]"
      * in the commit message, and then customize Rush's message to contain that string.
      */
-    // "versionBumpCommitMessage": "Applying package updates. [skip-ci]",
+    "versionBumpCommitMessage": "Applying package updates. [skip-ci]",
     /**
      * The commit message to use when committing changes during 'rush version'.
      *
@@ -253,7 +253,7 @@
      * you might configure your system's trigger to look for a special string such as "[skip-ci]"
      * in the commit message, and then customize Rush's message to contain that string.
      */
-    // "changeLogUpdateCommitMessage": "Deleting change files and updating change logs for package updates. [skip-ci]"
+    "changeLogUpdateCommitMessage": "Deleting change files and updating change logs for package updates. [skip-ci]"
   },
   "repository": {
     /**
@@ -430,19 +430,19 @@
     // }
     {
       "packageName": "uploader-service",
-      "projectFolder": "packages/uploader-service"
+      "projectFolder": "apps/uploader-service"
     },
     {
       "packageName": "blog-service",
-      "projectFolder": "packages/blog-service"
+      "projectFolder": "apps/blog-service"
     },
     {
       "packageName": "blog-web",
-      "projectFolder": "packages/blog-web"
+      "projectFolder": "apps/blog-web"
     },
     {
       "packageName": "blog-cms",
-      "projectFolder": "packages/blog-cms"
+      "projectFolder": "apps/blog-cms"
     }
   ]
 }
