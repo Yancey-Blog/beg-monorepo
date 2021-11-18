@@ -10,20 +10,6 @@
    * "rush my-global-command --help".
    */
   "commands": [
-    {
-      "name": "commitlint",
-      "commandKind": "global",
-      "summary": "Used by the commit-msg Git hook. This command invokes commitlint to lint commit message.",
-      "autoinstallerName": "common-work-flow",
-      "shellCommand": "node common/autoinstallers/common-work-flow/commit-lint.js"
-    },
-    {
-      "name": "lint-stage",
-      "commandKind": "global",
-      "summary": "Used by the pre-commit Git hook. This command invokes eslint to lint staged changes.",
-      "autoinstallerName": "common-work-flow",
-      "shellCommand": "lint-staged"
-    }
     // {
     //   /**
     //    * (Required) Determines the type of custom command.
@@ -179,6 +165,23 @@
     //    */
     //   // "autoinstallerName": "my-task"
     // }
+    {
+      "name": "commitlint",
+      "commandKind": "global",
+      "summary": "Used by the commit-msg Git hook. This command invokes commitlint to lint commit message.",
+      "autoinstallerName": "common-work-flow",
+      "shellCommand": "node common/autoinstallers/common-work-flow/commit-lint.js"
+    },
+    {
+      "name": "lint-staged",
+      "commandKind": "bulk",
+      "summary": "Run lint-staged on each package",
+      "description": "Iterates through each package in the monorepo and runs the 'lint-staged' script",
+      "enableParallelism": false,
+      "ignoreMissingScript": true,
+      "ignoreDependencyOrder": true,
+      "allowWarningsInSuccessfulBuild": true
+    }
   ],
   /**
    * Custom "parameters" introduce new parameters for specified Rush command-line commands.

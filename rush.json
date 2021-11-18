@@ -430,19 +430,23 @@
     // }
     {
       "packageName": "uploader-service",
-      "projectFolder": "apps/uploader-service"
+      "projectFolder": "apps/uploader-service",
+      "shouldPublish": true
     },
     {
       "packageName": "blog-service",
-      "projectFolder": "apps/blog-service"
+      "projectFolder": "apps/blog-service",
+      "shouldPublish": true
     },
     {
       "packageName": "blog-web",
-      "projectFolder": "apps/blog-web"
+      "projectFolder": "apps/blog-web",
+      "shouldPublish": true
     },
     {
       "packageName": "blog-cms",
-      "projectFolder": "apps/blog-cms"
+      "projectFolder": "apps/blog-cms",
+      "shouldPublish": true
     }
   ]
 }
