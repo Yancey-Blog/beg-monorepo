@@ -2,7 +2,7 @@ import { css, Keyframes } from 'styled-components'
 
 export const flexMixin = (
   justifyContent = 'center',
-  alignItem = 'center',
+  alignItem = 'center'
 ) => css`
   display: flex;
   justify-content: ${justifyContent};
@@ -34,7 +34,7 @@ export const onePixel = (color = '#000000', zIndex = -1) => css`
 export const transitionMixin = (
   property: string,
   delay = 300,
-  timingFunction = 'ease',
+  timingFunction = 'ease'
 ) => css`
   transition: ${property} ${delay}ms ${timingFunction};
 `
@@ -43,7 +43,7 @@ export const animationMixin = (
   name: Keyframes,
   delay: number,
   timingFunction: string,
-  iterationCount: string,
+  iterationCount: string
 ) =>
   css`
     animation: ${name} ${delay}ms ${timingFunction} ${iterationCount};

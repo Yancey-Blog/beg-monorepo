@@ -19,7 +19,7 @@ import withApollo from 'src/graphql/withApollo'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
   SNACKBAR_MAX_NUM,
-  SNACKBAR_AUTO_HIDE_DURATION,
+  SNACKBAR_AUTO_HIDE_DURATION
 } from 'src/shared/constants'
 import { devToolsWarning } from 'src/shared/utils'
 import { NextWebVitalsMetrics } from 'src/shared/types'
@@ -36,14 +36,14 @@ interface Props {
 // testing, the performance index(from lighthouse) has
 // increased from 76 to 90. Next optimize the component.
 const Player = dynamic(import('src/containers/Music/components/Player'), {
-  ssr: false,
+  ssr: false
 })
 
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
-  release: `${process.env.npm_package_name}@${process.env.npm_package_version}`,
+  release: `${process.env.npm_package_name}@${process.env.npm_package_version}`
 })
 
 devToolsWarning()
@@ -52,7 +52,7 @@ export function reportWebVitals({
   id,
   name,
   label,
-  value,
+  value
 }: NextWebVitalsMetrics) {
   if (window.ga) {
     window.ga('send', 'event', {
@@ -60,7 +60,7 @@ export function reportWebVitals({
       eventAction: name,
       eventValue: Math.round(name === 'CLS' ? value * 1000 : value),
       eventLabel: id,
-      nonInteraction: true,
+      nonInteraction: true
     })
   }
 }

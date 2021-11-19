@@ -8,8 +8,8 @@ module.exports = {
       max_memory_restart: '1G',
       exec_mode: 'fork',
       env: {
-        NODE_ENV: 'production',
-      },
-    },
-  ],
+        NODE_ENV: 'production'
+      }
+    }
+  ]
 }

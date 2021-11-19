@@ -6,14 +6,14 @@ import {
   HomeContainer,
   MottoSocialMediaBar,
   HomeMain,
-  CoverWrapper,
+  CoverWrapper
 } from './styled'
 import { COVERS, ANNOUNCEMENTS, OPEN_SOURCES, MOTTOS } from './typeDefs'
 import {
   AnnouncementQuery,
   MottoQuery,
   CoverQuery,
-  OpenSourceQuery,
+  OpenSourceQuery
 } from './types'
 import Announcement from './components/Announcement'
 import Motto from './components/Motto'
@@ -35,7 +35,7 @@ const Home: FC = () => {
   useEffect(() => {
     if (isAnniversary()) {
       const DynamicComponent = dynamic(
-        () => import('src/components/Activities/Fireworks/Fireworks'),
+        () => import('src/components/Activities/Fireworks/Fireworks')
       )
 
       setFireWorkComponent(DynamicComponent)

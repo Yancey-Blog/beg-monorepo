@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export enum ThemeMode {
   LIGHT = 'light',
-  DARK = 'dark',
+  DARK = 'dark'
 }
 
 export const useDarkMode = () => {

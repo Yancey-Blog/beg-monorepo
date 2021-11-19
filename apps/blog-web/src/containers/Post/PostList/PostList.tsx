@@ -15,19 +15,19 @@ import {
   PostVars,
   GetTopPVPostsQuery,
   GetTopPVPostsVars,
-  GetAllTagsQuery,
+  GetAllTagsQuery
 } from '../types'
 import { PostContent, PostItemContainer } from './styled'
 
 const PostList: FC = () => {
   const {
-    query: { tag: searchTag },
+    query: { tag: searchTag }
   } = useRouter()
 
   const [page, setPage] = useState(1)
 
   const [getPosts, { data: posts }] = useLazyQuery<PostQuery, PostVars>(POSTS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const { data: topPVPosts } = useQuery<GetTopPVPostsQuery, GetTopPVPostsVars>(
@@ -35,13 +35,13 @@ const PostList: FC = () => {
     {
       notifyOnNetworkStatusChange: true,
       variables: {
-        limit: 7,
-      },
-    },
+        limit: 7
+      }
+    }
   )
 
   const { data: tagCloud } = useQuery<GetAllTagsQuery>(GET_ALL_TAGS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const fetchPosts = (currPage = 1, tag?: string) => {
@@ -50,9 +50,9 @@ const PostList: FC = () => {
         input: {
           page: currPage,
           pageSize: 10,
-          tag,
-        },
-      },
+          tag
+        }
+      }
     })
   }
 

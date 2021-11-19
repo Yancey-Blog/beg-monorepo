@@ -14,8 +14,8 @@ const Index: FC = () => {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     props: {
-      isSupportWebp: ctx.req.headers.accept?.includes('image/webp'),
-    },
+      isSupportWebp: ctx.req.headers.accept?.includes('image/webp')
+    }
   }
 }
 

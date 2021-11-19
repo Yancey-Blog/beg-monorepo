@@ -15,12 +15,12 @@ import {
   MonthTxt,
   DayList,
   DayItem,
-  Day,
+  Day
 } from './styled'
 
 const Archive: FC = () => {
   const { data } = useQuery<ArchiveQuery>(ARCHIVE, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   return (
@@ -69,7 +69,7 @@ const Archive: FC = () => {
                                   </a>
                                 </Link>
                               </DayItem>
-                            ),
+                            )
                           )
                         }
                       </DayList>

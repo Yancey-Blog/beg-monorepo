@@ -27,7 +27,7 @@ const PostList: FC = () => {
       }
       setPage((_page) => _page + 1)
       setData({ posts: data.posts.concat(items) })
-    },
+    }
   })
 
   const fetchPosts = (tag?: string) => {
@@ -38,9 +38,9 @@ const PostList: FC = () => {
         input: {
           page,
           pageSize: 10,
-          tag,
-        },
-      },
+          tag
+        }
+      }
     })
   }
 

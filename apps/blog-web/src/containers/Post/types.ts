@@ -10,10 +10,9 @@ export interface IPostItem {
   pv: number
   createdAt: string
   updatedAt: string
-  prev: IPostItem | null
-  next: IPostItem | null
+  prev?: IPostItem
+  next?: IPostItem
 }
-
 export interface IPost {
   total: number
   page: number

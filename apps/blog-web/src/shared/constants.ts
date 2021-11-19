@@ -2,7 +2,7 @@ import { SnackbarOrigin, SocialMedia } from './types'
 
 export const SNACKBAR_ANCHOR_ORIGIN: SnackbarOrigin = {
   vertical: 'top',
-  horizontal: 'center',
+  horizontal: 'center'
 }
 
 export const SNACKBAR_MAX_NUM = 1
@@ -45,42 +45,42 @@ export const SVG_SPRITE = {
   like: '#like',
   folder: '#closed-container',
   archive: '#archive',
-  more: '#menu',
+  more: '#menu'
 }
 
 export const SOCIAL_MEDIA: SocialMedia = {
   github: {
     url: 'https://github.com/YanceyOfficial/',
-    icon: SVG_SPRITE.github,
+    icon: SVG_SPRITE.github
   },
   twitter: {
     url: 'https://twitter.com/YanceyOfficial/',
-    icon: SVG_SPRITE.twitter,
+    icon: SVG_SPRITE.twitter
   },
   instagram: {
     url: 'https://www.instagram.com/yancey_leo/',
-    icon: SVG_SPRITE.instagram,
+    icon: SVG_SPRITE.instagram
   },
   soundCloud: {
     url: 'https://soundcloud.com/yancey-leo/',
-    icon: SVG_SPRITE.soundcloud,
+    icon: SVG_SPRITE.soundcloud
   },
   telegram: {
     url: 'https://t.me/YanceyOfficial',
-    icon: SVG_SPRITE.telegram,
+    icon: SVG_SPRITE.telegram
   },
   paypal: {
     url: 'https://www.paypal.me/yanceyleo/10usd',
-    icon: SVG_SPRITE.paypal,
+    icon: SVG_SPRITE.paypal
   },
   wechat: {
     url: '/',
-    icon: SVG_SPRITE.wechat,
+    icon: SVG_SPRITE.wechat
   },
   email: {
     url: 'mailto:support@yanceyleo.com',
-    icon: SVG_SPRITE.email,
-  },
+    icon: SVG_SPRITE.email
+  }
 }
 
 export const months = [
@@ -95,5 +95,5 @@ export const months = [
   'Sep',
   'Oct',
   'Nov',
-  'Dec',
+  'Dec'
 ]

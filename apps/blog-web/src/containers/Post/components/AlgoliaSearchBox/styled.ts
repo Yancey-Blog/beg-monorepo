@@ -55,19 +55,18 @@ export const SearchBoxWrapper = styled.div`
     fill: ${({ theme }) => theme.text.header};
   }
 
-  .ais-SearchBox-reset,
   .ais-SearchBox-submit {
     position: absolute;
     top: 0.9rem;
     right: 0.3rem;
     width: 1.3rem;
-  }
-
-  .ais-SearchBox-submit {
     left: 0.5rem;
   }
 
   .ais-SearchBox-reset {
+    position: absolute;
+    right: 0.3rem;
+    width: 1.3rem;
     top: 0.76rem;
   }
 
@@ -81,7 +80,6 @@ export const SearchBoxWrapper = styled.div`
       box-shadow: 0px 5px 12px rgb(0 0 0 / 15%);
       border: none;
       border-radius: 2.6rem;
-      // iOS 需要加上这一句, 否则不会展示 box-shadow
       -webkit-appearance: none;
     }
 

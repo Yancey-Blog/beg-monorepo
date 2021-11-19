@@ -18,7 +18,7 @@ import { Layouts, Main } from './styled'
 const initialGlobalSetting = {
   cvPostId: '',
   releasePostId: '',
-  isGrayTheme: false,
+  isGrayTheme: false
 }
 
 interface Props {
@@ -37,7 +37,7 @@ const Layout: FC<Props> = ({ title, children }) => {
 
   useEffect(() => {
     document.addEventListener('scroll', scrollTopCountHandler, {
-      passive: true,
+      passive: true
     })
 
     return () => {
@@ -56,7 +56,7 @@ const Layout: FC<Props> = ({ title, children }) => {
 
       hotjar.initialize(
         parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID, 10),
-        parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV, 10),
+        parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV, 10)
       )
     }
   }, [])

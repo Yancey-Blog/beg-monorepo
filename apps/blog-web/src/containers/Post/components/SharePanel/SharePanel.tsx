@@ -54,7 +54,7 @@ const SharePanel: FC<Props> = ({ id, title, like, postUrl }) => {
   const [updateLike] = useMutation(UPDATE_LIKE, {
     onError() {
       setLikeStatus(false)
-    },
+    }
   })
   const onSubmit = () => {
     if (!likeStatus) {
@@ -65,9 +65,9 @@ const SharePanel: FC<Props> = ({ id, title, like, postUrl }) => {
           updateLike: {
             id,
             __typename: 'PostItemModel',
-            like: like + 1,
-          },
-        },
+            like: like + 1
+          }
+        }
       })
       setLikeStatus(true)
     }

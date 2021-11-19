@@ -8,7 +8,7 @@ export const setupTocbot = () => {
     tocSelector: '.postMenu',
     contentSelector: '.postDetailContent',
     headingSelector: 'h1, h2, h3',
-    hasInnerContainers: true,
+    hasInnerContainers: true
   })
 }
 

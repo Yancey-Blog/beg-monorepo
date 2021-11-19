@@ -18,8 +18,8 @@ const generatorFeed = async () => {
     author: {
       name: 'Yancey Leo',
       email: 'yanceyofficial@gmail.com',
-      link: 'https://yanceyleo.com/',
-    },
+      link: 'https://yanceyleo.com/'
+    }
   })
 
   const query = `
@@ -43,12 +43,12 @@ const generatorFeed = async () => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      Accept: 'application/json'
     },
     body: JSON.stringify({
       query,
-      variables: { input: { page: 1, pageSize: 10 } },
-    }),
+      variables: { input: { page: 1, pageSize: 10 } }
+    })
   })
 
   const json = await res.json()
@@ -62,7 +62,7 @@ const generatorFeed = async () => {
       category,
       posterUrl,
       lastModifiedDate,
-      createdAt,
+      createdAt
     }) => {
       feed.addItem({
         title: title,
@@ -77,26 +77,26 @@ const generatorFeed = async () => {
           {
             name: 'Yancey Leo',
             email: 'yanceyofficial@gmail.com',
-            link: 'https://yanceyleo.com/',
-          },
+            link: 'https://yanceyleo.com/'
+          }
         ],
         contributor: [
           {
             name: 'Yancey Leo',
             email: 'yanceyofficial@gmail.com',
-            link: 'https://yanceyleo.com/',
-          },
+            link: 'https://yanceyleo.com/'
+          }
         ],
         published: new Date(createdAt),
-        copyright: 'Copyright (c) 2021 Yancey Inc. and its affiliates.',
+        copyright: 'Copyright (c) 2021 Yancey Inc. and its affiliates.'
       })
-    },
+    }
   )
 
   feed.addContributor({
     name: 'Yancey Leo',
     email: 'yanceyofficial@gmail.com',
-    link: 'https://yanceyleo.com/',
+    link: 'https://yanceyleo.com/'
   })
 
   fs.writeFileSync('public/rss.xml', feed.rss2())

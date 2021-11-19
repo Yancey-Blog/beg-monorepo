@@ -18,7 +18,7 @@ const LazyLoadImage: FC<Props> = ({
   width,
   height,
   layout,
-  objectFit,
+  objectFit
 }) => {
   return (
     <Image

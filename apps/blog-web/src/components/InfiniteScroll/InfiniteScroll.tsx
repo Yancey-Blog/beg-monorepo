@@ -19,7 +19,7 @@ const InfiniteScroll: FC<Props> = ({
   isLoading,
   hasMoreData,
   loadOnMount,
-  children,
+  children
 }) => {
   const [initialLoad, setInitialLoad] = useState(true)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -38,7 +38,7 @@ const InfiniteScroll: FC<Props> = ({
       }
     }
     document.addEventListener('scroll', onScroll, {
-      passive: true,
+      passive: true
     })
     return () => document.removeEventListener('scroll', onScroll)
   }, [onBottomHit, isLoading, hasMoreData])

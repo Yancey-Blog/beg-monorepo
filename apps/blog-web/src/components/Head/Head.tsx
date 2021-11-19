@@ -17,7 +17,7 @@ const MetaHead: FC<Props> = ({
   postTitle,
   postSummary,
   postPosterUrl,
-  postUrl,
+  postUrl
 }) => {
   const theme = useTheme()
 

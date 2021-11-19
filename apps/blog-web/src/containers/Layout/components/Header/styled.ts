@@ -3,7 +3,7 @@ import {
   flexMixin,
   transitionMixin,
   backgroundMixin,
-  animationMixin,
+  animationMixin
 } from 'src/styled/mixins'
 import { wrench } from 'src/styled/animations'
 import breakpoints from 'src/styled/breakpoints'

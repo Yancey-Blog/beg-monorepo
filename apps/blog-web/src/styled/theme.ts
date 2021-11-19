@@ -9,7 +9,7 @@ const light = {
     tooltip: 'rgba(0, 0, 0, .7)',
     inlineCode: '#ebedf0',
     searchBox: '#ffffff',
-    summaryBg: '#e6f6e6',
+    summaryBg: '#e6f6e6'
   },
   text: {
     primary: '#666666',
@@ -17,17 +17,17 @@ const light = {
     header: '#504e4e',
     post: '#3b454e',
     tooltip: '#fff',
-    base: '#1c1e21',
+    base: '#1c1e21'
   },
   link: {
     primary: '#666666',
-    secondary: '#ffa500',
+    secondary: '#ffa500'
   },
   border: '#e6e6e6',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
   postSvg: '#fcf8db',
-  codeEl: '#f0f0f0',
+  codeEl: '#f0f0f0'
 }
 
 const dark = {
@@ -41,7 +41,7 @@ const dark = {
     tooltip: 'rgba(255, 255, 255, .7)',
     inlineCode: '#444950',
     searchBox: '#202327',
-    summaryBg: '#003130',
+    summaryBg: '#003130'
   },
   text: {
     primary: '#f5f6f7',
@@ -49,17 +49,17 @@ const dark = {
     header: '#f5f6f7',
     post: '#f5f6f7',
     tooltip: '#000',
-    base: '#f5f6f7',
+    base: '#f5f6f7'
   },
   link: {
     primary: '#f5f6f7',
-    secondary: '#ffa500',
+    secondary: '#ffa500'
   },
   border: '#5b5b5b',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
   postSvg: '#181a1b',
-  codeEl: '#181a1b',
+  codeEl: '#181a1b'
 }
 
 const defaultTheme = {
@@ -68,12 +68,12 @@ const defaultTheme = {
     subheading: 500,
     link: 600,
     bold: 700,
-    heading: 800,
+    heading: 800
   },
   lineHeights: {
     body: 1.5,
     heading: 1.3,
-    code: 1.6,
+    code: 1.6
   },
   colors: {
     sloganRed: '#ff3f1a',
@@ -95,16 +95,16 @@ const defaultTheme = {
     fiveOpcityBlack: 'rgba(0, 0, 0, .5)',
     sixOpcityBlack: 'rgba(0, 0, 0, .6)',
     sevenOpcityBlack: 'rgba(0, 0, 0, .7)',
-    linkBase: '#25c3a0',
+    linkBase: '#25c3a0'
   },
   zIndex: {
     negative: -1,
     root: 0,
     positive: 1,
     fixed: 200,
-    overlay: 400,
+    overlay: 400
   },
-  headerHeight: '4.5rem',
+  headerHeight: '4.5rem'
 }
 
 export const lightTheme = { ...defaultTheme, ...light }

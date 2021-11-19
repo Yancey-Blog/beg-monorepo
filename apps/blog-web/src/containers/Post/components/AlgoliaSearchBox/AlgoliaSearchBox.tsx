@@ -7,7 +7,7 @@ import {
   SearchBox,
   Configure,
   PoweredBy,
-  connectStateResults,
+  connectStateResults
 } from 'react-instantsearch-dom'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
 import AlgoliaSarchBoxSkeleton from '../AlgoliaSarchBoxSkeleton/AlgoliaSarchBoxSkeleton'
@@ -17,7 +17,7 @@ import { Result, SearchBoxWrapper } from './styled'
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
-  {},
+  {}
 )
 
 const AlgoliaSearchBox: FC = () => {
@@ -42,7 +42,7 @@ const AlgoliaSearchBox: FC = () => {
   const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
     isSearchStalled ? (
       <SkeletonIterator count={5} skeletonComponent={AlgoliaSarchBoxSkeleton} />
-    ) : null,
+    ) : null
   )
 
   useEffect(() => {

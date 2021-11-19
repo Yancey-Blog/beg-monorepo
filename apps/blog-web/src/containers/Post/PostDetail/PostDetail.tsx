@@ -24,20 +24,20 @@ import {
   Summary,
   Content,
   Menu,
-  TableWrapper,
+  TableWrapper
 } from './styled'
 
 const PostDetail: FC = () => {
   const {
     query: { id },
-    replace,
+    replace
   } = useRouter()
 
   const markdownWrapperEl = useRef<HTMLDivElement>(null)
 
   const [updatePV] = useMutation(UPDATE_PV, {
     variables: { id },
-    onError() {},
+    onError() {}
   })
 
   const customMarkdownComponents = {
@@ -87,7 +87,7 @@ const PostDetail: FC = () => {
           {children}
         </h3>
       )
-    },
+    }
   }
 
   const { data: post } = useQuery<GetPostByIdQuery, GetPostByIdVar>(
@@ -102,8 +102,8 @@ const PostDetail: FC = () => {
 
       onError() {
         replace('/404')
-      },
-    },
+      }
+    }
   )
 
   useEffect(() => {
@@ -124,8 +124,8 @@ const PostDetail: FC = () => {
       pv,
       like,
       prev,
-      next,
-    },
+      next
+    }
   } = post
 
   return (
@@ -177,7 +177,7 @@ const PostDetail: FC = () => {
           config={{
             url: generatePostUrl(id as string),
             identifier: id as string,
-            title,
+            title
           }}
         />
       </Content>

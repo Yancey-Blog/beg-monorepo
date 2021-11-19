@@ -18,7 +18,7 @@ import {
   LiveToursMusicNotes,
   MusicNotes,
   BestAlbumWrapper,
-  YanceyMusicWrapper,
+  YanceyMusicWrapper
 } from './styled'
 
 const Music = () => {
@@ -30,9 +30,9 @@ const Music = () => {
       input: {
         page: 1,
         pageSize: 4,
-        tag: 'Music',
-      },
-    },
+        tag: 'Music'
+      }
+    }
   })
 
   return (

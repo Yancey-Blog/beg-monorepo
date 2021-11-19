@@ -8,7 +8,7 @@ interface Props {
 
 const SkeletonIterator: FC<Props> = ({
   count,
-  skeletonComponent: Skeleton,
+  skeletonComponent: Skeleton
 }) => {
   return (
     <>

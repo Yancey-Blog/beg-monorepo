@@ -201,7 +201,7 @@ export const float = keyframes`
     transform: translateY(0);
   }`
 
-export const bang = keyframes`
+export const bang = keyframes`{
   from {
     box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white,
       0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white,
@@ -222,7 +222,7 @@ export const gravity = keyframes`{
   }
 }`
 
-export const position = keyframes`
+export const position = keyframes`{
   0%,
   19.9% {
     margin-top: 10%;

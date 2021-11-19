@@ -7,7 +7,7 @@ import SnackbarUtils from 'src/components/Toast/Toast'
 
 const httpLink = new BatchHttpLink({
   fetch,
-  uri: process.env.NEXT_PUBLIC_API_URL,
+  uri: process.env.NEXT_PUBLIC_API_URL
 })
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -30,15 +30,15 @@ export default withApollo(
       cache: new InMemoryCache().restore(initialState || {}),
       defaultOptions: {
         watchQuery: {
-          fetchPolicy: 'cache-and-network',
+          fetchPolicy: 'cache-and-network'
         },
         query: {
           fetchPolicy: 'network-only',
-          errorPolicy: 'all',
+          errorPolicy: 'all'
         },
         mutate: {
-          errorPolicy: 'all',
-        },
-      },
-    }),
+          errorPolicy: 'all'
+        }
+      }
+    })
 )

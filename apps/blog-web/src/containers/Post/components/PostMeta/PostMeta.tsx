@@ -57,13 +57,13 @@ const PostMeta: FC<Props> = ({
   createdAt,
   lastModifiedDate,
   pv,
-  like,
+  like
 }) => {
   return (
     <MetaWrapper>
       <CreatedAt
         data-last-modified-date={`Last Modified At: ${formatDate(
-          lastModifiedDate,
+          lastModifiedDate
         )}`}
       >
         Released At {formatDate(createdAt)}

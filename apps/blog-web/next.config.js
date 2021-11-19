@@ -1,5 +1,5 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'true'
 })
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
@@ -7,32 +7,32 @@ const runtimeCaching = require('next-pwa/cache')
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
-    value: 'on',
+    value: 'on'
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
+    value: 'max-age=63072000; includeSubDomains; preload'
   },
   {
     key: 'X-XSS-Protection',
-    value: '1; mode=block',
+    value: '1; mode=block'
   },
   {
     key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
+    value: 'SAMEORIGIN'
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
   },
   {
     key: 'X-Content-Type-Options',
-    value: 'nosniff',
+    value: 'nosniff'
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
-  },
+    value: 'origin-when-cross-origin'
+  }
 ]
 
 module.exports = (phase, { defaultConfig }) => {
@@ -53,7 +53,7 @@ module.exports = (phase, { defaultConfig }) => {
         NEXT_PUBLIC_DISCUSSION_KEY: 'yancey-blog',
         NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID: '5Y6Y04WE04',
         NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: '46f32897c2a83b6495111a68bd1cd8c7',
-        NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME: 'prod_YANCEY_BLOG',
+        NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME: 'prod_YANCEY_BLOG'
       },
       reactStrictMode: true,
       compress: true,
@@ -61,23 +61,23 @@ module.exports = (phase, { defaultConfig }) => {
       productionBrowserSourceMaps: true,
       pwa: {
         dest: 'public',
-        runtimeCaching,
+        runtimeCaching
       },
       images: {
         // TODO: 清洗完数据下掉 'static.yancey.app'
-        domains: ['edge.yancey.app', 'static.yancey.app'],
+        domains: ['edge.yancey.app', 'static.yancey.app']
       },
       webpack: (
         config,
-        { buildId, dev, isServer, defaultLoaders, webpack },
+        { buildId, dev, isServer, defaultLoaders, webpack }
       ) => {
         config.module.rules.push({
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/, /\.cur$/],
           use: [
             {
-              loader: 'url-loader',
-            },
-          ],
+              loader: 'url-loader'
+            }
+          ]
         })
 
         return config
@@ -87,10 +87,10 @@ module.exports = (phase, { defaultConfig }) => {
           {
             // Apply these headers to all routes in your application.
             source: '/(.*)',
-            headers: securityHeaders,
-          },
+            headers: securityHeaders
+          }
         ]
-      },
-    }),
+      }
+    })
   )
 }

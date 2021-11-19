@@ -13,7 +13,7 @@ import {
   Meta,
   MetaItem,
   Summary,
-  ReadMoreSVG,
+  ReadMoreSVG
 } from './styled'
 import { IPostItem } from '../../types'
 

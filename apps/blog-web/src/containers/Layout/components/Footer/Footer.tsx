@@ -9,7 +9,7 @@ import {
   CopyRight,
   InnerLink,
   FooterBottom,
-  Email,
+  Email
 } from './styled'
 
 interface Props {

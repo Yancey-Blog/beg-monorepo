@@ -28,7 +28,7 @@ export const devToolsWarning = () => {
   console.log(
     `${'\n'} %c Yancey Blog %c https://yanceyleo.com ${'\n'}`,
     'color: #fadfa3; background: #030307; padding:5px 0;',
-    'background: #fadfa3; padding:5px 0;',
+    'background: #fadfa3; padding:5px 0;'
   )
 }
 

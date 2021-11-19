@@ -22,9 +22,9 @@ const Player: FC = () => {
             artist,
             url: musicFileUrl,
             cover: coverUrl,
-            lrc,
+            lrc
           }
-        }),
+        })
       })
       ap.lrc.show()
     }

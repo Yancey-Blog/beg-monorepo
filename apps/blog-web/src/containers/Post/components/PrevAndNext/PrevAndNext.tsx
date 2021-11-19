@@ -78,12 +78,12 @@ const Image = styled.img`
 
 enum ItemType {
   prev = 'PREVIOUS',
-  next = 'NEXT',
+  next = 'NEXT'
 }
 
 interface Props {
-  prev: IPostItem | null
-  next: IPostItem | null
+  prev?: IPostItem
+  next?: IPostItem
 }
 
 const PrevAndNext: FC<Props> = ({ prev, next }) => {
@@ -91,7 +91,7 @@ const PrevAndNext: FC<Props> = ({ prev, next }) => {
     id: string,
     posterUrl: string,
     title: string,
-    type: ItemType,
+    type: ItemType
   ) => (
     <Link href={`/post/${id}`}>
       <a>
