@@ -87,7 +87,7 @@
      *
      * The default value is false.
      */
-    // "preventManualShrinkwrapChanges": true,
+    "preventManualShrinkwrapChanges": true
     /**
      * If true, then `rush install` will use the PNPM workspaces feature to perform the
      * install.

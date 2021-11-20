@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.17.0",
+      "tag": "blog-web_v4.17.0",
+      "date": "Sat, 20 Nov 2021 13:55:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "enhance pwa"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.16.0",
       "tag": "blog-web_v4.16.0",
       "date": "Sat, 20 Nov 2021 12:59:36 GMT",
