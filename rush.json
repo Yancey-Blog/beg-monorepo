@@ -57,7 +57,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    // "strictPeerDependencies": true,
+    // "strictPeerDependencies": true
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -163,8 +163,8 @@
    * To remove these restrictions, you could set projectFolderMinDepth=1
    * and set projectFolderMaxDepth to a large number.
    */
-  // "projectFolderMinDepth": 2,
-  // "projectFolderMaxDepth": 2,
+  "projectFolderMinDepth": 2,
+  "projectFolderMaxDepth": 2,
   /**
    * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
    * days there was no standard and hardly any enforcement.  A few large legacy projects are still using
@@ -184,34 +184,28 @@
    * The approvals are tracked in two config files "browser-approved-packages.json"
    * and "nonbrowser-approved-packages.json".  See the Rush documentation for details.
    */
-  // "approvedPackagesPolicy": {
-  //   /**
-  //    * The review categories allow you to say for example "This library is approved for usage
-  //    * in prototypes, but not in production code."
-  //    *
-  //    * Each project can be associated with one review category, by assigning the "reviewCategory" field
-  //    * in the "projects" section of rush.json.  The approval is then recorded in the files
-  //    * "common/config/rush/browser-approved-packages.json" and "nonbrowser-approved-packages.json"
-  //    * which are automatically generated during "rush update".
-  //    *
-  //    * Designate categories with whatever granularity is appropriate for your review process,
-  //    * or you could just have a single category called "default".
-  //    */
-  //   "reviewCategories": [
-  //     // Some example categories:
-  //     "production", // projects that ship to production
-  //     "tools",      // non-shipping projects that are part of the developer toolchain
-  //     "prototypes"  // experiments that should mostly be ignored by the review process
-  //   ],
-  // 
-  //   /**
-  //    * A list of NPM package scopes that will be excluded from review.
-  //    * We recommend to exclude TypeScript typings (the "@types" scope), because
-  //    * if the underlying package was already approved, this would imply that the typings
-  //    * are also approved.
-  //    */
-  //   // "ignoredNpmScopes": ["@types"]
-  // },
+  "approvedPackagesPolicy": {
+    /**
+     * The review categories allow you to say for example "This library is approved for usage
+     * in prototypes, but not in production code."
+     *
+     * Each project can be associated with one review category, by assigning the "reviewCategory" field
+     * in the "projects" section of rush.json.  The approval is then recorded in the files
+     * "common/config/rush/browser-approved-packages.json" and "nonbrowser-approved-packages.json"
+     * which are automatically generated during "rush update".
+     *
+     * Designate categories with whatever granularity is appropriate for your review process,
+     * or you could just have a single category called "default".
+     */
+    "reviewCategories": ["apps", "packages", "tools"],
+    /**
+     * A list of NPM package scopes that will be excluded from review.
+     * We recommend to exclude TypeScript typings (the "@types" scope), because
+     * if the underlying package was already approved, this would imply that the typings
+     * are also approved.
+     */
+    "ignoredNpmScopes": ["@types"]
+  },
   /**
    * If you use Git as your version control system, this section has some additional
    * optional features you can use.
@@ -329,7 +323,7 @@
     //    * The folder name for this variant.
     //    */
     //   "variantName": "old-sdk",
-    // 
+    //
     //   /**
     //    * An informative description
     //    */
@@ -365,19 +359,19 @@
     //    * The NPM package name of the project (must match package.json)
     //    */
     //   "packageName": "my-app",
-    // 
+    //
     //   /**
     //    * The path to the project folder, relative to the rush.json config file.
     //    */
     //   "projectFolder": "apps/my-app",
-    // 
+    //
     //   /**
     //    * An optional category for usage in the "browser-approved-packages.json"
     //    * and "nonbrowser-approved-packages.json" files.  The value must be one of the
     //    * strings from the "reviewCategories" defined above.
     //    */
     //   "reviewCategory": "production",
-    // 
+    //
     //   /**
     //    * A list of local projects that appear as devDependencies for this project, but cannot be
     //    * locally linked because it would create a cyclic dependency; instead, the last published
@@ -386,20 +380,20 @@
     //   "cyclicDependencyProjects": [
     //     // "my-toolchain"
     //   ],
-    // 
+    //
     //   /**
     //    * If true, then this project will be ignored by the "rush check" command.
     //    * The default value is false.
     //    */
     //   // "skipRushCheck": false,
-    // 
+    //
     //   /**
     //    * A flag indicating that changes to this project will be published to npm, which affects
     //    * the Rush change and publish workflows. The default value is false.
     //    * NOTE: "versionPolicyName" and "shouldPublish" are alternatives; you cannot specify them both.
     //    */
     //   // "shouldPublish": false,
-    // 
+    //
     //   /**
     //    * Facilitates postprocessing of a project's files prior to publishing.
     //    *
@@ -408,7 +402,7 @@
     //    * must contain its own package.json file, which is typically a build output.
     //    */
     //   // "publishFolder": "temp/publish",
-    // 
+    //
     //   /**
     //    * An optional version policy associated with the project.  Version policies are defined
     //    * in "version-policies.json" file.  See the "rush publish" documentation for more info.
@@ -416,13 +410,13 @@
     //    */
     //   // "versionPolicyName": ""
     // },
-    // 
+    //
     // {
     //   "packageName": "my-controls",
     //   "projectFolder": "libraries/my-controls",
     //   "reviewCategory": "production"
     // },
-    // 
+    //
     // {
     //   "packageName": "my-toolchain",
     //   "projectFolder": "tools/my-toolchain",
@@ -431,22 +425,26 @@
     {
       "packageName": "uploader-service",
       "projectFolder": "apps/uploader-service",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "reviewCategory": "apps"
     },
     {
       "packageName": "blog-service",
       "projectFolder": "apps/blog-service",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "reviewCategory": "apps"
     },
     {
       "packageName": "blog-web",
       "projectFolder": "apps/blog-web",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "reviewCategory": "apps"
     },
     {
       "packageName": "blog-cms",
       "projectFolder": "apps/blog-cms",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "reviewCategory": "apps"
     }
   ]
 }
