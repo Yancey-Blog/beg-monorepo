@@ -39,11 +39,11 @@ _This library is part of the [BEG (Blog Environment Group)](https://github.com/Y
 - [Blog BE Next](#blog-be-next)
   - [Menu](#menu)
   - [Available Scripts](#available-scripts)
-    - [yarn build](#yarn-build)
-    - [yarn watch](#yarn-watch)
-    - [yarn document](#yarn-document)
-    - [yarn test](#yarn-test)
-    - [yarn commit](#yarn-commit)
+    - [pnpm run build](#pnpm-run-build)
+    - [pnpm run watch](#pnpm-run-watch)
+    - [pnpm run document](#pnpm-run-document)
+    - [pnpm run test](#pnpm-run-test)
+    - [pnpm run commit](#pnpm-run-commit)
   - [Contributing](#contributing)
     - [Code of Conduct](#code-of-conduct)
     - [Contributing Guide](#contributing-guide)
@@ -61,25 +61,25 @@ _This library is part of the [BEG (Blog Environment Group)](https://github.com/Y
 
 In the project directory, you can run:
 
-### yarn build
+### pnpm run build
 
 Builds the app for production to the `dist` folder.
 This script will delete the old `dist` folder before build.
 
-### yarn watch
+### pnpm run watch
 
 Runs the app in the development mode.
 Open [http://localhost:3002](http://localhost:3002) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
 
-### yarn document
+### pnpm run document
 
 Via [compodoc](https://github.com/compodoc/compodoc) to generate an awesome document for this app.
 
-### yarn test
+### pnpm run test
 
-Runs Jest via yarn test.
+Runs Jest via pnpm run test.
 
-### yarn commit
+### pnpm run commit
 
 An optional way to use `git cz` if you don't want to install `commitizen` globally.
 
@@ -103,7 +103,7 @@ Please make sure to read the [Issue Reporting Checklist](./.github/ISSUE_TEMPLAT
 
 ### Commitizen
 
-This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally or use `yarn commit` instead.
+This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally or use `pnpm run commit` instead.
 
 ### Env Files
 
