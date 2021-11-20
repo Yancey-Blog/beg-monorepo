@@ -1,0 +1,17 @@
+{
+  "name": "blog-web",
+  "entries": [
+    {
+      "version": "4.16.0",
+      "tag": "blog-web_v4.16.0",
+      "date": "Sat, 20 Nov 2021 12:59:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "follow the advice of eslint and stylelint"
+          }
+        ]
+      }
+    }
+  ]
+}
