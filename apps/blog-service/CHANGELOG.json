@@ -1,0 +1,17 @@
+{
+  "name": "blog-service",
+  "entries": [
+    {
+      "version": "2.1.0",
+      "tag": "blog-service_v2.1.0",
+      "date": "Sat, 20 Nov 2021 16:12:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add lint-staged"
+          }
+        ]
+      }
+    }
+  ]
+}

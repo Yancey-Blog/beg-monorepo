@@ -1,0 +1,17 @@
+{
+  "name": "uploader-service",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "uploader-service_v0.1.0",
+      "date": "Sat, 20 Nov 2021 16:12:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add lint-staged"
+          }
+        ]
+      }
+    }
+  ]
+}
