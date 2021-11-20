@@ -61,7 +61,10 @@ module.exports = (phase, { defaultConfig }) => {
       productionBrowserSourceMaps: true,
       pwa: {
         dest: 'public',
-        runtimeCaching
+        runtimeCaching,
+        register: true,
+        skipWaiting: true,
+        disable: process.env.NODE_ENV === 'development',
       },
       images: {
         // TODO: 清洗完数据下掉 'static.yancey.app'
