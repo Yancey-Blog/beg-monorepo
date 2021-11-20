@@ -187,6 +187,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "babel-loader",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "babel-plugin-import",
       "allowedCategories": [ "apps" ]
     },
