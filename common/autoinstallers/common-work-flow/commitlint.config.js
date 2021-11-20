@@ -12,7 +12,7 @@ rushConfiguration.projects.forEach((project) => {
 })
 
 // const allScope = ['*', ...packageDirNames, ...packageNames]
-const allScope = ['*', ...packageNames]
+const allScope = ['*', 'deps', ...packageNames]
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],

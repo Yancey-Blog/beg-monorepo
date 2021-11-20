@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "blog-web",
+      "comment": "follow the advice of eslint and stylelint",
+      "type": "minor"
+    }
+  ],
+  "packageName": "blog-web"
+}
