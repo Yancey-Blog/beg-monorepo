@@ -71,6 +71,15 @@ If you want to build `specified` project, use `rush build -o YOUR_SUB_PROJECT`.
 
 If you want to execute script of `package.json` in one project, you can use the `rushx` command. You run it under the project folder that you want to operate on. The `rushx` command is analogous to `pnpm run`, but with slightly less typing, slightly better error reporting, and command-line help.
 
+### `rush change`
+
+Note your changes will eventually be published in a changelog.md file in each package. The `publish` or `version` command will consume these files and
+perform the proper version bumps.
+
+### ```rush version --bump```
+
+Uses this command to bump the version of the package and generate a changelog. Please execute this command after you have made changes to the package and executed `rush change`.
+
 ## Contributing
 
 The main purpose of this repository is to continue to evolve BEG (Blog Environment Group), making it faster and easier to use. Development of Blog Desktop v2 happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Blog Desktop v2.
