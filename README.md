@@ -82,7 +82,7 @@ Uses this command to bump the version of the package and generate a changelog. P
 
 ## Contributing
 
-The main purpose of this repository is to continue to evolve BEG (Blog Environment Group), making it faster and easier to use. Development of Blog Desktop v2 happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Blog Desktop v2.
+The main purpose of this repository is to continue to evolve BEG (Blog Environment Group), making it faster and easier to use. Development of BEG happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving BEG.
 
 ### [Code of Conduct](./CODE_OF_CONDUCT.md)
 
@@ -90,7 +90,7 @@ The main purpose of this repository is to continue to evolve BEG (Blog Environme
 
 ### [Contributing Guide](./CONTRIBUTING.md)
 
-Read our [contributing guide](./CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Blog Desktop v2.
+Read our [contributing guide](./CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to BEG.
 
 ### Good Issues
 
