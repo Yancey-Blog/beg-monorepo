@@ -51,7 +51,6 @@ _This library is part of the [BEG (Blog Environment Group)](https://github.com/Y
     - [Commitizen](#commitizen)
     - [Env Files](#env-files)
     - [E2E Testing](#e2e-testing)
-  - [Changelogs](#changelogs)
   - [TODOs](#todos)
   - [License](#license)
 
@@ -132,24 +131,6 @@ NEED_SIMULATE_NETWORK_THROTTLE=<BOOLEAN>
 ### E2E Testing
 
 We use e2e testing for every module and test them at CI stage, you must write related test cases before PR.
-
-[⇧ back to top](#Menu)
-
-## Changelogs
-
-The following are **prehistoric changelogs** on building infrastructure for this app. Just as a memorial. See the real detailed changes for each release are documented in the [CHANGELOG](./CHANGELOG.md).
-
-- 2019-12-03 Integrates e2e testing.
-
-- 2019-11-26 Integrates JWT.
-
-- 2019-11-07 Integrates dotenv.
-
-- 2019-11-04 Integrates GraphQL.
-
-- 2019-10-20 Integrates MongoDB and write the first RESTful CRUD.
-
-- 2019-10-12 Initital repo.
 
 [⇧ back to top](#Menu)
 
