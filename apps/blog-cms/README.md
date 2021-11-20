@@ -36,19 +36,19 @@ _This library is part of the [BEG (Blog Environment Group)](https://github.com/Y
 
 In the project directory, you can run:
 
-### `yarn start`
+### `pnpm run start`
 
 Runs the app in the development mode. Open [http://localhost:3001](http://localhost:3001) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
 
-### `yarn build`
+### `pnpm run build`
 
 Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed! See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn lint`
+### `pnpm run lint`
 
 Checks the codes by eslint, we will lint them before commit automatically.
 
-### `yarn commit`
+### `pnpm run commit`
 
 An optional way to use `git cz` if you don't want to install `commitizen` globally.
 
@@ -134,7 +134,7 @@ Please make sure to read the [Issue Reporting Checklist](./.github/ISSUE_TEMPLAT
 
 ### Semantic Commit
 
-This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally or use `yarn commit` instead.
+This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally or use `pnpm run commit` instead.
 
 ### Env File
 
