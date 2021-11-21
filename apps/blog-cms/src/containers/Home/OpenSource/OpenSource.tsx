@@ -6,7 +6,7 @@ import {
   CREATE_ONE_OPEN_SOURCE,
   UPDATE_ONE_OPEN_SOURCE,
   DELETE_ONE_OPEN_SOURCE,
-  BATCH_DELETE_OPEN_SOURCE,
+  BATCH_DELETE_OPEN_SOURCE
 } from './typeDefs'
 import { IOpenSource, Query } from './types'
 import OpenSourceTable from './components/OpenSourceTable'
@@ -15,7 +15,7 @@ const OpenSource: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(OPEN_SOURCES, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createOpenSource] = useMutation(CREATE_ONE_OPEN_SOURCE, {
@@ -27,8 +27,8 @@ const OpenSource: FC = () => {
           query: OPEN_SOURCES,
           data: {
             ...data,
-            getOpenSources: [createOpenSource, ...data.getOpenSources],
-          },
+            getOpenSources: [createOpenSource, ...data.getOpenSources]
+          }
         })
       }
     },
@@ -36,13 +36,13 @@ const OpenSource: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateOpenSourceById] = useMutation(UPDATE_ONE_OPEN_SOURCE, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
-    },
+    }
   })
 
   const [deleteOpenSourceById, { loading: isDeleting }] = useMutation(
@@ -57,17 +57,17 @@ const OpenSource: FC = () => {
             data: {
               getOpenSources: data.getOpenSources.filter(
                 (openSource: IOpenSource) =>
-                  openSource._id !== deleteOpenSourceById._id,
-              ),
-            },
+                  openSource._id !== deleteOpenSourceById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteOpenSources, { loading: isBatchDeleting }] = useMutation(
@@ -82,17 +82,17 @@ const OpenSource: FC = () => {
             data: {
               getOpenSources: data.getOpenSources.filter(
                 (openSource: IOpenSource) =>
-                  !deleteOpenSources.ids.includes(openSource._id),
-              ),
-            },
+                  !deleteOpenSources.ids.includes(openSource._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

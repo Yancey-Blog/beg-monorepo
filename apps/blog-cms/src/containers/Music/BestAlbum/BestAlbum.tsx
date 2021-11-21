@@ -6,7 +6,7 @@ import {
   CREATE_ONE_BEST_ALBUM,
   UPDATE_ONE_BEST_ALBUM,
   DELETE_ONE_BEST_ALBUM,
-  BATCH_DELETE_BEST_ALBUMS,
+  BATCH_DELETE_BEST_ALBUMS
 } from './typeDefs'
 import { IBestAlbum, Query } from './types'
 import BestAlbumTable from './components/BestAlbumTable'
@@ -15,7 +15,7 @@ const BestAlbum: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(BEST_ALBUMS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createBestAlbum] = useMutation(CREATE_ONE_BEST_ALBUM, {
@@ -27,8 +27,8 @@ const BestAlbum: FC = () => {
           query: BEST_ALBUMS,
           data: {
             ...data,
-            getBestAlbums: [createBestAlbum, ...data.getBestAlbums],
-          },
+            getBestAlbums: [createBestAlbum, ...data.getBestAlbums]
+          }
         })
       }
     },
@@ -36,13 +36,13 @@ const BestAlbum: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateBestAlbumById] = useMutation(UPDATE_ONE_BEST_ALBUM, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
-    },
+    }
   })
 
   const [deleteBestAlbumById, { loading: isDeleting }] = useMutation(
@@ -57,17 +57,17 @@ const BestAlbum: FC = () => {
             data: {
               getBestAlbums: data.getBestAlbums.filter(
                 (bestAlbum: IBestAlbum) =>
-                  bestAlbum._id !== deleteBestAlbumById._id,
-              ),
-            },
+                  bestAlbum._id !== deleteBestAlbumById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteBestAlbums, { loading: isBatchDeleting }] = useMutation(
@@ -82,17 +82,17 @@ const BestAlbum: FC = () => {
             data: {
               getBestAlbums: data.getBestAlbums.filter(
                 (bestAlbum: IBestAlbum) =>
-                  !deleteBestAlbums.ids.includes(bestAlbum._id),
-              ),
-            },
+                  !deleteBestAlbums.ids.includes(bestAlbum._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

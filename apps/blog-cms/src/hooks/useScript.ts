@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export const useScriptUrl = (
   url: string,
   isAsync = true,
-  htmlEl?: HTMLElement,
+  htmlEl?: HTMLElement
 ) => {
   useEffect(() => {
     const $scriptEl = document.createElement('script')

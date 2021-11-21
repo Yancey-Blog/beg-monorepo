@@ -20,5 +20,5 @@ export interface IBandwagonUsageStatus {
 
 export enum PostRankListType {
   PV,
-  LIKE,
+  LIKE
 }

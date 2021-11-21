@@ -5,7 +5,7 @@ const chartConfig = (
   usageStatus: IBandwagonUsageStatus[],
   limit: number,
   type1: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>,
-  type2?: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>,
+  type2?: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>
 ) => ({
   labels: usageStatus
     .map(({ timestamp }) => DateTime.fromSeconds(+timestamp).toFormat('HH:mm'))
@@ -30,7 +30,7 @@ const chartConfig = (
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: usageStatus.map((usageStat) => usageStat[type1]).slice(-limit),
+      data: usageStatus.map((usageStat) => usageStat[type1]).slice(-limit)
     },
     type2 && {
       label: type2.split('_').join(' ').toUpperCase(),
@@ -51,9 +51,9 @@ const chartConfig = (
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: usageStatus.map((usageStat) => usageStat[type2]).slice(-limit),
-    },
-  ].filter(Boolean),
+      data: usageStatus.map((usageStat) => usageStat[type2]).slice(-limit)
+    }
+  ].filter(Boolean)
 })
 
 export default chartConfig

@@ -26,7 +26,7 @@ const NetWorkChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
               usageStatus,
               networkLimit,
               'network_in_bytes',
-              'network_out_bytes',
+              'network_out_bytes'
             )}
             options={{ maintainAspectRatio: false }}
             height={375}

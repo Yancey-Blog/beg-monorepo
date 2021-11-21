@@ -17,7 +17,7 @@ const GlobalConfig: FC = () => {
 
   const [fetchPostsByPage, { loading: isFetchingPosts, data: postsData }] =
     useLazyQuery<PostsQuery>(POSTS, {
-      notifyOnNetworkStatusChange: true,
+      notifyOnNetworkStatusChange: true
     })
 
   const fetchPosts = (title: string) => {
@@ -26,14 +26,14 @@ const GlobalConfig: FC = () => {
         input: {
           page: 1,
           pageSize: 10,
-          title,
-        },
-      },
+          title
+        }
+      }
     })
   }
 
   const { loading: isFetching, data } = useQuery<Query>(GLOBAL_SETTING, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [updateGlobalSettingById, { loading: isSubmitting }] = useMutation(
@@ -42,8 +42,8 @@ const GlobalConfig: FC = () => {
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

@@ -21,23 +21,23 @@ const Account: FC = () => {
     onCompleted(data) {
       if (data.updateUserName) {
         enqueueSnackbar(`Your username has been updated! Please Re-Login.`, {
-          variant: 'success',
+          variant: 'success'
         })
 
         logout()
       }
-    },
+    }
   })
 
   const [updateEmail] = useMutation(UPDATE_EMAIL, {
     onCompleted(data) {
       if (data.updateEmail) {
         enqueueSnackbar(`Your email has been updated! Please Re-Login.`, {
-          variant: 'success',
+          variant: 'success'
         })
         logout()
       }
-    },
+    }
   })
 
   const [deleteAccount, { loading: isDeletingAccount }] = useMutation(
@@ -47,13 +47,13 @@ const Account: FC = () => {
         enqueueSnackbar(
           `Your account has been deleted successfully! Just fuck off.`,
           {
-            variant: 'success',
-          },
+            variant: 'success'
+          }
         )
 
         logout()
-      },
-    },
+      }
+    }
   )
 
   return (

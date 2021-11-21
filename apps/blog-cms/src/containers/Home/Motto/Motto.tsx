@@ -7,7 +7,7 @@ import {
   UPDATE_ONE_MOTTO,
   DELETE_ONE_MOTTO,
   BATCH_DELETE_MOTTO,
-  EXCHANGE_POSITION,
+  EXCHANGE_POSITION
 } from './typeDefs'
 import { IMotto, Query } from './types'
 import MottoTable from './components/MottoTable'
@@ -16,7 +16,7 @@ const Motto: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(MOTTOS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createMotto] = useMutation(CREATE_ONE_MOTTO, {
@@ -28,8 +28,8 @@ const Motto: FC = () => {
           query: MOTTOS,
           data: {
             ...data,
-            getMottos: [createMotto, ...data.getMottos],
-          },
+            getMottos: [createMotto, ...data.getMottos]
+          }
         })
       }
     },
@@ -37,14 +37,14 @@ const Motto: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateMottoById] = useMutation(UPDATE_ONE_MOTTO, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [exchangePosition, { loading: isExchanging }] = useMutation(
@@ -53,8 +53,8 @@ const Motto: FC = () => {
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteMottoById, { loading: isDeleting }] = useMutation(
@@ -69,17 +69,17 @@ const Motto: FC = () => {
             data: {
               getMottos: data.getMottos.filter(
                 (announcement: IMotto) =>
-                  announcement._id !== deleteMottoById._id,
-              ),
-            },
+                  announcement._id !== deleteMottoById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteMottos, { loading: isBatchDeleting }] = useMutation(
@@ -94,17 +94,17 @@ const Motto: FC = () => {
             data: {
               getMottos: data.getMottos.filter(
                 (announcement: IMotto) =>
-                  !deleteMottos.ids.includes(announcement._id),
-              ),
-            },
+                  !deleteMottos.ids.includes(announcement._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

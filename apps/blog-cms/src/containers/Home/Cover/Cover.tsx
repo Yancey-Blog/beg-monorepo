@@ -8,7 +8,7 @@ import {
   DELETE_ONE_COVER,
   BATCH_DELETE_COVERS,
   BATCH_PUBLIC_COVERS,
-  EXCHANGE_POSITION,
+  EXCHANGE_POSITION
 } from './typeDefs'
 import { ICover, Query } from './types'
 import CoverTable from './components/CoverTable'
@@ -17,7 +17,7 @@ const Cover: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(COVERS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createCover] = useMutation(CREATE_ONE_COVER, {
@@ -29,8 +29,8 @@ const Cover: FC = () => {
           query: COVERS,
           data: {
             ...data,
-            getCovers: [createCover, ...data.getCovers],
-          },
+            getCovers: [createCover, ...data.getCovers]
+          }
         })
       }
     },
@@ -38,14 +38,14 @@ const Cover: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateCoverById] = useMutation(UPDATE_ONE_COVER, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [exchangePosition, { loading: isExchanging }] = useMutation(
@@ -54,8 +54,8 @@ const Cover: FC = () => {
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [publicCovers, { loading: isPublicingCovers }] = useMutation(
@@ -66,9 +66,7 @@ const Cover: FC = () => {
 
         // @ts-ignore
         const res = data.getCovers.map((cover) =>
-          publicCovers.ids.includes(cover._id)
-            ? (cover.isPublic = false)
-            : null,
+          publicCovers.ids.includes(cover._id) ? (cover.isPublic = false) : null
         )
 
         if (data) {
@@ -76,16 +74,16 @@ const Cover: FC = () => {
             query: COVERS,
             data: {
               ...data,
-              getCovers: [...res],
-            },
+              getCovers: [...res]
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteCoverById, { loading: isDeleting }] = useMutation(
@@ -100,17 +98,17 @@ const Cover: FC = () => {
             data: {
               getCovers: data.getCovers.filter(
                 (announcement: ICover) =>
-                  announcement._id !== deleteCoverById._id,
-              ),
-            },
+                  announcement._id !== deleteCoverById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteCovers, { loading: isBatchDeleting }] = useMutation(
@@ -125,17 +123,17 @@ const Cover: FC = () => {
             data: {
               getCovers: data.getCovers.filter(
                 (announcement: ICover) =>
-                  !deleteCovers.ids.includes(announcement._id),
-              ),
-            },
+                  !deleteCovers.ids.includes(announcement._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

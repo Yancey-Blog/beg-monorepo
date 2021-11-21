@@ -6,18 +6,18 @@ import {
   DELETE_ONE_POST,
   BATCH_DELETE_POSTS,
   UPDATE_ONE_POST,
-  CREATE_POST_STATISTICS,
+  CREATE_POST_STATISTICS
 } from './typeDefs'
 import {
   Query,
   UpdatePostByIdMutation,
   PostStatisticsVars,
-  CreatePostStatisticsMutation,
+  CreatePostStatisticsMutation
 } from './types'
 import PostTable from './components/PostTable'
 import {
   deletePostOnAlgolia,
-  deletePostsOnAlgolia,
+  deletePostsOnAlgolia
 } from './algolia/algoliaSearch'
 
 const Post: FC = () => {
@@ -26,8 +26,8 @@ const Post: FC = () => {
   const [fetchPostsByPage, { loading: isFetching, data }] = useLazyQuery<Query>(
     POSTS,
     {
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   const fetchFirstData = useCallback(() => {
@@ -35,9 +35,9 @@ const Post: FC = () => {
       variables: {
         input: {
           page: 1,
-          pageSize: 10,
-        },
-      },
+          pageSize: 10
+        }
+      }
     })
   }, [fetchPostsByPage])
 
@@ -52,7 +52,7 @@ const Post: FC = () => {
       onCompleted(data) {
         const { _id, title, isPublic } = data.updatePostById
         enqueueSnackbar(`「${title}」 is ${isPublic ? 'public' : 'hide'}.`, {
-          variant: 'success',
+          variant: 'success'
         })
 
         createPostStatistics({
@@ -60,12 +60,12 @@ const Post: FC = () => {
             input: {
               postId: _id,
               postName: title,
-              scenes: `switched to ${isPublic ? 'public' : 'hide'}`,
-            },
-          },
+              scenes: `switched to ${isPublic ? 'public' : 'hide'}`
+            }
+          }
         })
-      },
-    },
+      }
+    }
   )
 
   const [deletePostById, { loading: isDeleting }] = useMutation(
@@ -76,8 +76,8 @@ const Post: FC = () => {
         enqueueSnackbar('Delete success!', { variant: 'success' })
         fetchFirstData()
         deletePostOnAlgolia(_id)
-      },
-    },
+      }
+    }
   )
 
   const [deletePosts, { loading: isBatchDeleting }] = useMutation(
@@ -88,8 +88,8 @@ const Post: FC = () => {
         enqueueSnackbar('Delete success!', { variant: 'success' })
         fetchFirstData()
         deletePostsOnAlgolia(ids)
-      },
-    },
+      }
+    }
   )
 
   useEffect(() => {

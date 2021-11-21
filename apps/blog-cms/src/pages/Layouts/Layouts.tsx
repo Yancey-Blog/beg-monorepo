@@ -21,7 +21,7 @@ const Layouts: FC = () => {
       <section
         className={classNames(
           classes.mainWrapper,
-          open ? classes.expand : classes.shrink,
+          open ? classes.expand : classes.shrink
         )}
       >
         <Header open={open} handleDrawerChange={handleDrawerChange} />

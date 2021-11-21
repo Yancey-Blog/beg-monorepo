@@ -5,7 +5,7 @@ import {
   GET_TOP_PV_POSTS,
   GET_TOP_LIKE_POSTS,
   GET_ALL_TAGS,
-  GET_POST_STATISTICS,
+  GET_POST_STATISTICS
 } from '../Post/typeDefs'
 import { PostRankListType } from './types'
 import useStyles from './styles'
@@ -23,42 +23,42 @@ const DashBoard: FC = () => {
   const { loading: isFechingServiceInfo, data: serviceInfo } = useQuery(
     GET_BANWAGON_SERVICE_INFO,
     {
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   const { loading: isFetchingUsageStatus, data: usageStatus } = useQuery(
     GET_BANWAGON_USAGE_STATS,
     {
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   const { loading: isFetchingTopPVPosts, data: topPVPosts } = useQuery(
     GET_TOP_PV_POSTS,
     {
       variables: { limit: 5 },
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   const { loading: isFetchingTopLikePosts, data: topLikePosts } = useQuery(
     GET_TOP_LIKE_POSTS,
     {
       variables: { limit: 5 },
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   const { loading: isFetchingAllTags, data: allTags } = useQuery(GET_ALL_TAGS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const { loading: isFechingPostStatistics, data: postStatistics } = useQuery(
     GET_POST_STATISTICS,
     {
-      notifyOnNetworkStatusChange: true,
-    },
+      notifyOnNetworkStatusChange: true
+    }
   )
 
   return (

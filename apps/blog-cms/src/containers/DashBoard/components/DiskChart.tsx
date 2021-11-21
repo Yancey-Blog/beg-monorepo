@@ -26,7 +26,7 @@ const DiskChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
               usageStatus,
               diskLimit,
               'disk_write_bytes',
-              'disk_read_bytes',
+              'disk_read_bytes'
             )}
             options={{ maintainAspectRatio: false }}
             height={375}

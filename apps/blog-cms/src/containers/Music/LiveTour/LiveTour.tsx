@@ -6,7 +6,7 @@ import {
   CREATE_ONE_LIVE_TOUR,
   UPDATE_ONE_LIVE_TOUR,
   DELETE_ONE_LIVE_TOUR,
-  BATCH_DELETE_LIVE_TOUR,
+  BATCH_DELETE_LIVE_TOUR
 } from './typeDefs'
 import { ILiveTour, Query } from './types'
 import LiveTourTable from './components/LiveTourTable'
@@ -15,7 +15,7 @@ const LiveTour: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(LIVE_TOURS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createLiveTour] = useMutation(CREATE_ONE_LIVE_TOUR, {
@@ -27,8 +27,8 @@ const LiveTour: FC = () => {
           query: LIVE_TOURS,
           data: {
             ...data,
-            getLiveTours: [createLiveTour, ...data.getLiveTours],
-          },
+            getLiveTours: [createLiveTour, ...data.getLiveTours]
+          }
         })
       }
     },
@@ -36,13 +36,13 @@ const LiveTour: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateLiveTourById] = useMutation(UPDATE_ONE_LIVE_TOUR, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
-    },
+    }
   })
 
   const [deleteLiveTourById, { loading: isDeleting }] = useMutation(
@@ -56,18 +56,17 @@ const LiveTour: FC = () => {
             query: LIVE_TOURS,
             data: {
               getLiveTours: data.getLiveTours.filter(
-                (liveTour: ILiveTour) =>
-                  liveTour._id !== deleteLiveTourById._id,
-              ),
-            },
+                (liveTour: ILiveTour) => liveTour._id !== deleteLiveTourById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteLiveTours, { loading: isBatchDeleting }] = useMutation(
@@ -82,17 +81,17 @@ const LiveTour: FC = () => {
             data: {
               getLiveTours: data.getLiveTours.filter(
                 (liveTour: ILiveTour) =>
-                  !deleteLiveTours.ids.includes(liveTour._id),
-              ),
-            },
+                  !deleteLiveTours.ids.includes(liveTour._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

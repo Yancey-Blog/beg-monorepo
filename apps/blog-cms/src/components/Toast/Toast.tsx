@@ -36,7 +36,7 @@ const toast = {
   },
   toast(msg: string, variant: VariantType = 'default') {
     useSnackbarRef.enqueueSnackbar(msg, { variant })
-  },
+  }
 }
 
 export default toast

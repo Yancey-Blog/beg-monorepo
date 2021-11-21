@@ -7,7 +7,7 @@ import {
   UPDATE_ONE_PLAYER,
   DELETE_ONE_PLAYER,
   BATCH_DELETE_PLAYER,
-  EXCHANGE_POSITION,
+  EXCHANGE_POSITION
 } from './typeDefs'
 import { IPlayer, Query } from './types'
 import PlayerTable from './components/PlayerTable'
@@ -16,7 +16,7 @@ const Player: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(PLAYERS, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createPlayer] = useMutation(CREATE_ONE_PLAYER, {
@@ -28,8 +28,8 @@ const Player: FC = () => {
           query: PLAYERS,
           data: {
             ...data,
-            getPlayers: [createPlayer, ...data.getPlayers],
-          },
+            getPlayers: [createPlayer, ...data.getPlayers]
+          }
         })
       }
     },
@@ -37,13 +37,13 @@ const Player: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updatePlayerById] = useMutation(UPDATE_ONE_PLAYER, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
-    },
+    }
   })
 
   const [exchangePosition, { loading: isExchanging }] = useMutation(
@@ -52,8 +52,8 @@ const Player: FC = () => {
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deletePlayerById, { loading: isDeleting }] = useMutation(
@@ -67,17 +67,17 @@ const Player: FC = () => {
             query: PLAYERS,
             data: {
               getPlayers: data.getPlayers.filter(
-                (player: IPlayer) => player._id !== deletePlayerById._id,
-              ),
-            },
+                (player: IPlayer) => player._id !== deletePlayerById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deletePlayers, { loading: isBatchDeleting }] = useMutation(
@@ -91,17 +91,17 @@ const Player: FC = () => {
             query: PLAYERS,
             data: {
               getPlayers: data.getPlayers.filter(
-                (player: IPlayer) => !deletePlayers.ids.includes(player._id),
-              ),
-            },
+                (player: IPlayer) => !deletePlayers.ids.includes(player._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

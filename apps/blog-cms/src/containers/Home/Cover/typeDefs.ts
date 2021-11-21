@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 import {
   BATCH_DELETE_FRAGMENT,
-  BATCH_UPDATE_FRAGMENT,
+  BATCH_UPDATE_FRAGMENT
 } from 'src/graphql/graphqlFragment'
 
 const COVER_FRAGMENT = gql`

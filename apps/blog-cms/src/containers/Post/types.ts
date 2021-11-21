@@ -60,7 +60,7 @@ export interface UpdatePostVars {
 
 export enum SaveType {
   DRAFT,
-  FINALIZE,
+  FINALIZE
 }
 
 /* PostStatistics */

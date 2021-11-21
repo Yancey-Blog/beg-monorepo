@@ -22,8 +22,8 @@ const Mains: FC = () => {
             component={loadable(
               () => import(`src/containers/${route.component}`),
               {
-                fallback: <Loading />,
-              },
+                fallback: <Loading />
+              }
             )}
           />
         ))}

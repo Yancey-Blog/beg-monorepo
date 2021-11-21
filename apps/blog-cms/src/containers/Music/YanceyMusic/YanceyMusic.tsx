@@ -6,7 +6,7 @@ import {
   CREATE_ONE_YANCEY_MUSIC,
   UPDATE_ONE_YANCEY_MUSIC,
   DELETE_ONE_YANCEY_MUSIC,
-  BATCH_DELETE_YANCEY_MUSIC,
+  BATCH_DELETE_YANCEY_MUSIC
 } from './typeDefs'
 import { IYanceyMusic, Query } from './types'
 import YanceyMusicTable from './components/YanceyMusicTable'
@@ -15,7 +15,7 @@ const YanceyMusic: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   const { loading: isFetching, data } = useQuery<Query>(YANCEY_MUSIC, {
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true
   })
 
   const [createYanceyMusic] = useMutation(CREATE_ONE_YANCEY_MUSIC, {
@@ -27,8 +27,8 @@ const YanceyMusic: FC = () => {
           query: YANCEY_MUSIC,
           data: {
             ...data,
-            getYanceyMusic: [createYanceyMusic, ...data.getYanceyMusic],
-          },
+            getYanceyMusic: [createYanceyMusic, ...data.getYanceyMusic]
+          }
         })
       }
     },
@@ -36,13 +36,13 @@ const YanceyMusic: FC = () => {
     onCompleted() {
       enqueueSnackbar('Create success!', { variant: 'success' })
     },
-    onError() {},
+    onError() {}
   })
 
   const [updateYanceyMusicById] = useMutation(UPDATE_ONE_YANCEY_MUSIC, {
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
-    },
+    }
   })
 
   const [deleteYanceyMusicById, { loading: isDeleting }] = useMutation(
@@ -57,17 +57,17 @@ const YanceyMusic: FC = () => {
             data: {
               getYanceyMusic: data.getYanceyMusic.filter(
                 (yanceyMusic: IYanceyMusic) =>
-                  yanceyMusic._id !== deleteYanceyMusicById._id,
-              ),
-            },
+                  yanceyMusic._id !== deleteYanceyMusicById._id
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteYanceyMusic, { loading: isBatchDeleting }] = useMutation(
@@ -82,17 +82,17 @@ const YanceyMusic: FC = () => {
             data: {
               getYanceyMusic: data.getYanceyMusic.filter(
                 (yanceyMusic: IYanceyMusic) =>
-                  !deleteYanceyMusic.ids.includes(yanceyMusic._id),
-              ),
-            },
+                  !deleteYanceyMusic.ids.includes(yanceyMusic._id)
+              )
+            }
           })
         }
       },
       onCompleted() {
         enqueueSnackbar('Delete success!', { variant: 'success' })
       },
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

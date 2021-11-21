@@ -7,7 +7,7 @@ import {
   UPDATE_ONE_ANNOUNCEMENT,
   DELETE_ONE_ANNOUNCEMENT,
   BATCH_DELETE_ANNOUNCEMENT,
-  EXCHANGE_POSITION,
+  EXCHANGE_POSITION
 } from './typeDefs'
 import {
   IAnnouncement,
@@ -15,7 +15,7 @@ import {
   CreateAnnouncementMutation,
   CreateAnnouncementVars,
   DeleteAnnouncementByIdMutation,
-  DeleteAnnouncementByIdVars,
+  DeleteAnnouncementByIdVars
 } from './types'
 import AnnouncementTable from './components/AnnouncementTable'
 
@@ -24,7 +24,7 @@ const Announcement: FC = () => {
 
   const { loading: isFetching, data } = useQuery<Query>(ANNOUNCEMENTS, {
     notifyOnNetworkStatusChange: true,
-    onError() {},
+    onError() {}
   })
 
   const [createAnnouncement] = useMutation<
@@ -41,9 +41,9 @@ const Announcement: FC = () => {
             ...data,
             getAnnouncements: [
               updateData?.createAnnouncement,
-              ...data.getAnnouncements,
-            ],
-          },
+              ...data.getAnnouncements
+            ]
+          }
         })
       }
     },
@@ -52,7 +52,7 @@ const Announcement: FC = () => {
       enqueueSnackbar('Create announcement success!', { variant: 'success' })
     },
 
-    onError() {},
+    onError() {}
   })
 
   const [updateAnnouncementById] = useMutation(UPDATE_ONE_ANNOUNCEMENT, {
@@ -60,7 +60,7 @@ const Announcement: FC = () => {
       enqueueSnackbar('Update announcement success!', { variant: 'success' })
     },
 
-    onError() {},
+    onError() {}
   })
 
   const [exchangePosition, { loading: isExchanging }] = useMutation(
@@ -70,8 +70,8 @@ const Announcement: FC = () => {
         enqueueSnackbar('Exchange position success!', { variant: 'success' })
       },
 
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   const [deleteAnnouncementById, { loading: isDeleting }] = useMutation<
@@ -87,9 +87,9 @@ const Announcement: FC = () => {
           data: {
             getAnnouncements: data.getAnnouncements.filter(
               (announcement: IAnnouncement) =>
-                announcement._id !== updateData?.deleteAnnouncementById._id,
-            ),
-          },
+                announcement._id !== updateData?.deleteAnnouncementById._id
+            )
+          }
         })
       }
     },
@@ -97,7 +97,7 @@ const Announcement: FC = () => {
       enqueueSnackbar('Delete announcement success!', { variant: 'success' })
     },
 
-    onError() {},
+    onError() {}
   })
 
   const [deleteAnnouncements, { loading: isBatchDeleting }] = useMutation(
@@ -112,9 +112,9 @@ const Announcement: FC = () => {
             data: {
               getAnnouncements: data.getAnnouncements.filter(
                 (announcement: IAnnouncement) =>
-                  !deleteAnnouncements.ids.includes(announcement._id),
-              ),
-            },
+                  !deleteAnnouncements.ids.includes(announcement._id)
+              )
+            }
           })
         }
       },
@@ -122,8 +122,8 @@ const Announcement: FC = () => {
         enqueueSnackbar('Delete announcements success!', { variant: 'success' })
       },
 
-      onError() {},
-    },
+      onError() {}
+    }
   )
 
   return (

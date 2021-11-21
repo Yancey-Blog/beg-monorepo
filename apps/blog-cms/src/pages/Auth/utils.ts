@@ -4,7 +4,7 @@ export const getBackgroundUrl = () => {
   const backgrounds = [
     'login-bg-light.jpg',
     'login-bg-dark.jpg',
-    'login-bg-deep-dark.png',
+    'login-bg-deep-dark.png'
   ]
   const hour = new Date().getHours()
   let backgroundUrl = `${AZURE_BLOB_PATH}/`
