@@ -64,8 +64,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERN
-          AME }}
+          username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: sh ./@beg-monorepo-blog-cms-deploy.sh
 
