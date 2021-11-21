@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "3.19.0",
+      "tag": "blog-cms_v3.19.0",
+      "date": "Sun, 21 Nov 2021 06:04:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update graphql error strategy"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.18.0",
       "tag": "blog-cms_v3.18.0",
       "date": "Sat, 20 Nov 2021 12:59:36 GMT",
