@@ -1,16 +1,13 @@
 name: GitHub Actions for Blog CMS
 
-on:
-  push:
-    path:
-      - 'apps/blog-cms/**'
-  pull_request:
-    path:
-      - 'apps/blog-cms/**'
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./apps/blog-cms
     steps:
       - uses: actions/checkout@v2
 
