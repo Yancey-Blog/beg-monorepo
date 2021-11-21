@@ -20,11 +20,11 @@ jobs:
           node-version: '14.x'
 
       - name: Install Pnpm
-      - uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.22.2
 
-      - name: Install rush.js
+      - name: Install rush.js globally
         run: pnpm add @microsoft/rush --global
 
       - name: Install dependencies
