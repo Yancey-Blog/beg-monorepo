@@ -25,14 +25,14 @@ describe('LiveToursController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -45,7 +45,7 @@ describe('LiveToursController (e2e)', () => {
   const createdData: CreateLiveTourInput = {
     title: 'blog-be-next',
     showTime: new Date(),
-    posterUrl: 'https://yaneyleo.com',
+    posterUrl: 'https://yaneyleo.com'
   }
 
   let id = ''
@@ -54,10 +54,13 @@ describe('LiveToursController (e2e)', () => {
     id,
     title: 'blog-cms-v2',
     showTime: new Date(),
-    posterUrl: 'https://yaneyleo.com',
+    posterUrl: 'https://yaneyleo.com'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createLiveTour', () => {
@@ -77,7 +80,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: LiveTourModel = body.data.createLiveTour
@@ -108,7 +111,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: LiveTourModel[] = body.data.getLiveTours
@@ -141,7 +144,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: LiveTourModel = body.data.getLiveTourById
@@ -155,7 +158,10 @@ describe('LiveToursController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateLiveTourById', () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateLiveTourById {
@@ -173,7 +179,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: LiveTourModel = body.data.updateLiveTourById
@@ -201,7 +207,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: LiveTourModel = body.data.deleteLiveTourById
@@ -227,7 +233,7 @@ describe('LiveToursController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteLiveTours

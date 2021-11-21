@@ -8,7 +8,7 @@ import { CreatePostStatisticsInput } from './dtos/create-post-statistics.input'
 export class PostStatisticsService {
   constructor(
     @InjectModel('PostStatistics')
-    private readonly postStatisticsModel: Model<PostStatistics>,
+    private readonly postStatisticsModel: Model<PostStatistics>
   ) {
     this.postStatisticsModel = postStatisticsModel
   }
@@ -25,11 +25,11 @@ export class PostStatisticsService {
                 postId: '$postId',
                 postName: '$postName',
                 scenes: '$scenes',
-                operatedAt: '$createdAt',
-              },
-            },
-          },
-        },
+                operatedAt: '$createdAt'
+              }
+            }
+          }
+        }
       ])
       .sort({ _id: -1 })
 

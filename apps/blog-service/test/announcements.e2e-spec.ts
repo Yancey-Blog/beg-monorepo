@@ -26,14 +26,14 @@ describe('AnnouncementsController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -45,17 +45,20 @@ describe('AnnouncementsController (e2e)', () => {
   })
 
   const createdData: CreateAnnouncementInput = {
-    content: 'blog-be-next',
+    content: 'blog-be-next'
   }
 
   let id = ''
 
   const updatedData: UpdateAnnouncementInput = {
     id,
-    content: 'blog-be-cms',
+    content: 'blog-be-cms'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createAnnouncement', async () => {
@@ -71,7 +74,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: AnnouncementModel = body.data.createAnnouncement
@@ -89,7 +92,7 @@ describe('AnnouncementsController (e2e)', () => {
         id,
         exchangedId: id,
         weight: 1,
-        exchangedWeight: 1,
+        exchangedWeight: 1
       }).replace(/"([^(")"]+)":/g, '$1:')}) {
         _id
         content
@@ -100,10 +103,11 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: exchangeTypeDefs,
+        query: exchangeTypeDefs
       })
       .expect(({ body }) => {
-        const testData: AnnouncementModel[] = body.data.exchangePositionAnnouncement
+        const testData: AnnouncementModel[] =
+          body.data.exchangePositionAnnouncement
         const firstData = testData[0]
         expect(firstData.content).toBe(createdData.content)
       })
@@ -124,7 +128,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: AnnouncementModel[] = body.data.getAnnouncements
@@ -152,7 +156,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: AnnouncementModel = body.data.getAnnouncementById
@@ -165,7 +169,10 @@ describe('AnnouncementsController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateAnnouncementById', async () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateAnnouncementById {
@@ -179,7 +186,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: AnnouncementModel = body.data.updateAnnouncementById
@@ -202,7 +209,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: AnnouncementModel = body.data.deleteAnnouncementById
@@ -227,7 +234,7 @@ describe('AnnouncementsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteAnnouncements

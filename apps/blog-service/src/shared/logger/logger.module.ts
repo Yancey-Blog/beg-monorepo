@@ -12,7 +12,7 @@ const {
   prettyPrint,
   colorize,
   label,
-  splat,
+  splat
 } = winston.format
 
 @Module({
@@ -26,29 +26,29 @@ const {
         ms(),
         prettyPrint(),
         label({
-          label: '[BEG SERVICE] ',
+          label: '[BEG SERVICE] '
         }),
-        splat(),
+        splat()
       ),
       transports: [
         new winston.transports.File({
           level: 'error',
           filename: `error-${DateTime.now().toISODate()}.log`,
           dirname: 'logs',
-          maxsize: 5000000,
+          maxsize: 5000000
         }),
         new winston.transports.Console({
           level: 'debug',
-          format: combine(utilities.format.nestLike()),
+          format: combine(utilities.format.nestLike())
         }),
 
         new winston.transports.File({
           filename: `application-${DateTime.now().toISODate()}.log`,
           dirname: 'logs',
-          maxsize: 5000000,
-        }),
-      ],
-    }),
-  ],
+          maxsize: 5000000
+        })
+      ]
+    })
+  ]
 })
 export class LoggerModule {}

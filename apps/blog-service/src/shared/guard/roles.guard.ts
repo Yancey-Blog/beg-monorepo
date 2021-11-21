@@ -1,7 +1,7 @@
 import {
   Injectable,
   CanActivate,
-  ExecutionContext,
+  ExecutionContext
   // UnauthorizedException,
 } from '@nestjs/common'
 import { Observable, of } from 'rxjs'

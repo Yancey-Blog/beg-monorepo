@@ -21,7 +21,7 @@ export class PostStatisticsResolver {
   @Mutation(() => PostStatisticsModel)
   @UseGuards(JwtAuthGuard)
   public async createPostStatistics(
-    @Args('input') input: CreatePostStatisticsInput,
+    @Args('input') input: CreatePostStatisticsInput
   ): Promise<PostStatisticsModel> {
     return this.postStatisticsService.create(input)
   }

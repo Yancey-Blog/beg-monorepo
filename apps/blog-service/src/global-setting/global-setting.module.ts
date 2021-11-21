@@ -5,7 +5,11 @@ import { GlobalSettingResolver } from './global-setting.resolver'
 import { GlobalSettingService } from './global-setting.service'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'GlobalSetting', schema: GlobalSettingSchema }])],
-  providers: [GlobalSettingResolver, GlobalSettingService],
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'GlobalSetting', schema: GlobalSettingSchema }
+    ])
+  ],
+  providers: [GlobalSettingResolver, GlobalSettingService]
 })
 export class GlobalSettingModule {}

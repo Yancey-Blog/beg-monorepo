@@ -3,14 +3,14 @@ import { IPModel } from '../../auth/models/ip-model'
 
 export enum TwoFactorAuthentications {
   TOTP,
-  SMS,
+  SMS
 }
 
 export enum Roles {
   SUPERUSER = 0b0000000000000,
   ADMIN = 0b0000000000001,
   USER = 0b0000000000010,
-  NOT_CERTIFIED = 0b0000000000100,
+  NOT_CERTIFIED = 0b0000000000100
 }
 
 export interface User extends Document {

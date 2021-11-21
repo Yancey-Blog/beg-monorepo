@@ -11,7 +11,7 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 export class OpenSourcesService {
   constructor(
     @InjectModel('OpenSource')
-    private readonly openSourceModel: Model<OpenSource>,
+    private readonly openSourceModel: Model<OpenSource>
   ) {
     this.openSourceModel = openSourceModel
   }
@@ -24,11 +24,15 @@ export class OpenSourcesService {
     return this.openSourceModel.findById(id)
   }
 
-  public async create(openSourceInput: CreateOpenSourceInput): Promise<OpenSourceModel> {
+  public async create(
+    openSourceInput: CreateOpenSourceInput
+  ): Promise<OpenSourceModel> {
     return this.openSourceModel.create(openSourceInput)
   }
 
-  public async update(openSourceInput: UpdateOpenSourceInput): Promise<OpenSourceModel> {
+  public async update(
+    openSourceInput: UpdateOpenSourceInput
+  ): Promise<OpenSourceModel> {
     const { id, ...rest } = openSourceInput
     return this.openSourceModel.findByIdAndUpdate(id, rest, { new: true })
   }
@@ -39,12 +43,12 @@ export class OpenSourcesService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.openSourceModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

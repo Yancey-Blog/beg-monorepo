@@ -10,7 +10,7 @@ import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
 
 const PassPortModule = PassportModule.register({
-  defaultStrategy: 'jwt',
+  defaultStrategy: 'jwt'
 })
 
 @Module({
@@ -18,8 +18,8 @@ const PassPortModule = PassportModule.register({
     HttpModule.registerAsync({
       useFactory: () => ({
         timeout: 10000,
-        maxRedirects: 5,
-      }),
+        maxRedirects: 5
+      })
     }),
     ConfigModule,
     PassPortModule,
@@ -27,12 +27,12 @@ const PassPortModule = PassportModule.register({
     JwtModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({
         secret: configService.getJWTSecretKey(),
-        signOptions: { expiresIn: configService.getJWTExpiresTime() },
+        signOptions: { expiresIn: configService.getJWTExpiresTime() }
       }),
-      inject: [ConfigService],
-    }),
+      inject: [ConfigService]
+    })
   ],
   providers: [AuthResolver, AuthService, JwtStrategy],
-  exports: [AuthService, PassPortModule],
+  exports: [AuthService, PassPortModule]
 })
 export class AuthModule {}

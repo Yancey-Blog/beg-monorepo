@@ -22,7 +22,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') implements CanActivate {
     try {
       return (await super.canActivate(context)) as boolean
     } catch (e) {
-      throw new AuthenticationError('The session has expired, please login again.')
+      throw new AuthenticationError(
+        'The session has expired, please login again.'
+      )
     }
   }
 

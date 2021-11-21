@@ -25,14 +25,14 @@ describe('YanceyMusicController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -46,7 +46,7 @@ describe('YanceyMusicController (e2e)', () => {
     title: 'test4',
     releaseDate: new Date(),
     soundCloudUrl: 'https://t4est3.com',
-    posterUrl: 'https://1test4.com',
+    posterUrl: 'https://1test4.com'
   }
 
   let id = ''
@@ -56,10 +56,13 @@ describe('YanceyMusicController (e2e)', () => {
     title: 'test5',
     releaseDate: new Date(),
     soundCloudUrl: 'https://yancey.com',
-    posterUrl: 'https://yancey.com',
+    posterUrl: 'https://yancey.com'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createYanceyMusic', () => {
@@ -80,7 +83,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: YanceyMusicModel = body.data.createYanceyMusic
@@ -113,7 +116,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: YanceyMusicModel[] = body.data.getYanceyMusic
@@ -148,7 +151,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: YanceyMusicModel = body.data.getYanceyMusicById
@@ -163,7 +166,10 @@ describe('YanceyMusicController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateYanceyMusicById', () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateYanceyMusicById {
@@ -182,7 +188,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: YanceyMusicModel = body.data.updateYanceyMusicById
@@ -212,7 +218,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: YanceyMusicModel = body.data.deleteYanceyMusicById
@@ -239,7 +245,7 @@ describe('YanceyMusicController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteYanceyMusic

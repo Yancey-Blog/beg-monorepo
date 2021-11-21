@@ -5,23 +5,23 @@ export const PostStatisticsSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     postId: {
       type: String,
-      required: true,
+      required: true
     },
     postName: {
       type: String,
-      required: true,
+      required: true
     },
     scenes: {
       type: String,
-      require: true,
-    },
+      require: true
+    }
   },
   {
     collection: 'post_statistics',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

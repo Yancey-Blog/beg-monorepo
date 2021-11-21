@@ -8,10 +8,10 @@ import { ConfigService } from '../config/config.service'
       useFactory: async (configService: ConfigService) => ({
         uri: configService.getMongoURI(),
         useUnifiedTopology: true,
-        useNewUrlParser: true,
+        useNewUrlParser: true
       }),
-      inject: [ConfigService],
-    }),
-  ],
+      inject: [ConfigService]
+    })
+  ]
 })
 export class DataBaseModule {}

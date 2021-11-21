@@ -10,7 +10,7 @@ import { ExchangePositionInput } from '../shared/interfaces/exchange-position.in
 export class AnnouncementsService {
   constructor(
     @InjectModel('Announcement')
-    private readonly announcementModel: Model<Announcement>,
+    private readonly announcementModel: Model<Announcement>
   ) {
     this.announcementModel = announcementModel
   }
@@ -35,9 +35,9 @@ export class AnnouncementsService {
     return this.announcementModel.findByIdAndUpdate(
       id,
       {
-        content,
+        content
       },
-      { new: true },
+      { new: true }
     )
   }
 
@@ -47,17 +47,17 @@ export class AnnouncementsService {
     const exchanged = await this.announcementModel.findByIdAndUpdate(
       exchangedId,
       {
-        weight,
+        weight
       },
-      { new: true },
+      { new: true }
     )
 
     const curr = await this.announcementModel.findByIdAndUpdate(
       id,
       {
-        weight: exchangedWeight,
+        weight: exchangedWeight
       },
-      { new: true },
+      { new: true }
     )
 
     return [exchanged, curr]
@@ -69,12 +69,12 @@ export class AnnouncementsService {
 
   public async batchDelete(ids: string[]) {
     const res = await this.announcementModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

@@ -9,7 +9,7 @@ import { UpdateAgendaInput } from './dtos/update-agenda.input'
 export class AgendaService {
   constructor(
     @InjectModel('Agenda')
-    private readonly agendaModel: Model<Agenda>,
+    private readonly agendaModel: Model<Agenda>
   ) {
     this.agendaModel = agendaModel
   }

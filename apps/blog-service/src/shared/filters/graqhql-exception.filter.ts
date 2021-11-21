@@ -1,7 +1,7 @@
 import {
   Catch,
   ArgumentsHost, // 获取客户端参数
-  HttpException,
+  HttpException
 } from '@nestjs/common'
 import { GqlExceptionFilter, GqlArgumentsHost } from '@nestjs/graphql'
 import { Logger } from 'winston'

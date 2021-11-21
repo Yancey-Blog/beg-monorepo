@@ -20,26 +20,32 @@ export class MottosResolver {
   }
 
   @Query(() => MottoModel)
-  public async getMottoById(@Args({ name: 'id', type: () => ID }) id: string): Promise<MottoModel> {
+  public async getMottoById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ): Promise<MottoModel> {
     return this.mottosService.findOneById(id)
   }
 
   @Mutation(() => MottoModel)
   @UseGuards(JwtAuthGuard)
-  public async createMotto(@Args('input') input: CreateMottoInput): Promise<MottoModel> {
+  public async createMotto(
+    @Args('input') input: CreateMottoInput
+  ): Promise<MottoModel> {
     return this.mottosService.create(input)
   }
 
   @Mutation(() => MottoModel)
   @UseGuards(JwtAuthGuard)
-  public async updateMottoById(@Args('input') input: UpdateMottoInput): Promise<MottoModel> {
+  public async updateMottoById(
+    @Args('input') input: UpdateMottoInput
+  ): Promise<MottoModel> {
     return this.mottosService.update(input)
   }
 
   @Mutation(() => [MottoModel])
   @UseGuards(JwtAuthGuard)
   public async exchangePositionMotto(
-    @Args('input') input: ExchangePositionInput,
+    @Args('input') input: ExchangePositionInput
   ): Promise<MottoModel[]> {
     return this.mottosService.exchangePosition(input)
   }
@@ -47,14 +53,16 @@ export class MottosResolver {
   @Mutation(() => MottoModel)
   @UseGuards(JwtAuthGuard)
   public async deleteMottoById(
-    @Args({ name: 'id', type: () => ID }) id: string,
+    @Args({ name: 'id', type: () => ID }) id: string
   ): Promise<MottoModel> {
     return this.mottosService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteMottos(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteMottos(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.mottosService.batchDelete(ids)
   }
 }

@@ -32,7 +32,9 @@ export class AgendaResolver {
 
   @Mutation(() => AgendaModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteAgendaById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteAgendaById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.agendaService.deleteOneById(id)
   }
 }

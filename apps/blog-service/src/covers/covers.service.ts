@@ -13,13 +13,15 @@ import { BatchUpdateModel } from '../database/models/batch-update.model'
 export class CoversService {
   constructor(
     @InjectModel('Cover')
-    private readonly coverModel: Model<Cover>,
+    private readonly coverModel: Model<Cover>
   ) {
     this.coverModel = coverModel
   }
 
   public async findAllPubilc() {
-    return this.coverModel.find({ isPublic: { $ne: false } }).sort({ weight: -1 })
+    return this.coverModel
+      .find({ isPublic: { $ne: false } })
+      .sort({ weight: -1 })
   }
 
   public async findAll(): Promise<CoverModel[]> {
@@ -47,17 +49,17 @@ export class CoversService {
     const exchanged = await this.coverModel.findByIdAndUpdate(
       exchangedId,
       {
-        weight,
+        weight
       },
-      { new: true },
+      { new: true }
     )
 
     const curr = await this.coverModel.findByIdAndUpdate(
       id,
       {
-        weight: exchangedWeight,
+        weight: exchangedWeight
       },
-      { new: true },
+      { new: true }
     )
 
     return [exchanged, curr]
@@ -69,28 +71,28 @@ export class CoversService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.coverModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 
   public async batchUpdate(ids: string[]): Promise<BatchUpdateModel> {
     const res = await this.coverModel.updateMany(
       {
-        _id: { $in: ids },
+        _id: { $in: ids }
       },
       {
-        $set: { isPublic: false },
-      },
+        $set: { isPublic: false }
+      }
     )
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

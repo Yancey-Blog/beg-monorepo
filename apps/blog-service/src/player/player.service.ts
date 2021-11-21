@@ -13,13 +13,15 @@ import { ExchangePositionInput } from '../shared/interfaces/exchange-position.in
 export class PlayerService {
   constructor(
     @InjectModel('Player')
-    private readonly playerModel: Model<Player>,
+    private readonly playerModel: Model<Player>
   ) {
     this.playerModel = playerModel
   }
 
   public async findAllPubilc() {
-    return this.playerModel.find({ isPublic: { $ne: false } }).sort({ updatedAt: -1 })
+    return this.playerModel
+      .find({ isPublic: { $ne: false } })
+      .sort({ updatedAt: -1 })
   }
 
   public async findAll(): Promise<PlayerModel[]> {
@@ -47,17 +49,17 @@ export class PlayerService {
     const exchanged = await this.playerModel.findByIdAndUpdate(
       exchangedId,
       {
-        weight,
+        weight
       },
-      { new: true },
+      { new: true }
     )
 
     const curr = await this.playerModel.findByIdAndUpdate(
       id,
       {
-        weight: exchangedWeight,
+        weight: exchangedWeight
       },
-      { new: true },
+      { new: true }
     )
 
     return [exchanged, curr]
@@ -69,28 +71,28 @@ export class PlayerService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.playerModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 
   public async batchUpdate(ids: string[]): Promise<BatchUpdateModel> {
     const res = await this.playerModel.updateMany(
       {
-        _id: { $in: ids },
+        _id: { $in: ids }
       },
       {
-        $set: { isPublic: false },
-      },
+        $set: { isPublic: false }
+      }
     )
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

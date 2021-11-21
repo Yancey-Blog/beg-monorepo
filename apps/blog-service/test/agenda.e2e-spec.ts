@@ -25,14 +25,14 @@ describe('AgendaController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -45,7 +45,7 @@ describe('AgendaController (e2e)', () => {
   const createdData: CreateAgendaInput = {
     title: 'metting',
     startDate: new Date().toJSON(),
-    allDay: false,
+    allDay: false
   }
 
   let id = ''
@@ -53,10 +53,13 @@ describe('AgendaController (e2e)', () => {
   const updatedData: UpdateAgendaInput = {
     id,
     title: 'exercise',
-    startDate: new Date().toJSON(),
+    startDate: new Date().toJSON()
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createAgenda', () => {
@@ -73,7 +76,7 @@ describe('AgendaController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: AgendaModel = body.data.createAgenda
@@ -100,7 +103,7 @@ describe('AgendaController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: AgendaModel[] = body.data.getAgenda
@@ -116,7 +119,10 @@ describe('AgendaController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateAgendaById', () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateAgendaById {
@@ -131,7 +137,7 @@ describe('AgendaController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: AgendaModel = body.data.updateAgendaById
@@ -156,7 +162,7 @@ describe('AgendaController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: AgendaModel = body.data.deleteAgendaById

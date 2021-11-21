@@ -47,13 +47,17 @@ export class PostsResolver {
 
   @Mutation(() => PostItemModel)
   @UseGuards(JwtAuthGuard)
-  public async deletePostById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deletePostById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.postsService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deletePosts(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deletePosts(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.postsService.batchDelete(ids)
   }
 
@@ -68,12 +72,16 @@ export class PostsResolver {
   }
 
   @Query(() => [PostItemModel])
-  public async getTopPVPosts(@Args({ name: 'limit', type: () => Int }) limit: number) {
+  public async getTopPVPosts(
+    @Args({ name: 'limit', type: () => Int }) limit: number
+  ) {
     return this.postsService.getTopPVPosts(limit)
   }
 
   @Query(() => [PostItemModel])
-  public async getTopLikePosts(@Args({ name: 'limit', type: () => Int }) limit: number) {
+  public async getTopLikePosts(
+    @Args({ name: 'limit', type: () => Int }) limit: number
+  ) {
     return this.postsService.getTopLikePosts(limit)
   }
 

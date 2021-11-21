@@ -9,78 +9,78 @@ export const UserSchema = new mongoose.Schema<User>(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     email: {
       type: String,
-      required: true,
+      required: true
     },
     username: {
       default: '',
       type: String,
-      required: true,
+      required: true
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     role: {
       default: Roles.NOT_CERTIFIED,
       type: Number,
-      required: true,
+      required: true
     },
     name: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     location: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     organization: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     website: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     bio: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     avatarUrl: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     isTOTP: {
       default: false,
       type: Boolean,
-      required: true,
+      required: true
     },
     totpSecret: {
       type: String,
-      required: false,
+      required: false
     },
     recoveryCodes: {
       type: [String],
-      required: false,
+      required: false
     },
     loginStatistics: {
       type: [],
-      required: false,
-    },
+      required: false
+    }
   },
   {
     collection: 'user',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )
 
 UserSchema.pre<User>('save', function (next) {

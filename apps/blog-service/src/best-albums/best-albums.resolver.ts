@@ -19,7 +19,9 @@ export class BestAlbumsResolver {
   }
 
   @Query(() => BestAlbumModel)
-  public async getBestAlbumById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async getBestAlbumById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.bestAlbumsService.findOneById(id)
   }
 
@@ -37,13 +39,17 @@ export class BestAlbumsResolver {
 
   @Mutation(() => BestAlbumModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteBestAlbumById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteBestAlbumById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.bestAlbumsService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteBestAlbums(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteBestAlbums(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.bestAlbumsService.batchDelete(ids)
   }
 }

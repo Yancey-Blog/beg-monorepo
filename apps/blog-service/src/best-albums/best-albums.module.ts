@@ -5,7 +5,9 @@ import { BestAlbumsResolver } from './best-albums.resolver'
 import { BestAlbumsService } from './best-albums.service'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'BestAlbum', schema: BestAlbumSchema }])],
-  providers: [BestAlbumsResolver, BestAlbumsService],
+  imports: [
+    MongooseModule.forFeature([{ name: 'BestAlbum', schema: BestAlbumSchema }])
+  ],
+  providers: [BestAlbumsResolver, BestAlbumsService]
 })
 export class BestAlbumsModule {}

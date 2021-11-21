@@ -5,31 +5,31 @@ export const BestAlbumSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     artist: {
       type: String,
-      required: true,
+      required: true
     },
     coverUrl: {
       type: String,
-      required: true,
+      required: true
     },
     mvUrl: {
       type: String,
-      required: true,
+      required: true
     },
     releaseDate: {
       type: Date,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     collection: 'best_album',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

@@ -43,24 +43,24 @@ import { LoggerModule } from './shared/logger/logger.module'
     MottosModule,
     CoversModule,
     GlobalSettingModule,
-    PostStatisticsModule,
+    PostStatisticsModule
   ],
 
   providers: [
     {
       provide: APP_PIPE,
-      useClass: GraphQLValidationPipe,
+      useClass: GraphQLValidationPipe
     },
 
     {
       provide: APP_GUARD,
-      useClass: RolesGuard,
+      useClass: RolesGuard
     },
 
     {
       provide: APP_INTERCEPTOR,
-      useClass: DelayInterceptor,
-    },
-  ],
+      useClass: DelayInterceptor
+    }
+  ]
 })
 export class AppModule {}

@@ -22,14 +22,14 @@ describe('GlobalSettingController (e2e)', () => {
             uri: configService.getMongoURI(),
             useFindAndModify: false,
             useUnifiedTopology: true,
-            useNewUrlParser: true,
+            useNewUrlParser: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -60,7 +60,7 @@ describe('GlobalSettingController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: GlobalSettingModel = body.data.getGlobalSetting
@@ -75,17 +75,17 @@ describe('GlobalSettingController (e2e)', () => {
     id,
     releasePostId: '36f27dc5-9adc-4ded-918f-d1bf9dc1ad4a',
     cvPostId: '36f27dc5-9adc-4ded-918f-d1bf9dc1ad4b',
-    isGrayTheme: true,
+    isGrayTheme: true
   }
 
   // CREATE_ONE
   it('updateGlobalSettingById', async () => {
     const updateOneTypeDefs = `
     mutation UpdateGlobalSettingById {
-      updateGlobalSettingById(input: ${JSON.stringify({ ...updatedData, id }).replace(
-        /"([^(")"]+)":/g,
-        '$1:',
-      )}) {
+      updateGlobalSettingById(input: ${JSON.stringify({
+        ...updatedData,
+        id
+      }).replace(/"([^(")"]+)":/g, '$1:')}) {
         _id
         releasePostId
         cvPostId
@@ -99,7 +99,7 @@ describe('GlobalSettingController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneTypeDefs,
+        query: updateOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: GlobalSettingModel = body.data.updateGlobalSettingById

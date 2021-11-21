@@ -5,7 +5,11 @@ import { OpenSourcesResolver } from './open-sources.resolver'
 import { OpenSourcesService } from './open-sources.service'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'OpenSource', schema: OpenSourceSchema }])],
-  providers: [OpenSourcesResolver, OpenSourcesService],
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'OpenSource', schema: OpenSourceSchema }
+    ])
+  ],
+  providers: [OpenSourcesResolver, OpenSourcesService]
 })
 export class OpenSourcesModule {}

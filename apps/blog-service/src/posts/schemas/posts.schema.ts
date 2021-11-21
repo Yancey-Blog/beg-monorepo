@@ -5,50 +5,50 @@ export const PostSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     posterUrl: {
       type: String,
-      required: true,
+      required: true
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     summary: {
       type: String,
-      required: true,
+      required: true
     },
     content: {
       type: String,
-      required: true,
+      required: true
     },
     tags: {
       type: Array,
-      required: true,
+      required: true
     },
     lastModifiedDate: {
       type: Date,
-      required: true,
+      required: true
     },
     like: {
       type: Number,
       default: 0,
-      required: true,
+      required: true
     },
     pv: {
       type: Number,
       default: 0,
-      required: true,
+      required: true
     },
     isPublic: {
       type: Boolean,
       default: true,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     collection: 'post',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

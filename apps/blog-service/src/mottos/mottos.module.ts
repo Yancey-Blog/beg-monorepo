@@ -5,7 +5,9 @@ import { MottosService } from './mottos.service'
 import { MottoSchema } from './schemas/mottos.schema'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Motto', schema: MottoSchema }])],
-  providers: [MottosService, MottosResolver],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Motto', schema: MottoSchema }])
+  ],
+  providers: [MottosService, MottosResolver]
 })
 export class MottosModule {}

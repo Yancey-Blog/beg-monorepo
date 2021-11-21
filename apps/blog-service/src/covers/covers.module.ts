@@ -5,7 +5,9 @@ import { CoversResolver } from './covers.resolver'
 import { CoversService } from './covers.service'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Cover', schema: CoverSchema }])],
-  providers: [CoversResolver, CoversService],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Cover', schema: CoverSchema }])
+  ],
+  providers: [CoversResolver, CoversService]
 })
 export class CoversModule {}

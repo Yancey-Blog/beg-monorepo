@@ -25,14 +25,14 @@ describe('BestAlbumsController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -47,7 +47,7 @@ describe('BestAlbumsController (e2e)', () => {
     artist: '山本彩',
     coverUrl: 'https://t4est3.com',
     mvUrl: 'https://1test4.com',
-    releaseDate: new Date(),
+    releaseDate: new Date()
   }
 
   let id = ''
@@ -58,10 +58,13 @@ describe('BestAlbumsController (e2e)', () => {
     artist: '山本彩',
     coverUrl: 'https://t4est3.com',
     mvUrl: 'https://1test4.com',
-    releaseDate: new Date(),
+    releaseDate: new Date()
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createBestAlbum', () => {
@@ -83,7 +86,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: BestAlbumModel = body.data.createBestAlbum
@@ -118,7 +121,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: BestAlbumModel[] = body.data.getBestAlbums
@@ -155,7 +158,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: BestAlbumModel = body.data.getBestAlbumById
@@ -171,7 +174,10 @@ describe('BestAlbumsController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateBestAlbumById', () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateBestAlbumById {
@@ -191,7 +197,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: BestAlbumModel = body.data.updateBestAlbumById
@@ -223,7 +229,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: BestAlbumModel = body.data.deleteBestAlbumById
@@ -252,7 +258,7 @@ describe('BestAlbumsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteBestAlbums

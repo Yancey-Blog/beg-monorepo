@@ -26,14 +26,14 @@ describe('CoversController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -47,7 +47,7 @@ describe('CoversController (e2e)', () => {
   const createdData: CreateCoverInput = {
     title: 'blog-be-next',
     coverUrl: 'https://www.yanceyleo.com/',
-    isPublic: true,
+    isPublic: true
   }
 
   let id = ''
@@ -55,10 +55,13 @@ describe('CoversController (e2e)', () => {
   const updatedData: UpdateCoverInput = {
     id,
     title: 'blog-be',
-    coverUrl: 'https://www.yanceyleo.com/jpg',
+    coverUrl: 'https://www.yanceyleo.com/jpg'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createCover', async () => {
@@ -74,7 +77,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel = body.data.createCover
@@ -92,7 +95,7 @@ describe('CoversController (e2e)', () => {
           id,
           exchangedId: id,
           weight: 1,
-          exchangedWeight: 1,
+          exchangedWeight: 1
         }).replace(/"([^(")"]+)":/g, '$1:')}) {
           _id
           title
@@ -103,7 +106,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: exchangeTypeDefs,
+        query: exchangeTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel[] = body.data.exchangePositionCover
@@ -127,7 +130,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel[] = body.data.getCovers
@@ -155,7 +158,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel = body.data.getCoverById
@@ -168,7 +171,10 @@ describe('CoversController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateCoverById', async () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateCoverById {
@@ -182,7 +188,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel = body.data.updateCoverById
@@ -207,7 +213,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: publicCoversTypeDefs,
+        query: publicCoversTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchUpdateModel = body.data.publicCovers
@@ -230,7 +236,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: CoverModel = body.data.deleteCoverById
@@ -255,7 +261,7 @@ describe('CoversController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteCovers

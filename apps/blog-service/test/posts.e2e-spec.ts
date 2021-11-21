@@ -27,14 +27,14 @@ describe('PostsController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -51,17 +51,20 @@ describe('PostsController (e2e)', () => {
     summary: 'post summary',
     posterUrl: 'https://www.yanceyleo.com/',
     tags: ['javascript'],
-    lastModifiedDate: new Date(),
+    lastModifiedDate: new Date()
   }
 
   let id = ''
 
   const updatedData: UpdatePostInput = {
     id,
-    content: 'update content',
+    content: 'update content'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createPost', async () => {
@@ -77,7 +80,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.createPost
@@ -89,10 +92,13 @@ describe('PostsController (e2e)', () => {
 
   const fetchData: PaginationInput = {
     page: 1,
-    pageSize: 10,
+    pageSize: 10
   }
 
-  const fetchDataString = JSON.stringify(fetchData).replace(/"([^(")"]+)":/g, '$1:')
+  const fetchDataString = JSON.stringify(fetchData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // READ_ALL
   it('getPosts', async () => {
@@ -113,7 +119,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostModel = body.data.getPosts
@@ -140,7 +146,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.getPostById
@@ -153,7 +159,10 @@ describe('PostsController (e2e)', () => {
 
   // UPDATE_ONE
   it('updatePostById', async () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdatePostById {
@@ -167,7 +176,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.updatePostById
@@ -189,7 +198,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updatePVTypeDefs,
+        query: updatePVTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.updatePV
@@ -211,7 +220,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateLikeTypeDefs,
+        query: updateLikeTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.updateLike
@@ -233,7 +242,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getTopPVPostsTypeDefs,
+        query: getTopPVPostsTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel[] = body.data.getTopPVPosts
@@ -257,7 +266,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostItemModel = body.data.deletePostById
@@ -282,7 +291,7 @@ describe('PostsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deletePosts

@@ -41,13 +41,15 @@ export class ConfigService {
     const auth = `${userName}:${userPwd}@`
     const connection = `${host}:${port}/${collection}`
 
-    return this.isEnvProduction ? `${prefix}${auth}${connection}` : `${prefix}${connection}`
+    return this.isEnvProduction
+      ? `${prefix}${auth}${connection}`
+      : `${prefix}${connection}`
   }
 
   public getBandwagonKeys(): BandwagonKey {
     return {
       BANDWAGON_SECRET_KEY: this.get('BANDWAGON_SECRET_KEY'),
-      BANDWAGON_SERVER_ID: this.get('BANDWAGON_SERVER_ID'),
+      BANDWAGON_SERVER_ID: this.get('BANDWAGON_SERVER_ID')
     }
   }
 
@@ -80,8 +82,12 @@ export class ConfigService {
       APP_PORT: Joi.number().default(3002).required(),
       DATABASE_HOST: Joi.string().required(),
       DATABASE_PORT: Joi.number().default(27017).required(),
-      DATABASE_USER: this.isEnvProduction ? Joi.string().required() : Joi.string().optional(),
-      DATABASE_PWD: this.isEnvProduction ? Joi.string().required() : Joi.string().optional(),
+      DATABASE_USER: this.isEnvProduction
+        ? Joi.string().required()
+        : Joi.string().optional(),
+      DATABASE_PWD: this.isEnvProduction
+        ? Joi.string().required()
+        : Joi.string().optional(),
       DATABASE_COLLECTION: Joi.string().required(),
       BANDWAGON_SECRET_KEY: Joi.string().required(),
       BANDWAGON_SERVER_ID: Joi.string().required(),
@@ -89,10 +95,11 @@ export class ConfigService {
       JWT_SECRET_KEY: Joi.string().required(),
       JWT_EXPIRES_TIME: Joi.number().required(),
       GOOGLE_RECAPTCHA_KEY: Joi.string().required(),
-      NEED_SIMULATE_NETWORK_THROTTLE: Joi.boolean().optional(),
+      NEED_SIMULATE_NETWORK_THROTTLE: Joi.boolean().optional()
     })
 
-    const { error, value: validatedEnvConfig } = envVarsSchema.validate(envConfig)
+    const { error, value: validatedEnvConfig } =
+      envVarsSchema.validate(envConfig)
     if (error) {
       throw new Error(`Config validation error: ${error.message}`)
     }

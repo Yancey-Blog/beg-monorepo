@@ -5,27 +5,27 @@ export const OpenSourceSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     description: {
       type: String,
-      required: true,
+      required: true
     },
     url: {
       type: String,
-      required: true,
+      required: true
     },
     posterUrl: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     collection: 'open_source',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

@@ -5,7 +5,11 @@ import { AnnouncementsService } from './announcements.service'
 import { AnnouncementSchema } from './schemas/announcements.schema'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Announcement', schema: AnnouncementSchema }])],
-  providers: [AnnouncementsService, AnnouncementsResolver],
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'Announcement', schema: AnnouncementSchema }
+    ])
+  ],
+  providers: [AnnouncementsService, AnnouncementsResolver]
 })
 export class AnnouncementsModule {}

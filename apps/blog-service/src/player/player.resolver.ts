@@ -47,26 +47,32 @@ export class PlayerResolver {
   @Mutation(() => [PlayerModel])
   @UseGuards(JwtAuthGuard)
   public async exchangePositionPlayer(
-    @Args('input') input: ExchangePositionInput,
+    @Args('input') input: ExchangePositionInput
   ): Promise<PlayerModel[]> {
     return this.playerService.exchangePosition(input)
   }
 
   @Mutation(() => PlayerModel)
   @UseGuards(JwtAuthGuard)
-  public async deletePlayerById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deletePlayerById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.playerService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deletePlayers(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deletePlayers(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.playerService.batchDelete(ids)
   }
 
   @Mutation(() => BatchUpdateModel)
   @UseGuards(JwtAuthGuard)
-  public async offlinePlayers(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async offlinePlayers(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.playerService.batchUpdate(ids)
   }
 }

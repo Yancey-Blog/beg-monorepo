@@ -5,19 +5,19 @@ export const AnnouncementSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     content: {
       type: String,
-      required: true,
+      required: true
     },
     weight: {
       type: Number,
-      require: true,
-    },
+      require: true
+    }
   },
   {
     collection: 'announcement',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

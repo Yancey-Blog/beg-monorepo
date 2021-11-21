@@ -47,26 +47,32 @@ export class CoversResolver {
   @Mutation(() => [CoverModel])
   @UseGuards(JwtAuthGuard)
   public async exchangePositionCover(
-    @Args('input') input: ExchangePositionInput,
+    @Args('input') input: ExchangePositionInput
   ): Promise<CoverModel[]> {
     return this.coversService.exchangePosition(input)
   }
 
   @Mutation(() => CoverModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteCoverById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteCoverById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.coversService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteCovers(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteCovers(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.coversService.batchDelete(ids)
   }
 
   @Mutation(() => BatchUpdateModel)
   @UseGuards(JwtAuthGuard)
-  public async publicCovers(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async publicCovers(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.coversService.batchUpdate(ids)
   }
 }

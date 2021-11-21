@@ -11,7 +11,7 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 export class LiveToursService {
   constructor(
     @InjectModel('LiveTour')
-    private readonly liveTourModel: Model<LiveTour>,
+    private readonly liveTourModel: Model<LiveTour>
   ) {
     this.liveTourModel = liveTourModel
   }
@@ -24,11 +24,15 @@ export class LiveToursService {
     return this.liveTourModel.findById(id)
   }
 
-  public async create(liveTourInput: CreateLiveTourInput): Promise<LiveTourModel> {
+  public async create(
+    liveTourInput: CreateLiveTourInput
+  ): Promise<LiveTourModel> {
     return this.liveTourModel.create(liveTourInput)
   }
 
-  public async update(liveTourInput: UpdateLiveTourInput): Promise<LiveTourModel> {
+  public async update(
+    liveTourInput: UpdateLiveTourInput
+  ): Promise<LiveTourModel> {
     const { id, ...rest } = liveTourInput
     return this.liveTourModel.findByIdAndUpdate(id, rest, { new: true })
   }
@@ -39,12 +43,12 @@ export class LiveToursService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.liveTourModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

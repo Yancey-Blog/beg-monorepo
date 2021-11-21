@@ -17,8 +17,17 @@ import { LoginInput } from './dtos/login.input'
 import { RegisterInput } from './dtos/register.input'
 import { ValidateTOTPInput } from './dtos/validate-totp.input'
 import { ChangePasswordInput } from './dtos/change-password.input'
-import { TOTP_ENCODE, IP_STACK_URL, GOOGLE_RECAPTCHA_URL } from '../shared/constants'
-import { generateQRCode, generateRecoveryCodes, decodeJWT, encryptPassword } from '../shared/utils'
+import {
+  TOTP_ENCODE,
+  IP_STACK_URL,
+  GOOGLE_RECAPTCHA_URL
+} from '../shared/constants'
+import {
+  generateQRCode,
+  generateRecoveryCodes,
+  decodeJWT,
+  encryptPassword
+} from '../shared/utils'
 
 @Injectable()
 export class AuthService {
@@ -26,7 +35,7 @@ export class AuthService {
     private readonly httpService: HttpService,
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-    private readonly configService: ConfigService,
+    private readonly configService: ConfigService
   ) {
     this.usersService = usersService
     this.jwtService = jwtService
@@ -47,13 +56,17 @@ export class AuthService {
       return user
     }
 
-    throw new AuthenticationError('Your username and password do not match. Please try again!')
+    throw new AuthenticationError(
+      'Your username and password do not match. Please try again!'
+    )
   }
 
-  public async verifyGoogleRecaptchaToken(token: string): Promise<GoogleRecaptchaRes> {
+  public async verifyGoogleRecaptchaToken(
+    token: string
+  ): Promise<GoogleRecaptchaRes> {
     const params = {
       response: token,
-      secret: this.configService.getGoogleRecaptchaKey(),
+      secret: this.configService.getGoogleRecaptchaKey()
     }
 
     return this.httpService
@@ -64,7 +77,8 @@ export class AuthService {
 
   public async login(loginInput: LoginInput) {
     const { email, password, token } = loginInput
-    const { success, 'error-codes': errorCodes } = await this.verifyGoogleRecaptchaToken(token)
+    const { success, 'error-codes': errorCodes } =
+      await this.verifyGoogleRecaptchaToken(token)
 
     if (success) {
       const res = await this.validateUser(email, password)
@@ -74,22 +88,31 @@ export class AuthService {
     throw new AuthenticationError(
       errorCodes
         ? errorCodes.toString()
-        : 'Google Recaptcha verification failed. Please try again!',
+        : 'Google Recaptcha verification failed. Please try again!'
     )
   }
 
   public async register(registerInput: RegisterInput) {
     const { email, username } = registerInput
     const curUserByEmail = await this.usersService.findOneByEmail(email)
-    const curUserByUserName = await this.usersService.findOneByUserName(username)
+    const curUserByUserName = await this.usersService.findOneByUserName(
+      username
+    )
 
     if (curUserByEmail) {
-      throw new ForbiddenError('Email has already been used, Please enter another one.')
+      throw new ForbiddenError(
+        'Email has already been used, Please enter another one.'
+      )
     } else if (curUserByUserName) {
-      throw new ForbiddenError('UserName has already been used, Please enter another one.')
+      throw new ForbiddenError(
+        'UserName has already been used, Please enter another one.'
+      )
     } else {
       const count = await this.usersService.getUserCount()
-      const params = count === 0 ? { ...registerInput, role: Roles.SUPERUSER } : registerInput
+      const params =
+        count === 0
+          ? { ...registerInput, role: Roles.SUPERUSER }
+          : registerInput
       const res = await this.usersService.create({ ...params })
 
       return this.generateJWT(email, res)
@@ -99,7 +122,7 @@ export class AuthService {
   public async createTOTP(token: string) {
     const { email } = decodeJWT(token)
     const { base32, otpauth_url } = speakeasy.generateSecret({
-      name: email,
+      name: email
     })
 
     const qrcode = await generateQRCode(`${otpauth_url}&issuer=Yancey%20Inc.`)
@@ -113,11 +136,15 @@ export class AuthService {
     const verified = speakeasy.totp.verify({
       secret: key,
       encoding: TOTP_ENCODE,
-      token: code,
+      token: code
     })
 
     if (verified) {
-      const res = await this.usersService.updateUser({ id: userId, isTOTP: true, totpSecret: key })
+      const res = await this.usersService.updateUser({
+        id: userId,
+        isTOTP: true,
+        totpSecret: key
+      })
       return this.generateJWT(res.email, res)
     }
 
@@ -128,7 +155,10 @@ export class AuthService {
     const { sub: userId } = decodeJWT(token)
 
     const codes = generateRecoveryCodes()
-    const res = await this.usersService.updateUser({ id: userId, recoveryCodes: codes })
+    const res = await this.usersService.updateUser({
+      id: userId,
+      recoveryCodes: codes
+    })
 
     return res
   }
@@ -145,7 +175,7 @@ export class AuthService {
       const restRecoveryCodes = recoveryCodes
       const res = await this.usersService.updateUser({
         id: userId,
-        recoveryCodes: restRecoveryCodes,
+        recoveryCodes: restRecoveryCodes
       })
       return this.generateJWT(res.email, res)
     }
@@ -161,7 +191,7 @@ export class AuthService {
     if (user && user.isValidPassword(oldPassword, user.password)) {
       const res = await this.usersService.updateUser({
         id: userId,
-        password: encryptPassword(newPassword),
+        password: encryptPassword(newPassword)
       })
       return res
     }
@@ -178,7 +208,7 @@ export class AuthService {
 
     const network = {
       ip: ip.includes('::ffff:') ? ip.slice(7) : ip,
-      userAgent,
+      userAgent
     }
 
     const uaParser = new UAParser(userAgent)
@@ -186,8 +216,8 @@ export class AuthService {
     const ipInfo = await this.httpService
       .get<IPModel>(`${IP_STACK_URL}${network.ip}`, {
         params: {
-          access_key: IP_STACK_ACCESS_KEY,
-        },
+          access_key: IP_STACK_ACCESS_KEY
+        }
       })
       .pipe(map((response) => response.data))
       .toPromise()
@@ -196,13 +226,13 @@ export class AuthService {
       ...ipInfo,
       browser: uaParser.getBrowser(),
       os: uaParser.getOS(),
-      loginTime: new Date().toISOString(),
+      loginTime: new Date().toISOString()
     }
 
     const user = await this.usersService.findOneById(userId)
     await this.usersService.updateUser({
       id: userId,
-      loginStatistics: [...user.loginStatistics, loginInfo],
+      loginStatistics: [...user.loginStatistics, loginInfo]
     })
 
     return loginInfo

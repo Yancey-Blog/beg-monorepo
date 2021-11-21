@@ -23,24 +23,25 @@ import { configCORS } from '../shared/utils'
         formatError(error: ValidationError) {
           const {
             message,
-            extensions: { code },
+            extensions: { code }
           } = error
           return configService.isEnvProduction
             ? {
                 code,
                 message,
-                timestamp: new Date(),
+                timestamp: new Date()
               }
             : error
         },
         plugins: [
-          !configService.isEnvProduction && ApolloServerPluginLandingPageLocalDefault(),
+          !configService.isEnvProduction &&
+            ApolloServerPluginLandingPageLocalDefault()
         ].filter(Boolean),
-        cors: configCORS(configService.isEnvProduction),
+        cors: configCORS(configService.isEnvProduction)
       }),
 
-      inject: [ConfigService],
-    }),
-  ],
+      inject: [ConfigService]
+    })
+  ]
 })
 export class GraphqlModule {}

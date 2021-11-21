@@ -5,7 +5,9 @@ import { LiveToursService } from './live-tours.service'
 import { LiveToursResolver } from './live-tours.resolver'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'LiveTour', schema: LiveToursSchema }])],
-  providers: [LiveToursResolver, LiveToursService],
+  imports: [
+    MongooseModule.forFeature([{ name: 'LiveTour', schema: LiveToursSchema }])
+  ],
+  providers: [LiveToursResolver, LiveToursService]
 })
 export class LiveToursModule {}

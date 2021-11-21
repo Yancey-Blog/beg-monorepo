@@ -5,7 +5,9 @@ import { AgendaService } from './agenda.service'
 import { AgendaSchema } from './schemas/agenda.schemas'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Agenda', schema: AgendaSchema }])],
-  providers: [AgendaService, AgendaResolver],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Agenda', schema: AgendaSchema }])
+  ],
+  providers: [AgendaService, AgendaResolver]
 })
 export class AgendaModule {}

@@ -38,7 +38,10 @@ export class AuthResolver {
 
   @Mutation(() => UserModel)
   @UseGuards(JwtAuthGuard)
-  public async validateTOTP(@Args('input') input: ValidateTOTPInput, @ReqDecorator() req: Request) {
+  public async validateTOTP(
+    @Args('input') input: ValidateTOTPInput,
+    @ReqDecorator() req: Request
+  ) {
     return this.authService.validateTOTP(input, req.headers.authorization)
   }
 
@@ -52,16 +55,19 @@ export class AuthResolver {
   @UseGuards(JwtAuthGuard)
   public async validateRecoveryCode(
     @Args('input') input: ValidateTOTPInput,
-    @ReqDecorator() req: Request,
+    @ReqDecorator() req: Request
   ) {
-    return this.authService.validateRecoveryCode(input, req.headers.authorization)
+    return this.authService.validateRecoveryCode(
+      input,
+      req.headers.authorization
+    )
   }
 
   @Mutation(() => UserModel)
   @UseGuards(JwtAuthGuard)
   public async changePassword(
     @Args('input') input: ChangePasswordInput,
-    @ReqDecorator() req: Request,
+    @ReqDecorator() req: Request
   ) {
     return this.authService.changePassword(input, req.headers.authorization)
   }

@@ -26,14 +26,14 @@ describe('PlayerController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -49,7 +49,7 @@ describe('PlayerController (e2e)', () => {
     lrc: '歌词',
     coverUrl: 'https://t4est3.com',
     musicFileUrl: 'https://1test4.com',
-    isPublic: true,
+    isPublic: true
   }
 
   let id = ''
@@ -61,10 +61,13 @@ describe('PlayerController (e2e)', () => {
     lrc: '歌词',
     coverUrl: 'https://t5est4.com',
     musicFileUrl: 'https://2test5.com',
-    isPublic: true,
+    isPublic: true
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createPlayer', () => {
@@ -86,7 +89,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: PlayerModel = body.data.createPlayer
@@ -122,7 +125,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: PlayerModel[] = body.data.getPlayers
@@ -160,7 +163,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PlayerModel = body.data.getPlayerById
@@ -177,7 +180,10 @@ describe('PlayerController (e2e)', () => {
 
   // UPDATE_ONE
   it('updatePlayerById', () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdatePlayerById {
@@ -197,7 +203,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PlayerModel = body.data.updatePlayerById
@@ -226,7 +232,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: offlinePlayersTypeDefs,
+        query: offlinePlayersTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchUpdateModel = body.data.offlinePlayers
@@ -258,7 +264,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: PlayerModel = body.data.deletePlayerById
@@ -287,7 +293,7 @@ describe('PlayerController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deletePlayers

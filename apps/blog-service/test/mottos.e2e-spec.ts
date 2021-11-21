@@ -25,14 +25,14 @@ describe('MottosController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -44,17 +44,20 @@ describe('MottosController (e2e)', () => {
   })
 
   const createdData: CreateMottoInput = {
-    content: 'blog-be-next',
+    content: 'blog-be-next'
   }
 
   let id = ''
 
   const updatedData: UpdateMottoInput = {
     id,
-    content: 'blog-be-cms',
+    content: 'blog-be-cms'
   }
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createMotto', async () => {
@@ -70,7 +73,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel = body.data.createMotto
@@ -88,7 +91,7 @@ describe('MottosController (e2e)', () => {
           id,
           exchangedId: id,
           weight: 1,
-          exchangedWeight: 1,
+          exchangedWeight: 1
         }).replace(/"([^(")"]+)":/g, '$1:')}) {
           _id
           content
@@ -99,7 +102,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: exchangeTypeDefs,
+        query: exchangeTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel[] = body.data.exchangePositionMotto
@@ -123,7 +126,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel[] = body.data.getMottos
@@ -151,7 +154,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getOneByIdTypeDefs,
+        query: getOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel = body.data.getMottoById
@@ -164,7 +167,10 @@ describe('MottosController (e2e)', () => {
 
   // UPDATE_ONE
   it('updateMottoById', async () => {
-    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(/"([^(")"]+)":/g, '$1:')
+    const updateDataString = JSON.stringify({ ...updatedData, id }).replace(
+      /"([^(")"]+)":/g,
+      '$1:'
+    )
 
     const updateOneByIdTypeDefs = `
     mutation UpdateMottoById {
@@ -178,7 +184,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: updateOneByIdTypeDefs,
+        query: updateOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel = body.data.updateMottoById
@@ -201,7 +207,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: deleteOneByIdTypeDefs,
+        query: deleteOneByIdTypeDefs
       })
       .expect(({ body }) => {
         const testData: MottoModel = body.data.deleteMottoById
@@ -226,7 +232,7 @@ describe('MottosController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: batchDeleteTypeDefs,
+        query: batchDeleteTypeDefs
       })
       .expect(({ body }) => {
         const testData: BatchDeleteModel = body.data.deleteMottos

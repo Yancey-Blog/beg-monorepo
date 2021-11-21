@@ -19,7 +19,9 @@ export class OpenSourcesResolver {
   }
 
   @Query(() => OpenSourceModel)
-  public async getOpenSourceById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async getOpenSourceById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.openSourcesService.findOneById(id)
   }
 
@@ -31,19 +33,25 @@ export class OpenSourcesResolver {
 
   @Mutation(() => OpenSourceModel)
   @UseGuards(JwtAuthGuard)
-  public async updateOpenSourceById(@Args('input') input: UpdateOpenSourceInput) {
+  public async updateOpenSourceById(
+    @Args('input') input: UpdateOpenSourceInput
+  ) {
     return this.openSourcesService.update(input)
   }
 
   @Mutation(() => OpenSourceModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteOpenSourceById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteOpenSourceById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.openSourcesService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteOpenSources(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteOpenSources(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.openSourcesService.batchDelete(ids)
   }
 }

@@ -10,7 +10,7 @@ import { ExchangePositionInput } from '../shared/interfaces/exchange-position.in
 export class MottosService {
   constructor(
     @InjectModel('Motto')
-    private readonly mottoModel: Model<Motto>,
+    private readonly mottoModel: Model<Motto>
   ) {
     this.mottoModel = mottoModel
   }
@@ -35,9 +35,9 @@ export class MottosService {
     return this.mottoModel.findByIdAndUpdate(
       id,
       {
-        content,
+        content
       },
-      { new: true },
+      { new: true }
     )
   }
 
@@ -47,17 +47,17 @@ export class MottosService {
     const exchanged = await this.mottoModel.findByIdAndUpdate(
       exchangedId,
       {
-        weight,
+        weight
       },
-      { new: true },
+      { new: true }
     )
 
     const curr = await this.mottoModel.findByIdAndUpdate(
       id,
       {
-        weight: exchangedWeight,
+        weight: exchangedWeight
       },
-      { new: true },
+      { new: true }
     )
 
     return [exchanged, curr]
@@ -69,12 +69,12 @@ export class MottosService {
 
   public async batchDelete(ids: string[]) {
     const res = await this.mottoModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

@@ -24,14 +24,14 @@ describe('PostStatisticsController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
 
     app = moduleFixture.createNestApplication()
@@ -45,12 +45,15 @@ describe('PostStatisticsController (e2e)', () => {
   const createdData: CreatePostStatisticsInput = {
     postId: '36f27dc5-9adc-4ded-918f-d1bf9dc1ad4a',
     postName: 'postName',
-    scenes: 'switched to public',
+    scenes: 'switched to public'
   }
 
   let id = ''
 
-  const createDataString = JSON.stringify(createdData).replace(/"([^(")"]+)":/g, '$1:')
+  const createDataString = JSON.stringify(createdData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   // CREATE_ONE
   it('createPostStatistics', async () => {
@@ -68,7 +71,7 @@ describe('PostStatisticsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: createOneTypeDefs,
+        query: createOneTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostStatisticsModel = body.data.createPostStatistics
@@ -100,7 +103,7 @@ describe('PostStatisticsController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: getAllTypeDefs,
+        query: getAllTypeDefs
       })
       .expect(({ body }) => {
         const testData: PostStatisticsGroupModel[] = body.data.getPostStatistics

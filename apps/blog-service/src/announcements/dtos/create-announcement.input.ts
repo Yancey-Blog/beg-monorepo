@@ -5,7 +5,7 @@ import { IsString, IsNotEmpty } from 'class-validator'
 export class CreateAnnouncementInput {
   @Field({
     description: 'Announcement content.',
-    nullable: false,
+    nullable: false
   })
   @IsString()
   @IsNotEmpty()

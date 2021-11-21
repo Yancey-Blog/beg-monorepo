@@ -8,10 +8,10 @@ import { BandwagonResolver } from './bandwagon.resolver'
     HttpModule.registerAsync({
       useFactory: () => ({
         timeout: 5000,
-        maxRedirects: 5,
-      }),
-    }),
+        maxRedirects: 5
+      })
+    })
   ],
-  providers: [BandwagonService, BandwagonResolver],
+  providers: [BandwagonService, BandwagonResolver]
 })
 export class BandwagonModule {}

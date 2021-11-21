@@ -16,7 +16,10 @@ export class UserResolver {
 
   @Mutation(() => UserModel)
   @UseGuards(JwtAuthGuard)
-  public async updateUser(@Args('input') input: UpdateUserInput, @ReqDecorator() req: Request) {
+  public async updateUser(
+    @Args('input') input: UpdateUserInput,
+    @ReqDecorator() req: Request
+  ) {
     const { sub: userId } = decodeJWT(req.headers.authorization)
     return this.usersService.updateUser({ ...input, id: userId })
   }
@@ -25,7 +28,7 @@ export class UserResolver {
   @UseGuards(JwtAuthGuard)
   public async updateUserName(
     @Args({ name: 'username', type: () => String }) username: string,
-    @ReqDecorator() req: Request,
+    @ReqDecorator() req: Request
   ) {
     return this.usersService.updateUserName(username, req)
   }
@@ -34,7 +37,7 @@ export class UserResolver {
   @UseGuards(JwtAuthGuard)
   public async updateEmail(
     @Args({ name: 'email', type: () => String }) email: string,
-    @ReqDecorator() req: Request,
+    @ReqDecorator() req: Request
   ) {
     return this.usersService.updateEmail(email, req)
   }

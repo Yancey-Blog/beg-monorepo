@@ -11,7 +11,7 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 export class BestAlbumsService {
   constructor(
     @InjectModel('BestAlbum')
-    private readonly bestAlbumModel: Model<BestAlbum>,
+    private readonly bestAlbumModel: Model<BestAlbum>
   ) {
     this.bestAlbumModel = bestAlbumModel
   }
@@ -24,11 +24,15 @@ export class BestAlbumsService {
     return this.bestAlbumModel.findById(id)
   }
 
-  public async create(bestAlbumInput: CreateBestAlbumInput): Promise<BestAlbumModel> {
+  public async create(
+    bestAlbumInput: CreateBestAlbumInput
+  ): Promise<BestAlbumModel> {
     return this.bestAlbumModel.create(bestAlbumInput)
   }
 
-  public async update(bestAlbumInput: UpdateBestAlbumInput): Promise<BestAlbumModel> {
+  public async update(
+    bestAlbumInput: UpdateBestAlbumInput
+  ): Promise<BestAlbumModel> {
     const { id, ...rest } = bestAlbumInput
     return this.bestAlbumModel.findByIdAndUpdate(id, rest, { new: true })
   }
@@ -39,12 +43,12 @@ export class BestAlbumsService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.bestAlbumModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

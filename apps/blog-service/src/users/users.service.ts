@@ -12,7 +12,7 @@ import { decodeJWT } from '../shared/utils'
 export class UsersService {
   constructor(
     @InjectModel('User')
-    private readonly userModel: Model<User>,
+    private readonly userModel: Model<User>
   ) {
     this.userModel = userModel
   }

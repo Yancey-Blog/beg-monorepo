@@ -25,14 +25,14 @@ describe('AuthController (e2e)', () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
-            useCreateIndex: true,
+            useCreateIndex: true
           }),
-          inject: [ConfigService],
+          inject: [ConfigService]
         }),
         GraphQLModule.forRoot({
-          autoSchemaFile: SCHEMA_GQL_FILE_NAME,
-        }),
-      ],
+          autoSchemaFile: SCHEMA_GQL_FILE_NAME
+        })
+      ]
     }).compile()
     app = moduleFixture.createNestApplication()
     await app.init()
@@ -45,17 +45,23 @@ describe('AuthController (e2e)', () => {
   const loginData: LoginInput = {
     email: `${randomSeries(10)}@example.com`,
     password: 'abcd1234,',
-    token: '',
+    token: ''
   }
 
   const registerData: RegisterInput = {
     ...loginData,
-    username: randomSeries(10),
+    username: randomSeries(10)
   }
 
-  const registerDataString = JSON.stringify(registerData).replace(/"([^(")"]+)":/g, '$1:')
+  const registerDataString = JSON.stringify(registerData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
-  const loginDataString = JSON.stringify(loginData).replace(/"([^(")"]+)":/g, '$1:')
+  const loginDataString = JSON.stringify(loginData).replace(
+    /"([^(")"]+)":/g,
+    '$1:'
+  )
 
   let id = ''
 
@@ -80,7 +86,7 @@ describe('AuthController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: registerTypeDefs,
+        query: registerTypeDefs
       })
       .expect(({ body }) => {
         const testData: UserModel = body.data.register
@@ -112,7 +118,7 @@ describe('AuthController (e2e)', () => {
       .post('/graphql')
       .send({
         operationName: null,
-        query: loginTypeDefs,
+        query: loginTypeDefs
       })
       .expect(({ body }) => {
         const testData: UserModel = body.data.login

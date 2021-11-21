@@ -11,7 +11,7 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 export class YanceyMusicService {
   constructor(
     @InjectModel('YanceyMusic')
-    private readonly yanceyMusicModel: Model<YanceyMusic>,
+    private readonly yanceyMusicModel: Model<YanceyMusic>
   ) {
     this.yanceyMusicModel = yanceyMusicModel
   }
@@ -24,11 +24,15 @@ export class YanceyMusicService {
     return this.yanceyMusicModel.findById(id)
   }
 
-  public async create(yanceyMusicInput: CreateYanceyMusicInput): Promise<YanceyMusicModel> {
+  public async create(
+    yanceyMusicInput: CreateYanceyMusicInput
+  ): Promise<YanceyMusicModel> {
     return this.yanceyMusicModel.create(yanceyMusicInput)
   }
 
-  public async update(yanceyMusicInput: UpdateYanceyMusicInput): Promise<YanceyMusicModel> {
+  public async update(
+    yanceyMusicInput: UpdateYanceyMusicInput
+  ): Promise<YanceyMusicModel> {
     const { id, ...rest } = yanceyMusicInput
     return this.yanceyMusicModel.findByIdAndUpdate(id, rest, { new: true })
   }
@@ -39,12 +43,12 @@ export class YanceyMusicService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.yanceyMusicModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 }

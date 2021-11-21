@@ -18,7 +18,9 @@ export class GlobalSettingResolver {
 
   @Mutation(() => GlobalSettingModel)
   @UseGuards(JwtAuthGuard)
-  public async updateGlobalSettingById(@Args('input') input: UpdateGlobalSettingInput) {
+  public async updateGlobalSettingById(
+    @Args('input') input: UpdateGlobalSettingInput
+  ) {
     return this.globalSettingService.update(input)
   }
 }

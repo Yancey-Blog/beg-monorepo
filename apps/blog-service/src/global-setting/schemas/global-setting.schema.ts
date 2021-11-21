@@ -5,26 +5,26 @@ export const GlobalSettingSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     releasePostId: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     cvPostId: {
       default: '',
       type: String,
-      required: false,
+      required: false
     },
     isGrayTheme: {
       default: false,
       type: Boolean,
-      required: false,
-    },
+      required: false
+    }
   },
   {
     collection: 'global-setting',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

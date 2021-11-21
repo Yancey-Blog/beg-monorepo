@@ -5,7 +5,9 @@ import { configMiddlewares } from './shared/middlewares/middleware.config'
 import { AppModule } from './app.module'
 
 const bootstrap = async () => {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger: false })
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: false
+  })
   app.setGlobalPrefix('beg')
   configMiddlewares(app)
   configLogger(app)

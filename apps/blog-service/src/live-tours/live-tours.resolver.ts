@@ -19,7 +19,9 @@ export class LiveToursResolver {
   }
 
   @Query(() => LiveTourModel)
-  public async getLiveTourById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async getLiveTourById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.liveToursService.findOneById(id)
   }
 
@@ -37,13 +39,17 @@ export class LiveToursResolver {
 
   @Mutation(() => LiveTourModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteLiveTourById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteLiveTourById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.liveToursService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteLiveTours(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteLiveTours(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.liveToursService.batchDelete(ids)
   }
 }

@@ -5,40 +5,40 @@ export const PlayerSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     artist: {
       type: String,
-      required: true,
+      required: true
     },
     lrc: {
       type: String,
-      required: true,
+      required: true
     },
     coverUrl: {
       type: String,
-      required: true,
+      required: true
     },
     musicFileUrl: {
       type: String,
-      required: true,
+      required: true
     },
     isPublic: {
       type: Boolean,
       required: true,
-      default: true,
+      default: true
     },
     weight: {
       type: Number,
-      require: true,
-    },
+      require: true
+    }
   },
   {
     collection: 'player',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

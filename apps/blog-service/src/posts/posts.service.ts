@@ -16,7 +16,7 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 export class PostsService {
   constructor(
     @InjectModel('Post')
-    private readonly postModel: Model<PostDocument>,
+    private readonly postModel: Model<PostDocument>
   ) {
     this.postModel = postModel
   }
@@ -25,12 +25,14 @@ export class PostsService {
     return this.postModel.countDocuments()
   }
 
-  public async findPublicByPagination(input: PaginationInput): Promise<PostModel> {
+  public async findPublicByPagination(
+    input: PaginationInput
+  ): Promise<PostModel> {
     const { page, pageSize, title, tag } = input
 
     const params = {
       title: { $regex: !title ? '' : title, $options: 'i' },
-      isPublic: { $ne: false },
+      isPublic: { $ne: false }
     }
 
     const _params = tag ? { ...params, tags: tag } : params
@@ -46,7 +48,7 @@ export class PostsService {
       total: count,
       page,
       pageSize,
-      items: res,
+      items: res
     }
   }
 
@@ -64,7 +66,7 @@ export class PostsService {
       total,
       page,
       pageSize,
-      items,
+      items
     }
   }
 
@@ -86,7 +88,7 @@ export class PostsService {
     const res = {
       ...curr.toObject(),
       prev: prev[0] ? prev[0] : null,
-      next: next[0] ? next[0] : null,
+      next: next[0] ? next[0] : null
     }
 
     return res
@@ -107,12 +109,12 @@ export class PostsService {
 
   public async batchDelete(ids: string[]): Promise<BatchDeleteModel> {
     const res = await this.postModel.deleteMany({
-      _id: { $in: ids },
+      _id: { $in: ids }
     })
 
     return {
       ...res,
-      ids,
+      ids
     }
   }
 
@@ -123,7 +125,11 @@ export class PostsService {
 
   public async updateLike(id: string): Promise<PostItemModel> {
     const { like } = await this.findOneById(id)
-    return this.postModel.findByIdAndUpdate(id, { like: like + 1 }, { new: true })
+    return this.postModel.findByIdAndUpdate(
+      id,
+      { like: like + 1 },
+      { new: true }
+    )
   }
 
   public async getTopPVPosts(limit: number): Promise<PostItemModel[]> {
@@ -141,12 +147,15 @@ export class PostsService {
   }
 
   public async getAllTags(): Promise<TagsModel> {
-    const posts = await this.postModel.find({ isPublic: { $ne: false } }, { tags: 1 })
+    const posts = await this.postModel.find(
+      { isPublic: { $ne: false } },
+      { tags: 1 }
+    )
     const arr = []
     posts.forEach((post) => arr.push(...post.tags))
 
     return {
-      tags: [...new Set(arr)],
+      tags: [...new Set(arr)]
     }
   }
 
@@ -161,9 +170,9 @@ export class PostsService {
             id: '$_id',
             title: '$title',
             pv: '$pv',
-            createdAt: '$createdAt',
-          },
-        },
+            createdAt: '$createdAt'
+          }
+        }
       },
       {
         $group: {
@@ -173,23 +182,23 @@ export class PostsService {
               id: '$_id.id',
               title: '$_id.title',
               pv: '$_id.pv',
-              createdAt: '$_id.createdAt',
-            },
-          },
-        },
+              createdAt: '$_id.createdAt'
+            }
+          }
+        }
       },
       {
-        $sort: { _id: -1 },
+        $sort: { _id: -1 }
       },
       {
         $group: {
           _id: '$_id.year',
-          months: { $push: { month: '$_id.month', days: '$days' } },
-        },
+          months: { $push: { month: '$_id.month', days: '$days' } }
+        }
       },
       {
-        $sort: { _id: -1 },
-      },
+        $sort: { _id: -1 }
+      }
     ])
 
     return res

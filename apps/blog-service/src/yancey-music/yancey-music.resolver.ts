@@ -19,7 +19,9 @@ export class YanceyMusicResolver {
   }
 
   @Query(() => YanceyMusicModel)
-  public async getYanceyMusicById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async getYanceyMusicById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.yanceyMusicsService.findOneById(id)
   }
 
@@ -31,19 +33,25 @@ export class YanceyMusicResolver {
 
   @Mutation(() => YanceyMusicModel)
   @UseGuards(JwtAuthGuard)
-  public async updateYanceyMusicById(@Args('input') input: UpdateYanceyMusicInput) {
+  public async updateYanceyMusicById(
+    @Args('input') input: UpdateYanceyMusicInput
+  ) {
     return this.yanceyMusicsService.update(input)
   }
 
   @Mutation(() => YanceyMusicModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteYanceyMusicById(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async deleteYanceyMusicById(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.yanceyMusicsService.deleteOneById(id)
   }
 
   @Mutation(() => BatchDeleteModel)
   @UseGuards(JwtAuthGuard)
-  public async deleteYanceyMusic(@Args({ name: 'ids', type: () => [ID] }) ids: string[]) {
+  public async deleteYanceyMusic(
+    @Args({ name: 'ids', type: () => [ID] }) ids: string[]
+  ) {
     return this.yanceyMusicsService.batchDelete(ids)
   }
 }

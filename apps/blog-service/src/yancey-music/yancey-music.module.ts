@@ -5,7 +5,11 @@ import { YanceyMusicResolver } from './yancey-music.resolver'
 import { YanceyMusicService } from './yancey-music.service'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'YanceyMusic', schema: YanceyMusicSchema }])],
-  providers: [YanceyMusicResolver, YanceyMusicService],
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'YanceyMusic', schema: YanceyMusicSchema }
+    ])
+  ],
+  providers: [YanceyMusicResolver, YanceyMusicService]
 })
 export class YanceyMusicModule {}

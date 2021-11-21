@@ -9,7 +9,7 @@ import { GlobalSetting } from './interfaces/global-setting.interface'
 export class GlobalSettingService {
   constructor(
     @InjectModel('GlobalSetting')
-    private readonly globalSettingService: Model<GlobalSetting>,
+    private readonly globalSettingService: Model<GlobalSetting>
   ) {
     this.globalSettingService = globalSettingService
   }
@@ -22,7 +22,9 @@ export class GlobalSettingService {
     return this.globalSettingService.create({})
   }
 
-  public async update(globalSettingInput: UpdateGlobalSettingInput): Promise<GlobalSettingModel> {
+  public async update(
+    globalSettingInput: UpdateGlobalSettingInput
+  ): Promise<GlobalSettingModel> {
     const { id, ...rest } = globalSettingInput
     return this.globalSettingService.findByIdAndUpdate(id, rest, { new: true })
   }

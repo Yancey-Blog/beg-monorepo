@@ -5,27 +5,27 @@ export const YanceyMusicSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     soundCloudUrl: {
       type: String,
-      required: true,
+      required: true
     },
     posterUrl: {
       type: String,
-      required: true,
+      required: true
     },
     releaseDate: {
       type: Date,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     collection: 'yancey_music',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

@@ -5,19 +5,19 @@ export const MottoSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     content: {
       type: String,
-      required: true,
+      required: true
     },
     weight: {
       type: Number,
-      require: true,
-    },
+      require: true
+    }
   },
   {
     collection: 'motto',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

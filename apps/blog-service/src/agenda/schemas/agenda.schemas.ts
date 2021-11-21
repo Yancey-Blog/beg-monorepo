@@ -5,40 +5,40 @@ export const AgendaSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: v4,
+      default: v4
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     startDate: {
       type: Date,
-      required: true,
+      required: true
     },
     endDate: {
       type: Date,
-      required: false,
+      required: false
     },
     allDay: {
       type: Boolean,
-      required: true,
+      required: true
     },
     notes: {
       type: String,
       required: false,
-      default: '',
+      default: ''
     },
     rRule: {
       type: String,
-      required: false,
+      required: false
     },
     exDate: {
       type: Date,
-      required: false,
-    },
+      required: false
+    }
   },
   {
     collection: 'agenda',
-    timestamps: true,
-  },
+    timestamps: true
+  }
 )

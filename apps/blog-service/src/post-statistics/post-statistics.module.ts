@@ -5,7 +5,11 @@ import { PostStatisticsService } from './post-statistics.service'
 import { PostStatisticsSchema } from './schemas/post-statistics.schema'
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'PostStatistics', schema: PostStatisticsSchema }])],
-  providers: [PostStatisticsService, PostStatisticsResolver],
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'PostStatistics', schema: PostStatisticsSchema }
+    ])
+  ],
+  providers: [PostStatisticsService, PostStatisticsResolver]
 })
 export class PostStatisticsModule {}
