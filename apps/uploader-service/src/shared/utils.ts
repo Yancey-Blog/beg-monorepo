@@ -1,6 +1,6 @@
 import {
   CORS_ORIGINS_PRODUCTION,
-  CORS_ORIGINS_UN_PRODUCTION,
+  CORS_ORIGINS_UN_PRODUCTION
 } from './constants'
 
 export const configCORS = () => {
@@ -14,6 +14,6 @@ export const configCORS = () => {
     credentials: true,
     preflightContinue: false,
     optionsSuccessStatus: 204,
-    allowedHeaders: '*',
+    allowedHeaders: '*'
   }
 }

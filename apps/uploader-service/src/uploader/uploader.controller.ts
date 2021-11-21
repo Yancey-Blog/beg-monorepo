@@ -10,10 +10,10 @@ export class UploaderController {
 
   @Post('uploadSingleFile')
   @UseInterceptors(
-    FileInterceptor('file', { limits: { fieldSize: 10 * 1024 * 1024 } }),
+    FileInterceptor('file', { limits: { fieldSize: 10 * 1024 * 1024 } })
   )
   public async uploadSingleFile(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File
   ): Promise<AzureBlobResponse> {
     return await this.uploaderService.uploadFile(file)
   }

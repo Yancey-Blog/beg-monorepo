@@ -8,5 +8,5 @@ export const CORS_ORIGINS_PRODUCTION = [/\.?yanceyleo\.com$/, /\.?yancey\.app$/]
 
 export const CORS_ORIGINS_UN_PRODUCTION = [
   'http://localhost:3000',
-  'http://localhost:3001',
+  'http://localhost:3001'
 ]

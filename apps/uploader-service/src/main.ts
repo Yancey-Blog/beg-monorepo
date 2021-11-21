@@ -6,7 +6,9 @@ import { ValidationPipe } from './libs/pipes/validation.pipe'
 import { configLogger } from './libs/loggers/logger.config'
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger: false })
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: false
+  })
   app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('uploader')
   configSecurityMiddleWares(app)

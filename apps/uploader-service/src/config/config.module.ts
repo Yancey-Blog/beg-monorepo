@@ -5,7 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,
+      isGlobal: true
       // validationSchema: Joi.object({
       //   NODE_ENV: Joi.string()
       //     .valid('development', 'production', 'test')
@@ -13,8 +13,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
       //   PORT: Joi.number().default(3000),
       //   AZURE_STORAGE_CONNECTION_STRING: Joi.string(),
       // }),
-    }),
-  ],
+    })
+  ]
 })
 export class ConfigsModule {
   // constructor(private configService: ConfigService) {}

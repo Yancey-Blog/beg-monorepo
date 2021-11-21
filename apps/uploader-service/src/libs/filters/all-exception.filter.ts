@@ -3,7 +3,7 @@ import {
   Catch,
   ArgumentsHost,
   HttpException,
-  HttpStatus,
+  HttpStatus
 } from '@nestjs/common'
 import * as winston from 'winston'
 
@@ -29,7 +29,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message: exception instanceof HttpException ? exception.message : '',
+      message: exception instanceof HttpException ? exception.message : ''
     })
   }
 }

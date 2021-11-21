@@ -7,7 +7,7 @@ import * as Sharp from 'sharp'
 import {
   AZURE_STORAGE_URL,
   AZURE_STORAGE_CONTAINER_NAME,
-  BASE_IMAGE_EXTENSIONS,
+  BASE_IMAGE_EXTENSIONS
 } from '../shared/constants'
 
 @Injectable()
@@ -16,11 +16,11 @@ export class UploaderService {
 
   constructor(configService: ConfigService) {
     const blobServiceClient = BlobServiceClient.fromConnectionString(
-      configService.get<string>('AZURE_STORAGE_CONNECTION_STRING'),
+      configService.get<string>('AZURE_STORAGE_CONNECTION_STRING')
     )
 
     this.containerClient = blobServiceClient.getContainerClient(
-      AZURE_STORAGE_CONTAINER_NAME,
+      AZURE_STORAGE_CONTAINER_NAME
     )
   }
 
@@ -39,14 +39,14 @@ export class UploaderService {
   private async uploadToAzureBlob(
     fileName: string,
     extension: string,
-    buffer: Buffer,
+    buffer: Buffer
   ) {
     const blockBlobClient = this.containerClient.getBlockBlobClient(
-      `${fileName}.${extension}`,
+      `${fileName}.${extension}`
     )
     const { errorCode } = await blockBlobClient.upload(
       buffer,
-      Buffer.byteLength(buffer),
+      Buffer.byteLength(buffer)
     )
 
     if (errorCode) {
@@ -68,7 +68,7 @@ export class UploaderService {
 
     return {
       name: originalname,
-      url: `${AZURE_STORAGE_URL}/${AZURE_STORAGE_CONTAINER_NAME}/${hash}.${extension}`,
+      url: `${AZURE_STORAGE_URL}/${AZURE_STORAGE_CONTAINER_NAME}/${hash}.${extension}`
     }
   }
 }

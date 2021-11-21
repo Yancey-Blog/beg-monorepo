@@ -4,6 +4,6 @@ import { UploaderModule } from './uploader/uploader.module'
 import { LoggerModule } from './libs/loggers/logger.module'
 
 @Module({
-  imports: [LoggerModule, ConfigsModule, UploaderModule],
+  imports: [LoggerModule, ConfigsModule, UploaderModule]
 })
 export class AppModule {}
