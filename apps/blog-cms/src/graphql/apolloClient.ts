@@ -16,7 +16,7 @@ const isEnvProduction = process.env.NODE_ENV
 const graphqlLink = process.env.REACT_APP_BEG_SERVICE_DOMAIN
 
 const httpLink = new BatchHttpLink({
-  uri: graphqlLink,
+  uri: graphqlLink
 })
 
 const authLink = setContext((_, { headers }) => {
@@ -24,8 +24,8 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
+      authorization: token ? `Bearer ${token}` : ''
+    }
   }
 })
 
@@ -49,15 +49,16 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       return isEnvProductionUnauthenticated || isUnEnvProductionUnauthenticated
     })
 
-    if (isUnauthenticated) {
+    if (isUnauthenticated && localStorage.getItem('token')) {
       alert('Your session has expired. Please log in.')
       logout()
-      return
     }
 
-    graphQLErrors.forEach((graphQLError) => {
-      SnackbarUtils.error(`[GraphQL error]: ${graphQLError.message}`)
-    })
+    if (!isUnauthenticated) {
+      graphQLErrors.forEach((graphQLError) => {
+        SnackbarUtils.error(`[GraphQL error]: ${graphQLError.message}`)
+      })
+    }
   }
 
   if (networkError) {
@@ -65,7 +66,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 })
 
-// @ts-ignore
 const additiveLink = from([errorLink, authLink, httpLink])
 
 const cache = new InMemoryCache()
@@ -75,7 +75,7 @@ async function handlePersistCache() {
     cache,
     // @ts-ignore
     storage: window.localStorage,
-    maxSize: false,
+    maxSize: false
   })
 }
 
@@ -87,16 +87,16 @@ const client = new ApolloClient({
   link: additiveLink,
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-and-network'
     },
     query: {
       fetchPolicy: 'network-only',
-      errorPolicy: 'all',
+      errorPolicy: 'all'
     },
     mutate: {
-      errorPolicy: 'all',
-    },
-  },
+      errorPolicy: 'all'
+    }
+  }
 })
 
 export default client
