@@ -80,6 +80,12 @@ perform the proper version bumps.
 
 Uses this command to bump the version of the package and generate a changelog. Please execute this command after you have made changes to the package and executed `rush change`.
 
+## Recipes
+
+### GitHub Actions workflows template
+
+To generate or update GitHub Actions CI/CD config file easily, you can execute `sh bin/workflows.sh` under the project root folder.
+
 ## Contributing
 
 The main purpose of this repository is to continue to evolve BEG (Blog Environment Group), making it faster and easier to use. Development of BEG happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving BEG.

@@ -1,12 +1,12 @@
-name: GitHub Actions for uploader-service
+name: GitHub Actions for {{SUB_APP}}
 
 on:
   push:
     paths:
-      - "apps/uploader-service/**"
+      - "apps/{{SUB_APP}}/**"
   pull_request:
     paths:
-      - "apps/uploader-service/**"
+      - "apps/{{SUB_APP}}/**"
 
 jobs:
   test:
@@ -31,7 +31,7 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Pre compilation
-        run: rush build -o uploader-service
+        run: rush build -o {{SUB_APP}}
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -66,7 +66,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-uploader-service-deploy.sh
+          script: sh ./@beg-monorepo-{{SUB_APP}}-deploy.sh
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
