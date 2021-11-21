@@ -2,6 +2,18 @@
   "name": "uploader-service",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "uploader-service_v0.1.1",
+      "date": "Sun, 21 Nov 2021 09:58:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete config files"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "uploader-service_v0.1.0",
       "date": "Sat, 20 Nov 2021 16:12:33 GMT",
