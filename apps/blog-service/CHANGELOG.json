@@ -2,6 +2,18 @@
   "name": "blog-service",
   "entries": [
     {
+      "version": "2.1.1",
+      "tag": "blog-service_v2.1.1",
+      "date": "Mon, 22 Nov 2021 07:15:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use rushx instead of pnpm"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.0",
       "tag": "blog-service_v2.1.0",
       "date": "Sat, 20 Nov 2021 16:12:33 GMT",

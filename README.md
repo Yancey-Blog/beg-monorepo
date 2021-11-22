@@ -27,7 +27,7 @@ All services for Blog Environment Group. The monorepo system is powered by [rush
 [uploader-service]:.app/uploader-service
 [blog-cms-version]: https://img.shields.io/badge/Version-v3.19.0-brightgreen
 [blog-web-version]: https://img.shields.io/badge/Version-v4.18.0-brightgreen
-[blog-service-version]: https://img.shields.io/badge/Version-v2.1.0-brightgreen
+[blog-service-version]: https://img.shields.io/badge/Version-v2.1.1-brightgreen
 [uploader-service-version]: https://img.shields.io/badge/Version-v0.1.1-brightgreen
 [blog-cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-cms.yml/badge.svg
 [blog-web-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-web.yml/badge.svg
