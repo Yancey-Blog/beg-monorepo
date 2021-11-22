@@ -1,6 +1,13 @@
 # Change Log - uploader-service
 
-This log was last generated on Sun, 21 Nov 2021 09:58:55 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Nov 2021 09:27:05 GMT and should not be manually modified.
+
+## 1.0.0
+Mon, 22 Nov 2021 09:27:05 GMT
+
+### Breaking changes
+
+- initial repo
 
 ## 0.1.1
 Sun, 21 Nov 2021 09:58:55 GMT
