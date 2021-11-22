@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "clear": "rimraf dist",
-    "build": "NODE_ENV=production pnpm run clear && nest build",
+    "build": "NODE_ENV=production rushx clear && nest build",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
