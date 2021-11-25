@@ -71,15 +71,15 @@ const Profile: FC = () => {
     history.push(pathname)
   }
 
-  useEffect(() => {
-    const { name, location, organization, website, bio, avatarUrl } =
-      // @ts-ignore
-      client.cache.data.data[
-        `UserModel:${window.localStorage.getItem('userId')}`
-      ]
+  // useEffect(() => {
+  //   const { name, location, organization, website, bio, avatarUrl } =
+  //     // @ts-ignore
+  //     client.cache.data.data[
+  //       `UserModel:${window.localStorage.getItem('userId')}`
+  //     ]
 
-    setValues({ name, location, organization, website, bio, avatarUrl })
-  }, [setValues])
+  //   setValues({ name, location, organization, website, bio, avatarUrl })
+  // }, [setValues])
 
   return (
     <SettingWrapper>

@@ -4,7 +4,7 @@ import { Avatar } from '@mui/material'
 import { Home, Face } from '@mui/icons-material'
 import classNames from 'classnames'
 import routes, { Route } from 'src/routes'
-import client from 'src/graphql/apolloClient'
+// import client from 'src/graphql/apolloClient'
 import ChildItem from './components/ChildItem'
 import ParentItem from './components/ParentItem'
 import useStyles from './styles'
@@ -14,9 +14,9 @@ interface Props {
 }
 
 const Drawer: FC<Props> = ({ open }) => {
-  const { username, name, avatarUrl } =
-    // @ts-ignore
-    client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
+  // const { username = '', name = '', avatarUrl = '' } =
+  //   // @ts-ignore
+  //   client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
 
   const classes = useStyles()
 
@@ -75,7 +75,7 @@ const Drawer: FC<Props> = ({ open }) => {
           [classes.hidenNotItem]: !open
         })}
       >
-        {avatarUrl ? (
+        {/* {avatarUrl ? (
           <Avatar
             alt="user-avatar"
             src={avatarUrl}
@@ -85,14 +85,18 @@ const Drawer: FC<Props> = ({ open }) => {
           <Avatar className={classes.avatar}>
             <Face />
           </Avatar>
-        )}
+        )} */}
+        <Avatar className={classes.avatar}>
+          <Face />
+        </Avatar>
 
         <div
           className={classNames(classes.detail, {
             [classes.hideDetail]: !open
           })}
         >
-          <span className={classes.userName}>{name ? name : username}</span>
+          {/* <span className={classes.userName}>{name ? name : username}</span> */}
+          <span className={classes.userName}>{''}</span>
           <span className={classes.arrow} />
         </div>
       </div>

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useSnackbar } from 'notistack'
 import { useMutation } from '@apollo/client'
 import { logout } from 'src/shared/utils'
-import client from 'src/graphql/apolloClient'
+// import client from 'src/graphql/apolloClient'
 import { UPDATE_USERNAME, UPDATE_EMAIL, DELETE_ACCOUNT } from './typeDefs'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
@@ -13,9 +13,9 @@ import DeleteAccount from './components/DeleteAccount'
 const Account: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
 
-  const { username, email } =
-    // @ts-ignore
-    client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
+  // const { username = '', email = '' } =
+  //   // @ts-ignore
+  //   client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
 
   const [updateUserName] = useMutation(UPDATE_USERNAME, {
     onCompleted(data) {
@@ -63,8 +63,8 @@ const Account: FC = () => {
         subTitle="Change your own username, email or delete your account"
       />
 
-      <UpdateUserName updateUserName={updateUserName} username={username} />
-      <UpdateEmail updateEmail={updateEmail} email={email} />
+      <UpdateUserName updateUserName={updateUserName} username={''} />
+      <UpdateEmail updateEmail={updateEmail} email={''} />
       <DeleteAccount
         deleteAccount={deleteAccount}
         isDeletingAccount={isDeletingAccount}

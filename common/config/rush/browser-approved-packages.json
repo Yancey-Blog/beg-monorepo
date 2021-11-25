@@ -107,6 +107,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "@react-keycloak/web",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@sentry/browser",
       "allowedCategories": [ "apps" ]
     },
@@ -344,6 +348,10 @@
     },
     {
       "name": "jsonwebtoken",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "keycloak-js",
       "allowedCategories": [ "apps" ]
     },
     {

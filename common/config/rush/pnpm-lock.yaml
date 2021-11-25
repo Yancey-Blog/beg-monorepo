@@ -27,6 +27,7 @@ specifiers:
   '@nestjs/throttler': ^2.0.0
   '@next/bundle-analyzer': ^11.0.1
   '@next/eslint-plugin-next': ^11.1.2
+  '@react-keycloak/web': ^3.4.0
   '@rush-temp/blog-cms': file:./projects/blog-cms.tgz
   '@rush-temp/blog-service': file:./projects/blog-service.tgz
   '@rush-temp/blog-web': file:./projects/blog-web.tgz
@@ -124,6 +125,7 @@ specifiers:
   jest: ^27.2.5
   joi: ^17.4.2
   jsonwebtoken: ^8.5.1
+  keycloak-js: ^15.0.2
   lint-staged: ^12.0.3
   lodash.orderby: ^4.6.0
   lodash.throttle: ^4.1.1
@@ -240,6 +242,7 @@ dependencies:
   '@nestjs/throttler': 2.0.0_a5fc77933aaf6b413a66315b382b25d2
   '@next/bundle-analyzer': 11.1.2
   '@next/eslint-plugin-next': 11.1.2
+  '@react-keycloak/web': 3.4.0_1ee795e46ecdb6c18a794d75852862c5
   '@rush-temp/blog-cms': file:projects/blog-cms.tgz_d5162a5f40cfe407d822a5a082785c1d
   '@rush-temp/blog-service': file:projects/blog-service.tgz_25cbe1d0e4a44b5d89ee68111519fb07
   '@rush-temp/blog-web': file:projects/blog-web.tgz_6ee86f9bd2b44b6fccabbc2329e1f4b0
@@ -337,6 +340,7 @@ dependencies:
   jest: 27.3.1_ts-node@10.4.0
   joi: 17.4.2
   jsonwebtoken: 8.5.1
+  keycloak-js: 15.0.2
   lint-staged: 12.0.3
   lodash.orderby: 4.6.0
   lodash.throttle: 4.1.1
@@ -4874,6 +4878,35 @@ packages:
     resolution: {integrity: sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==}
     dev: false
 
+  /@react-keycloak/core/3.2.0_react@17.0.2:
+    resolution: {integrity: sha512-1yzU7gQzs+6E1v6hGqxy0Q+kpMHg9sEcke2yxZR29WoU8KNE8E50xS6UbI8N7rWsgyYw8r9W1cUPCOF48MYjzw==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 17.0.2
+      react-fast-compare: 3.2.0
+    dev: false
+
+  /@react-keycloak/web/3.4.0_1ee795e46ecdb6c18a794d75852862c5:
+    resolution: {integrity: sha512-yKKSCyqBtn7dt+VckYOW1IM5NW999pPkxDZOXqJ6dfXPXstYhOQCkTZqh8l7UL14PkpsoaHDh7hSJH8whah01g==}
+    peerDependencies:
+      keycloak-js: '>=9.0.2'
+      react: '>=16.8'
+      react-dom: '>=16.8'
+      typescript: '>=3.8'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.16.3
+      '@react-keycloak/core': 3.2.0_react@17.0.2
+      hoist-non-react-statics: 3.3.2
+      keycloak-js: 15.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      typescript: 4.4.4
+    dev: false
+
   /@rollup/plugin-babel/5.3.0_@babel+core@7.16.0+rollup@2.60.0:
     resolution: {integrity: sha512-9uIC8HZOnVLrLHxayq/PTzw+uS25E14KPUBh5ktF+18Mjo5yK0ToMMx6epY0uEgkjwJw0aBW4x2horYXh8juWw==}
     engines: {node: '>= 10.0.0'}
@@ -7738,6 +7771,10 @@ packages:
 
   /base32.js/0.0.1:
     resolution: {integrity: sha1-0EVzalex9sE58MffQlGKhOkbsro=}
+    dev: false
+
+  /base64-js/1.3.1:
+    resolution: {integrity: sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==}
     dev: false
 
   /base64-js/1.5.1:
@@ -14292,6 +14329,10 @@ packages:
       '@sideway/pinpoint': 2.0.0
     dev: false
 
+  /js-sha256/0.9.0:
+    resolution: {integrity: sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==}
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: false
@@ -14545,6 +14586,13 @@ packages:
 
   /kareem/2.3.2:
     resolution: {integrity: sha512-STHz9P7X2L4Kwn72fA4rGyqyXdmrMSdxqHx9IXon/FXluXieaFA6KJ2upcHAHxQPQ0LeM/OjLrhFxifHewOALQ==}
+    dev: false
+
+  /keycloak-js/15.0.2:
+    resolution: {integrity: sha512-dv2a4NcPSH3AzGWG3ZtB+VrHpuQLdFBYXtQBj/+oBzm6XNwnVAMdL6LIC0OzCLQpn3rKTQJtNSATAGhbKJgewQ==}
+    dependencies:
+      base64-js: 1.3.1
+      js-sha256: 0.9.0
     dev: false
 
   /killable/1.0.1:
@@ -22864,7 +22912,7 @@ packages:
     dev: false
 
   file:projects/blog-cms.tgz_d5162a5f40cfe407d822a5a082785c1d:
-    resolution: {integrity: sha512-K9BAE2bAP0J6I/9fqbOnA6jd+JDC3Y9hqPW3Vy3KxqcYEqcjxhyL+1J9bwTP6/QA/f6aDg6BmFWkyf3egSaO1A==, tarball: file:projects/blog-cms.tgz}
+    resolution: {integrity: sha512-03PzI9pIogkMERGEuFQbbpQs0/ynT8s/MTDQ5GiNe26uA9xBeBy09FVxn1yuWhnrOIiAL1X1o79cWT3ssSdVbg==, tarball: file:projects/blog-cms.tgz}
     id: file:projects/blog-cms.tgz
     name: '@rush-temp/blog-cms'
     version: 0.0.0
@@ -22877,6 +22925,7 @@ packages:
       '@mui/lab': 5.0.0-alpha.54_91dfe892e6eb68bcad50aba3b8cd1a56
       '@mui/material': 5.1.0_57a8b6c7575e4ed76259a38ed3d6f901
       '@mui/styles': 5.1.0_27d7f75f5fffc1228c129be468caca5c
+      '@react-keycloak/web': 3.4.0_1ee795e46ecdb6c18a794d75852862c5
       '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
       '@testing-library/user-event': 13.5.0
@@ -22922,6 +22971,7 @@ packages:
       graphql: 15.7.2
       graphql-tag: 2.12.6_graphql@15.7.2
       history: 4.10.1
+      keycloak-js: 15.0.2
       lint-staged: 12.0.3
       luxon: 2.1.1
       material-ui-chip-input: 1.1.0_react-dom@17.0.2+react@17.0.2

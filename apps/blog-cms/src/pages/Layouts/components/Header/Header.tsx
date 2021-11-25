@@ -33,6 +33,7 @@ import {
   Search,
   ViewList
 } from '@mui/icons-material'
+import { useKeycloak } from '@react-keycloak/web'
 import { logout } from 'src/shared/utils'
 import useStyles from './styles'
 
@@ -43,6 +44,15 @@ interface Props {
 
 const Header: FC<Props> = ({ open, handleDrawerChange }) => {
   const classes = useStyles()
+  const { keycloak } = useKeycloak()
+
+  const handleLogin = () => {
+    if (!keycloak.authenticated) {
+      keycloak.login()
+    } else {
+      keycloak.logout()
+    }
+  }
 
   return (
     <AppBar position="relative" className={classes.header}>
@@ -78,6 +88,10 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
           <Badge showZero badgeContent={0} color="secondary">
             <Notifications />
           </Badge>
+        </IconButton>
+
+        <IconButton onClick={handleLogin}>
+          {keycloak.authenticated ? '已登录' : '未登录'}
         </IconButton>
 
         <PopupState variant="popover" popupId="deleteOnePoperOver">
