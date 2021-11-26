@@ -5,7 +5,7 @@ import { useKeycloak } from '@react-keycloak/web'
 import { mapRoutes } from 'src/routes'
 import NotFound from 'src/components/NotFound/NotFound'
 import Loading from 'src/components/Loading/InstagramLoading'
-import { Roles } from 'src/shared/types'
+import { Roles } from 'src/types/roles'
 import useStyles from './styles'
 
 const routeList = mapRoutes()
@@ -31,7 +31,6 @@ const Mains: FC = () => {
 
   const isAutherized = (roles?: Roles[]) => {
     const needAuth = Array.isArray(roles) && roles.length !== 0
-    console.log(needAuth)
     if (!needAuth) return true
     return roles.some((role) => {
       const realm = keycloak.hasRealmRole(role)
@@ -52,6 +51,9 @@ const Mains: FC = () => {
       未登录, 滚去登录
     </h1>
   )
+
+  // @ts-ignore
+  window.keycloak = keycloak
 
   return (
     <main className={classes.main}>

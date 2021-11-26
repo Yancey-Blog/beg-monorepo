@@ -236,6 +236,16 @@ const useStyles = makeStyles({
 
   unfoldChildren: {
     transition: 'max-height 300ms ease 0ms'
+  },
+
+  skeleton: {
+    borderRadius: '3px',
+    marginBottom: '24px',
+    background: 'rgba(255, 255, 255, .2)'
+  },
+
+  skeletonWrapper: {
+    marginTop: '24px'
   }
 })
 

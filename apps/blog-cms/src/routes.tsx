@@ -6,7 +6,7 @@ import {
   PostAdd,
   Settings
 } from '@mui/icons-material'
-import { Roles } from 'src/shared/types'
+import { Roles } from 'src/types/roles'
 
 export interface Route {
   name: string

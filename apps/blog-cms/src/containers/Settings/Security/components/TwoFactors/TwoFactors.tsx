@@ -23,9 +23,11 @@ const TwoFactors: FC = () => {
   const [openTOTP, setOpenTOTP] = useState(false)
   const [openRecoveryCodes, setOpenRecoveryCodes] = useState(false)
 
-  const { isTOTP } =
-    // @ts-ignore
-    client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
+  const isTOTP = false
+
+  // const { isTOTP } =
+  //   // @ts-ignore
+  //   client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
 
   const openRecoveryCodesDialog = () => {
     if (!isTOTP) {

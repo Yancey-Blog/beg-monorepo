@@ -91,7 +91,7 @@ The security module allows you to update **password** and supports two-factor au
 
 ### Env File
 
-Creates `.env` file or other env files to pass environment varibles.
+Creates `.env.production` file and fill in the follows environment varibles.
 
 ```BASH
 # priority
@@ -100,8 +100,6 @@ Creates `.env` file or other env files to pass environment varibles.
 # pnpm run build: .env.production.local > .env.production > .env.local > .env
 # pnpm run test: .env.test.local > .env.test > .env
 
-PORT=3001
-SKIP_PREFLIGHT_CHECK=true
 REACT_APP_BEG_SERVICE_DOMAIN=<YOUR_REACT_APP_BEG_SERVICE_DOMAIN>
 REACT_APP_UPLOADER_SERVICE_DOMAIN=<YOUR_REACT_APP_UPLOADER_SERVICE_DOMAIN>
 REACT_APP_ALGOLIA_APPLICATION_ID=<YOUR_REACT_APP_ALGOLIA_APPLICATION_ID>

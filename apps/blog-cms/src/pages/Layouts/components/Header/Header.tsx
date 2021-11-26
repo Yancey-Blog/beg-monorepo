@@ -34,7 +34,6 @@ import {
   ViewList
 } from '@mui/icons-material'
 import { useKeycloak } from '@react-keycloak/web'
-import { logout } from 'src/shared/utils'
 import useStyles from './styles'
 
 interface Props {
@@ -98,7 +97,7 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
           {(popupState) => {
             const handleLogout = () => {
               popupState.close()
-              logout()
+              keycloak.logout()
             }
             return (
               <>
