@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useSnackbar } from 'notistack'
@@ -10,7 +10,6 @@ import { Button, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import client from 'src/graphql/apolloClient'
 import { UPDATE_USER } from './typeDefs'
 import useStyles from './styles'
 
@@ -43,24 +42,18 @@ const Profile: FC = () => {
     avatarUrl: ''
   }
 
-  const {
-    setFieldValue,
-    handleSubmit,
-    getFieldProps,
-    setValues,
-    isSubmitting,
-    errors
-  } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: async (values) => {
-      await updateUser({
-        variables: { input: values }
-      })
+  const { setFieldValue, handleSubmit, getFieldProps, isSubmitting, errors } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: async (values) => {
+        await updateUser({
+          variables: { input: values }
+        })
 
-      history.push(pathname)
-    }
-  })
+        history.push(pathname)
+      }
+    })
 
   const onChange = async (data: UploaderResponse) => {
     setFieldValue('avatarUrl', data.url)
@@ -70,16 +63,6 @@ const Profile: FC = () => {
 
     history.push(pathname)
   }
-
-  // useEffect(() => {
-  //   const { name, location, organization, website, bio, avatarUrl } =
-  //     // @ts-ignore
-  //     client.cache.data.data[
-  //       `UserModel:${window.localStorage.getItem('userId')}`
-  //     ]
-
-  //   setValues({ name, location, organization, website, bio, avatarUrl })
-  // }, [setValues])
 
   return (
     <SettingWrapper>

@@ -5,6 +5,7 @@ import { useKeycloak } from '@react-keycloak/web'
 import { mapRoutes } from 'src/routes'
 import NotFound from 'src/components/NotFound/NotFound'
 import Loading from 'src/components/Loading/InstagramLoading'
+import SSOStatus, { Status } from 'src/components/SSOStatus/SSOStatus'
 import { Roles } from 'src/types/roles'
 import useStyles from './styles'
 
@@ -15,18 +16,7 @@ const Mains: FC = () => {
 
   const { initialized, keycloak } = useKeycloak()
   if (!initialized) {
-    return (
-      <h1
-        style={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        正在校验是否已登录中...
-      </h1>
-    )
+    return <SSOStatus status={Status.IsLoging} />
   }
 
   const isAutherized = (roles?: Roles[]) => {
@@ -38,19 +28,6 @@ const Mains: FC = () => {
       return realm || resource
     })
   }
-
-  const Tips = () => (
-    <h1
-      style={{
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      未登录, 滚去登录
-    </h1>
-  )
 
   // @ts-ignore
   window.keycloak = keycloak
@@ -74,7 +51,7 @@ const Mains: FC = () => {
                       fallback: <Loading />
                     }
                   )
-                : () => Tips()
+                : () => <SSOStatus status={Status.Fail} />
             }
           />
         ))}

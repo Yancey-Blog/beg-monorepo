@@ -12,7 +12,6 @@ import {
   SentimentDissatisfied
 } from '@mui/icons-material'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import client from 'src/graphql/apolloClient'
 import SnackbarUtils from 'src/components/Toast/Toast'
 import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
 import TOTP from '../TOTP/TOTP'
@@ -24,10 +23,6 @@ const TwoFactors: FC = () => {
   const [openRecoveryCodes, setOpenRecoveryCodes] = useState(false)
 
   const isTOTP = false
-
-  // const { isTOTP } =
-  //   // @ts-ignore
-  //   client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
 
   const openRecoveryCodesDialog = () => {
     if (!isTOTP) {

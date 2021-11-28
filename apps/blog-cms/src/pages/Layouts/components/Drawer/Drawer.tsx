@@ -2,7 +2,6 @@ import { FC, Fragment, useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Avatar, Skeleton } from '@mui/material'
 import { Home, Face } from '@mui/icons-material'
-import { useKeycloak } from '@react-keycloak/web'
 import classNames from 'classnames'
 import routes, { Route } from 'src/routes'
 import { UserInfo } from 'src/types/userInfo'
@@ -13,30 +12,17 @@ import useStyles from './styles'
 
 interface Props {
   open: boolean
+  isFetching: boolean
+  userInfo: UserInfo | null
 }
 
-const Drawer: FC<Props> = ({ open }) => {
+const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
   const classes = useStyles()
-  const { initialized, keycloak } = useKeycloak()
   const { pathname } = useLocation()
   const [foldName, setfoldName] = useState('')
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
-  const [isFetchingUserInfo, setIsFetchingUserInfo] = useState(false)
 
   const handleFoldNameChange = (name: string) => {
     setfoldName(foldName === name ? '' : name)
-  }
-
-  const getUserInfo = async () => {
-    if (initialized && keycloak.authenticated) {
-      setIsFetchingUserInfo(true)
-      try {
-        const userInfo = (await keycloak.loadUserInfo()) as UserInfo
-        setUserInfo(userInfo)
-      } finally {
-        setIsFetchingUserInfo(false)
-      }
-    }
   }
 
   const matchChilren = (routeList: Route[]) => {
@@ -50,11 +36,8 @@ const Drawer: FC<Props> = ({ open }) => {
 
   useEffect(() => {
     matchChilren(routes)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
-
-  useEffect(() => {
-    getUserInfo()
-  }, [initialized, keycloak.authenticated])
 
   return (
     <menu
@@ -80,13 +63,15 @@ const Drawer: FC<Props> = ({ open }) => {
         </div>
       </div>
 
-      {!initialized || !keycloak.authenticated || isFetchingUserInfo ? (
+      {isFetching ? (
         <div className={classes.skeletonWrapper}>
           <SkeletonIterator
             count={10}
             skeletonComponent={() => (
               <Skeleton
-                className={classes.skeleton}
+                className={classNames(classes.skeleton, {
+                  [classes.skeletonHidenNotItem]: !open
+                })}
                 variant="rectangular"
                 animation="wave"
                 height={48}

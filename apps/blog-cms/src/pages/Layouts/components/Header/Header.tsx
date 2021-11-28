@@ -6,7 +6,8 @@ import {
   Divider,
   Fade,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Avatar
 } from '@mui/material'
 import {
   LockOutlined,
@@ -33,25 +34,25 @@ import {
   Search,
   ViewList
 } from '@mui/icons-material'
-import { useKeycloak } from '@react-keycloak/web'
+import { UserInfo } from 'src/types/userInfo'
 import useStyles from './styles'
 
 interface Props {
   open: boolean
   handleDrawerChange: Function
+  isFetching: boolean
+  userInfo: UserInfo | null
+  logout: () => void
 }
 
-const Header: FC<Props> = ({ open, handleDrawerChange }) => {
+const Header: FC<Props> = ({
+  open,
+  handleDrawerChange,
+  isFetching,
+  userInfo,
+  logout
+}) => {
   const classes = useStyles()
-  const { keycloak } = useKeycloak()
-
-  const handleLogin = () => {
-    if (!keycloak.authenticated) {
-      keycloak.login()
-    } else {
-      keycloak.logout()
-    }
-  }
 
   return (
     <AppBar position="relative" className={classes.header}>
@@ -89,15 +90,11 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
           </Badge>
         </IconButton>
 
-        <IconButton onClick={handleLogin}>
-          {keycloak.authenticated ? '已登录' : '未登录'}
-        </IconButton>
-
         <PopupState variant="popover" popupId="deleteOnePoperOver">
           {(popupState) => {
             const handleLogout = () => {
               popupState.close()
-              keycloak.logout()
+              logout()
             }
             return (
               <>
@@ -105,7 +102,11 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
                   style={{ cursor: 'pointer' }}
                   {...bindTrigger(popupState)}
                 >
-                  <Person />
+                  {isFetching ? (
+                    <Person />
+                  ) : (
+                    <Avatar alt="user-avatar" src={userInfo?.profile} />
+                  )}
                 </IconButton>
                 <Menu
                   {...bindMenu(popupState)}

@@ -47,6 +47,12 @@ const useStyles = makeStyles({
     '&:hover $hideDetail': {
       opacity: 1,
       visibility: 'visible'
+    },
+
+    '&:hover $skeletonHidenNotItem': {
+      width: 'auto',
+      transform: 'translateX(0)',
+      transition: 'all 300ms linear'
     }
   },
 
@@ -246,6 +252,12 @@ const useStyles = makeStyles({
 
   skeletonWrapper: {
     marginTop: '24px'
+  },
+
+  skeletonHidenNotItem: {
+    width: '48px',
+    transform: `translateX(${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`,
+    transition: 'all 300ms linear'
   }
 })
 
