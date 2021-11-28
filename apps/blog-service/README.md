@@ -48,21 +48,33 @@ Runs Jest via pnpm run test.
 Creating `production.env`, `development.env` and `test.env` to save specified environment variables. Common parameters cound be filled in `.env`. Both `DATABASE_USER` and `DATABASE_PWD` are optional parameters in `development.env` and `test.env` file. Furthermore, `NEED_SIMULATE_NETWORK_THROTTLE` is only working on the development environment.
 
 ```bash
+###############################################################################
+# Rename this file to development.env and development.env and save to the env file folder.
+# Then replace those environment variables with your own.
+#
+# Both DATABASE_USER and DATABASE_PWD are optional parameters in development.env and test.env file.
+# Furthermore, NEED_SIMULATE_NETWORK_THROTTLE is only taken efforts in the development environment.
+###############################################################################
+
 NODE_ENV=<YOUR_NODE_ENV>
 APP_PORT=<YOUR_APP_PORT>
 DATABASE_HOST=<YOUR_DATABASE_HOST>
 DATABASE_PORT=<YOUR_DATABASE_PORT>
-DATABASE_COLLECTION=<YOUR_DATABASE_COLLECTION>
 # `DATABASE_USER` and `DATABASE_PWD` are optional parameters in
 # `development.env` and `test.env` file
 DATABASE_USER=<YOUR_DATABASE_USER>
 DATABASE_PWD=<YOUR_DATABASE_PWD>
+DATABASE_COLLECTION=<YOUR_DATABASE_COLLECTION>
 BANDWAGON_SECRET_KEY=<YOUR_BANDWAGON_SECRET_KEY>
 BANDWAGON_SERVER_ID=<YOUR_BANDWAGON_SERVER_ID>
 IP_STACK_ACCESS_KEY=<YOUR_IP_STACK_ACCESS_KEY>
-GOOGLE_RECAPTCHA_KEY=<YOUR_GOOGLE_RECAPTCHA_KEY>
 JWT_SECRET_KEY=<YOUR_JWT_SECRET_KEY>
 JWT_EXPIRES_TIME=<YOUR_JWT_EXPIRES_TIME>
+GOOGLE_RECAPTCHA_KEY=<YOUR_GOOGLE_RECAPTCHA_KEY>
+KEY_CLOAK_URL=<YOUR_KEY_CLOAK_URL>
+KEY_CLOAK_REALM=<YOUR_KEY_CLOAK_REALM>
+KEY_CLOAK_CLIENT_ID=<YOUR_KEY_CLOAK_CLIENT_ID>
+KEY_CLOAK_CLIENT_SECRET=<YOUR_KEY_CLOAK_CLIENT_SECRET>
 # Only works on the development environment.
 NEED_SIMULATE_NETWORK_THROTTLE=<BOOLEAN>
 ```

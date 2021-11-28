@@ -1,7 +1,8 @@
 import dotenv, { DotenvParseOutput } from 'dotenv'
 import Joi, { ObjectSchema } from 'joi'
 import fs from 'fs'
-import { BandwagonKey } from './interfaces/bandwagon-keys.interface'
+import { Bandwagon } from './interfaces/bandwagon.interface'
+import { KeyCloak } from './interfaces/key-cloak.interface'
 
 export type EnvConfig = Record<string, any>
 
@@ -46,7 +47,7 @@ export class ConfigService {
       : `${prefix}${connection}`
   }
 
-  public getBandwagonKeys(): BandwagonKey {
+  public getBandwagonKeys(): Bandwagon {
     return {
       BANDWAGON_SECRET_KEY: this.get('BANDWAGON_SECRET_KEY'),
       BANDWAGON_SERVER_ID: this.get('BANDWAGON_SERVER_ID')
@@ -73,6 +74,15 @@ export class ConfigService {
     return this.get('GOOGLE_RECAPTCHA_KEY')
   }
 
+  public getKeyCloak(): KeyCloak {
+    return {
+      KEY_CLOAK_URL: this.get('KEY_CLOAK_URL'),
+      KEY_CLOAK_REALM: this.get('KEY_CLOAK_REALM'),
+      KEY_CLOAK_CLIENT_ID: this.get('KEY_CLOAK_CLIENT_ID'),
+      KEY_CLOAK_CLIENT_SECRET: this.get('KEY_CLOAK_CLIENT_SECRET')
+    }
+  }
+
   private validateEnvFile(envConfig: EnvConfig): EnvConfig {
     const envVarsSchema: ObjectSchema = Joi.object({
       NODE_ENV: Joi.string()
@@ -95,6 +105,10 @@ export class ConfigService {
       JWT_SECRET_KEY: Joi.string().required(),
       JWT_EXPIRES_TIME: Joi.number().required(),
       GOOGLE_RECAPTCHA_KEY: Joi.string().required(),
+      KEY_CLOAK_URL: Joi.string().required(),
+      KEY_CLOAK_REALM: Joi.string().required(),
+      KEY_CLOAK_CLIENT_ID: Joi.string().required(),
+      KEY_CLOAK_CLIENT_SECRET: Joi.string().required(),
       NEED_SIMULATE_NETWORK_THROTTLE: Joi.boolean().optional()
     })
 

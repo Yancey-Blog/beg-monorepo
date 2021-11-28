@@ -1,11 +1,10 @@
-import { UseGuards } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Public } from 'nest-keycloak-connect'
 import { LiveToursService } from './live-tours.service'
 import { LiveTourModel } from './models/live-tours.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateLiveTourInput } from './dtos/create-live-tour.input'
 import { UpdateLiveTourInput } from './dtos/update-live-tour.input'
-import { JwtAuthGuard } from '../shared/guard/GraphQLAuth.guard'
 
 @Resolver(() => LiveTourModel)
 export class LiveToursResolver {
@@ -14,11 +13,13 @@ export class LiveToursResolver {
   }
 
   @Query(() => [LiveTourModel])
+  @Public()
   public async getLiveTours() {
     return this.liveToursService.findAll()
   }
 
   @Query(() => LiveTourModel)
+  @Public()
   public async getLiveTourById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -26,19 +27,16 @@ export class LiveToursResolver {
   }
 
   @Mutation(() => LiveTourModel)
-  @UseGuards(JwtAuthGuard)
   public async createLiveTour(@Args('input') input: CreateLiveTourInput) {
     return this.liveToursService.create(input)
   }
 
   @Mutation(() => LiveTourModel)
-  @UseGuards(JwtAuthGuard)
   public async updateLiveTourById(@Args('input') input: UpdateLiveTourInput) {
     return this.liveToursService.update(input)
   }
 
   @Mutation(() => LiveTourModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteLiveTourById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -46,7 +44,6 @@ export class LiveToursResolver {
   }
 
   @Mutation(() => BatchDeleteModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteLiveTours(
     @Args({ name: 'ids', type: () => [ID] }) ids: string[]
   ) {
