@@ -54,24 +54,8 @@ export class ConfigService {
     }
   }
 
-  public getIpStackAccessKey(): string {
-    return this.get('IP_STACK_ACCESS_KEY')
-  }
-
-  public getJWTSecretKey(): string {
-    return this.get('JWT_SECRET_KEY')
-  }
-
-  public getJWTExpiresTime(): number {
-    return this.get('JWT_EXPIRES_TIME')
-  }
-
   public needSimulateNetworkThrottle(): boolean {
     return this.get('NEED_SIMULATE_NETWORK_THROTTLE')
-  }
-
-  public getGoogleRecaptchaKey(): string {
-    return this.get('GOOGLE_RECAPTCHA_KEY')
   }
 
   public getKeyCloak(): KeyCloak {
@@ -101,10 +85,6 @@ export class ConfigService {
       DATABASE_COLLECTION: Joi.string().required(),
       BANDWAGON_SECRET_KEY: Joi.string().required(),
       BANDWAGON_SERVER_ID: Joi.string().required(),
-      IP_STACK_ACCESS_KEY: Joi.string().required(),
-      JWT_SECRET_KEY: Joi.string().required(),
-      JWT_EXPIRES_TIME: Joi.number().required(),
-      GOOGLE_RECAPTCHA_KEY: Joi.string().required(),
       KEY_CLOAK_URL: Joi.string().required(),
       KEY_CLOAK_REALM: Joi.string().required(),
       KEY_CLOAK_CLIENT_ID: Joi.string().required(),
