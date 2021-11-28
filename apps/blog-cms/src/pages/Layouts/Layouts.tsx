@@ -5,7 +5,7 @@ import { UserInfo } from 'src/types/userInfo'
 import useStyles from './styles'
 import Header from './components/Header/Header'
 import Drawer from './components/Drawer/Drawer'
-import Mains from './components/Mains/Mains'
+import Mains from './components/Main/Main'
 import Footer from './components/Footer/Footer'
 
 const Layouts: FC = () => {
@@ -21,7 +21,6 @@ const Layouts: FC = () => {
 
   const getUserInfo = async () => {
     if (initialized && keycloak.authenticated) {
-      setIsFetchingUserInfo(true)
       try {
         const userInfo = (await keycloak.loadUserInfo()) as UserInfo
         setUserInfo(userInfo)

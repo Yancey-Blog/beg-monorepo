@@ -25,7 +25,12 @@ import './assets/global.scss'
 
 ReactDOM.render(
   <StrictMode>
-    <ReactKeycloakProvider authClient={keycloak}>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      onTokens={({ token }) => {
+        localStorage.setItem('token', token || '')
+      }}
+    >
       <ApolloProvider client={client}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={tableTheme()}>

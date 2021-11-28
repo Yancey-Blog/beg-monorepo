@@ -11,12 +11,12 @@ import useStyles from './styles'
 
 const routeList = mapRoutes()
 
-const Mains: FC = () => {
+const Main: FC = () => {
   const classes = useStyles()
 
   const { initialized, keycloak } = useKeycloak()
   if (!initialized) {
-    return <SSOStatus status={Status.IsLoging} />
+    return <SSOStatus status={Status.IsChecking} />
   }
 
   const isAutherized = (roles?: Roles[]) => {
@@ -28,9 +28,6 @@ const Mains: FC = () => {
       return realm || resource
     })
   }
-
-  // @ts-ignore
-  window.keycloak = keycloak
 
   return (
     <main className={classes.main}>
@@ -63,4 +60,4 @@ const Mains: FC = () => {
   )
 }
 
-export default Mains
+export default Main
