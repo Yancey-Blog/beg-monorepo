@@ -351,6 +351,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "keycloak-connect",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "keycloak-js",
       "allowedCategories": [ "apps" ]
     },
@@ -392,6 +396,10 @@
     },
     {
       "name": "mui-datatables",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "nest-keycloak-connect",
       "allowedCategories": [ "apps" ]
     },
     {
