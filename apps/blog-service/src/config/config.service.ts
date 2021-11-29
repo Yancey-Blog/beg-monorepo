@@ -1,7 +1,8 @@
 import dotenv, { DotenvParseOutput } from 'dotenv'
 import Joi, { ObjectSchema } from 'joi'
 import fs from 'fs'
-import { BandwagonKey } from './interfaces/bandwagon-keys.interface'
+import { Bandwagon } from './interfaces/bandwagon.interface'
+import { KeyCloak } from './interfaces/key-cloak.interface'
 
 export type EnvConfig = Record<string, any>
 
@@ -46,31 +47,24 @@ export class ConfigService {
       : `${prefix}${connection}`
   }
 
-  public getBandwagonKeys(): BandwagonKey {
+  public getBandwagonKeys(): Bandwagon {
     return {
       BANDWAGON_SECRET_KEY: this.get('BANDWAGON_SECRET_KEY'),
       BANDWAGON_SERVER_ID: this.get('BANDWAGON_SERVER_ID')
     }
   }
 
-  public getIpStackAccessKey(): string {
-    return this.get('IP_STACK_ACCESS_KEY')
-  }
-
-  public getJWTSecretKey(): string {
-    return this.get('JWT_SECRET_KEY')
-  }
-
-  public getJWTExpiresTime(): number {
-    return this.get('JWT_EXPIRES_TIME')
-  }
-
   public needSimulateNetworkThrottle(): boolean {
     return this.get('NEED_SIMULATE_NETWORK_THROTTLE')
   }
 
-  public getGoogleRecaptchaKey(): string {
-    return this.get('GOOGLE_RECAPTCHA_KEY')
+  public getKeyCloak(): KeyCloak {
+    return {
+      KEY_CLOAK_URL: this.get('KEY_CLOAK_URL'),
+      KEY_CLOAK_REALM: this.get('KEY_CLOAK_REALM'),
+      KEY_CLOAK_CLIENT_ID: this.get('KEY_CLOAK_CLIENT_ID'),
+      KEY_CLOAK_CLIENT_SECRET: this.get('KEY_CLOAK_CLIENT_SECRET')
+    }
   }
 
   private validateEnvFile(envConfig: EnvConfig): EnvConfig {
@@ -91,10 +85,10 @@ export class ConfigService {
       DATABASE_COLLECTION: Joi.string().required(),
       BANDWAGON_SECRET_KEY: Joi.string().required(),
       BANDWAGON_SERVER_ID: Joi.string().required(),
-      IP_STACK_ACCESS_KEY: Joi.string().required(),
-      JWT_SECRET_KEY: Joi.string().required(),
-      JWT_EXPIRES_TIME: Joi.number().required(),
-      GOOGLE_RECAPTCHA_KEY: Joi.string().required(),
+      KEY_CLOAK_URL: Joi.string().required(),
+      KEY_CLOAK_REALM: Joi.string().required(),
+      KEY_CLOAK_CLIENT_ID: Joi.string().required(),
+      KEY_CLOAK_CLIENT_SECRET: Joi.string().required(),
       NEED_SIMULATE_NETWORK_THROTTLE: Joi.boolean().optional()
     })
 

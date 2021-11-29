@@ -4,7 +4,10 @@
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base", "plugin:nestjs/recommended"],
+  "extends": [
+    "airbnb-base",
+    "plugin:nestjs/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -14,7 +17,11 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "nestjs", "jest"],
+  "plugins": [
+    "@typescript-eslint",
+    "nestjs",
+    "jest"
+  ],
   "rules": {
     "semi": "off",
     "import/prefer-default-export": "off",
@@ -33,12 +40,18 @@
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off", // FIXME:
     "class-methods-use-this": "off", // FIXME:
-    "no-unused-vars": "off" // FIXME:
+    "no-unused-vars": "off", // FIXME:
+    "import/no-unresolved": "off"
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   }

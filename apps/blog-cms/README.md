@@ -91,7 +91,24 @@ The security module allows you to update **password** and supports two-factor au
 
 ### Env File
 
-Creates `.env.development.local` file or other env files to pass environment varibles.
+Creates `.env.production` file and fill in the follows environment varibles.
+
+```BASH
+# priority
+#
+# pnpm run start: .env.development.local > .env.development > .env.local > .env
+# pnpm run build: .env.production.local > .env.production > .env.local > .env
+# pnpm run test: .env.test.local > .env.test > .env
+
+REACT_APP_BEG_SERVICE_DOMAIN=<YOUR_REACT_APP_BEG_SERVICE_DOMAIN>
+REACT_APP_UPLOADER_SERVICE_DOMAIN=<YOUR_REACT_APP_UPLOADER_SERVICE_DOMAIN>
+REACT_APP_ALGOLIA_APPLICATION_ID=<YOUR_REACT_APP_ALGOLIA_APPLICATION_ID>
+REACT_APP_ALGOLIA_ADMIN_API_KEY=<YOUR_REACT_APP_ALGOLIA_ADMIN_API_KEY>
+REACT_APP_ALGOLIA_SEARCH_INDEX=<YOUR_REACT_APP_ALGOLIA_SEARCH_INDEX>
+REACT_APP_KEY_CLOAK_REALM=<YOUR_REACT_APP_KEY_CLOAK_REALM>
+REACT_APP_KEY_CLOAK_URL=<YOUR_REACT_APP_KEY_CLOAK_URL>
+REACT_APP_KEY_CLOAK_CLIENT_ID=<YOUR_REACT_APP_KEY_CLOAK_CLIENT_ID>
+```
 
 ## TODOs
 

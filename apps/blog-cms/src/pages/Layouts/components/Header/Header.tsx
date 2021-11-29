@@ -6,7 +6,8 @@ import {
   Divider,
   Fade,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Avatar
 } from '@mui/material'
 import {
   LockOutlined,
@@ -33,15 +34,24 @@ import {
   Search,
   ViewList
 } from '@mui/icons-material'
-import { logout } from 'src/shared/utils'
+import { UserInfo } from 'src/types/userInfo'
 import useStyles from './styles'
 
 interface Props {
   open: boolean
   handleDrawerChange: Function
+  isFetching: boolean
+  userInfo: UserInfo | null
+  logout: () => void
 }
 
-const Header: FC<Props> = ({ open, handleDrawerChange }) => {
+const Header: FC<Props> = ({
+  open,
+  handleDrawerChange,
+  isFetching,
+  userInfo,
+  logout
+}) => {
   const classes = useStyles()
 
   return (
@@ -92,7 +102,11 @@ const Header: FC<Props> = ({ open, handleDrawerChange }) => {
                   style={{ cursor: 'pointer' }}
                   {...bindTrigger(popupState)}
                 >
-                  <Person />
+                  {isFetching ? (
+                    <Person />
+                  ) : (
+                    <Avatar alt="user-avatar" src={userInfo?.profile} />
+                  )}
                 </IconButton>
                 <Menu
                   {...bindMenu(popupState)}

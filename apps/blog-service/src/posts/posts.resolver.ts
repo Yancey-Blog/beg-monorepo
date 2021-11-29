@@ -1,5 +1,5 @@
-import { UseGuards } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation, ID, Int } from '@nestjs/graphql'
+import { Public } from 'nest-keycloak-connect'
 import { PostsService } from './posts.service'
 import { PostModel } from './models/posts.model'
 import { PostItemModel } from './models/post.model'
@@ -9,7 +9,6 @@ import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreatePostInput } from './dtos/create-post.input'
 import { UpdatePostInput } from './dtos/update-post.input'
 import { PaginationInput } from './dtos/pagination.input'
-import { JwtAuthGuard } from '../shared/guard/GraphQLAuth.guard'
 
 @Resolver()
 export class PostsResolver {
@@ -18,35 +17,33 @@ export class PostsResolver {
   }
 
   @Query(() => PostModel)
+  @Public()
   public async posts(@Args('input') input: PaginationInput) {
     return this.postsService.findPublicByPagination(input)
   }
 
-  @Query(() => PostModel)
-  @UseGuards(JwtAuthGuard)
-  public async getPosts(@Args('input') input: PaginationInput) {
-    return this.postsService.findByPagination(input)
-  }
-
   @Query(() => PostItemModel)
+  @Public()
   public async getPostById(@Args({ name: 'id', type: () => ID }) id: string) {
     return this.postsService.findOneById(id)
   }
 
+  @Query(() => PostModel)
+  public async getPosts(@Args('input') input: PaginationInput) {
+    return this.postsService.findByPagination(input)
+  }
+
   @Mutation(() => PostItemModel)
-  @UseGuards(JwtAuthGuard)
   public async createPost(@Args('input') input: CreatePostInput) {
     return this.postsService.create(input)
   }
 
   @Mutation(() => PostItemModel)
-  @UseGuards(JwtAuthGuard)
   public async updatePostById(@Args('input') input: UpdatePostInput) {
     return this.postsService.update(input)
   }
 
   @Mutation(() => PostItemModel)
-  @UseGuards(JwtAuthGuard)
   public async deletePostById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -54,7 +51,6 @@ export class PostsResolver {
   }
 
   @Mutation(() => BatchDeleteModel)
-  @UseGuards(JwtAuthGuard)
   public async deletePosts(
     @Args({ name: 'ids', type: () => [ID] }) ids: string[]
   ) {
@@ -62,16 +58,19 @@ export class PostsResolver {
   }
 
   @Mutation(() => PostItemModel)
+  @Public()
   public async updatePV(@Args({ name: 'id', type: () => ID }) id: string) {
     return this.postsService.updatePV(id)
   }
 
   @Mutation(() => PostItemModel)
+  @Public()
   public async updateLike(@Args({ name: 'id', type: () => ID }) id: string) {
     return this.postsService.updateLike(id)
   }
 
   @Query(() => [PostItemModel])
+  @Public()
   public async getTopPVPosts(
     @Args({ name: 'limit', type: () => Int }) limit: number
   ) {
@@ -79,6 +78,7 @@ export class PostsResolver {
   }
 
   @Query(() => [PostItemModel])
+  @Public()
   public async getTopLikePosts(
     @Args({ name: 'limit', type: () => Int }) limit: number
   ) {
@@ -86,11 +86,13 @@ export class PostsResolver {
   }
 
   @Query(() => TagsModel)
+  @Public()
   public async getAllTags() {
     return this.postsService.getAllTags()
   }
 
   @Query(() => [ArchiveModel])
+  @Public()
   public async archive() {
     return this.postsService.archive()
   }
