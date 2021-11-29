@@ -93,7 +93,7 @@ If you want to execute script of `package.json` in one project, you can use the 
 Note your changes will eventually be published in a changelog.md file in each package. The `publish` or `version` command will consume these files and
 perform the proper version bumps.
 
-### ```rush version --bump```
+### `rush version --bump`
 
 Uses this command to bump the version of the package and generate a changelog. Please execute this command after you have made changes to the package and executed `rush change`.
 
@@ -102,6 +102,10 @@ Uses this command to bump the version of the package and generate a changelog. P
 ### GitHub Actions workflows template
 
 To generate or update GitHub Actions CI/CD config file easily, you can execute `sh bin/workflows.sh` under the project root folder.
+
+### Bumping versions
+
+You must execute `rush change` and `rush version --bump` before merge reuqest.
 
 ## Contributing
 
