@@ -2,6 +2,18 @@
   "name": "uploader-service",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "uploader-service_v1.1.0",
+      "date": "Mon, 29 Nov 2021 04:57:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migrate to keyloak"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.0",
       "tag": "uploader-service_v1.0.0",
       "date": "Mon, 22 Nov 2021 09:27:05 GMT",

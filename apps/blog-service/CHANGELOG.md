@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Mon, 22 Nov 2021 07:15:12 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Nov 2021 04:57:53 GMT and should not be manually modified.
+
+## 2.2.0
+Mon, 29 Nov 2021 04:57:53 GMT
+
+### Minor changes
+
+- migrate to keycloak
 
 ## 2.1.1
 Mon, 22 Nov 2021 07:15:12 GMT
