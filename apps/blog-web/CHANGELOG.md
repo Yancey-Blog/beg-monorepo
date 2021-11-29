@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 20 Nov 2021 14:50:38 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Nov 2021 06:21:08 GMT and should not be manually modified.
+
+## 4.18.1
+Mon, 29 Nov 2021 06:21:08 GMT
+
+### Patches
+
+- fix feed generator script
 
 ## 4.18.0
 Sat, 20 Nov 2021 14:50:38 GMT
