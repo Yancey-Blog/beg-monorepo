@@ -31,8 +31,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 })
 
-const additiveLink = from([errorLink, authLink, httpLink])
-
 const cache = new InMemoryCache()
 
 async function handlePersistCache() {
@@ -49,7 +47,7 @@ handlePersistCache()
 const client = new ApolloClient({
   cache,
   resolvers: {},
-  link: additiveLink,
+  link: from([errorLink, authLink, httpLink]),
   defaultOptions: {
     watchQuery: {
       fetchPolicy: 'cache-and-network'
