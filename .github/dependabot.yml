@@ -12,6 +12,7 @@ updates:
     target-branch: "develop"
     commit-message:
       prefix: 'deps'
+    open-pull-requests-limit: 0
   - package-ecosystem: 'npm'
     directory: '/apps/blog-service'
     schedule:
@@ -19,6 +20,7 @@ updates:
     target-branch: "develop"
     commit-message:
       prefix: 'deps'
+    open-pull-requests-limit: 0
   - package-ecosystem: 'npm'
     directory: '/apps/blog-web'
     schedule:
@@ -26,6 +28,7 @@ updates:
     target-branch: "develop"
     commit-message:
       prefix: 'deps'
+    open-pull-requests-limit: 0
   - package-ecosystem: 'npm'
     directory: '/apps/uploader-service'
     schedule:
@@ -33,3 +36,4 @@ updates:
     target-branch: "develop"
     commit-message:
       prefix: 'deps'
+    open-pull-requests-limit: 0
