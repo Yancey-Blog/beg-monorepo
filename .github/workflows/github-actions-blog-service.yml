@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - "apps/blog-service/**"
+    branches: [ master, develop ]
   pull_request:
     paths:
       - "apps/blog-service/**"
+    branches: [ master, develop ]
 
 jobs:
   test:
