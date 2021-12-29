@@ -1,11 +1,10 @@
-import { UseGuards } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Public } from 'nest-keycloak-connect'
 import { YanceyMusicService } from './yancey-music.service'
 import { YanceyMusicModel } from './models/yancey-music.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateYanceyMusicInput } from './dtos/create-yancey-music.input'
 import { UpdateYanceyMusicInput } from './dtos/update-yancey-music.input'
-import { JwtAuthGuard } from '../shared/guard/GraphQLAuth.guard'
 
 @Resolver(() => YanceyMusicModel)
 export class YanceyMusicResolver {
@@ -14,11 +13,13 @@ export class YanceyMusicResolver {
   }
 
   @Query(() => [YanceyMusicModel])
+  @Public()
   public async getYanceyMusic() {
     return this.yanceyMusicsService.findAll()
   }
 
   @Query(() => YanceyMusicModel)
+  @Public()
   public async getYanceyMusicById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -26,13 +27,11 @@ export class YanceyMusicResolver {
   }
 
   @Mutation(() => YanceyMusicModel)
-  @UseGuards(JwtAuthGuard)
   public async createYanceyMusic(@Args('input') input: CreateYanceyMusicInput) {
     return this.yanceyMusicsService.create(input)
   }
 
   @Mutation(() => YanceyMusicModel)
-  @UseGuards(JwtAuthGuard)
   public async updateYanceyMusicById(
     @Args('input') input: UpdateYanceyMusicInput
   ) {
@@ -40,7 +39,6 @@ export class YanceyMusicResolver {
   }
 
   @Mutation(() => YanceyMusicModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteYanceyMusicById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -48,7 +46,6 @@ export class YanceyMusicResolver {
   }
 
   @Mutation(() => BatchDeleteModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteYanceyMusic(
     @Args({ name: 'ids', type: () => [ID] }) ids: string[]
   ) {

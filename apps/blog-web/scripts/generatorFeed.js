@@ -39,7 +39,7 @@ const generatorFeed = async () => {
     }
   `
 
-  const res = await fetch('https://api.yanceyleo.com/graphql', {
+  const res = await fetch('https://api.yanceyleo.com/beg/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

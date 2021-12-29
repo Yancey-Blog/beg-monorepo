@@ -5,17 +5,34 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/Yancey-Blog/beg-monorepo/pulls)
 [![Node](https://img.shields.io/badge/node-%3E%3D14.18.1-orange.svg)](https://nodejs.org/en/)
 [![Gitter](https://badges.gitter.im/yancey-official/community.svg)](https://gitter.im/yancey-official/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-ff3f59.svg)](https://www.paypal.me/yanceyleo)
 [![Twitter](https://img.shields.io/twitter/follow/YanceyOfficial.svg?style=social&label=Follow)](https://twitter.com/YanceyOfficial)
 
 All services for Blog Environment Group. The monorepo system is powered by [rushjs](https://rushjs.io/).
 
-## Sub Projects
+## Ecosystem
 
-- [blog-cms](./apps/blog-cms)
-- [blog-web](./apps/blog-web)
-- [blog-service](./apps/blog-service)
-- [uploader-service](./apps/uploader-service)
+| Project               | Version                       | Build Status                       | Description                                             |
+| --------------------- | ----------------------------- | ---------------------------------- | ------------------------------------------------------- |
+| [blog-cms]            | ![blog-cms-version]           | ![blog-cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL.
+| [blog-web]            | ![blog-web-version]           | ![blog-web-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.                            |
+| [blog-service]        | ![blog-service-version]       | ![blog-service-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more...                                     |
+| [uploader-service]    | ![uploader-service-version]   | ![uploader-service-build-status]   | The Uploader service powered by Azure Blob. |
+
+[blog-cms]: ./apps/blog-cms
+[blog-web]: ./apps/blog-web
+[blog-service]: .app/blog-service
+[uploader-service]:.app/uploader-service
+[blog-cms-version]: https://img.shields.io/badge/Version-v4.0.0-brightgreen
+[blog-web-version]: https://img.shields.io/badge/Version-v4.18.1-brightgreen
+[blog-service-version]: https://img.shields.io/badge/Version-v2.2.0-brightgreen
+[uploader-service-version]: https://img.shields.io/badge/Version-v1.1.0-brightgreen
+[blog-cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-cms.yml/badge.svg
+[blog-web-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-web.yml/badge.svg
+[blog-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-service.yml/badge.svg
+[uploader-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader-service.yml/badge.svg
 
 ## Prerequisite
 
@@ -76,9 +93,19 @@ If you want to execute script of `package.json` in one project, you can use the 
 Note your changes will eventually be published in a changelog.md file in each package. The `publish` or `version` command will consume these files and
 perform the proper version bumps.
 
-### ```rush version --bump```
+### `rush version --bump`
 
 Uses this command to bump the version of the package and generate a changelog. Please execute this command after you have made changes to the package and executed `rush change`.
+
+## Recipes
+
+### GitHub Actions workflows template
+
+To generate or update GitHub Actions CI/CD config file easily, you can execute `sh bin/workflows.sh` under the project root folder.
+
+### Bumping versions
+
+You must execute `rush change` and `rush version --bump` before merge reuqest.
 
 ## Contributing
 

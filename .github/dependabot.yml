@@ -6,9 +6,34 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/'
+    directory: '/apps/blog-cms'
     schedule:
       interval: 'weekly'
     target-branch: "develop"
     commit-message:
       prefix: 'deps'
+    open-pull-requests-limit: 20
+  - package-ecosystem: 'npm'
+    directory: '/apps/blog-service'
+    schedule:
+      interval: 'weekly'
+    target-branch: "develop"
+    commit-message:
+      prefix: 'deps'
+    open-pull-requests-limit: 20
+  - package-ecosystem: 'npm'
+    directory: '/apps/blog-web'
+    schedule:
+      interval: 'weekly'
+    target-branch: "develop"
+    commit-message:
+      prefix: 'deps'
+    open-pull-requests-limit: 20
+  - package-ecosystem: 'npm'
+    directory: '/apps/uploader-service'
+    schedule:
+      interval: 'weekly'
+    target-branch: "develop"
+    commit-message:
+      prefix: 'deps'
+    open-pull-requests-limit: 20

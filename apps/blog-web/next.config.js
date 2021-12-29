@@ -65,6 +65,7 @@ module.exports = (phase, { defaultConfig }) => {
         register: true,
         skipWaiting: true,
         disable: process.env.NODE_ENV === 'development',
+        maximumFileSizeToCacheInBytes: 4000000
       },
       images: {
         // TODO: 清洗完数据下掉 'static.yancey.app'

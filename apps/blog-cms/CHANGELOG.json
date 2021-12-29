@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "blog-cms_v4.0.0",
+      "date": "Mon, 29 Nov 2021 04:57:53 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "migrate to keycloak"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.19.0",
       "tag": "blog-cms_v3.19.0",
       "date": "Sun, 21 Nov 2021 06:04:05 GMT",

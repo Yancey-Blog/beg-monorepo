@@ -1,9 +1,8 @@
-import { UseGuards } from '@nestjs/common'
+import { Public } from 'nest-keycloak-connect'
 import { Args, Query, Resolver, Mutation } from '@nestjs/graphql'
 import { GlobalSettingService } from './global-setting.service'
 import { GlobalSettingModel } from './models/global-setting.model'
 import { UpdateGlobalSettingInput } from './dtos/update-global-setting.input'
-import { JwtAuthGuard } from '../shared/guard/GraphQLAuth.guard'
 
 @Resolver(() => GlobalSettingModel)
 export class GlobalSettingResolver {
@@ -12,12 +11,12 @@ export class GlobalSettingResolver {
   }
 
   @Query(() => GlobalSettingModel)
+  @Public()
   public async getGlobalSetting() {
     return this.globalSettingService.findOne()
   }
 
   @Mutation(() => GlobalSettingModel)
-  @UseGuards(JwtAuthGuard)
   public async updateGlobalSettingById(
     @Args('input') input: UpdateGlobalSettingInput
   ) {

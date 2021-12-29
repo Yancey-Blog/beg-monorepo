@@ -47,6 +47,12 @@ const useStyles = makeStyles({
     '&:hover $hideDetail': {
       opacity: 1,
       visibility: 'visible'
+    },
+
+    '&:hover $skeletonHidenNotItem': {
+      width: 'auto',
+      transform: 'translateX(0)',
+      transition: 'all 300ms linear'
     }
   },
 
@@ -236,6 +242,22 @@ const useStyles = makeStyles({
 
   unfoldChildren: {
     transition: 'max-height 300ms ease 0ms'
+  },
+
+  skeleton: {
+    borderRadius: '3px',
+    marginBottom: '24px',
+    background: 'rgba(255, 255, 255, .2)'
+  },
+
+  skeletonWrapper: {
+    marginTop: '24px'
+  },
+
+  skeletonHidenNotItem: {
+    width: '48px',
+    transform: `translateX(${DRAWER_WIDTH - FOLDER_DRAWER_WIDTH}px)`,
+    transition: 'all 300ms linear'
   }
 })
 
