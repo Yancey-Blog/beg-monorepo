@@ -42,7 +42,7 @@
     "graphql": "^15.7.2",
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
-    "keycloak-connect": "^15.0.2",
+    "keycloak-connect": "^16.1.0",
     "luxon": "^2.1.1",
     "mongoose": "^6.0.6",
     "nest-keycloak-connect": "^1.7.6",
