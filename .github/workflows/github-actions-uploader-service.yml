@@ -4,11 +4,13 @@ on:
   push:
     paths:
       - "apps/uploader-service/**"
-    branches: [ master, develop ]
+    branches: 
+      - "**"
   pull_request:
     paths:
       - "apps/uploader-service/**"
-    branches: [ master, develop ]
+    branches:
+      - "**"
 
 jobs:
   test:
