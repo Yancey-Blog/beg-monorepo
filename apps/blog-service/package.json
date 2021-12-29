@@ -58,7 +58,7 @@
     "rxjs": "^7.3.0",
     "serve-favicon": "^2.5.0",
     "speakeasy": "^2.0.0",
-    "ts-morph": "^12.2.0",
+    "ts-morph": "^13.0.2",
     "ua-parser-js": "^1.0.2",
     "uuid": "^8.3.2",
     "winston": "^3.3.3",
