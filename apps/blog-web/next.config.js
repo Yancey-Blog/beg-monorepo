@@ -67,7 +67,8 @@ module.exports = (phase, { defaultConfig }) => {
         runtimeCaching,
         register: true,
         skipWaiting: true,
-        disable: process.env.NODE_ENV === 'development'
+        disable: process.env.NODE_ENV === 'development',
+        maximumFileSizeToCacheInBytes: 4000000
       },
       images: {
         domains: ['edge.yancey.app']

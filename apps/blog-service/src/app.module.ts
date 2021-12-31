@@ -1,36 +1,33 @@
 import { Module } from '@nestjs/common'
 import { APP_PIPE, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
-import { GraphQLValidationPipe } from './shared/pipes/GraphQLValidation.pipe'
-import { RolesGuard } from './shared/guard/roles.guard'
-import { DelayInterceptor } from './shared/interceptors/delay.interceptor'
-import { ConfigModule } from './config/config.module'
-import { DataBaseModule } from './database/database.module'
-import { GraphqlModule } from './graphql/graphqls.module'
-import { AuthModule } from './auth/auth.module'
-import { UsersModule } from './users/users.module'
-import { AnnouncementsModule } from './announcements/announcements.module'
-import { OpenSourcesModule } from './open-sources/open-sources.module'
-import { BandwagonModule } from './bandwagon/bandwagon.module'
-import { LiveToursModule } from './live-tours/live-tours.module'
-import { YanceyMusicModule } from './yancey-music/yancey-music.module'
-import { BestAlbumsModule } from './best-albums/best-albums.module'
-import { PlayerModule } from './player/player.module'
-import { AgendaModule } from './agenda/agenda.module'
-import { PostsModule } from './posts/posts.module'
-import { MottosModule } from './mottos/mottos.module'
-import { CoversModule } from './covers/covers.module'
-import { GlobalSettingModule } from './global-setting/global-setting.module'
-import { PostStatisticsModule } from './post-statistics/post-statistics.module'
-import { LoggerModule } from './shared/logger/logger.module'
+import { RoleGuard, AuthGuard } from 'nest-keycloak-connect'
+import { AuthModule } from 'src/shared/guard/auth.guard'
+import { LoggerModule } from 'src/shared/logger/logger.module'
+import { GraphQLValidationPipe } from 'src/shared/pipes/GraphQLValidation.pipe'
+import { DelayInterceptor } from 'src/shared/interceptors/delay.interceptor'
+import { ConfigModule } from 'src/config/config.module'
+import { DataBaseModule } from 'src/database/database.module'
+import { GraphqlModule } from 'src/graphql/graphqls.module'
+import { AnnouncementsModule } from 'src/announcements/announcements.module'
+import { OpenSourcesModule } from 'src/open-sources/open-sources.module'
+import { BandwagonModule } from 'src/bandwagon/bandwagon.module'
+import { LiveToursModule } from 'src/live-tours/live-tours.module'
+import { YanceyMusicModule } from 'src/yancey-music/yancey-music.module'
+import { BestAlbumsModule } from 'src/best-albums/best-albums.module'
+import { PlayerModule } from 'src/player/player.module'
+import { PostsModule } from 'src/posts/posts.module'
+import { MottosModule } from 'src/mottos/mottos.module'
+import { CoversModule } from 'src/covers/covers.module'
+import { GlobalSettingModule } from 'src/global-setting/global-setting.module'
+import { PostStatisticsModule } from 'src/post-statistics/post-statistics.module'
 
 @Module({
   imports: [
     ConfigModule,
+    AuthModule,
     GraphqlModule,
     DataBaseModule,
     LoggerModule,
-    AuthModule,
-    UsersModule,
     AnnouncementsModule,
     OpenSourcesModule,
     BandwagonModule,
@@ -38,7 +35,6 @@ import { LoggerModule } from './shared/logger/logger.module'
     YanceyMusicModule,
     BestAlbumsModule,
     PlayerModule,
-    AgendaModule,
     PostsModule,
     MottosModule,
     CoversModule,
@@ -54,7 +50,12 @@ import { LoggerModule } from './shared/logger/logger.module'
 
     {
       provide: APP_GUARD,
-      useClass: RolesGuard
+      useClass: AuthGuard
+    },
+
+    {
+      provide: APP_GUARD,
+      useClass: RoleGuard
     },
 
     {

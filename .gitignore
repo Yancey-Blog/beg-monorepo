@@ -88,13 +88,13 @@ dist/
 build/
 
 # Envs
-.env
 .env.test
 apps/blog-service/env/.env
 apps/blog-service/env/production.env
 apps/blog-service/env/development.env
 apps/blog-cms/.env.development.local
 apps/blog-cms/.env.production
+apps/uploader-service/.env
 
 # PWA
 sw.*

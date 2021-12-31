@@ -1,11 +1,10 @@
-import { UseGuards } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Public } from 'nest-keycloak-connect'
 import { BestAlbumsService } from './best-albums.service'
 import { BestAlbumModel } from './models/best-albums.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateBestAlbumInput } from './dtos/create-best-album.input'
 import { UpdateBestAlbumInput } from './dtos/update-best-album.input'
-import { JwtAuthGuard } from '../shared/guard/GraphQLAuth.guard'
 
 @Resolver(() => BestAlbumModel)
 export class BestAlbumsResolver {
@@ -14,11 +13,13 @@ export class BestAlbumsResolver {
   }
 
   @Query(() => [BestAlbumModel])
+  @Public()
   public async getBestAlbums() {
     return this.bestAlbumsService.findAll()
   }
 
   @Query(() => BestAlbumModel)
+  @Public()
   public async getBestAlbumById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -26,19 +27,16 @@ export class BestAlbumsResolver {
   }
 
   @Mutation(() => BestAlbumModel)
-  @UseGuards(JwtAuthGuard)
   public async createBestAlbum(@Args('input') input: CreateBestAlbumInput) {
     return this.bestAlbumsService.create(input)
   }
 
   @Mutation(() => BestAlbumModel)
-  @UseGuards(JwtAuthGuard)
   public async updateBestAlbumById(@Args('input') input: UpdateBestAlbumInput) {
     return this.bestAlbumsService.update(input)
   }
 
   @Mutation(() => BestAlbumModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteBestAlbumById(
     @Args({ name: 'id', type: () => ID }) id: string
   ) {
@@ -46,7 +44,6 @@ export class BestAlbumsResolver {
   }
 
   @Mutation(() => BatchDeleteModel)
-  @UseGuards(JwtAuthGuard)
   public async deleteBestAlbums(
     @Args({ name: 'ids', type: () => [ID] }) ids: string[]
   ) {

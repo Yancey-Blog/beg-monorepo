@@ -6,14 +6,7 @@ import {
   PostAdd,
   Settings
 } from '@mui/icons-material'
-
-export interface RouteChildren {
-  hideInMenu?: boolean
-  name: string
-  path: string
-  component?: string
-  isExternalLink?: boolean
-}
+import { Roles } from 'src/types/roles'
 
 export interface Route {
   name: string
@@ -22,11 +15,17 @@ export interface Route {
   component?: string
   isExternalLink?: boolean
   routes?: RouteChildren[]
+  roles?: Roles[]
 }
 
-interface MappedRoute {
+export interface RouteChildren extends Omit<Route, 'icon'> {
+  hideInMenu?: boolean
+}
+
+export interface MappedRoute {
   path: string
   component: string
+  roles?: Roles[]
 }
 
 const routes: Route[] = [
@@ -34,7 +33,8 @@ const routes: Route[] = [
     name: 'Dashboard',
     path: '/',
     icon: <Dashboard />,
-    component: 'DashBoard/DashBoard'
+    component: 'DashBoard/DashBoard',
+    roles: [Roles.ADMIN]
   },
   {
     name: 'Home',
@@ -44,22 +44,26 @@ const routes: Route[] = [
       {
         name: 'Announcement',
         path: '/announcement',
-        component: 'Home/Announcement/Announcement'
+        component: 'Home/Announcement/Announcement',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Cover',
         path: '/cover',
-        component: 'Home/Cover/Cover'
+        component: 'Home/Cover/Cover',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Motto',
         path: '/motto',
-        component: 'Home/Motto/Motto'
+        component: 'Home/Motto/Motto',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Open Source',
         path: '/open-source',
-        component: 'Home/OpenSource/OpenSource'
+        component: 'Home/OpenSource/OpenSource',
+        roles: [Roles.ADMIN]
       }
     ]
   },
@@ -71,22 +75,26 @@ const routes: Route[] = [
       {
         name: 'Best Album',
         path: '/best-album',
-        component: 'Music/BestAlbum/BestAlbum'
+        component: 'Music/BestAlbum/BestAlbum',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Live Tour',
         path: '/live-tour',
-        component: 'Music/LiveTour/LiveTour'
+        component: 'Music/LiveTour/LiveTour',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Player',
         path: '/player',
-        component: 'Music/Player/Player'
+        component: 'Music/Player/Player',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Yancey Music',
         path: '/yancey-music',
-        component: 'Music/YanceyMusic/YanceyMusic'
+        component: 'Music/YanceyMusic/YanceyMusic',
+        roles: [Roles.ADMIN]
       }
     ]
   },
@@ -95,12 +103,14 @@ const routes: Route[] = [
     path: '/post',
     icon: <PostAdd />,
     component: 'Post/PostList',
+    roles: [Roles.ADMIN],
     routes: [
       {
         name: 'Post Editor',
         path: '/post/edit',
         component: 'Post/PostEditor',
-        hideInMenu: true
+        hideInMenu: true,
+        roles: [Roles.ADMIN]
       }
     ]
   },
@@ -112,22 +122,26 @@ const routes: Route[] = [
       {
         name: 'Profile',
         path: '/settings/profile',
-        component: 'Settings/Profile/Profile'
+        component: 'Settings/Profile/Profile',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Account',
         path: '/settings/account',
-        component: 'Settings/Account/Account'
+        component: 'Settings/Account/Account',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Security',
         path: '/settings/security',
-        component: 'Settings/Security/Security'
+        component: 'Settings/Security/Security',
+        roles: [Roles.ADMIN]
       },
       {
         name: 'Global Config',
         path: '/settings/global-config',
-        component: 'Settings/GlobalConfig/GlobalConfig'
+        component: 'Settings/GlobalConfig/GlobalConfig',
+        roles: [Roles.ADMIN]
       }
     ]
   }
@@ -136,18 +150,20 @@ const routes: Route[] = [
 export function mapRoutes() {
   const routers: MappedRoute[] = []
 
-  routes.forEach((route) => {
+  routes.forEach(({ path, component, roles, routes }) => {
     routers.push({
-      path: route.path,
-      component: route.component as string
+      path,
+      component: component as string,
+      roles
     })
 
-    if (route.routes) {
-      route.routes.forEach((routeChild) => {
+    if (routes) {
+      routes.forEach((routeChild) => {
         if (!routeChild.isExternalLink) {
           routers.push({
             path: routeChild.path,
-            component: routeChild.component as string
+            component: routeChild.component as string,
+            roles: routeChild.roles
           })
         }
       })

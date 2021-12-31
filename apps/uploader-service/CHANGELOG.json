@@ -2,6 +2,42 @@
   "name": "uploader-service",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "uploader-service_v1.1.0",
+      "date": "Mon, 29 Nov 2021 04:57:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migrate to keyloak"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "tag": "uploader-service_v1.0.0",
+      "date": "Mon, 22 Nov 2021 09:27:05 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "initial repo"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.1",
+      "tag": "uploader-service_v0.1.1",
+      "date": "Sun, 21 Nov 2021 09:58:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete config files"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "uploader-service_v0.1.0",
       "date": "Sat, 20 Nov 2021 16:12:33 GMT",

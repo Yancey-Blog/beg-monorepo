@@ -3,6 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express'
 import { Express } from 'express'
 import { UploaderService } from './uploader.service'
 import { AzureBlobResponse } from './interfaces/azure-blob-response'
+import { FILE_SIZE_LIMIT } from '../shared/constants'
 
 @Controller()
 export class UploaderController {
@@ -10,7 +11,7 @@ export class UploaderController {
 
   @Post('uploadSingleFile')
   @UseInterceptors(
-    FileInterceptor('file', { limits: { fieldSize: 10 * 1024 * 1024 } })
+    FileInterceptor('file', { limits: { fieldSize: FILE_SIZE_LIMIT } })
   )
   public async uploadSingleFile(
     @UploadedFile() file: Express.Multer.File

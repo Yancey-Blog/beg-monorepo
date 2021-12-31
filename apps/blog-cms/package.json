@@ -1,6 +1,6 @@
 {
   "name": "blog-cms",
-  "version": "3.19.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "start": "react-app-rewired start",
@@ -20,6 +20,7 @@
     "@mui/lab": "^5.0.0-alpha.54",
     "@mui/material": "^5.1.0",
     "@mui/styles": "^5.1.0",
+    "@react-keycloak/web": "^3.4.0",
     "@toast-ui/editor": "^3.1.1",
     "@toast-ui/editor-plugin-chart": "^3.0.1",
     "@toast-ui/editor-plugin-code-syntax-highlight": "^3.0.0",
@@ -36,6 +37,7 @@
     "graphql": "^15.7.2",
     "graphql-tag": "^2.12.4",
     "history": "^4.10.1",
+    "keycloak-js": "^15.0.2",
     "luxon": "^2.1.1",
     "material-ui-chip-input": "^1.1.0",
     "material-ui-popup-state": "^1.8.3",

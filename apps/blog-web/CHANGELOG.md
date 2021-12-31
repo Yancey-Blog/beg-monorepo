@@ -8,6 +8,14 @@ Fri, 31 Dec 2021 06:30:20 GMT
 ### Minor changes
 
 - use swc instead of babel
+This log was last generated on Mon, 29 Nov 2021 06:21:08 GMT and should not be manually modified.
+
+## 4.18.1
+Mon, 29 Nov 2021 06:21:08 GMT
+
+### Patches
+
+- fix feed generator script
 
 ## 4.18.0
 Sat, 20 Nov 2021 14:50:38 GMT
@@ -29,4 +37,3 @@ Sat, 20 Nov 2021 12:59:36 GMT
 ### Minor changes
 
 - follow the advice of eslint and stylelint
-

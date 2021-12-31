@@ -11,8 +11,10 @@ declare namespace NodeJS {
     REACT_APP_ALGOLIA_APPLICATION_ID: string
     REACT_APP_ALGOLIA_ADMIN_API_KEY: string
     REACT_APP_ALGOLIA_SEARCH_INDEX: string
-    REACT_APP_RECAPTCHA_KEY: string
     PORT: string
+    REACT_APP_KEY_CLOAK_REALM: string
+    REACT_APP_KEY_CLOAK_URL: string
+    REACT_APP_KEY_CLOAK_CLIENT_ID: string
   }
 }
 

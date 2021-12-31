@@ -2,69 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Language {
-  code: String!
-  name: String!
-  native: String!
-}
-
-type Location {
-  geoname_id: Float!
-  capital: String!
-  languages: [Language!]!
-  country_flag: String!
-  country_flag_emoji: String!
-  country_flag_emoji_unicode: String!
-  calling_code: String!
-  is_eu: Boolean!
-}
-
-type Browser {
-  name: String!
-  version: String!
-  major: String!
-}
-
-type OS {
-  name: String!
-  version: String!
-}
-
-type IPModel {
-  ip: String!
-  type: String!
-  continent_code: String!
-  continent_name: String!
-  country_code: String!
-  country_name: String!
-  region_code: String!
-  city: String!
-  zip: String!
-  latitude: Float!
-  longitude: Float!
-  location: Location!
-  browser: Browser!
-  os: OS!
-  loginTime: String!
-}
-
-type UserModel {
-  _id: ID!
-  authorization: String!
-  username: String!
-  email: String!
-  password: String!
-  role: Float!
-  name: String!
-  location: String!
-  organization: String!
-  website: String!
-  bio: String!
-  avatarUrl: String!
-  isTOTP: Boolean!
-  totpSecret: String!
-  recoveryCodes: [String!]!
-  loginStatistics: [IPModel!]!
+type AnnouncementModel {
+  _id: String!
+  content: String!
+  weight: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -73,23 +14,6 @@ type UserModel {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
-
-type TOTPModel {
-  qrcode: String!
-  key: String!
-}
-
-type RecoveryCodeModel {
-  recoveryCodes: [String!]!
-}
-
-type AnnouncementModel {
-  _id: String!
-  content: String!
-  weight: Float!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
 
 type BatchDeleteModel {
   ok: Float
@@ -215,19 +139,6 @@ type BatchUpdateModel {
   ids: [ID!]!
 }
 
-type AgendaModel {
-  _id: String!
-  title: String!
-  startDate: DateTime!
-  endDate: DateTime
-  allDay: Boolean!
-  notes: String
-  rRule: String
-  exDate: DateTime
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
 type PostItemModel {
   _id: ID!
   posterUrl: String!
@@ -323,7 +234,6 @@ type PostStatisticsGroupModel {
 }
 
 type Query {
-  login(input: LoginInput!): UserModel!
   getAnnouncements: [AnnouncementModel!]!
   getAnnouncementById(id: ID!): AnnouncementModel!
   getOpenSources: [OpenSourceModel!]!
@@ -339,10 +249,9 @@ type Query {
   players: [PlayerModel!]!
   getPlayers: [PlayerModel!]!
   getPlayerById(id: ID!): PlayerModel!
-  getAgenda: [AgendaModel!]!
   posts(input: PaginationInput!): PostModel!
-  getPosts(input: PaginationInput!): PostModel!
   getPostById(id: ID!): PostItemModel!
+  getPosts(input: PaginationInput!): PostModel!
   getTopPVPosts(limit: Int!): [PostItemModel!]!
   getTopLikePosts(limit: Int!): [PostItemModel!]!
   getAllTags: TagsModel!
@@ -356,12 +265,6 @@ type Query {
   getPostStatistics: [PostStatisticsGroupModel!]!
 }
 
-input LoginInput {
-  email: String!
-  password: String!
-  token: String!
-}
-
 input PaginationInput {
   page: Float!
   pageSize: Float!
@@ -370,16 +273,6 @@ input PaginationInput {
 }
 
 type Mutation {
-  createTOTP: TOTPModel!
-  validateTOTP(input: ValidateTOTPInput!): UserModel!
-  createRecoveryCodes: RecoveryCodeModel!
-  validateRecoveryCode(input: ValidateTOTPInput!): UserModel!
-  changePassword(input: ChangePasswordInput!): UserModel!
-  loginStatistics: IPModel!
-  updateUser(input: UpdateUserInput!): UserModel!
-  updateUserName(username: String!): UserModel!
-  updateEmail(email: String!): UserModel!
-  deleteAccount: UserModel!
   createAnnouncement(input: CreateAnnouncementInput!): AnnouncementModel!
   updateAnnouncementById(input: UpdateAnnouncementInput!): AnnouncementModel!
   exchangePositionAnnouncement(input: ExchangePositionInput!): [AnnouncementModel!]!
@@ -407,9 +300,6 @@ type Mutation {
   deletePlayerById(id: ID!): PlayerModel!
   deletePlayers(ids: [ID!]!): BatchDeleteModel!
   offlinePlayers(ids: [ID!]!): BatchUpdateModel!
-  createAgenda(input: CreateAgendaInput!): AgendaModel!
-  updateAgendaById(input: UpdateAgendaInput!): AgendaModel!
-  deleteAgendaById(id: ID!): AgendaModel!
   createPost(input: CreatePostInput!): PostItemModel!
   updatePostById(input: UpdatePostInput!): PostItemModel!
   deletePostById(id: ID!): PostItemModel!
@@ -429,31 +319,6 @@ type Mutation {
   publicCovers(ids: [ID!]!): BatchUpdateModel!
   updateGlobalSettingById(input: UpdateGlobalSettingInput!): GlobalSettingModel!
   createPostStatistics(input: CreatePostStatisticsInput!): PostStatisticsModel!
-}
-
-input ValidateTOTPInput {
-  code: String!
-  key: String!
-}
-
-input ChangePasswordInput {
-  oldPassword: String!
-  newPassword: String!
-}
-
-input UpdateUserInput {
-  id: String
-  isTOTP: Boolean
-  totpSecret: String
-  recoveryCodes: [String!]
-  password: String
-  loginStatistics: [String!]
-  name: String
-  location: String
-  organization: String
-  website: String
-  bio: String
-  avatarUrl: String
 }
 
 """The input type for creating an announcement."""
@@ -551,27 +416,6 @@ input UpdatePlayerInput {
   coverUrl: String
   musicFileUrl: String
   isPublic: Boolean
-}
-
-input CreateAgendaInput {
-  title: String!
-  startDate: String!
-  allDay: Boolean!
-  notes: String
-  endDate: String
-  rRule: String
-  exDate: String
-}
-
-input UpdateAgendaInput {
-  id: String!
-  title: String
-  startDate: String
-  endDate: String
-  allDay: Boolean
-  notes: String
-  rRule: String
-  exDate: String
 }
 
 input CreatePostInput {

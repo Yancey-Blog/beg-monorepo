@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import { Switch, Route, Redirect, Router } from 'react-router-dom'
-import loadable from '@loadable/component'
+import { Router } from 'react-router-dom'
+import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
@@ -10,12 +10,11 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { SnackbarProvider } from 'notistack'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { SnackbarUtilsConfigurator } from './components/Toast/Toast'
-import Login from './pages/Auth/Login'
-import Register from './pages/Auth/Register'
-import Loading from './components/Loading/InstagramLoading'
+import Layouts from './pages/Layouts/Layouts'
 import client from './graphql/apolloClient'
 import reportWebVitals from './reportWebVitals'
 import history from './shared/history'
+import keycloak from './shared/configKeyCloak'
 import { tableTheme } from './shared/globalStyles'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
@@ -24,53 +23,35 @@ import {
 } from './shared/constants'
 import './assets/global.scss'
 
-const Layouts = loadable(() => import('./pages/Layouts/Layouts'), {
-  fallback: <Loading />
-})
-
 ReactDOM.render(
   <StrictMode>
-    <ApolloProvider client={client}>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={tableTheme()}>
-          <SnackbarProvider
-            maxSnack={SNACKBAR_MAX_NUM}
-            anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
-            autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-          >
-            <LocalizationProvider dateAdapter={DateAdapter}>
-              <SnackbarUtilsConfigurator />
-              <CssBaseline />
-              <Router history={history}>
-                <Switch>
-                  <Route path="/login">
-                    <Login />
-                  </Route>
-                  <Route path="/register">
-                    <Register />
-                  </Route>
-                  <Route
-                    path="/"
-                    render={({ location }) =>
-                      window.localStorage.getItem('token') ? (
-                        <Layouts />
-                      ) : (
-                        <Redirect
-                          to={{
-                            pathname: '/login',
-                            state: { from: location }
-                          }}
-                        />
-                      )
-                    }
-                  />
-                </Switch>
-              </Router>
-            </LocalizationProvider>
-          </SnackbarProvider>
-        </ThemeProvider>
-      </StyledEngineProvider>
-    </ApolloProvider>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      onTokens={({ token }) => {
+        localStorage.setItem('token', token || '')
+      }}
+    >
+      <ApolloProvider client={client}>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={tableTheme()}>
+            <SnackbarProvider
+              maxSnack={SNACKBAR_MAX_NUM}
+              anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
+              autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
+              preventDuplicate
+            >
+              <LocalizationProvider dateAdapter={DateAdapter}>
+                <SnackbarUtilsConfigurator />
+                <CssBaseline />
+                <Router history={history}>
+                  <Layouts />
+                </Router>
+              </LocalizationProvider>
+            </SnackbarProvider>
+          </ThemeProvider>
+        </StyledEngineProvider>
+      </ApolloProvider>
+    </ReactKeycloakProvider>
   </StrictMode>,
   document.getElementById('root')
 )
