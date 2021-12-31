@@ -8,7 +8,13 @@ Fri, 31 Dec 2021 06:30:20 GMT
 ### Minor changes
 
 - use swc instead of babel
-This log was last generated on Mon, 29 Nov 2021 06:21:08 GMT and should not be manually modified.
+
+## 4.19.0
+Thu, 30 Dec 2021 07:10:51 GMT
+
+### Minor changes
+
+- update robots.txt
 
 ## 4.18.1
 Mon, 29 Nov 2021 06:21:08 GMT
