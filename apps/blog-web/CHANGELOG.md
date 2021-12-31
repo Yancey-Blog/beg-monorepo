@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 20 Nov 2021 14:50:38 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Dec 2021 06:30:20 GMT and should not be manually modified.
+
+## 4.20.0
+Fri, 31 Dec 2021 06:30:20 GMT
+
+### Minor changes
+
+- use swc instead of babel
 
 ## 4.18.0
 Sat, 20 Nov 2021 14:50:38 GMT
