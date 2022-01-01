@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import loadable from '@loadable/component'
 import { useKeycloak } from '@react-keycloak/web'
 import { mapRoutes } from 'src/routes'
@@ -31,13 +31,12 @@ const Main: FC = () => {
 
   return (
     <main className={classes.main}>
-      <Switch>
+      <Routes>
         {routeList.map((route) => (
           <Route
-            exact
             key={route.path}
             path={route.path}
-            component={
+            children={
               isAutherized(route.roles)
                 ? loadable(
                     () =>
@@ -55,7 +54,7 @@ const Main: FC = () => {
         <Route path="*">
           <NotFound />
         </Route>
-      </Switch>
+      </Routes>
     </main>
   )
 }

@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import { useSnackbar } from 'notistack'
 import { useMutation } from '@apollo/client'
-import { logout } from 'src/shared/utils'
-// import client from 'src/graphql/apolloClient'
 import { UPDATE_USERNAME, UPDATE_EMAIL, DELETE_ACCOUNT } from './typeDefs'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
@@ -12,19 +10,12 @@ import DeleteAccount from './components/DeleteAccount'
 
 const Account: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
-
-  // const { username = '', email = '' } =
-  //   // @ts-ignore
-  //   client.cache.data.data[`UserModel:${window.localStorage.getItem('userId')}`]
-
   const [updateUserName] = useMutation(UPDATE_USERNAME, {
     onCompleted(data) {
       if (data.updateUserName) {
         enqueueSnackbar(`Your username has been updated! Please Re-Login.`, {
           variant: 'success'
         })
-
-        logout()
       }
     }
   })
@@ -35,7 +26,6 @@ const Account: FC = () => {
         enqueueSnackbar(`Your email has been updated! Please Re-Login.`, {
           variant: 'success'
         })
-        logout()
       }
     }
   })
@@ -50,8 +40,6 @@ const Account: FC = () => {
             variant: 'success'
           }
         )
-
-        logout()
       }
     }
   )

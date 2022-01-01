@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import { Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
@@ -13,7 +13,6 @@ import { SnackbarUtilsConfigurator } from './components/Toast/Toast'
 import Layouts from './pages/Layouts/Layouts'
 import client from './graphql/apolloClient'
 import reportWebVitals from './reportWebVitals'
-import history from './shared/history'
 import keycloak from './shared/configKeyCloak'
 import { theme } from './shared/globalStyles'
 import {
@@ -43,9 +42,9 @@ ReactDOM.render(
               <LocalizationProvider dateAdapter={DateAdapter}>
                 <SnackbarUtilsConfigurator />
                 <CssBaseline />
-                <Router history={history}>
+                <BrowserRouter>
                   <Layouts />
-                </Router>
+                </BrowserRouter>
               </LocalizationProvider>
             </SnackbarProvider>
           </ThemeProvider>
