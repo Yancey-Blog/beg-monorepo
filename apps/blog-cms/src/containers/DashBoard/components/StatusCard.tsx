@@ -20,7 +20,7 @@ const BorderLinearProgress = withStyles({
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#3f51b5'
+    backgroundColor: 'rgb(51, 112, 255)'
   }
 })(LinearProgress)
 

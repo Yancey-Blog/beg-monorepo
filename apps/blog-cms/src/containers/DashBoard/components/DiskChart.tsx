@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import chartConfig from '../chartjsConfig'
 import { IBandwagonUsageStatus } from '../types'
 import ToggleChart from './ToggleChart'
@@ -21,7 +21,7 @@ const DiskChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
         <ToggleChart
           handleToggleChange={(value: number) => setDiskLimit(value)}
         >
-          <Bar
+          <Line
             data={chartConfig(
               usageStatus,
               diskLimit,

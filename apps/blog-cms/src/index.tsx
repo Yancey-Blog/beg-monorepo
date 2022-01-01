@@ -15,7 +15,7 @@ import client from './graphql/apolloClient'
 import reportWebVitals from './reportWebVitals'
 import history from './shared/history'
 import keycloak from './shared/configKeyCloak'
-import { tableTheme } from './shared/globalStyles'
+import { theme } from './shared/globalStyles'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
   SNACKBAR_MAX_NUM,
@@ -33,7 +33,7 @@ ReactDOM.render(
     >
       <ApolloProvider client={client}>
         <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={tableTheme()}>
+          <ThemeProvider theme={theme}>
             <SnackbarProvider
               maxSnack={SNACKBAR_MAX_NUM}
               anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}

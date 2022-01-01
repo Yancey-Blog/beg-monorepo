@@ -6,8 +6,8 @@ interface Props {
   handleToggleChange: Function
 }
 
-// 24 hours, 12 hours, 1 hour
-const duration = [24, 12, 1]
+// 24 hours, 12 hours, 6 hours, 3 hours, 1 hour
+const duration = [24, 12, 6, 3, 1]
 
 // One data is provided every five minutes,
 // so 12 data are provided every hour.
