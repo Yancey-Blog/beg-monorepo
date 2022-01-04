@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "4.1.0",
+      "tag": "blog-cms_v4.1.0",
+      "date": "Tue, 04 Jan 2022 12:52:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migrate to react-router-dom and fix PostEditor style broken"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.0",
       "tag": "blog-cms_v4.0.0",
       "date": "Mon, 29 Nov 2021 04:57:53 GMT",

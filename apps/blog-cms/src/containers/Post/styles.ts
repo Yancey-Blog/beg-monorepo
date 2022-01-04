@@ -20,6 +20,8 @@ const useStyles = makeStyles(() =>
 
     summary: { width: '50%', margin: '24px 0 48px' },
 
+    chipInput: { margin: '24px 0 48px' },
+
     summaryTxtFiled: {
       marginBottom: '24px'
     },
@@ -30,6 +32,13 @@ const useStyles = makeStyles(() =>
       display: 'flex',
       justifyContent: 'flex-end',
       marginTop: '24px'
+    },
+
+    selector: {
+      '& .MuiSelect-select': {
+        paddingTop: 0,
+        paddingBottom: 0
+      }
     },
 
     uploadImageIcon: {

@@ -1,15 +1,15 @@
 import { FC } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import useStyles from './styles'
 
 const NotFound: FC = () => {
   const classes = useStyles()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const toHomePage = () => {
-    history.push('/')
+    navigate('/');
   }
 
   return (

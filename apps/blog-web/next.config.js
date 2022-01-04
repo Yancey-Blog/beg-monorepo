@@ -59,6 +59,9 @@ module.exports = (phase, { defaultConfig }) => {
       compress: true,
       pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
       productionBrowserSourceMaps: true,
+      experimental: {
+        styledComponents: true
+      },
       pwa: {
         dest: 'public',
         runtimeCaching,
@@ -68,8 +71,7 @@ module.exports = (phase, { defaultConfig }) => {
         maximumFileSizeToCacheInBytes: 4000000
       },
       images: {
-        // TODO: 清洗完数据下掉 'static.yancey.app'
-        domains: ['edge.yancey.app', 'static.yancey.app']
+        domains: ['edge.yancey.app']
       },
       webpack: (
         config,

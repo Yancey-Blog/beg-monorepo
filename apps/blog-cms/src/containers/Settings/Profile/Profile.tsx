@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useSnackbar } from 'notistack'
 import { useMutation } from '@apollo/client'
@@ -14,7 +14,7 @@ import { UPDATE_USER } from './typeDefs'
 import useStyles from './styles'
 
 const Profile: FC = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { pathname } = useLocation()
 
   const classes = useStyles()
@@ -51,7 +51,7 @@ const Profile: FC = () => {
           variables: { input: values }
         })
 
-        history.push(pathname)
+        navigate(pathname)
       }
     })
 
@@ -61,7 +61,7 @@ const Profile: FC = () => {
       variables: { input: { avatarUrl: data.url } }
     })
 
-    history.push(pathname)
+    navigate(pathname)
   }
 
   return (

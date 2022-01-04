@@ -70,7 +70,7 @@ To install dependencies for sub projects, enters the sub project directory and e
 
 ### `rush update`
 
-Executing this command after registering a new sub project or modifying `rush.json`.
+Executing this command after registering a new sub project or modifying `rush.json`. If throw **ERROR Broken lockfile: no entry for '...' in pnpm-lock.yaml**, please try `rush update --full`.
 
 ### [`rush build`](https://rushjs.io/pages/commands/rush_build/)
 

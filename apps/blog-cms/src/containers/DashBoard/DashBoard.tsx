@@ -1,4 +1,12 @@
 import { FC } from 'react'
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler
+} from 'chart.js'
 import { useQuery } from '@apollo/client'
 import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
 import {
@@ -16,6 +24,8 @@ import CPUChart from './components/CPUChart'
 import PostRankList from './components/PostRankList'
 import PostStatistics from './components/PostStatistics'
 import TagClouds from './components/TagClouds'
+
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
 const DashBoard: FC = () => {
   const classes = useStyles()

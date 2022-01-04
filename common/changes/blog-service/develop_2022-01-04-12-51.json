@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "blog-service",
+      "comment": "",
+      "type": "none"
+    }
+  ],
+  "packageName": "blog-service"
+}

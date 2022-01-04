@@ -4,7 +4,6 @@ import { useSnackbar } from 'notistack'
 import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
 import { TextField, Button } from '@mui/material'
-import { logout } from 'src/shared/utils'
 import { PASSWORD_REGEXP, AZURE_BLOB_PATH } from 'src/shared/constants'
 import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
 import styles from './changePassword.module.scss'
@@ -19,7 +18,6 @@ const ChangePassword: FC = () => {
         variant: 'success'
       })
       const timer = setTimeout(() => {
-        logout()
         clearTimeout(timer)
       }, 1000)
     }

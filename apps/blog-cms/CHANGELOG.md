@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Mon, 29 Nov 2021 04:57:53 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jan 2022 12:52:44 GMT and should not be manually modified.
+
+## 4.1.0
+Tue, 04 Jan 2022 12:52:44 GMT
+
+### Minor changes
+
+- migrate to react-router-dom and fix PostEditor style broken
 
 ## 4.0.0
 Mon, 29 Nov 2021 04:57:53 GMT

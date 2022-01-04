@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import { ChartData } from 'chart.js'
 import { IBandwagonUsageStatus } from 'src/containers/DashBoard/types'
 
 const chartConfig = (
@@ -6,52 +7,33 @@ const chartConfig = (
   limit: number,
   type1: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>,
   type2?: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>
-) => ({
+): ChartData<'line'> => ({
   labels: usageStatus
     .map(({ timestamp }) => DateTime.fromSeconds(+timestamp).toFormat('HH:mm'))
     .slice(-limit),
+  // @ts-ignore
   datasets: [
     {
-      label: type1.split('_').join(' ').toUpperCase(),
-      fill: false,
-      lineTension: 0.4,
-      backgroundColor: 'rgba(255, 99, 132, .8)',
-      borderColor: '#FF6384',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: '#FF6384',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: '#FF6384)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: usageStatus.map((usageStat) => usageStat[type1]).slice(-limit)
+      data: usageStatus
+        .map((usageStat) =>
+          type1 === 'cpu_usage'
+            ? usageStat[type1]
+            : parseInt(usageStat[type1], 10) / 1024 / 1024
+        )
+        .slice(-limit),
+      label: type1.split('_').join(' ').toUpperCase().replace('BYTES', '(Mb)'),
+      borderColor: 'rgb(21, 222, 218)',
+      backgroundColor: 'rgba(21, 222, 218, .2)',
+      fill: true
     },
     type2 && {
-      label: type2.split('_').join(' ').toUpperCase(),
-      fill: false,
-      lineTension: 0.4,
-      backgroundColor: 'rgb(54, 162, 235, .8)',
-      borderColor: '#36A2EB',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: '#36A2EB',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: '#36A2EB',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: usageStatus.map((usageStat) => usageStat[type2]).slice(-limit)
+      data: usageStatus
+        .map((usageStat) => parseInt(usageStat[type2], 10) / 1024 / 1024)
+        .slice(-limit),
+      label: type2.split('_').join(' ').toUpperCase().replace('BYTES', '(Mb)'),
+      borderColor: 'rgb(51, 112, 255)',
+      backgroundColor: 'rgba(51, 112, 255, .2)',
+      fill: true
     }
   ].filter(Boolean)
 })

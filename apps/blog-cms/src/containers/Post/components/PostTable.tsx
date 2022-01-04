@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import MUIDataTable, {
   MUIDataTableColumn,
   MUIDataTableMeta
@@ -57,10 +57,10 @@ const PostTable: FC<Props> = ({
   isDeleting,
   isBatchDeleting
 }) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { pathname } = useLocation()
   const toEditPage = (id?: string) => {
-    history.push({
+    navigate({
       pathname: `${pathname}/edit`,
       search: stringfySearch({ id })
     })
@@ -281,7 +281,11 @@ const PostTable: FC<Props> = ({
 
         {total === 0 || (
           <div className={classes.pagination}>
-            <Select value={pageSize.toString()} onChange={handlePageSizeChange}>
+            <Select
+              value={pageSize.toString()}
+              onChange={handlePageSizeChange}
+              className={classes.selector}
+            >
               <MenuItem value={10}>10</MenuItem>
               <MenuItem value={20}>20</MenuItem>
               <MenuItem value={50}>50</MenuItem>

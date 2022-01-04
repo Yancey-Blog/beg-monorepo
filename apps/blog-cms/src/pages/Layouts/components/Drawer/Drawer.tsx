@@ -36,7 +36,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
 
   useEffect(() => {
     matchChilren(routes)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   return (
@@ -122,11 +122,13 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                 />
               ) : (
                 <NavLink
-                  exact
-                  activeClassName={classNames(classes.active, {
-                    [classes.foldActive]: !open
-                  })}
-                  className={classes.formatArrowTag}
+                  end
+                  className={({isActive}) =>
+                    classNames(classes.formatArrowTag, {
+                      [classes.active]: isActive,
+                      [classes.foldActive]: !open
+                    })
+                  }
                   to={route.path}
                 >
                   <ParentItem open={open} route={route} />
@@ -162,11 +164,13 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                       </a>
                     ) : (
                       <NavLink
-                        exact
-                        activeClassName={classNames(classes.active, {
-                          [classes.foldActive]: !open
-                        })}
-                        className={classes.formatArrowTag}
+                        end
+                        className={({isActive}) =>
+                          classNames(classes.formatArrowTag, {
+                            [classes.active]: isActive,
+                            [classes.foldActive]: !open
+                          })
+                        }
                         to={childRoute.path}
                         key={childRoute.name}
                       >
