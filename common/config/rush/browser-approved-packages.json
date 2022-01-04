@@ -379,10 +379,6 @@
       "allowedCategories": [ "apps" ]
     },
     {
-      "name": "material-ui-chip-input",
-      "allowedCategories": [ "apps" ]
-    },
-    {
       "name": "material-ui-popup-state",
       "allowedCategories": [ "apps" ]
     },
