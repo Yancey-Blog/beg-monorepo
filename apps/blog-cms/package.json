@@ -38,7 +38,6 @@
     "graphql-tag": "^2.12.4",
     "keycloak-js": "^16.1.0",
     "luxon": "^2.1.1",
-    "material-ui-chip-input": "^1.1.0",
     "material-ui-popup-state": "^2.0.0",
     "mui-datatables": "^4.0.0",
     "notistack": "^2.0.2",

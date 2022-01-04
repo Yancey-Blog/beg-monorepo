@@ -20,6 +20,8 @@ const useStyles = makeStyles(() =>
 
     summary: { width: '50%', margin: '24px 0 48px' },
 
+    chipInput: { margin: '24px 0 48px' },
+
     summaryTxtFiled: {
       marginBottom: '24px'
     },
@@ -33,10 +35,9 @@ const useStyles = makeStyles(() =>
     },
 
     selector: {
-     
       '& .MuiSelect-select': {
         paddingTop: 0,
-        paddingBottom: 0,
+        paddingBottom: 0
       }
     },
 
