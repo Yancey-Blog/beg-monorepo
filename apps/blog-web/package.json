@@ -25,7 +25,7 @@
     "aplayer": "^1.10.1",
     "disqus-react": "^1.1.2",
     "feed": "^4.2.2",
-    "graphql": "^15.7.2",
+    "graphql": "^16.2.0",
     "isomorphic-unfetch": "^3.1.0",
     "lodash.orderby": "^4.6.0",
     "lodash.throttle": "^4.1.1",
