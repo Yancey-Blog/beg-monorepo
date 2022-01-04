@@ -43,25 +43,25 @@ const routes: Route[] = [
     routes: [
       {
         name: 'Announcement',
-        path: '/announcement',
+        path: 'announcement',
         component: 'Home/Announcement/Announcement',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Cover',
-        path: '/cover',
+        path: 'cover',
         component: 'Home/Cover/Cover',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Motto',
-        path: '/motto',
+        path: 'motto',
         component: 'Home/Motto/Motto',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Open Source',
-        path: '/open-source',
+        path: 'open-source',
         component: 'Home/OpenSource/OpenSource',
         roles: [Roles.ADMIN]
       }
@@ -69,30 +69,30 @@ const routes: Route[] = [
   },
   {
     name: 'Music',
-    path: '/music',
+    path: 'music',
     icon: <Headset />,
     routes: [
       {
         name: 'Best Album',
-        path: '/best-album',
+        path: 'best-album',
         component: 'Music/BestAlbum/BestAlbum',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Live Tour',
-        path: '/live-tour',
+        path: 'live-tour',
         component: 'Music/LiveTour/LiveTour',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Player',
-        path: '/player',
+        path: 'player',
         component: 'Music/Player/Player',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Yancey Music',
-        path: '/yancey-music',
+        path: 'yancey-music',
         component: 'Music/YanceyMusic/YanceyMusic',
         roles: [Roles.ADMIN]
       }
@@ -100,14 +100,14 @@ const routes: Route[] = [
   },
   {
     name: 'Post',
-    path: '/post',
+    path: 'post',
     icon: <PostAdd />,
     component: 'Post/PostList',
     roles: [Roles.ADMIN],
     routes: [
       {
         name: 'Post Editor',
-        path: '/post/edit',
+        path: 'post/edit',
         component: 'Post/PostEditor',
         hideInMenu: true,
         roles: [Roles.ADMIN]
@@ -116,30 +116,30 @@ const routes: Route[] = [
   },
   {
     name: 'Settings',
-    path: '/settings',
+    path: 'settings',
     icon: <Settings />,
     routes: [
       {
         name: 'Profile',
-        path: '/settings/profile',
+        path: 'settings/profile',
         component: 'Settings/Profile/Profile',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Account',
-        path: '/settings/account',
+        path: 'settings/account',
         component: 'Settings/Account/Account',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Security',
-        path: '/settings/security',
+        path: 'settings/security',
         component: 'Settings/Security/Security',
         roles: [Roles.ADMIN]
       },
       {
         name: 'Global Config',
-        path: '/settings/global-config',
+        path: 'settings/global-config',
         component: 'Settings/GlobalConfig/GlobalConfig',
         roles: [Roles.ADMIN]
       }

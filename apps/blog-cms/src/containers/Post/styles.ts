@@ -32,6 +32,14 @@ const useStyles = makeStyles(() =>
       marginTop: '24px'
     },
 
+    selector: {
+     
+      '& .MuiSelect-select': {
+        paddingTop: 0,
+        paddingBottom: 0,
+      }
+    },
+
     uploadImageIcon: {
       position: 'relative',
       top: -6
