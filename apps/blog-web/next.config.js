@@ -59,16 +59,10 @@ module.exports = (phase, { defaultConfig }) => {
       compress: true,
       pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
       productionBrowserSourceMaps: true,
-      experimental: {
-        styledComponents: true
-      },
       pwa: {
         dest: 'public',
         runtimeCaching,
-        register: true,
-        skipWaiting: true,
-        disable: process.env.NODE_ENV === 'development',
-        maximumFileSizeToCacheInBytes: 4000000
+        disable: process.env.NODE_ENV !== 'production'
       },
       images: {
         domains: ['edge.yancey.app']
