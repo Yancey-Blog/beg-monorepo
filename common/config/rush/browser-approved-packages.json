@@ -115,6 +115,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "@sentry/nextjs",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@sentry/tracing",
       "allowedCategories": [ "apps" ]
     },
@@ -232,6 +236,10 @@
     },
     {
       "name": "customize-cra",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "deepmerge",
       "allowedCategories": [ "apps" ]
     },
     {
@@ -360,6 +368,10 @@
     },
     {
       "name": "lint-staged",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "lodash.isequal",
       "allowedCategories": [ "apps" ]
     },
     {
