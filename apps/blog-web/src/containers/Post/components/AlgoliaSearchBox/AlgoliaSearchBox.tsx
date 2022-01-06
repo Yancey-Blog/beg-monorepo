@@ -1,5 +1,4 @@
-import { FC, useState, useEffect, SyntheticEvent } from 'react'
-import { useRouter } from 'next/router'
+import { FC, useState, SyntheticEvent, useCallback } from 'react'
 import algoliasearch from 'algoliasearch/lite'
 import {
   InstantSearch,
@@ -22,7 +21,6 @@ const searchClient = algoliasearch(
 
 const AlgoliaSearchBox: FC = () => {
   const [showDrawer, setShowDrawer] = useState(false)
-  const router = useRouter()
 
   const closeKeyboard = () => {
     // @ts-ignore
@@ -34,22 +32,16 @@ const AlgoliaSearchBox: FC = () => {
     setShowDrawer(!!val)
   }
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setShowDrawer(false)
     closeKeyboard()
-  }
+  }, [])
 
   const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
     isSearchStalled ? (
       <SkeletonIterator count={5} skeletonComponent={AlgoliaSarchBoxSkeleton} />
     ) : null
   )
-
-  useEffect(() => {
-    router.events.on('routeChangeStart', () => {
-      handleClose()
-    })
-  }, [])
 
   return (
     <InstantSearch

@@ -101,3 +101,7 @@ sw.*
 workbox-*
 atom.xml
 rss.xml
+
+# Sentry
+.sentryclirc
+sentry.properties

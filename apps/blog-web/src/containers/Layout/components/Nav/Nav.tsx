@@ -6,12 +6,12 @@ import { NavBar, SVG } from './styled'
 const Nav: FC = () => {
   return (
     <NavBar>
-      <Link href="/">
+      <Link href="/" passHref>
         <SVG>
           <use xlinkHref={SVG_SPRITE.home2} />
         </SVG>
       </Link>
-      <Link href="/music">
+      <Link href="/music" passHref>
         <SVG>
           <use xlinkHref={SVG_SPRITE.music2} />
         </SVG>

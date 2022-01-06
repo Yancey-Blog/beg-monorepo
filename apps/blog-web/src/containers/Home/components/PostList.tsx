@@ -62,14 +62,7 @@ const PostList: FC = () => {
       )}
 
       <Status>
-        {
-          // eslint-disable-next-line no-nested-ternary
-          data.posts.length > 0 && loading
-            ? '正在加载中...'
-            : hasMore
-            ? ''
-            : '没有更多了...'
-        }
+        {data.posts.length > 0 && hasMore ? '正在加载中...' : '没有更多了...'}
       </Status>
     </InfiniteScroll>
   )

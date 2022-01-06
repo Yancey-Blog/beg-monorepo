@@ -1,3 +1,5 @@
+export type Dict<T = any> = Record<string, T>
+
 export interface SocialMedia {
   [x: string]: {
     url: string
@@ -8,10 +10,6 @@ export interface SocialMedia {
 export interface SnackbarOrigin {
   vertical: 'top' | 'bottom'
   horizontal: 'left' | 'center' | 'right'
-}
-
-export interface Dict {
-  [x: string]: string
 }
 
 export interface PosterProps {

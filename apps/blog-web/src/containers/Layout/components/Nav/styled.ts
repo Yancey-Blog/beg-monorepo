@@ -3,8 +3,11 @@ import { flexMixin } from 'src/styled/mixins'
 import breakpoints from 'src/styled/breakpoints'
 
 export const NavBar = styled.nav`
+  display: none;
+
   @media only screen and ${breakpoints.device.laptop} {
     box-sizing: border-box;
+    display: block;
     ${flexMixin('space-between')}
     position: fixed;
     left: 50%;
