@@ -1,15 +1,19 @@
-import { FC, useRef, useEffect } from 'react'
+import { FC, useRef, useEffect, useState } from 'react'
+import Script from 'next/script'
 import { useQuery } from '@apollo/client'
-import APlayer from 'aplayer'
+import { APLAYER_CDN } from 'src/shared/constants'
 import { PLAYERS } from '../typeDefs'
 import { PlayerQuery } from '../types'
 
 const Player: FC = () => {
   const { data } = useQuery<PlayerQuery>(PLAYERS)
   const plyaerRef = useRef<HTMLDivElement>(null)
+  const [isLoadedScript, setIsLoadedScript] = useState(false)
 
   useEffect(() => {
-    if (data && plyaerRef && plyaerRef.current) {
+    // @ts-ignore
+    if (data && plyaerRef && plyaerRef.current && isLoadedScript) {
+      // @ts-ignore
       const ap = new APlayer({
         container: plyaerRef.current,
         fixed: true,
@@ -28,9 +32,19 @@ const Player: FC = () => {
       })
       ap.lrc.show()
     }
-  }, [data, plyaerRef])
+  }, [data, plyaerRef, isLoadedScript])
 
-  return <div ref={plyaerRef} />
+  return (
+    <>
+      <div ref={plyaerRef} />
+      <Script
+        src={APLAYER_CDN}
+        onLoad={() => {
+          setIsLoadedScript(true)
+        }}
+      />
+    </>
+  )
 }
 
 export default Player

@@ -30,7 +30,7 @@ interface Props {
 const Cover: FC<Props> = ({ covers, loading }) => {
   return (
     <Covers>
-      {!loading && (
+      {!loading && covers.length && (
         <LazyLoadImage src={covers[0].coverUrl} alt={covers[0].title} />
       )}
     </Covers>

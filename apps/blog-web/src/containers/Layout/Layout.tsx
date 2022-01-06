@@ -1,6 +1,8 @@
 import { FC, useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { useQuery } from '@apollo/client'
-import { hotjar } from 'react-hotjar'
+import NProgress from 'nprogress'
+import { useRouter } from 'next/router'
 import throttle from 'lodash.throttle'
 import { initGA, logPageView } from 'src/shared/analytics'
 import { BACK_TO_TOP_THRESHOLD } from 'src/shared/constants'
@@ -25,9 +27,13 @@ interface Props {
   title?: string
 }
 
-const Layout: FC<Props> = ({ title, children }) => {
-  const { data } = useQuery<GlobalSettingQuery>(GET_GLOBAL_SETTING)
+const Player = dynamic(import('src/containers/Music/components/Player'), {
+  ssr: false
+})
 
+const Layout: FC<Props> = ({ title, children }) => {
+  const router = useRouter()
+  const { data } = useQuery<GlobalSettingQuery>(GET_GLOBAL_SETTING)
   const [scrollTopCount, setScrollTopCount] = useState(0)
 
   const scrollTopCountHandler = throttle(() => {
@@ -43,23 +49,26 @@ const Layout: FC<Props> = ({ title, children }) => {
     return () => {
       document.removeEventListener('scroll', scrollTopCountHandler)
     }
-  }, [])
+  }, [scrollTopCountHandler])
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production' && window !== undefined) {
       if (!window.GA_INITIALIZED) {
         initGA()
         window.GA_INITIALIZED = true
+      } else {
+        logPageView()
       }
-
-      logPageView()
-
-      hotjar.initialize(
-        parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID, 10),
-        parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV, 10)
-      )
     }
   }, [])
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => {
+      NProgress.start()
+    })
+    router.events.on('routeChangeComplete', () => NProgress.done())
+    router.events.on('routeChangeError', () => NProgress.done())
+  }, [router.events])
 
   return (
     <Layouts>
@@ -74,6 +83,7 @@ const Layout: FC<Props> = ({ title, children }) => {
       <Nav />
       <SVGSprite />
       <BackToTop isShowCat={scrollTopCount >= BACK_TO_TOP_THRESHOLD} />
+      <Player />
       <AlgoliaSearchBox />
     </Layouts>
   )
