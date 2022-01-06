@@ -121,6 +121,7 @@ specifiers:
   nest-winston: ^1.6.1
   next: ^12.0.8-canary.17
   next-pwa: ^5.4.0
+  normalize.css: ^8.0.1
   notistack: ^2.0.3
   nprogress: ^0.2.0
   nuka-carousel: ^4.8.2
@@ -306,6 +307,7 @@ dependencies:
   nest-winston: 1.6.2_6e3c4358b4b286b257d4a426ff95ee52
   next: 12.0.8-canary.18_fa4e6223e8941dc7e228d4641992870a
   next-pwa: 5.4.4_next@12.0.8-canary.18
+  normalize.css: 8.0.1
   notistack: 2.0.3_b9212fc8e1f751599169b45587a72214
   nprogress: 0.2.0
   nuka-carousel: 4.8.4_react-dom@17.0.2+react@17.0.2
@@ -12260,6 +12262,10 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
+
   /notistack/2.0.3_b9212fc8e1f751599169b45587a72214:
     resolution: {integrity: sha512-krmVFtTO9kEY1Pa4NrbyexrjiRcV6TqBM2xLx8nuDea1g96Z/OZfkvVLmYKkTvoSJ3jyQntWK16z86ssW5kt4A==}
     peerDependencies:
@@ -17917,7 +17923,7 @@ packages:
     dev: false
 
   file:projects/blog-web.tgz_graphql@15.8.0+sass@1.46.0:
-    resolution: {integrity: sha512-m0qL5NNTYXqDzCJp3yVv/LplFN/4dFoqNkuPluleG13+rS6N31vJnQBCV+SxSV0lkUPI8awAUq/mFs/qHfGv6Q==, tarball: file:projects/blog-web.tgz}
+    resolution: {integrity: sha512-VbqzaG0DO0cvDOWjEByF2xehYBX5cRYZZ+ePmoGNrUQo2jUA1bVJGcQ1CDkN9TY56iI9kqVb2MmjD04nqb/2zw==, tarball: file:projects/blog-web.tgz}
     id: file:projects/blog-web.tgz
     name: '@rush-temp/blog-web'
     version: 0.0.0
@@ -17951,6 +17957,7 @@ packages:
       marked: 4.0.8
       next: 12.0.8-canary.18_fa4e6223e8941dc7e228d4641992870a
       next-pwa: 5.4.4_next@12.0.8-canary.18
+      normalize.css: 8.0.1
       notistack: 2.0.3_b9212fc8e1f751599169b45587a72214
       nprogress: 0.2.0
       nuka-carousel: 4.8.4_react-dom@17.0.2+react@17.0.2
