@@ -1,15 +1,12 @@
 import {
   ApolloClient,
   InMemoryCache,
-  NormalizedCacheObject
+  NormalizedCacheObject,
+  HttpLink
 } from '@apollo/client'
-import { BatchHttpLink } from '@apollo/client/link/batch-http'
 import { onError } from '@apollo/client/link/error'
 import SnackbarUtils from 'src/components/Toast/Toast'
 
-const isServer = typeof window === 'undefined'
-// @ts-ignore
-const windowApolloState = !isServer && window.__NEXT_DATA__?.apolloState
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -24,7 +21,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 })
 
-const httpLink = new BatchHttpLink({
+const httpLink = new HttpLink({
   uri: process.env.NEXT_PUBLIC_API_URL,
   credentials: 'same-origin'
 })
@@ -34,12 +31,12 @@ export function createApolloClient() {
 
   return new ApolloClient({
     resolvers: {},
-    ssrMode: isServer,
+    ssrMode: typeof window === 'undefined',
     link: errorLink.concat(httpLink),
-    cache: new InMemoryCache().restore(windowApolloState || {}),
+    cache: new InMemoryCache(),
     defaultOptions: {
       watchQuery: {
-        fetchPolicy: 'cache-and-network'
+        fetchPolicy: 'network-only'
       },
       query: {
         fetchPolicy: 'network-only',

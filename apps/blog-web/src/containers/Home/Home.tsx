@@ -1,6 +1,6 @@
-import { FC, useState, useEffect, ComponentType } from 'react'
-import { useQuery } from '@apollo/client'
+import { FC, ComponentType } from 'react'
 import dynamic from 'next/dynamic'
+import { Props as HomePageProps } from 'src/pages/index'
 import { isAnniversary } from 'src/shared/utils'
 import {
   HomeContainer,
@@ -8,13 +8,6 @@ import {
   HomeMain,
   CoverWrapper
 } from './styled'
-import { COVERS, ANNOUNCEMENTS, OPEN_SOURCES, MOTTOS } from './typeDefs'
-import {
-  AnnouncementQuery,
-  MottoQuery,
-  CoverQuery,
-  OpenSourceQuery
-} from './types'
 import Announcement from './components/Announcement'
 import Motto from './components/Motto'
 import OpenSource from './components/OpenSource'
@@ -22,50 +15,32 @@ import Cover from './components/Cover'
 import PostList from './components/PostList'
 import Slogan from './components/Slogan'
 
-const Home: FC = () => {
-  const { data: covers, loading: isFetchingCovers } =
-    useQuery<CoverQuery>(COVERS)
-  const { data: announcements } = useQuery<AnnouncementQuery>(ANNOUNCEMENTS)
-  const { data: openSources } = useQuery<OpenSourceQuery>(OPEN_SOURCES)
-  const { data: mottos } = useQuery<MottoQuery>(MOTTOS)
+export interface Props {
+  data: HomePageProps
+}
 
-  const [FireWorkComponent, setFireWorkComponent] =
-    useState<ComponentType | null>(null)
+let FireWorksComponent: ComponentType | null = null
+if (isAnniversary()) {
+  FireWorksComponent = dynamic(
+    () => import('src/components/Activities/Fireworks/Fireworks')
+  )
+}
 
-  useEffect(() => {
-    if (isAnniversary()) {
-      const DynamicComponent = dynamic(
-        () => import('src/components/Activities/Fireworks/Fireworks')
-      )
-
-      setFireWorkComponent(DynamicComponent)
-    }
-  }, [])
-
+const Home: FC<Props> = ({ data }) => {
   return (
     <HomeContainer>
-      {FireWorkComponent && <FireWorkComponent />}
+      {FireWorksComponent && <FireWorksComponent />}
       <CoverWrapper>
-        <Cover
-          covers={covers ? covers.getAllPublicCovers : []}
-          loading={isFetchingCovers}
-        />
-
+        <Cover data={data.covers} />
         <MottoSocialMediaBar>
           <Slogan />
-          <Motto mottos={mottos ? mottos.getMottos : []} />
+          <Motto data={data.mottos} />
         </MottoSocialMediaBar>
       </CoverWrapper>
       <HomeMain>
-        <Announcement
-          announcements={announcements ? announcements.getAnnouncements : []}
-        />
-
-        <OpenSource
-          openSources={openSources ? openSources.getOpenSources : []}
-        />
-
-        <PostList />
+        <Announcement data={data.announcements} />
+        <OpenSource data={data.openSources} />
+        <PostList data={data.posts} />
       </HomeMain>
     </HomeContainer>
   )

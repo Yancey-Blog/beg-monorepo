@@ -104,7 +104,8 @@ const config = {
 module.exports = withBundleAnalyzer(
   withPWA(
     process.env.NODE_ENV === 'production'
-      ? withSentryConfig(config, sentryWebpackPluginOptions)
+      // ? withSentryConfig(config, sentryWebpackPluginOptions)
+      ? config
       : config
   )
 )

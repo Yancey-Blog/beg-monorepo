@@ -95,16 +95,16 @@ const Overlay = styled.div`
 `
 
 interface Props {
-  openSources: IOpenSource[]
+  data: IOpenSource[]
 }
 
-const OpenSource: FC<Props> = ({ openSources }) => {
+const OpenSource: FC<Props> = ({ data }) => {
   return (
     <>
       <SubTitle icon={SVG_SPRITE.fire} title="New Release!" />
 
       <OpenSourceWrapper>
-        {openSources.slice(0, 3).map((openSource) => {
+        {data.slice(0, 3).map((openSource) => {
           const { _id, url, title, description, posterUrl } = openSource
 
           return (

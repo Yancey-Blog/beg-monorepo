@@ -23,15 +23,14 @@ const Covers = styled.figure`
 `
 
 interface Props {
-  covers: ICover[]
-  loading: boolean
+  data: ICover[]
 }
 
-const Cover: FC<Props> = ({ covers, loading }) => {
+const Cover: FC<Props> = ({ data }) => {
   return (
     <Covers>
-      {!loading && covers.length && (
-        <LazyLoadImage src={covers[0].coverUrl} alt={covers[0].title} />
+      {data?.length && (
+        <LazyLoadImage src={data[0].coverUrl} alt={data[0].title} />
       )}
     </Covers>
   )

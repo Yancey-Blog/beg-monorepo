@@ -1,5 +1,6 @@
 import { SnackbarProvider } from 'notistack'
 import type { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 import ToggleTheme from 'src/components/ToggleTheme/ToggleTheme'
@@ -43,6 +44,10 @@ export const reportWebVitals = ({
 
 devToolsWarning()
 
+const Player = dynamic(import('src/containers/Music/components/Player'), {
+  ssr: false
+})
+
 const App = ({ Component, pageProps, err }: Props) => {
   const apolloClient = createApolloClient()
   const { theme, toggleTheme } = useDarkMode()
@@ -59,6 +64,7 @@ const App = ({ Component, pageProps, err }: Props) => {
         >
           <SnackbarUtilsConfigurator />
           <Component {...pageProps} err={err} />
+          <Player />
           <ToggleTheme theme={theme} onToggle={toggleTheme} />
         </SnackbarProvider>
       </ApolloProvider>

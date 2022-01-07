@@ -6,7 +6,7 @@ import breakpoints from 'src/styled/breakpoints'
 import { IAnnouncement } from '../types'
 
 interface Props {
-  announcements: IAnnouncement[]
+  data: IAnnouncement[]
 }
 
 const AnnouncementWrapper = styled.section`
@@ -30,13 +30,13 @@ const SVG = styled.svg`
   margin-right: 1rem;
 `
 
-const Announcement: FC<Props> = ({ announcements }) => {
+const Announcement: FC<Props> = ({ data }) => {
   return (
     <AnnouncementWrapper>
       <SVG>
         <use xlinkHref={SVG_SPRITE.announcement} />
       </SVG>
-      {announcements[0]?.content}
+      {data[0]?.content}
     </AnnouncementWrapper>
   )
 }

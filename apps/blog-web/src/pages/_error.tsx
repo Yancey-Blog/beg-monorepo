@@ -1,6 +1,8 @@
 import NextErrorComponent, { ErrorProps } from 'next/error'
 import type { NextPageContext } from 'next'
 import * as Sentry from '@sentry/nextjs'
+import ErrorContainer from 'src/containers/Error/Error'
+import Layout from 'src/containers/Layout/Layout'
 
 interface AppErrorProps extends ErrorProps {
   err?: Error
@@ -16,7 +18,11 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }: AppErrorProps) => {
     // Flushing is not required in this case as it only happens on the client
   }
 
-  return <NextErrorComponent statusCode={statusCode} />
+  return (
+    <Layout title="Server Error | Yancey Inc.">
+      <ErrorContainer statusCode={statusCode} imageUrl="5xx.png" />
+    </Layout>
+  )
 }
 
 MyError.getInitialProps = async ({ res, err, asPath }: NextPageContext) => {

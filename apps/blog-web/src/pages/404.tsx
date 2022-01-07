@@ -4,7 +4,7 @@ import ErrorContainer from 'src/containers/Error/Error'
 
 const NotFound: FC = () => {
   return (
-    <Layout>
+    <Layout title="Page Not Found | Yancey Inc.">
       <ErrorContainer statusCode={404} imageUrl="404.png" />
     </Layout>
   )

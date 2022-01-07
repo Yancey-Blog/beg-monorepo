@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -11,9 +11,8 @@ import MetaHead from 'src/components/Head/Head'
 import PostMeta from '../components/PostMeta/PostMeta'
 import SharePanel from '../components/SharePanel/SharePanel'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
-import PostDetailSkeleton from '../components/PostDetailSkeleton/PostDetailSkeleton'
-import { GET_POST_BY_ID, UPDATE_PV } from '../typeDefs'
-import { GetPostByIdQuery, GetPostByIdVar } from '../types'
+import { UPDATE_PV } from '../typeDefs'
+import { IPostItem } from '../types'
 import { removeEmbededTag, setupTocbot, generatePostUrl } from './utils'
 import {
   PostDetailWrapper,
@@ -27,10 +26,13 @@ import {
   TableWrapper
 } from './styled'
 
-const PostDetail: FC = () => {
+export interface Props {
+  post: IPostItem
+}
+
+const PostDetail: FC<Props> = ({ post }) => {
   const {
-    query: { id },
-    replace
+    query: { id }
   } = useRouter()
 
   const markdownWrapperEl = useRef<HTMLDivElement>(null)
@@ -90,42 +92,23 @@ const PostDetail: FC = () => {
     }
   }
 
-  const { data: post } = useQuery<GetPostByIdQuery, GetPostByIdVar>(
-    GET_POST_BY_ID,
-    {
-      notifyOnNetworkStatusChange: true,
-      variables: { id: id as string },
-
-      onCompleted() {
-        setupTocbot()
-      },
-
-      onError() {
-        replace('/404')
-      }
-    }
-  )
-
   useEffect(() => {
+    setupTocbot()
     updatePV()
-  }, [])
-
-  if (!post) return <PostDetailSkeleton />
+  }, [updatePV])
 
   const {
-    getPostById: {
-      title,
-      posterUrl,
-      summary,
-      tags,
-      content,
-      createdAt,
-      lastModifiedDate,
-      pv,
-      like,
-      prev,
-      next
-    }
+    title,
+    posterUrl,
+    summary,
+    tags,
+    content,
+    createdAt,
+    lastModifiedDate,
+    pv,
+    like,
+    prev,
+    next
   } = post
 
   return (

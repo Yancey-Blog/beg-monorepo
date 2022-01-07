@@ -1,11 +1,8 @@
-import { FC, useState, useEffect } from 'react'
-import dynamic from 'next/dynamic'
+import { FC, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
-import throttle from 'lodash.throttle'
 import { initGA, logPageView } from 'src/shared/analytics'
-import { BACK_TO_TOP_THRESHOLD } from 'src/shared/constants'
 import SVGSprite from 'src/components/SVGSprite/SVGSprite'
 import AlgoliaSearchBox from 'src/containers/Post/components/AlgoliaSearchBox/AlgoliaSearchBox'
 import { GET_GLOBAL_SETTING } from 'src/containers/GlobalSetting/typeDefs'
@@ -27,29 +24,9 @@ interface Props {
   title?: string
 }
 
-const Player = dynamic(import('src/containers/Music/components/Player'), {
-  ssr: false
-})
-
 const Layout: FC<Props> = ({ title, children }) => {
   const router = useRouter()
   const { data } = useQuery<GlobalSettingQuery>(GET_GLOBAL_SETTING)
-  const [scrollTopCount, setScrollTopCount] = useState(0)
-
-  const scrollTopCountHandler = throttle(() => {
-    const top = document.documentElement.scrollTop || document.body.scrollTop
-    setScrollTopCount(top)
-  }, 100)
-
-  useEffect(() => {
-    document.addEventListener('scroll', scrollTopCountHandler, {
-      passive: true
-    })
-
-    return () => {
-      document.removeEventListener('scroll', scrollTopCountHandler)
-    }
-  }, [scrollTopCountHandler])
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production' && window !== undefined) {
@@ -82,8 +59,7 @@ const Layout: FC<Props> = ({ title, children }) => {
       />
       <Nav />
       <SVGSprite />
-      <BackToTop isShowCat={scrollTopCount >= BACK_TO_TOP_THRESHOLD} />
-      <Player />
+      <BackToTop />
       <AlgoliaSearchBox />
     </Layouts>
   )

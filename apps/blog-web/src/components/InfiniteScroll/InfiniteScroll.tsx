@@ -1,4 +1,5 @@
 import { FC, useState, useRef, useEffect, RefObject } from 'react'
+import throttle from 'lodash.throttle'
 
 interface Props {
   onBottomHit: () => void
@@ -24,6 +25,12 @@ const InfiniteScroll: FC<Props> = ({
   const [initialLoad, setInitialLoad] = useState(true)
   const contentRef = useRef<HTMLDivElement>(null)
 
+  const scrollHandler = throttle(() => {
+    if (!isLoading && hasMoreData && isBottom(contentRef)) {
+      onBottomHit()
+    }
+  }, 100)
+
   useEffect(() => {
     if (loadOnMount && initialLoad) {
       onBottomHit()
@@ -32,16 +39,14 @@ const InfiniteScroll: FC<Props> = ({
   }, [onBottomHit, loadOnMount, initialLoad])
 
   useEffect(() => {
-    const onScroll = () => {
-      if (!isLoading && hasMoreData && isBottom(contentRef)) {
-        onBottomHit()
-      }
-    }
-    document.addEventListener('scroll', onScroll, {
+    document.addEventListener('scroll', scrollHandler, {
       passive: true
     })
-    return () => document.removeEventListener('scroll', onScroll)
-  }, [onBottomHit, isLoading, hasMoreData])
+
+    return () => {
+      document.removeEventListener('scroll', scrollHandler)
+    }
+  }, [onBottomHit, isLoading, hasMoreData, scrollHandler])
 
   return <div ref={contentRef}>{children}</div>
 }
