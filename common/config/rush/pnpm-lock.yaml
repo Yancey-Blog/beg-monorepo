@@ -167,6 +167,7 @@ specifiers:
   tsconfig-paths: ^3.11.0
   tui-color-picker: ^2.2.7
   typescript: ^4.5.4
+  url-loader: ^4.1.1
   uuid: ^8.3.2
   web-vitals: ^2.1.2
   winston: ^3.3.3
@@ -212,7 +213,7 @@ dependencies:
   '@react-keycloak/web': 3.4.0_a9dce4ed8d3b83d8ff58d82814271a32
   '@rush-temp/blog-cms': file:projects/blog-cms.tgz_57646e0d7ce0b451be9951567664c4dc
   '@rush-temp/blog-service': file:projects/blog-service.tgz_30fe0eabb0da01037c7db0de2cd0b67a
-  '@rush-temp/blog-web': file:projects/blog-web.tgz_graphql@15.8.0+sass@1.46.0
+  '@rush-temp/blog-web': file:projects/blog-web.tgz_sass@1.46.0
   '@rush-temp/uploader-service': file:projects/uploader-service.tgz_@nestjs+graphql@9.1.2
   '@sentry/nextjs': 6.16.1_0d37e546fc744d6cd5a1bdf0e70899ba
   '@testing-library/jest-dom': 5.16.1
@@ -353,6 +354,7 @@ dependencies:
   tsconfig-paths: 3.12.0
   tui-color-picker: 2.2.7
   typescript: 4.5.4
+  url-loader: 4.1.1
   uuid: 8.3.2
   web-vitals: 2.1.2
   winston: 3.3.3
@@ -605,6 +607,34 @@ packages:
       '@wry/trie': 0.3.1
       graphql: 15.8.0
       graphql-tag: 2.12.6_graphql@15.8.0
+      hoist-non-react-statics: 3.3.2
+      optimism: 0.16.1
+      prop-types: 15.8.1
+      react: 17.0.2
+      symbol-observable: 4.0.0
+      ts-invariant: 0.9.4
+      tslib: 2.3.1
+      zen-observable-ts: 1.2.3
+    dev: false
+
+  /@apollo/client/3.5.6_graphql@16.2.0+react@17.0.2:
+    resolution: {integrity: sha512-XHoouuEJ4L37mtfftcHHO1caCRrKKAofAwqRoq28UQIPMJk+e7n3X9OtRRNXKk/9tmhNkwelSary+EilfPwI7A==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+      react: ^16.8.0 || ^17.0.0
+      subscriptions-transport-ws: ^0.9.0 || ^0.11.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      subscriptions-transport-ws:
+        optional: true
+    dependencies:
+      '@graphql-typed-document-node/core': 3.1.1_graphql@16.2.0
+      '@wry/context': 0.6.1
+      '@wry/equality': 0.5.2
+      '@wry/trie': 0.3.1
+      graphql: 16.2.0
+      graphql-tag: 2.12.6_graphql@16.2.0
       hoist-non-react-statics: 3.3.2
       optimism: 0.16.1
       prop-types: 15.8.1
@@ -2509,6 +2539,14 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 15.8.0
+    dev: false
+
+  /@graphql-typed-document-node/core/3.1.1_graphql@16.2.0:
+    resolution: {integrity: sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.2.0
     dev: false
 
   /@hapi/hoek/9.2.1:
@@ -9019,6 +9057,16 @@ packages:
       tslib: 2.3.1
     dev: false
 
+  /graphql-tag/2.12.6_graphql@16.2.0:
+    resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.2.0
+      tslib: 2.3.1
+    dev: false
+
   /graphql-ws/5.5.5_graphql@15.8.0:
     resolution: {integrity: sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw==}
     engines: {node: '>=10'}
@@ -9031,6 +9079,11 @@ packages:
   /graphql/15.8.0:
     resolution: {integrity: sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==}
     engines: {node: '>= 10.x'}
+    dev: false
+
+  /graphql/16.2.0:
+    resolution: {integrity: sha512-MuQd7XXrdOcmfwuLwC2jNvx0n3rxIuNYOxUtiee5XOmfrWo613ar2U8pE7aHAKh8VwfpifubpD9IP+EdEAEOsA==}
+    engines: {node: ^12.22.0 || ^14.16.0 || >=16.0.0}
     dev: false
 
   /gzip-size/6.0.0:
@@ -16779,6 +16832,21 @@ packages:
       punycode: 2.1.1
     dev: false
 
+  /url-loader/4.1.1:
+    resolution: {integrity: sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      file-loader: '*'
+      webpack: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      file-loader:
+        optional: true
+    dependencies:
+      loader-utils: 2.0.2
+      mime-types: 2.1.34
+      schema-utils: 3.1.1
+    dev: false
+
   /urlgrey/1.0.0:
     resolution: {integrity: sha512-hJfIzMPJmI9IlLkby8QrsCykQ+SXDeO2W5Q9QTW3QpqZVTx4a/K7p8/5q+/isD8vsbVaFgql/gvAoQCRQ2Cb5w==}
     dependencies:
@@ -17922,13 +17990,13 @@ packages:
       - webpack-cli
     dev: false
 
-  file:projects/blog-web.tgz_graphql@15.8.0+sass@1.46.0:
-    resolution: {integrity: sha512-VbqzaG0DO0cvDOWjEByF2xehYBX5cRYZZ+ePmoGNrUQo2jUA1bVJGcQ1CDkN9TY56iI9kqVb2MmjD04nqb/2zw==, tarball: file:projects/blog-web.tgz}
+  file:projects/blog-web.tgz_sass@1.46.0:
+    resolution: {integrity: sha512-yEAGYw7vhZMQd7XgZO+RysZuCpUpKayR6lvTOP6YuxPqJA+G/M1Cf6K9DkLCMtiOSsESoushRrXNKzLf9+xfGA==, tarball: file:projects/blog-web.tgz}
     id: file:projects/blog-web.tgz
     name: '@rush-temp/blog-web'
     version: 0.0.0
     dependencies:
-      '@apollo/client': 3.5.6_graphql@15.8.0+react@17.0.2
+      '@apollo/client': 3.5.6_graphql@16.2.0+react@17.0.2
       '@emotion/react': 11.7.1_b08e3c15324cbe90a6ff8fcd416c932c
       '@emotion/styled': 11.6.0_0044a6ec6dcf5de7705bffaaff7afd26
       '@mui/material': 5.2.7_f5341c4d41f1e34c3a73251df9f98a19
@@ -17950,6 +18018,7 @@ packages:
       eslint: 8.6.0
       eslint-config-next: 12.0.7_0070e1a32beb08abd2f85ca2d7a1528d
       feed: 4.2.2
+      graphql: 16.2.0
       lint-staged: 12.1.5
       lodash.orderby: 4.6.0
       lodash.throttle: 4.1.1
@@ -17978,6 +18047,7 @@ packages:
       stylelint-processor-styled-components: 1.10.0
       tocbot: 4.18.0
       typescript: 4.5.4
+      url-loader: 4.1.1
       yancey-js-util: 3.0.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -17988,7 +18058,7 @@ packages:
       - enquirer
       - esbuild
       - fibers
-      - graphql
+      - file-loader
       - node-sass
       - prop-types
       - react-is

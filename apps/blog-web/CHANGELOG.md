@@ -1,6 +1,17 @@
 # Change Log - blog-web
 
-This log was last generated on Wed, 05 Jan 2022 05:47:12 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jan 2022 08:15:03 GMT and should not be manually modified.
+
+## 4.21.0
+Fri, 07 Jan 2022 08:15:03 GMT
+
+### Minor changes
+
+- use new cli of nextjs and discard will-apollo-next
+
+### Patches
+
+- fix not infinite load
 
 ## 4.20.1
 Wed, 05 Jan 2022 05:47:12 GMT

@@ -2,6 +2,23 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.21.0",
+      "tag": "blog-web_v4.21.0",
+      "date": "Fri, 07 Jan 2022 08:15:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix not infinite load"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "use new cli of nextjs and discard will-apollo-next"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.20.1",
       "tag": "blog-web_v4.20.1",
       "date": "Wed, 05 Jan 2022 05:47:12 GMT",
