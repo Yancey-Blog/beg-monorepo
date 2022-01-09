@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Tue, 04 Jan 2022 12:52:44 GMT and should not be manually modified.
+This log was last generated on Sun, 09 Jan 2022 14:02:54 GMT and should not be manually modified.
+
+## 4.1.1
+Sun, 09 Jan 2022 14:02:54 GMT
+
+### Patches
+
+- add token for uploader
 
 ## 4.1.0
 Tue, 04 Jan 2022 12:52:44 GMT

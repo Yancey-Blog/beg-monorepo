@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "4.1.1",
+      "tag": "blog-cms_v4.1.1",
+      "date": "Sun, 09 Jan 2022 14:02:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add token for uploader"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.0",
       "tag": "blog-cms_v4.1.0",
       "date": "Tue, 04 Jan 2022 12:52:44 GMT",
