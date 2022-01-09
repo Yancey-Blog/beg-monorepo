@@ -1,6 +1,6 @@
 {
   "name": "blog-cms",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "private": true,
   "scripts": {
     "start": "react-app-rewired start",

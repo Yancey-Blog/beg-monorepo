@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sun, 09 Jan 2022 14:02:54 GMT and should not be manually modified.
+This log was last generated on Sun, 09 Jan 2022 14:46:08 GMT and should not be manually modified.
+
+## 4.2.0
+Sun, 09 Jan 2022 14:46:08 GMT
+
+### Minor changes
+
+- use no-cache for apolloClient
 
 ## 4.1.1
 Sun, 09 Jan 2022 14:02:54 GMT
