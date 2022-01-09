@@ -23,6 +23,7 @@ const Uploader: FC<Props> = ({
   const [currFile, setCurrFile] = useState<UploaderResponse>()
 
   const onUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const token = localStorage.getItem('token')
     const files = e.target.files
     if (files) {
       const file = files[0]
@@ -34,7 +35,10 @@ const Uploader: FC<Props> = ({
         method: 'post',
         url: `${process.env.REACT_APP_UPLOADER_SERVICE_DOMAIN}/uploadSingleFile`,
         data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        }
       })
         .then((res) => {
           setCurrFile(res.data)
