@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.21.1",
+      "tag": "blog-web_v4.21.1",
+      "date": "Mon, 10 Jan 2022 16:01:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "no post should be to 404 page"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.0",
       "tag": "blog-web_v4.21.0",
       "date": "Fri, 07 Jan 2022 08:15:03 GMT",

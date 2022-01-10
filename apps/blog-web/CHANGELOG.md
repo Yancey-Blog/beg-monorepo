@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Fri, 07 Jan 2022 08:15:03 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jan 2022 16:01:54 GMT and should not be manually modified.
+
+## 4.21.1
+Mon, 10 Jan 2022 16:01:54 GMT
+
+### Patches
+
+- no post should be to 404 page
 
 ## 4.21.0
 Fri, 07 Jan 2022 08:15:03 GMT
