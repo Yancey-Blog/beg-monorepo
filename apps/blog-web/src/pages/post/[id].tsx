@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   })
 
-  if (error) {
+  if (!post || error) {
     return {
       redirect: {
         destination: '/404',
