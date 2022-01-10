@@ -28,7 +28,25 @@ const DiskChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
               'disk_write_bytes',
               'disk_read_bytes'
             )}
-            options={{ maintainAspectRatio: false }}
+            options={{
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Storage I/O'
+                }
+              },
+              scales: {
+                y: {
+                  display: true,
+                  ticks: {
+                    callback: function (value) {
+                      return `${value} Mbps`
+                    }
+                  }
+                }
+              }
+            }}
             height={375}
           />
         </ToggleChart>

@@ -5,7 +5,11 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Filler
+  Filler,
+  Legend,
+  Tooltip,
+  Title,
+  SubTitle
 } from 'chart.js'
 import { useQuery } from '@apollo/client'
 import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
@@ -25,7 +29,17 @@ import PostRankList from './components/PostRankList'
 import PostStatistics from './components/PostStatistics'
 import TagClouds from './components/TagClouds'
 
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Legend,
+  Tooltip,
+  Title,
+  SubTitle
+)
 
 const DashBoard: FC = () => {
   const classes = useStyles()
@@ -79,7 +93,7 @@ const DashBoard: FC = () => {
       />
 
       <div className={classes.group}>
-        <DiskChart
+        <NetWorkChart
           usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
           isFetchingUsageStatus={isFetchingUsageStatus}
         />
@@ -90,11 +104,10 @@ const DashBoard: FC = () => {
           loading={isFetchingTopPVPosts}
         />
 
-        <NetWorkChart
+        <DiskChart
           usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
           isFetchingUsageStatus={isFetchingUsageStatus}
         />
-
         <PostRankList
           type={PostRankListType.LIKE}
           topPosts={topLikePosts ? topLikePosts.getTopLikePosts : []}

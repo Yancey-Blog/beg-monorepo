@@ -9,7 +9,9 @@ const chartConfig = (
   type2?: Exclude<keyof IBandwagonUsageStatus, 'timestamp'>
 ): ChartData<'line'> => ({
   labels: usageStatus
-    .map(({ timestamp }) => DateTime.fromSeconds(+timestamp).toFormat('HH:mm'))
+    .map(({ timestamp }) =>
+      DateTime.fromSeconds(+timestamp).toFormat('MM-dd HH:mm')
+    )
     .slice(-limit),
   // @ts-ignore
   datasets: [
@@ -18,19 +20,19 @@ const chartConfig = (
         .map((usageStat) =>
           type1 === 'cpu_usage'
             ? usageStat[type1]
-            : parseInt(usageStat[type1], 10) / 1024 / 1024
+            : (Number(usageStat[type1]) * 8) / 60 / 1024 / 1024
         )
         .slice(-limit),
-      label: type1.split('_').join(' ').toUpperCase().replace('BYTES', '(Mb)'),
+      label: type1.split('_').join(' ').toUpperCase().replace('BYTES', ''),
       borderColor: 'rgb(21, 222, 218)',
       backgroundColor: 'rgba(21, 222, 218, .2)',
       fill: true
     },
     type2 && {
       data: usageStatus
-        .map((usageStat) => parseInt(usageStat[type2], 10) / 1024 / 1024)
+        .map((usageStat) => (Number(usageStat[type2]) * 8) / 60 / 1024 / 1024)
         .slice(-limit),
-      label: type2.split('_').join(' ').toUpperCase().replace('BYTES', '(Mb)'),
+      label: type2.split('_').join(' ').toUpperCase().replace('BYTES', ''),
       borderColor: 'rgb(51, 112, 255)',
       backgroundColor: 'rgba(51, 112, 255, .2)',
       fill: true

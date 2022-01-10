@@ -28,7 +28,25 @@ const NetWorkChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
               'network_in_bytes',
               'network_out_bytes'
             )}
-            options={{ maintainAspectRatio: false }}
+            options={{
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Network I/O'
+                }
+              },
+              scales: {
+                y: {
+                  display: true,
+                  ticks: {
+                    callback: function (value) {
+                      return `${value} Mbps`
+                    }
+                  }
+                }
+              }
+            }}
             height={375}
           />
         </ToggleChart>
