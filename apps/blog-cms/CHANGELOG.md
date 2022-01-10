@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sun, 09 Jan 2022 14:46:08 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jan 2022 09:51:00 GMT and should not be manually modified.
+
+## 4.2.1
+Mon, 10 Jan 2022 09:51:00 GMT
+
+### Patches
+
+- fix bandwagon formula
 
 ## 4.2.0
 Sun, 09 Jan 2022 14:46:08 GMT
