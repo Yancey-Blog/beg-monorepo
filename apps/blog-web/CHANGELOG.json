@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.21.2",
+      "tag": "blog-web_v4.21.2",
+      "date": "Sun, 16 Jan 2022 11:20:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "tocbot cannot init completed"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.1",
       "tag": "blog-web_v4.21.1",
       "date": "Mon, 10 Jan 2022 16:01:54 GMT",

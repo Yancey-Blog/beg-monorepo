@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Mon, 10 Jan 2022 16:01:54 GMT and should not be manually modified.
+This log was last generated on Sun, 16 Jan 2022 11:20:55 GMT and should not be manually modified.
+
+## 4.21.2
+Sun, 16 Jan 2022 11:20:55 GMT
+
+### Patches
+
+- tocbot cannot init completed
 
 ## 4.21.1
 Mon, 10 Jan 2022 16:01:54 GMT
