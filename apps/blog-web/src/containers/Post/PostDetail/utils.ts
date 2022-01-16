@@ -10,6 +10,10 @@ export const setupTocbot = () => {
     headingSelector: 'h1, h2, h3',
     hasInnerContainers: true
   })
+
+  setTimeout(() => {
+    tocbot.refresh()
+  }, 1000)
 }
 
 export const generatePostUrl = (id: string) =>
