@@ -10,7 +10,7 @@
     "analyze": "ANALYZE=true pnpm run build",
     "feed": "node scripts/generatorFeed",
     "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\" --color",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged -c .lintstagedrc.js"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",

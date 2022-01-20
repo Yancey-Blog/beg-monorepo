@@ -5,7 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 
-/** @type {import('@sentry/nextjs').SentryWebpackPluginOptions} */
 const sentryWebpackPluginOptions = {
   org: 'beg',
   project: 'yancey-blog',
