@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sun, 16 Jan 2022 11:20:55 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jan 2022 09:04:17 GMT and should not be manually modified.
+
+## 4.21.3
+Thu, 20 Jan 2022 09:04:17 GMT
+
+### Patches
+
+- update version and resolve lint error for nextjs
 
 ## 4.21.2
 Sun, 16 Jan 2022 11:20:55 GMT

@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.21.3",
+      "tag": "blog-web_v4.21.3",
+      "date": "Thu, 20 Jan 2022 09:04:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update version and resolve lint error for nextjs"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.2",
       "tag": "blog-web_v4.21.2",
       "date": "Sun, 16 Jan 2022 11:20:55 GMT",
