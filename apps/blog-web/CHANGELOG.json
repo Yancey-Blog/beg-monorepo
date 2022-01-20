@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.22.0",
+      "tag": "blog-web_v4.22.0",
+      "date": "Thu, 20 Jan 2022 10:04:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migrate env file"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.3",
       "tag": "blog-web_v4.21.3",
       "date": "Thu, 20 Jan 2022 09:04:17 GMT",

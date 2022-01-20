@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 20 Jan 2022 09:04:17 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jan 2022 10:04:11 GMT and should not be manually modified.
+
+## 4.22.0
+Thu, 20 Jan 2022 10:04:11 GMT
+
+### Minor changes
+
+- migrate env file
 
 ## 4.21.3
 Thu, 20 Jan 2022 09:04:17 GMT
