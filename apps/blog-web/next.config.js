@@ -73,9 +73,7 @@ const config = {
     NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME: 'prod_YANCEY_BLOG'
   },
   swcMinify: true,
-  experimental: {
-    styledComponents: true
-  },
+  styledComponents: true,
   maximumFileSizeToCacheInBytes: 10000000,
   productionBrowserSourceMaps: true,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -104,8 +102,7 @@ const config = {
 module.exports = withBundleAnalyzer(
   withPWA(
     process.env.NODE_ENV === 'production'
-      // ? withSentryConfig(config, sentryWebpackPluginOptions)
-      ? config
+      ? withSentryConfig(config, sentryWebpackPluginOptions)
       : config
   )
 )

@@ -1,3 +1,0 @@
-{
-  "*.{ts,js,tsx,jsx}": ["pnpm run eslint", "pnpm run stylelint"]
-}
