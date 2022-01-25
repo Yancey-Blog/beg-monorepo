@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import cur from 'public/images/normal.cur'
 import breakpoints from './breakpoints'
-import { DefaultTheme } from '../../styled'
+import { ThemeVariables as DefaultTheme } from '../../styled'
 
 const GlobalStyle = createGlobalStyle`
   html {
