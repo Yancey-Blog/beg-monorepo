@@ -1,6 +1,15 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 20 Jan 2022 10:04:11 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 11:19:52 GMT and should not be manually modified.
+
+## 4.23.0
+Tue, 25 Jan 2022 11:19:52 GMT
+
+### Minor changes
+
+- add dot background
+- format styled.d.ts
+- add rss link
 
 ## 4.22.0
 Thu, 20 Jan 2022 10:04:11 GMT

@@ -2,6 +2,24 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.23.0",
+      "tag": "blog-web_v4.23.0",
+      "date": "Tue, 25 Jan 2022 11:19:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add dot background"
+          },
+          {
+            "comment": "format styled.d.ts"
+          },
+          {
+            "comment": "add rss link"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.22.0",
       "tag": "blog-web_v4.22.0",
       "date": "Thu, 20 Jan 2022 10:04:11 GMT",
