@@ -1,6 +1,6 @@
 import 'styled-components'
 
-export interface DefaultTheme {
+export interface ThemeVariables {
   background: {
     primary: string
     secondary: string
@@ -77,5 +77,5 @@ export interface DefaultTheme {
 
 // and extend them!
 declare module 'styled-components' {
-  export type DefaultTheme = DefaultTheme
+  export interface DefaultTheme extends ThemeVariables {}
 }
