@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Head from 'next/head'
 import { useTheme } from 'styled-components'
+import { RSS } from 'src/shared/constants'
 
 interface Props {
   title?: string
@@ -31,7 +32,7 @@ const MetaHead: FC<Props> = ({
         content="width=device-width,initial-scale=1.0,maximum-scale=1.0,shrink-to-fit=no"
       />
       <meta name="theme-color" content={theme.background.primary} />
-      <meta name="keywords" content="Yancey,Blog,Technology,Music" />
+      <meta name="keywords" content="Yancey,Blog,Technology,Music,Life" />
       <meta
         name="description"
         content="Technology, Music and Poems. | Yancey Official Blog | Yancey Inc."
@@ -74,7 +75,6 @@ const MetaHead: FC<Props> = ({
         href="/icons/icon-512x512.png"
         media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
       />
-
       <link
         href="/icons/favicon-16x16.png"
         rel="icon"
@@ -88,6 +88,7 @@ const MetaHead: FC<Props> = ({
         sizes="32x32"
       />
       <link rel="apple-touch-icon" href="/apple-icon.png" />
+      <link rel="alternate" type="application/rss+xml" title="Subscribe to Yancey Blog" href={RSS}></link>
 
       {useTwitterCard && (
         <>
