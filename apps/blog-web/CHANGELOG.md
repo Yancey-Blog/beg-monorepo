@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Tue, 25 Jan 2022 11:19:52 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 11:25:34 GMT and should not be manually modified.
+
+## 4.23.1
+Tue, 25 Jan 2022 11:25:34 GMT
+
+### Patches
+
+- fix ThemeVariables
 
 ## 4.23.0
 Tue, 25 Jan 2022 11:19:52 GMT
