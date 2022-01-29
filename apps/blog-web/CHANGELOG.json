@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.23.2",
+      "tag": "blog-web_v4.23.2",
+      "date": "Sat, 29 Jan 2022 10:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete dot background"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.23.1",
       "tag": "blog-web_v4.23.1",
       "date": "Tue, 25 Jan 2022 11:25:34 GMT",
