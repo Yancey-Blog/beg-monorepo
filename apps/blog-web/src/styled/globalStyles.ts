@@ -19,15 +19,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }: { theme: DefaultTheme }) =>
       theme.background.primary};
     color: ${({ theme }: { theme: DefaultTheme }) => theme.text.base};  
-    cursor: url(${cur}), auto;  
-    background-image: radial-gradient(${({ theme }: { theme: DefaultTheme }) =>
-      theme.dot} 1px, transparent 0), radial-gradient(${({
-  theme
-}: {
-  theme: DefaultTheme
-}) => theme.dot} 1px, transparent 0);
-    background-position: 0 0, 25px 25px;
-    background-size: 50px 50px;
+    cursor: url(${cur}), auto;
   }
 
   a {
