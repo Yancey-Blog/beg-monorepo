@@ -2,6 +2,84 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.23.2",
+      "tag": "blog-web_v4.23.2",
+      "date": "Sat, 29 Jan 2022 10:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete dot background"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.1",
+      "tag": "blog-web_v4.23.1",
+      "date": "Tue, 25 Jan 2022 11:25:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix ThemeVariables"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.0",
+      "tag": "blog-web_v4.23.0",
+      "date": "Tue, 25 Jan 2022 11:19:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add dot background"
+          },
+          {
+            "comment": "format styled.d.ts"
+          },
+          {
+            "comment": "add rss link"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.0",
+      "tag": "blog-web_v4.22.0",
+      "date": "Thu, 20 Jan 2022 10:04:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migrate env file"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.3",
+      "tag": "blog-web_v4.21.3",
+      "date": "Thu, 20 Jan 2022 09:04:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update version and resolve lint error for nextjs"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.2",
+      "tag": "blog-web_v4.21.2",
+      "date": "Sun, 16 Jan 2022 11:20:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "tocbot cannot init completed"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.1",
       "tag": "blog-web_v4.21.1",
       "date": "Mon, 10 Jan 2022 16:01:54 GMT",

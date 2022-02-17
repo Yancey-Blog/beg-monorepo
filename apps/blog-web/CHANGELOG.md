@@ -1,6 +1,50 @@
 # Change Log - blog-web
 
-This log was last generated on Mon, 10 Jan 2022 16:01:54 GMT and should not be manually modified.
+This log was last generated on Sat, 29 Jan 2022 10:34:16 GMT and should not be manually modified.
+
+## 4.23.2
+Sat, 29 Jan 2022 10:34:16 GMT
+
+### Patches
+
+- delete dot background
+
+## 4.23.1
+Tue, 25 Jan 2022 11:25:34 GMT
+
+### Patches
+
+- fix ThemeVariables
+
+## 4.23.0
+Tue, 25 Jan 2022 11:19:52 GMT
+
+### Minor changes
+
+- add dot background
+- format styled.d.ts
+- add rss link
+
+## 4.22.0
+Thu, 20 Jan 2022 10:04:11 GMT
+
+### Minor changes
+
+- migrate env file
+
+## 4.21.3
+Thu, 20 Jan 2022 09:04:17 GMT
+
+### Patches
+
+- update version and resolve lint error for nextjs
+
+## 4.21.2
+Sun, 16 Jan 2022 11:20:55 GMT
+
+### Patches
+
+- tocbot cannot init completed
 
 ## 4.21.1
 Mon, 10 Jan 2022 16:01:54 GMT
