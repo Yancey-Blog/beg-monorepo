@@ -115,6 +115,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "@sentry/nextjs",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@sentry/tracing",
       "allowedCategories": [ "apps" ]
     },
@@ -232,6 +236,10 @@
     },
     {
       "name": "customize-cra",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "deepmerge",
       "allowedCategories": [ "apps" ]
     },
     {
@@ -363,6 +371,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "lodash.isequal",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "lodash.orderby",
       "allowedCategories": [ "apps" ]
     },
@@ -376,10 +388,6 @@
     },
     {
       "name": "marked",
-      "allowedCategories": [ "apps" ]
-    },
-    {
-      "name": "material-ui-chip-input",
       "allowedCategories": [ "apps" ]
     },
     {

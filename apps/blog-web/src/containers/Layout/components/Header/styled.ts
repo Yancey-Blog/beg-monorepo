@@ -15,7 +15,6 @@ export const NavBar = styled.nav`
   width:100%;
   padding: 0 2.4rem;
   background: ${({ theme }) => theme.background.primary};
-  opacity: 0.95;
   box-shadow: 0 1px 40px -8px ${({ theme }) => theme.colors.fiveOpcityBlack};
   z-index: ${({ theme }) => theme.zIndex.fixed};
   ${transitionMixin('background', 250, 'linear')};

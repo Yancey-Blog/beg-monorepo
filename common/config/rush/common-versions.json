@@ -53,8 +53,16 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     "eslint": [
-      "^7.32.0",
+      "^8.6.0",
       "^8.2.0"
+    ],
+    "@types/node": [
+      "^16.11.6",
+      "^17.0.8"
+    ],
+    "graphql": [
+      "^15.7.2",
+      "^16.2.0"
     ]
   }
 }

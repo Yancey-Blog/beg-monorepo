@@ -27,7 +27,8 @@ const light = {
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
   postSvg: '#fcf8db',
-  codeEl: '#f0f0f0'
+  codeEl: '#f0f0f0',
+  dot: '#ddd'
 }
 
 const dark = {
@@ -59,7 +60,8 @@ const dark = {
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
   postSvg: '#181a1b',
-  codeEl: '#181a1b'
+  codeEl: '#181a1b',
+  dot: '#333'
 }
 
 const defaultTheme = {

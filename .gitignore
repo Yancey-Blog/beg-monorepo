@@ -95,9 +95,14 @@ apps/blog-service/env/development.env
 apps/blog-cms/.env.development.local
 apps/blog-cms/.env.production
 apps/uploader-service/.env
+apps/blog-web/.env.production
 
 # PWA
 sw.*
 workbox-*
 atom.xml
 rss.xml
+
+# Sentry
+.sentryclirc
+sentry.properties

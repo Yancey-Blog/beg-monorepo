@@ -107,14 +107,14 @@ const WeChatQRCodeLink = styled.a`
 `
 
 interface Props {
-  mottos: IMotto[]
+  data: IMotto[]
 }
 
-const Motto: FC<Props> = ({ mottos }) => {
+const Motto: FC<Props> = ({ data }) => {
   return (
     <MottoBar>
       <UpTriangle />
-      <MottoContent>{mottos[0]?.content}</MottoContent>
+      <MottoContent>{data[0]?.content}</MottoContent>
 
       <SocialMediaIconWrapper>
         {Object.keys(SOCIAL_MEDIA).map((key) => {

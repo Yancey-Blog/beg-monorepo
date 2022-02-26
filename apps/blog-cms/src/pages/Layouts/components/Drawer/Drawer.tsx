@@ -123,7 +123,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
               ) : (
                 <NavLink
                   end
-                  className={(isActive) =>
+                  className={({isActive}) =>
                     classNames(classes.formatArrowTag, {
                       [classes.active]: isActive,
                       [classes.foldActive]: !open
@@ -165,7 +165,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                     ) : (
                       <NavLink
                         end
-                        className={(isActive) =>
+                        className={({isActive}) =>
                           classNames(classes.formatArrowTag, {
                             [classes.active]: isActive,
                             [classes.foldActive]: !open

@@ -1,6 +1,34 @@
 # Change Log - blog-cms
 
-This log was last generated on Mon, 29 Nov 2021 04:57:53 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jan 2022 09:51:00 GMT and should not be manually modified.
+
+## 4.2.1
+Mon, 10 Jan 2022 09:51:00 GMT
+
+### Patches
+
+- fix bandwagon formula
+
+## 4.2.0
+Sun, 09 Jan 2022 14:46:08 GMT
+
+### Minor changes
+
+- use no-cache for apolloClient
+
+## 4.1.1
+Sun, 09 Jan 2022 14:02:54 GMT
+
+### Patches
+
+- add token for uploader
+
+## 4.1.0
+Tue, 04 Jan 2022 12:52:44 GMT
+
+### Minor changes
+
+- migrate to react-router-dom and fix PostEditor style broken
 
 ## 4.0.0
 Mon, 29 Nov 2021 04:57:53 GMT

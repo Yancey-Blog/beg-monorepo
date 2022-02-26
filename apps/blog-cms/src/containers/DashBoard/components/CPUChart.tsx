@@ -21,7 +21,28 @@ const CPUChart: FC<Props> = ({ usageStatus, isFetchingUsageStatus }) => {
         <ToggleChart handleToggleChange={(value: number) => setCPULimit(value)}>
           <Line
             data={chartConfig(usageStatus, cpuLimit, 'cpu_usage')}
-            options={{ maintainAspectRatio: false }}
+            options={{
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'CPU Usage, 100% = 1 Core'
+                },
+                legend: {
+                  display: false
+                }
+              },
+              scales: {
+                y: {
+                  display: true,
+                  ticks: {
+                    callback: function (value) {
+                      return `${value}%`
+                    }
+                  }
+                }
+              }
+            }}
             height={375}
           />
         </ToggleChart>

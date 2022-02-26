@@ -50,10 +50,10 @@ const client = new ApolloClient({
   link: from([errorLink, authLink, httpLink]),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'no-cache',
     },
     query: {
-      fetchPolicy: 'network-only',
+      fetchPolicy: 'no-cache',
       errorPolicy: 'all'
     },
     mutate: {

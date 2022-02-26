@@ -8,6 +8,10 @@ const Covers = styled.figure`
   margin-bottom: 3.2rem;
   width: 100vw;
   height: 100vh;
+  background: url(${(props: { coverUrl: string }) => props.coverUrl}) center
+    center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
   &::after {
     position: absolute;
@@ -23,18 +27,11 @@ const Covers = styled.figure`
 `
 
 interface Props {
-  covers: ICover[]
-  loading: boolean
+  data: ICover[]
 }
 
-const Cover: FC<Props> = ({ covers, loading }) => {
-  return (
-    <Covers>
-      {!loading && (
-        <LazyLoadImage src={covers[0].coverUrl} alt={covers[0].title} />
-      )}
-    </Covers>
-  )
-}
+const Cover: FC<Props> = ({ data }) => (
+  <Covers coverUrl={data && data[0]?.coverUrl} />
+)
 
 export default Cover

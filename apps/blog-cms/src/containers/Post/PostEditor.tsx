@@ -1,7 +1,6 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { TextField, Button, IconButton, Popover } from '@mui/material'
-import ChipInput from 'material-ui-chip-input'
 import { PhotoCamera } from '@mui/icons-material'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import * as Yup from 'yup'
@@ -20,6 +19,7 @@ import umlPlugin from '@toast-ui/editor-plugin-uml'
 import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
 import chartPlugin from '@toast-ui/editor-plugin-chart'
 import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
+import ChipInput from 'src/components/ChipInput/ChipInput'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import client from 'src/graphql/apolloClient'
@@ -325,7 +325,11 @@ const PostEditor: FC = () => {
               Save as Draft
             </Button>
 
-            <Button className={classes.btn} onClick={goBack}>
+            <Button
+              color="warning"
+              className={classes.btn}
+              onClick={goBack}
+            >
               Back
             </Button>
           </div>
@@ -345,14 +349,17 @@ const PostEditor: FC = () => {
             {...getFieldProps('summary')}
           />
 
-          <ChipInput
-            error={!!errors.tags}
-            helperText={errors.tags}
-            label="Tags"
-            defaultValue={values.tags}
-            fullWidth
-            onChange={(chips) => handleTagChange(chips)}
-          />
+          <div className={classes.chipInput}>
+            <ChipInput
+              required
+              defaultValue={values.tags}
+              error={!!errors.tags}
+              helperText={errors.tags}
+              label="Tags"
+              fullWidth
+              onChange={handleTagChange}
+            />
+          </div>
         </div>
       </form>
 

@@ -9,7 +9,17 @@ import SSOStatus, { Status } from 'src/components/SSOStatus/SSOStatus'
 import { Roles } from 'src/types/roles'
 import useStyles from './styles'
 
-const routeList = mapRoutes()
+const routes = mapRoutes()
+const loadableComponents = routes.map((route) => ({
+  ...route,
+  component: loadable(
+    () =>
+      import(/* webpackPrefetch: true */ `src/containers/${route.component}`),
+    {
+      fallback: <Loading />
+    }
+  )
+}))
 
 const Main: FC = () => {
   const classes = useStyles()
@@ -32,28 +42,23 @@ const Main: FC = () => {
   return (
     <main className={classes.main}>
       <Routes>
-        {routeList.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            children={
-              isAutherized(route.roles)
-                ? loadable(
-                    () =>
-                      import(
-                        /* webpackPrefetch: true */ `src/containers/${route.component}`
-                      ),
-                    {
-                      fallback: <Loading />
-                    }
-                  )
-                : () => <SSOStatus status={Status.Fail} />
-            }
-          />
-        ))}
-        <Route path="*">
-          <NotFound />
-        </Route>
+        {loadableComponents.map((route) => {
+          const Comp = route.component
+          return (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={
+                isAutherized(route.roles) ? (
+                  <Comp />
+                ) : (
+                  <SSOStatus status={Status.Fail} />
+                )
+              }
+            />
+          )
+        })}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   )

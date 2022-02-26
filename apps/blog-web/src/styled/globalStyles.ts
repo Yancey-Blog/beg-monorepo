@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import cur from 'public/images/normal.cur'
 import breakpoints from './breakpoints'
+import { ThemeVariables as DefaultTheme } from '../../styled'
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -15,13 +16,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     -webkit-font-smoothing: antialiased;  
-    background: ${({ theme }: { theme: any }) => theme.background.primary};
-    color: ${({ theme }: { theme: any }) => theme.text.base};  
-    cursor: url(${cur}), auto;  
+    background: ${({ theme }: { theme: DefaultTheme }) =>
+      theme.background.primary};
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.text.base};  
+    cursor: url(${cur}), auto;
   }
 
   a {
-    color: ${({ theme }: { theme: any }) => theme.text.secondary};
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.text.secondary};
     text-decoration: none;
   }  
 

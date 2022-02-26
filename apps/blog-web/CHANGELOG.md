@@ -1,6 +1,75 @@
 # Change Log - blog-web
 
-This log was last generated on Fri, 31 Dec 2021 06:30:20 GMT and should not be manually modified.
+This log was last generated on Sat, 29 Jan 2022 10:34:16 GMT and should not be manually modified.
+
+## 4.23.2
+Sat, 29 Jan 2022 10:34:16 GMT
+
+### Patches
+
+- delete dot background
+
+## 4.23.1
+Tue, 25 Jan 2022 11:25:34 GMT
+
+### Patches
+
+- fix ThemeVariables
+
+## 4.23.0
+Tue, 25 Jan 2022 11:19:52 GMT
+
+### Minor changes
+
+- add dot background
+- format styled.d.ts
+- add rss link
+
+## 4.22.0
+Thu, 20 Jan 2022 10:04:11 GMT
+
+### Minor changes
+
+- migrate env file
+
+## 4.21.3
+Thu, 20 Jan 2022 09:04:17 GMT
+
+### Patches
+
+- update version and resolve lint error for nextjs
+
+## 4.21.2
+Sun, 16 Jan 2022 11:20:55 GMT
+
+### Patches
+
+- tocbot cannot init completed
+
+## 4.21.1
+Mon, 10 Jan 2022 16:01:54 GMT
+
+### Patches
+
+- no post should be to 404 page
+
+## 4.21.0
+Fri, 07 Jan 2022 08:15:03 GMT
+
+### Minor changes
+
+- use new cli of nextjs and discard will-apollo-next
+
+### Patches
+
+- fix not infinite load
+
+## 4.20.1
+Wed, 05 Jan 2022 05:47:12 GMT
+
+### Patches
+
+- downgrade
 
 ## 4.20.0
 Fri, 31 Dec 2021 06:30:20 GMT
@@ -43,3 +112,4 @@ Sat, 20 Nov 2021 12:59:36 GMT
 ### Minor changes
 
 - follow the advice of eslint and stylelint
+
