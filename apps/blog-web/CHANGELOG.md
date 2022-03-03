@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 29 Jan 2022 10:34:16 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Mar 2022 03:19:47 GMT and should not be manually modified.
+
+## 4.24.0
+Thu, 03 Mar 2022 03:19:47 GMT
+
+### Minor changes
+
+- use developer@yanceyleo.com as official email
 
 ## 4.23.2
 Sat, 29 Jan 2022 10:34:16 GMT
