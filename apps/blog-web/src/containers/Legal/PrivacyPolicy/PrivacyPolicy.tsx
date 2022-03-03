@@ -554,7 +554,7 @@ const PrivacyPolicy: FC = () => (
         {SOCIAL_MEDIA.email.url.split(':')[1]}
       </p>
       <hr />
-      <UpdateDate>Date of last revision: Monday, April 20, 2020</UpdateDate>
+      <UpdateDate>Date of last revision: Thursday, March 03, 2022</UpdateDate>
     </Article>
   </>
 )
