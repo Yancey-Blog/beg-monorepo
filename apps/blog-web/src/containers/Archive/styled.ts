@@ -4,20 +4,14 @@ export const ArchiveWrapper = styled.section`
   margin: 0 auto;
   width: 40rem;
 
-  label {
-    cursor: s-resize;
-  }
-
   input {
     position: absolute;
     opacity: 0;
     z-index: ${({ theme }) => theme.zIndex.negative};
   }
 
-  input:checked ~ .dayListContainer {
+  .dayListContainer {
     max-height: 20rem;
-    will-change: transform;
-    transition: all 500ms linear;
   }
 `
 
