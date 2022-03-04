@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.24.0",
+      "tag": "blog-web_v4.24.0",
+      "date": "Thu, 03 Mar 2022 03:19:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "use developer@yanceyleo.com as official email"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.23.2",
       "tag": "blog-web_v4.23.2",
       "date": "Sat, 29 Jan 2022 10:34:16 GMT",

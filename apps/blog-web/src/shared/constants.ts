@@ -78,7 +78,7 @@ export const SOCIAL_MEDIA: SocialMedia = {
     icon: SVG_SPRITE.wechat
   },
   email: {
-    url: 'mailto:support@yanceyleo.com',
+    url: 'mailto:developer@yanceyleo.com',
     icon: SVG_SPRITE.email
   }
 }
