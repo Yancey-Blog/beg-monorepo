@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import ReactMarkdown from 'react-markdown'
@@ -35,12 +35,18 @@ const PostDetail: FC<Props> = ({ post }) => {
     query: { id }
   } = useRouter()
 
+  const [currLike, setCurrLike] = useState(post.like)
+
   const markdownWrapperEl = useRef<HTMLDivElement>(null)
 
   const [updatePV] = useMutation(UPDATE_PV, {
     variables: { id },
     onError() {}
   })
+
+  const handleLikeChange = (newLike: number) => {
+    setCurrLike(newLike)
+  }
 
   const customMarkdownComponents = {
     code({ node, inline, className, children, ...props }: any) {
@@ -125,7 +131,8 @@ const PostDetail: FC<Props> = ({ post }) => {
       <SharePanel
         id={id as string}
         title={title}
-        like={like}
+        like={currLike}
+        handleLikeChange={(newLike: number) => handleLikeChange(newLike)}
         postUrl={generatePostUrl(id as string)}
       />
       <Menu className="postMenu" />
@@ -138,7 +145,7 @@ const PostDetail: FC<Props> = ({ post }) => {
           createdAt={createdAt}
           lastModifiedDate={lastModifiedDate}
           pv={pv}
-          like={like}
+          like={currLike}
         />
         <div ref={markdownWrapperEl}>
           <Summary>{summary}</Summary>

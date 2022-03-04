@@ -46,30 +46,26 @@ interface Props {
   title: string
   postUrl: string
   like: number
+  handleLikeChange: (newLike: number) => void
 }
 
-const SharePanel: FC<Props> = ({ id, title, like, postUrl }) => {
+const SharePanel: FC<Props> = ({ id, title, like, postUrl, handleLikeChange }) => {
   const [likeStatus, setLikeStatus] = useState(false)
 
   const [updateLike] = useMutation(UPDATE_LIKE, {
     onError() {
       setLikeStatus(false)
+      handleLikeChange(like - 1)
     }
   })
+
   const onSubmit = () => {
     if (!likeStatus) {
-      updateLike({
-        variables: { id },
-        optimisticResponse: {
-          __typename: 'Mutation',
-          updateLike: {
-            id,
-            __typename: 'PostItemModel',
-            like: like + 1
-          }
-        }
-      })
+      handleLikeChange(like + 1)
       setLikeStatus(true)
+      updateLike({
+        variables: { id }
+      })
     }
   }
 
@@ -95,7 +91,7 @@ const SharePanel: FC<Props> = ({ id, title, like, postUrl }) => {
           />
         </LikeSvg>
         <span>
-          {like} {like > 1 ? 'Likes' : 'Like'}
+          {like} {`Like${like <= 1 ? '' : 's'}`}
         </span>
       </Like>
     </SharePanelWrapper>
