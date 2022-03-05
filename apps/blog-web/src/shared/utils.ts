@@ -36,12 +36,3 @@ export const isAnniversary = () => {
   const now = DateTime.now()
   return now.month === 10 && now.day === 14
 }
-
-export const combineStr = (str: string) =>
-  str
-    .trim()
-    .replace(
-      /[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?/\，/\。/\；/\：/\“/\”/\》/\《/\|/\{/\}/\、/\!/\~/\`]/g,
-      ''
-    )
-    .replace(/\s+/g, '-')

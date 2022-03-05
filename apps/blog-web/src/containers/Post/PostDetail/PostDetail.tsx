@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import { useMutation } from '@apollo/client'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
@@ -8,13 +9,12 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { DiscussionEmbed } from 'disqus-react'
 import MetaHead from 'src/components/Head/Head'
-import { combineStr } from 'src/shared/utils'
 import PostMeta from '../components/PostMeta/PostMeta'
 import SharePanel from '../components/SharePanel/SharePanel'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
 import { UPDATE_PV } from '../typeDefs'
 import { IPostItem } from '../types'
-import { removeEmbededTag, setupTocbot, generatePostUrl } from './utils'
+import { removeEmbededTag, combineStr, generatePostUrl } from './utils'
 import {
   PostDetailWrapper,
   Poster,
@@ -23,7 +23,6 @@ import {
   Title,
   Summary,
   Content,
-  Menu,
   TableWrapper
 } from './styled'
 
@@ -31,10 +30,16 @@ export interface Props {
   post: IPostItem
 }
 
+const TocComponent = dynamic(() => import('../components/Toc/Toc'), {
+  ssr: false
+})
+
 const PostDetail: FC<Props> = ({ post }) => {
+  const router = useRouter()
+
   const {
     query: { id }
-  } = useRouter()
+  } = router
 
   const [currLike, setCurrLike] = useState(post.like)
 
@@ -107,9 +112,8 @@ const PostDetail: FC<Props> = ({ post }) => {
   }
 
   useEffect(() => {
-    setupTocbot()
-    updatePV()
-  }, [updatePV])
+    router.events.on('routeChangeComplete', () => updatePV())
+  }, [router.events])
 
   const {
     title,
@@ -142,7 +146,8 @@ const PostDetail: FC<Props> = ({ post }) => {
         handleLikeChange={(newLike: number) => handleLikeChange(newLike)}
         postUrl={generatePostUrl(id as string)}
       />
-      <Menu className="postMenu" />
+
+      <TocComponent />
 
       <Content>
         <Poster src={posterUrl} alt={title} />
