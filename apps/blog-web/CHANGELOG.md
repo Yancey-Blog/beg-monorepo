@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 03 Mar 2022 03:19:47 GMT and should not be manually modified.
+This log was last generated on Sat, 05 Mar 2022 14:49:55 GMT and should not be manually modified.
+
+## 4.24.1
+Sat, 05 Mar 2022 14:49:55 GMT
+
+### Patches
+
+- fix toc, like and archive 
 
 ## 4.24.0
 Thu, 03 Mar 2022 03:19:47 GMT

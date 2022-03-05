@@ -36,13 +36,8 @@ const Archive: FC = () => {
                 <YearList>
                   {year.months.map((month) => (
                     <li key={month.month}>
-                      <input
-                        id={`archive_${year._id}_${month.month}`}
-                        type="checkbox"
-                        name="tabs"
-                        defaultChecked
-                      />
-                      <label htmlFor={`archive_${year._id}_${month.month}`}>
+                      <input type="checkbox" name="tabs" />
+                      <label>
                         <Month>
                           <MonthTxt>
                             {months[month.month - 1]}

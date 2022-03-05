@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import ReactMarkdown from 'react-markdown'
@@ -8,6 +8,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { DiscussionEmbed } from 'disqus-react'
 import MetaHead from 'src/components/Head/Head'
+import { combineStr } from 'src/shared/utils'
 import PostMeta from '../components/PostMeta/PostMeta'
 import SharePanel from '../components/SharePanel/SharePanel'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
@@ -35,12 +36,18 @@ const PostDetail: FC<Props> = ({ post }) => {
     query: { id }
   } = useRouter()
 
+  const [currLike, setCurrLike] = useState(post.like)
+
   const markdownWrapperEl = useRef<HTMLDivElement>(null)
 
   const [updatePV] = useMutation(UPDATE_PV, {
     variables: { id },
     onError() {}
   })
+
+  const handleLikeChange = (newLike: number) => {
+    setCurrLike(newLike)
+  }
 
   const customMarkdownComponents = {
     code({ node, inline, className, children, ...props }: any) {
@@ -78,14 +85,21 @@ const PostDetail: FC<Props> = ({ post }) => {
     },
     h2({ node, inline, className, children, ...props }: any) {
       return (
-        <h2 {...props} id={children ? children[0] : ''}>
+        <h2 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h2>
       )
     },
     h3({ node, inline, className, children, ...props }: any) {
       return (
-        <h3 {...props} id={children ? children[0] : ''}>
+        <h3 {...props} id={children ? combineStr(children[0]) : ''}>
+          {children}
+        </h3>
+      )
+    },
+    h4({ node, inline, className, children, ...props }: any) {
+      return (
+        <h3 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h3>
       )
@@ -106,7 +120,6 @@ const PostDetail: FC<Props> = ({ post }) => {
     createdAt,
     lastModifiedDate,
     pv,
-    like,
     prev,
     next
   } = post
@@ -125,7 +138,8 @@ const PostDetail: FC<Props> = ({ post }) => {
       <SharePanel
         id={id as string}
         title={title}
-        like={like}
+        like={currLike}
+        handleLikeChange={(newLike: number) => handleLikeChange(newLike)}
         postUrl={generatePostUrl(id as string)}
       />
       <Menu className="postMenu" />
@@ -138,7 +152,7 @@ const PostDetail: FC<Props> = ({ post }) => {
           createdAt={createdAt}
           lastModifiedDate={lastModifiedDate}
           pv={pv}
-          like={like}
+          like={currLike}
         />
         <div ref={markdownWrapperEl}>
           <Summary>{summary}</Summary>

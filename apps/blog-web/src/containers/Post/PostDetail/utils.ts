@@ -1,4 +1,4 @@
-import tocbot from 'tocbot'
+import * as tocbot from 'tocbot'
 
 export const removeEmbededTag = (content: string) =>
   content.replace(/```embeded\s(.*)\s```/gi, '$1')
@@ -7,13 +7,11 @@ export const setupTocbot = () => {
   tocbot.init({
     tocSelector: '.postMenu',
     contentSelector: '.postDetailContent',
-    headingSelector: 'h1, h2, h3',
-    hasInnerContainers: true
+    headingSelector: 'h1, h2, h3, h4',
+    hasInnerContainers: true,
+    headingsOffset: 120,
+    scrollSmoothOffset: -120
   })
-
-  setTimeout(() => {
-    tocbot.refresh()
-  }, 1000)
 }
 
 export const generatePostUrl = (id: string) =>

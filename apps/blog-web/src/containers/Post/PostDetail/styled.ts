@@ -173,7 +173,7 @@ export const Menu = styled.aside`
   }
 `
 
-export const TableWrapper = styled.p`
+export const TableWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 2rem auto;
