@@ -1,6 +1,6 @@
 {
   "name": "blog-web",
-  "version": "4.24.1",
+  "version": "4.24.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
