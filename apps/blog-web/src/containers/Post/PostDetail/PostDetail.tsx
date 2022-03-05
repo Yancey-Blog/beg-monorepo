@@ -8,6 +8,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { DiscussionEmbed } from 'disqus-react'
 import MetaHead from 'src/components/Head/Head'
+import { combineStr } from 'src/shared/utils'
 import PostMeta from '../components/PostMeta/PostMeta'
 import SharePanel from '../components/SharePanel/SharePanel'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
@@ -84,14 +85,21 @@ const PostDetail: FC<Props> = ({ post }) => {
     },
     h2({ node, inline, className, children, ...props }: any) {
       return (
-        <h2 {...props} id={children ? children[0] : ''}>
+        <h2 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h2>
       )
     },
     h3({ node, inline, className, children, ...props }: any) {
       return (
-        <h3 {...props} id={children ? children[0] : ''}>
+        <h3 {...props} id={children ? combineStr(children[0]) : ''}>
+          {children}
+        </h3>
+      )
+    },
+    h4({ node, inline, className, children, ...props }: any) {
+      return (
+        <h3 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h3>
       )
@@ -112,7 +120,6 @@ const PostDetail: FC<Props> = ({ post }) => {
     createdAt,
     lastModifiedDate,
     pv,
-    like,
     prev,
     next
   } = post
