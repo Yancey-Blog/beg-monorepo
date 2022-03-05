@@ -159,7 +159,7 @@ specifiers:
   stylelint-config-styled-components: ^0.1.1
   stylelint-processor-styled-components: ^1.10.0
   supertest: ^6.1.6
-  tocbot: ^4.18.0
+  tocbot: ^4.18.2
   ts-jest: ^27.0.5
   ts-loader: ^9.2.5
   ts-morph: ^13.0.2
@@ -346,7 +346,7 @@ dependencies:
   stylelint-config-styled-components: 0.1.1
   stylelint-processor-styled-components: 1.10.0
   supertest: 6.1.6
-  tocbot: 4.18.0
+  tocbot: 4.18.2
   ts-jest: 27.1.2_9364f2ad0b7b67f00a4d081c662c6871
   ts-loader: 9.2.6_typescript@4.5.4
   ts-morph: 13.0.2
@@ -16195,8 +16195,8 @@ packages:
       is-number: 7.0.0
     dev: false
 
-  /tocbot/4.18.0:
-    resolution: {integrity: sha512-QVuj2MV73j2F5brWnIaxdOXez8lVxQqDsK/VTzCQsV79GAessKEJXEYmXL21LcGWr54uZTHBVV8gIygXTbsrbg==}
+  /tocbot/4.18.2:
+    resolution: {integrity: sha512-bWUfEYQZ4oFgT+qZYvzlTgbsTmA645ApHbo1iRaOBUeFfy5IpctgAQQjCXbPZy+4RDZ1JJYlIBgoApZMzMaYog==}
     dev: false
 
   /toggle-selection/1.0.6:
@@ -17867,7 +17867,7 @@ packages:
     dev: false
 
   file:projects/blog-web.tgz_sass@1.46.0:
-    resolution: {integrity: sha512-/9WHjbpdRIASb6w61zHhc1PLlgCka2IVbPwThSwH7WnKu1VM6z0yM9oOqQni9RJ4ihbWWA5mIpFKt1b3CaLyUA==, tarball: file:projects/blog-web.tgz}
+    resolution: {integrity: sha512-ZrYzOR35Sw+zzCn6qKOiN9Gmzz9vRurBQr8je0kNy3L4tU+shYm+z3Fnk8AIkTdm6SRhwuevGcj5DRJj2SpofA==, tarball: file:projects/blog-web.tgz}
     id: file:projects/blog-web.tgz
     name: '@rush-temp/blog-web'
     version: 0.0.0
@@ -17921,7 +17921,7 @@ packages:
       stylelint-config-recommended: 5.0.0_stylelint@13.13.1
       stylelint-config-styled-components: 0.1.1
       stylelint-processor-styled-components: 1.10.0
-      tocbot: 4.18.0
+      tocbot: 4.18.2
       typescript: 4.5.4
       url-loader: 4.1.1
       yancey-js-util: 3.0.0
