@@ -36,7 +36,7 @@
     "formik": "^2.2.9",
     "graphql": "^15.7.2",
     "graphql-tag": "^2.12.4",
-    "keycloak-js": "^16.1.0",
+    "keycloak-js": "^17.0.1",
     "luxon": "^2.3.0",
     "material-ui-popup-state": "^2.0.0",
     "mui-datatables": "^4.0.0",
