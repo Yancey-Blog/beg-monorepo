@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 05 Mar 2022 18:41:02 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Apr 2022 18:22:31 GMT and should not be manually modified.
+
+## 4.24.4
+Mon, 04 Apr 2022 18:22:31 GMT
+
+### Patches
+
+- make table overflow-x
 
 ## 4.24.3
 Sat, 05 Mar 2022 18:41:02 GMT
