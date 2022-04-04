@@ -28,7 +28,7 @@ export const Title = styled.h1`
 `
 
 export const Summary = styled.blockquote`
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0;
   padding: 1rem;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -85,7 +85,9 @@ export const Content = styled.article`
   }
 
   table {
+    display: inline-block;
     border-collapse: collapse;
+    overflow: auto;
   }
 
   tr {
@@ -99,6 +101,10 @@ export const Content = styled.article`
     line-height: 1.4;
     border: 1px solid ${({ theme }) => theme.border};
     padding: 0.8rem;
+
+    @media only screen and ${breakpoints.device.laptop} {
+      min-width: 6rem;
+    }
   }
 
   th {

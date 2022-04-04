@@ -108,6 +108,13 @@ const PostDetail: FC<Props> = ({ post }) => {
           {children}
         </h3>
       )
+    },
+    blockquote({ node, inline, className, children, ...props }: any) {
+      return (
+        <Summary {...props}>
+          {children}
+        </Summary>
+      )
     }
   }
 
