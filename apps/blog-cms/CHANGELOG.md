@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Mon, 10 Jan 2022 09:51:00 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Apr 2022 10:49:17 GMT and should not be manually modified.
+
+## 4.3.0
+Thu, 07 Apr 2022 10:49:17 GMT
+
+### Minor changes
+
+- use lottie for sso tips
 
 ## 4.2.1
 Mon, 10 Jan 2022 09:51:00 GMT

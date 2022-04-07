@@ -383,6 +383,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "lottie-web",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "luxon",
       "allowedCategories": [ "apps" ]
     },
@@ -508,6 +512,10 @@
     },
     {
       "name": "react-instantsearch-dom",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "react-lottie",
       "allowedCategories": [ "apps" ]
     },
     {
