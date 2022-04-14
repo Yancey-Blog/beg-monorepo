@@ -22,7 +22,7 @@ export class CreatePostInput {
   @Field({ nullable: false })
   @IsString()
   @MinLength(1)
-  @MaxLength(20)
+  @MaxLength(50)
   @IsNotEmpty()
   public readonly title: string
 
