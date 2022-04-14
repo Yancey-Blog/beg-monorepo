@@ -2,6 +2,18 @@
   "name": "blog-service",
   "entries": [
     {
+      "version": "2.2.1",
+      "tag": "blog-service_v2.2.1",
+      "date": "Thu, 14 Apr 2022 16:09:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "increase title length"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.2.0",
       "tag": "blog-service_v2.2.0",
       "date": "Mon, 29 Nov 2021 04:57:53 GMT",
