@@ -64,7 +64,7 @@ const PostEditor: FC = () => {
     PostStatisticsVars
   >(CREATE_POST_STATISTICS)
 
-  const [fetchPostById, { loading: isFetching, data }] =
+  const [fetchPostById, { loading: isFetching }] =
     useLazyQuery<GetPostByIdQuery>(GET_POST_BY_ID, {
       variables: {
         id
@@ -114,7 +114,7 @@ const PostEditor: FC = () => {
         )
       }
     },
-    onError() {}
+    onError() { }
   })
 
   const [updatePostById, { loading: isUpdatingPost }] = useMutation<
@@ -147,7 +147,7 @@ const PostEditor: FC = () => {
         )
       }
     },
-    onError() {}
+    onError() { }
   })
 
   /* css styles */
@@ -188,7 +188,7 @@ const PostEditor: FC = () => {
     useFormik({
       initialValues,
       validationSchema,
-      onSubmit() {}
+      onSubmit() { }
     })
 
   const onSubmit = async (type: SaveType) => {
