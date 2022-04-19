@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Thu, 07 Apr 2022 10:49:17 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 02:31:22 GMT and should not be manually modified.
+
+## 4.3.1
+Tue, 19 Apr 2022 02:31:22 GMT
+
+### Patches
+
+- fix blog editor page crash
 
 ## 4.3.0
 Thu, 07 Apr 2022 10:49:17 GMT

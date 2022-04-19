@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Thu, 14 Apr 2022 16:09:12 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 02:31:22 GMT and should not be manually modified.
+
+## 2.3.0
+Tue, 19 Apr 2022 02:31:22 GMT
+
+### Minor changes
+
+- support getPostById for CMS
 
 ## 2.2.1
 Thu, 14 Apr 2022 16:09:12 GMT
