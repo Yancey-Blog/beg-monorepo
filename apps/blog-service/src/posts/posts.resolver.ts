@@ -25,11 +25,16 @@ export class PostsResolver {
   @Query(() => PostItemModel)
   @Public()
   public async getPostById(@Args({ name: 'id', type: () => ID }) id: string) {
+    return this.postsService.findPublicOneById(id)
+  }
+
+  @Query(() => PostItemModel)
+  public async getPostByIdForCMS(@Args({ name: 'id', type: () => ID }) id: string) {
     return this.postsService.findOneById(id)
   }
 
   @Query(() => PostModel)
-  public async getPosts(@Args('input') input: PaginationInput) {
+  public async getPostsForCMS(@Args('input') input: PaginationInput) {
     return this.postsService.findByPagination(input)
   }
 

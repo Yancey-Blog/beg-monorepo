@@ -98,10 +98,10 @@ const Post: FC = () => {
 
   return (
     <PostTable
-      total={data ? data.getPosts.total : 0}
-      page={data ? data.getPosts.page : 0}
-      pageSize={data ? data.getPosts.pageSize : 0}
-      dataSource={data ? data.getPosts.items : []}
+      total={data ? data.getPostsForCMS.total : 0}
+      page={data ? data.getPostsForCMS.page : 0}
+      pageSize={data ? data.getPostsForCMS.pageSize : 0}
+      dataSource={data ? data.getPostsForCMS.items : []}
       fetchPostsByPage={fetchPostsByPage}
       isFetching={isFetching}
       isDeleting={isDeleting}

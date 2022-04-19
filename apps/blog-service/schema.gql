@@ -251,7 +251,8 @@ type Query {
   getPlayerById(id: ID!): PlayerModel!
   posts(input: PaginationInput!): PostModel!
   getPostById(id: ID!): PostItemModel!
-  getPosts(input: PaginationInput!): PostModel!
+  getPostByIdForCMS(id: ID!): PostItemModel!
+  getPostsForCMS(input: PaginationInput!): PostModel!
   getTopPVPosts(limit: Int!): [PostItemModel!]!
   getTopLikePosts(limit: Int!): [PostItemModel!]!
   getAllTags: TagsModel!

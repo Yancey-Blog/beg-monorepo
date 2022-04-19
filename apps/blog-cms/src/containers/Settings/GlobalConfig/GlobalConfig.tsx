@@ -64,7 +64,7 @@ const GlobalConfig: FC = () => {
             isFetching={isFetchingPosts}
             isSubmitting={isSubmitting}
             fetchPosts={fetchPosts}
-            posts={postsData ? postsData.getPosts.items : []}
+            posts={postsData ? postsData.getPostsForCMS.items : []}
           />
           <CVPicker
             id={data ? data.getGlobalSetting._id : ''}
@@ -73,7 +73,7 @@ const GlobalConfig: FC = () => {
             isFetching={isFetchingPosts}
             isSubmitting={isSubmitting}
             fetchPosts={fetchPosts}
-            posts={postsData ? postsData.getPosts.items : []}
+            posts={postsData ? postsData.getPostsForCMS.items : []}
           />
           <GrayTheme
             id={data ? data.getGlobalSetting._id : ''}

@@ -22,7 +22,11 @@ export interface IPostItem {
 }
 
 export interface Query {
-  getPosts: IPost
+  getPostsForCMS: IPost
+}
+
+export interface GetPostByIdQuery {
+  getPostByIdForCMS: IPostItem
 }
 
 export interface CreatePostMutation {

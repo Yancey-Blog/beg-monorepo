@@ -5,7 +5,7 @@ import { PhotoCamera } from '@mui/icons-material'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
-import { useMutation } from '@apollo/client'
+import { useMutation, useLazyQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
 import Prism from 'prismjs'
 import { Editor } from '@toast-ui/react-editor'
@@ -20,9 +20,9 @@ import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
 import chartPlugin from '@toast-ui/editor-plugin-chart'
 import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
 import ChipInput from 'src/components/ChipInput/ChipInput'
+import Loading from 'src/components/Loading/Loading'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import client from 'src/graphql/apolloClient'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
@@ -31,7 +31,8 @@ import { goBack, parseSearch } from 'src/shared/utils'
 import {
   CREATE_ONE_POST,
   UPDATE_ONE_POST,
-  CREATE_POST_STATISTICS
+  CREATE_POST_STATISTICS,
+  GET_POST_BY_ID
 } from './typeDefs'
 import UploaderModal from './components/UploaderModal'
 import { enhanceUpload, insertImage } from './editors/enhanceEditor'
@@ -44,11 +45,16 @@ import {
   UpdatePostByIdMutation,
   CreatePostVars,
   UpdatePostVars,
-  CreatePostMutation
+  CreatePostMutation,
+  GetPostByIdQuery
 } from './types'
 import useStyles from './styles'
 
 const PostEditor: FC = () => {
+  /* query */
+  const { search } = useLocation()
+  const { id } = parseSearch(search)
+
   /* message bar */
   const { enqueueSnackbar } = useSnackbar()
 
@@ -57,6 +63,27 @@ const PostEditor: FC = () => {
     CreatePostStatisticsMutation,
     PostStatisticsVars
   >(CREATE_POST_STATISTICS)
+
+  const [fetchPostById, { loading: isFetching, data }] =
+    useLazyQuery<GetPostByIdQuery>(GET_POST_BY_ID, {
+      variables: {
+        id
+      },
+      onCompleted(data) {
+        const { title, content, summary, tags, posterUrl } =
+          data.getPostByIdForCMS
+
+        setValues({
+          title,
+          summary,
+          tags,
+          posterUrl
+        })
+
+        setMarkdown(editorRef, content)
+      },
+      notifyOnNetworkStatusChange: true
+    })
 
   const [createPost, { loading: isCreatingPost }] = useMutation<
     CreatePostMutation,
@@ -123,10 +150,6 @@ const PostEditor: FC = () => {
     onError() {}
   })
 
-  /* query */
-  const { search } = useLocation()
-  const { id } = parseSearch(search)
-
   /* css styles */
   const classes = useStyles()
 
@@ -151,7 +174,7 @@ const PostEditor: FC = () => {
     posterUrl: '',
     title: '',
     summary: '',
-    tags: []
+    tags: [] as string[]
   }
 
   const validationSchema = Yup.object().shape({
@@ -214,25 +237,8 @@ const PostEditor: FC = () => {
 
   useEffect(() => {
     enhanceUpload(editorRef, setOpen)
-
     if (id) {
-      const {
-        title,
-        content,
-        summary,
-        tags,
-        posterUrl
-        // @ts-ignore
-      } = client.cache.data.data[`PostItemModel:${id}`]
-
-      setValues({
-        title,
-        summary,
-        tags,
-        posterUrl
-      })
-
-      setMarkdown(editorRef, content)
+      fetchPostById()
     } else {
       const content = window.localStorage.getItem('post_content')
       if (content) {
@@ -243,7 +249,7 @@ const PostEditor: FC = () => {
     return () => {
       resetForm()
     }
-  }, [id, resetForm, setValues])
+  }, [id, fetchPostById, resetForm])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -254,6 +260,10 @@ const PostEditor: FC = () => {
       clearInterval(timer)
     }
   }, [])
+
+  if (isFetching) {
+    return <Loading />
+  }
 
   return (
     <section className={classes.editorWrapper}>
@@ -325,11 +335,7 @@ const PostEditor: FC = () => {
               Save as Draft
             </Button>
 
-            <Button
-              color="warning"
-              className={classes.btn}
-              onClick={goBack}
-            >
+            <Button color="warning" className={classes.btn} onClick={goBack}>
               Back
             </Button>
           </div>

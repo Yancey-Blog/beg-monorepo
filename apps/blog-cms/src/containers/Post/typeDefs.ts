@@ -37,14 +37,23 @@ export const UPDATE_ONE_POST = gql`
 `
 
 export const POSTS = gql`
-  query GetPosts($input: PaginationInput!) {
-    getPosts(input: $input) {
+  query GetPostsForCMS($input: PaginationInput!) {
+    getPostsForCMS(input: $input) {
       total
       page
       pageSize
       items {
         ...PostFragment
       }
+    }
+  }
+  ${POST_FRAGMENT}
+`
+
+export const GET_POST_BY_ID = gql`
+  query GetPostByIdForCMS($id: ID!) {
+    getPostByIdForCMS(id: $id) {
+      ...PostFragment
     }
   }
   ${POST_FRAGMENT}

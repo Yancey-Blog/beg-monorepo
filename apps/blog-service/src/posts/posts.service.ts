@@ -25,6 +25,12 @@ export class PostsService {
     return this.postModel.countDocuments()
   }
 
+  private isNotPublic(isPublic:boolean):void {
+    if (!isPublic) {
+      throw new ForbiddenError('Sorry, we couldn\'t find this post.')
+    }
+  }
+
   public async findPublicByPagination(
     input: PaginationInput
   ): Promise<PostModel> {
@@ -70,11 +76,9 @@ export class PostsService {
     }
   }
 
-  public async findOneById(id: string): Promise<PostItemModel> {
+  public async findPublicOneById(id: string): Promise<PostItemModel> {
     const curr = await this.postModel.findById(id)
-    if (!curr || curr.isPublic === false) {
-      throw new ForbiddenError('Sorry, we couldn’t find this post.')
-    }
+    this.isNotPublic(!curr || curr.isPublic === false);
 
     const prev = await this.postModel
       .find({ createdAt: { $lt: curr.createdAt }, isPublic: { $ne: false } })
@@ -92,6 +96,10 @@ export class PostsService {
     }
 
     return res
+  }
+
+  public async findOneById(id: string): Promise<PostItemModel> {
+    return this.postModel.findById(id)
   }
 
   public async create(postInput: CreatePostInput): Promise<PostItemModel> {
@@ -119,12 +127,16 @@ export class PostsService {
   }
 
   public async updatePV(id: string): Promise<PostItemModel> {
-    const { pv } = await this.findOneById(id)
+    const { pv, isPublic } = await this.findOneById(id)
+    this.isNotPublic(isPublic);
+
     return this.postModel.findByIdAndUpdate(id, { pv: pv + 1 }, { new: true })
   }
 
   public async updateLike(id: string): Promise<PostItemModel> {
-    const { like } = await this.findOneById(id)
+    const { like, isPublic } = await this.findOneById(id)
+    this.isNotPublic(isPublic);
+
     return this.postModel.findByIdAndUpdate(
       id,
       { like: like + 1 },
