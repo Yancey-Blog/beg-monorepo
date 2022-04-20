@@ -25,8 +25,8 @@ export class PostsService {
     return this.postModel.countDocuments()
   }
 
-  private isNotPublic(isNotPublic: boolean): void {
-    if (isNotPublic) {
+  private checkNotFound(isNotFound: boolean): void {
+    if (isNotFound) {
       throw new ForbiddenError('Sorry, we couldn\'t find this post.')
     }
   }
@@ -78,7 +78,7 @@ export class PostsService {
 
   public async findPublicOneById(id: string): Promise<PostItemModel> {
     const curr = await this.postModel.findById(id)
-    this.isNotPublic(!curr || curr.isPublic === false);
+    this.checkNotFound(!curr || curr.isPublic === false);
 
     const prev = await this.postModel
       .find({ createdAt: { $lt: curr.createdAt }, isPublic: { $ne: false } })
@@ -128,14 +128,14 @@ export class PostsService {
 
   public async updatePV(id: string): Promise<PostItemModel> {
     const { pv, isPublic } = await this.findOneById(id)
-    this.isNotPublic(isPublic);
+    this.checkNotFound(!isPublic);
 
     return this.postModel.findByIdAndUpdate(id, { pv: pv + 1 }, { new: true })
   }
 
   public async updateLike(id: string): Promise<PostItemModel> {
     const { like, isPublic } = await this.findOneById(id)
-    this.isNotPublic(isPublic);
+    this.checkNotFound(!isPublic);
 
     return this.postModel.findByIdAndUpdate(
       id,
