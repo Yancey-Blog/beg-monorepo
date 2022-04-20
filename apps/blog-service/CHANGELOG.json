@@ -2,6 +2,18 @@
   "name": "blog-service",
   "entries": [
     {
+      "version": "2.3.2",
+      "tag": "blog-service_v2.3.2",
+      "date": "Wed, 20 Apr 2022 12:13:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix checkNotFound"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.3.1",
       "tag": "blog-service_v2.3.1",
       "date": "Wed, 20 Apr 2022 11:56:44 GMT",

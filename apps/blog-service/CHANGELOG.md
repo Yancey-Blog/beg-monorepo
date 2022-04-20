@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Wed, 20 Apr 2022 11:56:44 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Apr 2022 12:13:44 GMT and should not be manually modified.
+
+## 2.3.2
+Wed, 20 Apr 2022 12:13:44 GMT
+
+### Patches
+
+- fix checkNotFound
 
 ## 2.3.1
 Wed, 20 Apr 2022 11:56:44 GMT
