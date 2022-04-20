@@ -25,8 +25,8 @@ export class PostsService {
     return this.postModel.countDocuments()
   }
 
-  private isNotPublic(isPublic:boolean):void {
-    if (!isPublic) {
+  private isNotPublic(isNotPublic: boolean): void {
+    if (isNotPublic) {
       throw new ForbiddenError('Sorry, we couldn\'t find this post.')
     }
   }
