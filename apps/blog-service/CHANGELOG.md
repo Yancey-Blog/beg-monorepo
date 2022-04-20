@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Tue, 19 Apr 2022 02:31:22 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Apr 2022 11:56:44 GMT and should not be manually modified.
+
+## 2.3.1
+Wed, 20 Apr 2022 11:56:44 GMT
+
+### Patches
+
+- fix isNotPublic
 
 ## 2.3.0
 Tue, 19 Apr 2022 02:31:22 GMT
