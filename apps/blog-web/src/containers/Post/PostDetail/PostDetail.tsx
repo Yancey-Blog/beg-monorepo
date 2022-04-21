@@ -8,6 +8,8 @@ import rehypeRaw from 'rehype-raw'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { DiscussionEmbed } from 'disqus-react'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 import MetaHead from 'src/components/Head/Head'
 import PostMeta from '../components/PostMeta/PostMeta'
 import SharePanel from '../components/SharePanel/SharePanel'
@@ -82,10 +84,12 @@ const PostDetail: FC<Props> = ({ post }) => {
     img({ node, inline, className, children, ...props }: any) {
       const { src, alt } = props
       return (
-        <ImageGroup {...props}>
-          <img src={src} alt={alt} />
-          <ImageAlt>{alt}</ImageAlt>
-        </ImageGroup>
+        <Zoom>
+          <ImageGroup {...props}>
+            <img src={src} alt={alt} />
+            <ImageAlt>{alt}</ImageAlt>
+          </ImageGroup>
+        </Zoom>
       )
     },
     h2({ node, inline, className, children, ...props }: any) {
@@ -110,11 +114,7 @@ const PostDetail: FC<Props> = ({ post }) => {
       )
     },
     blockquote({ node, inline, className, children, ...props }: any) {
-      return (
-        <Summary {...props}>
-          {children}
-        </Summary>
-      )
+      return <Summary {...props}>{children}</Summary>
     }
   }
 
