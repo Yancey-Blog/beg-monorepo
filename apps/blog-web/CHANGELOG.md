@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 21 Apr 2022 15:13:46 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Apr 2022 15:55:19 GMT and should not be manually modified.
+
+## 4.26.0
+Thu, 21 Apr 2022 15:55:19 GMT
+
+### Minor changes
+
+- support theme for zoom image wrapper
 
 ## 4.25.0
 Thu, 21 Apr 2022 15:13:46 GMT
