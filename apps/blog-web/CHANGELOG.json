@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.25.0",
+      "tag": "blog-web_v4.25.0",
+      "date": "Thu, 21 Apr 2022 15:13:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "supports react-medium-image-zoom"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.24.4",
       "tag": "blog-web_v4.24.4",
       "date": "Mon, 04 Apr 2022 18:22:31 GMT",
