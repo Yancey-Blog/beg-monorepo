@@ -523,6 +523,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "react-medium-image-zoom",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "react-router-dom",
       "allowedCategories": [ "apps" ]
     },
