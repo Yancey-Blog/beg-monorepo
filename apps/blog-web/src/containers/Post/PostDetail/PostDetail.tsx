@@ -1,4 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react'
+import { useTheme } from 'styled-components'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { useMutation } from '@apollo/client'
@@ -38,6 +39,7 @@ const TocComponent = dynamic(() => import('../components/Toc/Toc'), {
 
 const PostDetail: FC<Props> = ({ post }) => {
   const router = useRouter()
+  const theme = useTheme()
 
   const {
     query: { id }
@@ -84,7 +86,12 @@ const PostDetail: FC<Props> = ({ post }) => {
     img({ node, inline, className, children, ...props }: any) {
       const { src, alt } = props
       return (
-        <Zoom>
+        <Zoom
+          openText={`Zoom Image for ${alt}`}
+          closeText={`Unzoom Image for ${alt}`}
+          overlayBgColorStart={theme.background.primary}
+          overlayBgColorEnd={theme.background.mask}
+        >
           <ImageGroup {...props}>
             <img src={src} alt={alt} />
             <ImageAlt>{alt}</ImageAlt>

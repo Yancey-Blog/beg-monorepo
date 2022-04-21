@@ -12,6 +12,7 @@ export interface ThemeVariables {
     inlineCode: string
     searchBox: string
     summaryBg: string
+    mask: string
   }
   text: {
     primary: string

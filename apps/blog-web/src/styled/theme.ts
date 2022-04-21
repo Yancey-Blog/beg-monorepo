@@ -1,3 +1,5 @@
+import { ThemeVariables } from '../../styled'
+
 const light = {
   background: {
     primary: '#ffffff',
@@ -9,7 +11,8 @@ const light = {
     tooltip: 'rgba(0, 0, 0, .7)',
     inlineCode: '#ebedf0',
     searchBox: '#ffffff',
-    summaryBg: '#e6f6e6'
+    summaryBg: '#e6f6e6',
+    mask: 'rgba(255, 255, 255, .95)',
   },
   text: {
     primary: '#666666',
@@ -42,7 +45,8 @@ const dark = {
     tooltip: 'rgba(255, 255, 255, .7)',
     inlineCode: '#444950',
     searchBox: '#202327',
-    summaryBg: '#003130'
+    summaryBg: '#003130',
+    mask: 'rgba(0, 0, 0, .95)',
   },
   text: {
     primary: '#f5f6f7',
@@ -104,10 +108,10 @@ const defaultTheme = {
     root: 0,
     positive: 1,
     fixed: 200,
-    overlay: 400
+    overlay: 400,
   },
-  headerHeight: '4.5rem'
+  headerHeight: '4.5rem',
 }
 
-export const lightTheme = { ...defaultTheme, ...light }
-export const darkTheme = { ...defaultTheme, ...dark }
+export const lightTheme: ThemeVariables = { ...defaultTheme, ...light }
+export const darkTheme: ThemeVariables = { ...defaultTheme, ...dark }
