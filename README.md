@@ -50,7 +50,7 @@ npm install -g pnpm
 
 ### Installing [rushjs](https://rushjs.io/)
 
-This project uses rushjs to manage monorepo. Please install it globally.
+BEG Monorepo uses rushjs to manage monorepo. Please install it globally.
 
 ```bash
 pnpm install -g @microsoft/rush
@@ -58,7 +58,7 @@ pnpm install -g @microsoft/rush
 
 ### Installing [commitizen](https://github.com/commitizen/cz-cli)
 
-This app follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, you should install `commitizen` globally.
+BEG Monorepo follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your git commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, please install `commitizen` globally.
 
 ## Available Scripts
 
