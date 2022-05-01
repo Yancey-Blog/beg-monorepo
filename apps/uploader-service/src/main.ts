@@ -9,10 +9,12 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: false
   })
+
   app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('uploader')
   configSecurityMiddleWares(app)
   configLogger(app)
+  
   await app.listen(3003)
 }
 
