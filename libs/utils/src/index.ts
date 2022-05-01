@@ -1,3 +1,4 @@
 import { configCORS } from './cors'
+import { generateFile } from './generate-file'
 
-export { configCORS }
+export { configCORS, generateFile }
