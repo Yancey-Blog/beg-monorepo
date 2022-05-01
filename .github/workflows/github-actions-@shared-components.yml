@@ -35,7 +35,7 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Pre compilation
-        run: rush build -o components
+        run: rush build -o @shared/components
 
       - name: Size Limit
         uses: andresz1/size-limit-action@v1
