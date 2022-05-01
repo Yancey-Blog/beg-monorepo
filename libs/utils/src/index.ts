@@ -1,3 +1,3 @@
-import corsConfig from './cors'
+import { configCORS } from './cors'
 
-export { corsConfig }
+export { configCORS }
