@@ -2,6 +2,18 @@
   "name": "@shared/utils",
   "entries": [
     {
+      "version": "1.2.1",
+      "tag": "@shared/utils_v1.2.1",
+      "date": "Sun, 01 May 2022 18:16:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add scrollToTop"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "@shared/utils_v1.2.0",
       "date": "Sun, 01 May 2022 17:56:23 GMT",
