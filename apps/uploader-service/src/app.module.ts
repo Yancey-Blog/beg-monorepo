@@ -13,7 +13,6 @@ import { AuthModule } from './libs/guard/auth.guard'
       provide: APP_GUARD,
       useClass: AuthGuard
     },
-
     {
       provide: APP_GUARD,
       useClass: RoleGuard
