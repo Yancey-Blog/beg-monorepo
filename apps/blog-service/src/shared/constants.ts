@@ -12,12 +12,3 @@ export const IP_STACK_URL = 'http://api.ipstack.com/'
 export const SCHEMA_GQL_FILE_NAME = 'schema.gql'
 
 export const TOTP_ENCODE = 'base32'
-
-export const CORS_ORIGINS_PRODUCTION = [/\.?yanceyleo\.com$/, /\.?yancey\.app$/]
-
-export const CORS_ORIGINS_UN_PRODUCTION = [
-  'http://localhost:3000',
-  'http://localhost:3001'
-]
-
-export const BASE_IMAGE_EXTENSIONS = ['jpeg', 'jpg', 'png', 'gif']
