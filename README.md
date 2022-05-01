@@ -16,23 +16,31 @@ All services for Blog Environment Group. The monorepo system is powered by [rush
 
 | Project               | Version                       | Build Status                       | Description                                             |
 | --------------------- | ----------------------------- | ---------------------------------- | ------------------------------------------------------- |
-| [blog-cms]            | ![blog-cms-version]           | ![blog-cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL.
-| [blog-web]            | ![blog-web-version]           | ![blog-web-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.                            |
-| [blog-service]        | ![blog-service-version]       | ![blog-service-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more...                                     |
+| [blog-cms]            | ![blog-cms-version]           | ![blog-cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL. |
+| [blog-web]            | ![blog-web-version]           | ![blog-web-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL. |
+| [blog-service]        | ![blog-service-version]       | ![blog-service-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
 | [uploader-service]    | ![uploader-service-version]   | ![uploader-service-build-status]   | The Uploader service powered by Azure Blob. |
+| [@shared/components]  | ![@shared/components-version] | ![@shared/components-build-status] | Common components library. |
+| [@shared/utils]       | ![@shared/utils-version]      | ![@shared/utils-build-status]      | Common utils library. |
 
 [blog-cms]: ./apps/blog-cms
 [blog-web]: ./apps/blog-web
-[blog-service]: .app/blog-service
-[uploader-service]:.app/uploader-service
+[blog-service]: ./apps/blog-service
+[uploader-service]:./apps/uploader-service
+[@shared/components]:./libs/components
+[@shared/utils]:./libs/utils
 [blog-cms-version]: https://img.shields.io/badge/Version-v4.3.1-brightgreen
 [blog-web-version]: https://img.shields.io/badge/Version-v4.26.0-brightgreen
-[blog-service-version]: https://img.shields.io/badge/Version-v2.3.2-brightgreen
-[uploader-service-version]: https://img.shields.io/badge/Version-v1.1.1-brightgreen
+[blog-service-version]: https://img.shields.io/badge/Version-v2.4.0-brightgreen
+[uploader-service-version]: https://img.shields.io/badge/Version-v1.2.0-brightgreen
+[@shared/components-version]: https://img.shields.io/badge/Version-v0.2.0-brightgreen
+[@shared/utils-version]: https://img.shields.io/badge/Version-v1.1.0-brightgreen
 [blog-cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-cms.yml/badge.svg
 [blog-web-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-web.yml/badge.svg
 [blog-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-service.yml/badge.svg
 [uploader-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader-service.yml/badge.svg
+[@shared/components-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@shared-components.yml/badge.svg
+[@shared/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@shared-utils.yml/badge.svg
 
 ## Prerequisite
 

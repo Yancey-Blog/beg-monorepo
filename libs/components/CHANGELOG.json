@@ -1,0 +1,17 @@
+{
+  "name": "@shared/components",
+  "entries": [
+    {
+      "version": "0.2.0",
+      "tag": "@shared/components_v0.2.0",
+      "date": "Sun, 01 May 2022 16:33:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "initial repo"
+          }
+        ]
+      }
+    }
+  ]
+}

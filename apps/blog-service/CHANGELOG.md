@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Wed, 20 Apr 2022 12:13:44 GMT and should not be manually modified.
+This log was last generated on Sun, 01 May 2022 16:33:13 GMT and should not be manually modified.
+
+## 2.4.0
+Sun, 01 May 2022 16:33:13 GMT
+
+### Minor changes
+
+- use @shared/utils
 
 ## 2.3.2
 Wed, 20 Apr 2022 12:13:44 GMT

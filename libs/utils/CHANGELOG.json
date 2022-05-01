@@ -1,0 +1,17 @@
+{
+  "name": "@shared/utils",
+  "entries": [
+    {
+      "version": "1.1.0",
+      "tag": "@shared/utils_v1.1.0",
+      "date": "Sun, 01 May 2022 16:33:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "initial repo"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -197,7 +197,7 @@
      * Designate categories with whatever granularity is appropriate for your review process,
      * or you could just have a single category called "default".
      */
-    "reviewCategories": ["apps", "packages", "tools"],
+    "reviewCategories": ["apps", "packages", "libs"],
     /**
      * A list of NPM package scopes that will be excluded from review.
      * We recommend to exclude TypeScript typings (the "@types" scope), because
@@ -446,5 +446,17 @@
       "shouldPublish": true,
       "reviewCategory": "apps"
     },
+    {
+      "packageName": "@shared/utils",
+      "projectFolder": "libs/utils",
+      "shouldPublish": true,
+      "reviewCategory": "libs"
+    },
+    {
+      "packageName": "@shared/components",
+      "projectFolder": "libs/components",
+      "shouldPublish": true,
+      "reviewCategory": "libs"
+    }
   ]
 }
