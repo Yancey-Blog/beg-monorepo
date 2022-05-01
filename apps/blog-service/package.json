@@ -1,6 +1,6 @@
 {
   "name": "blog-service",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "The backend platform for Yancey blog.",
   "repository": "git@github.com:Yancey-Blog/blog-be-next.git",
   "author": "YanceyOfficial <yanceyofficial@gmail.com>",
@@ -54,7 +54,7 @@
     "uuid": "^8.3.2",
     "winston": "^3.3.3",
     "yancey-js-util": "^3.0.0",
-    "@shared/utils": "~1.1.0"
+    "@shared/utils": "~1.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.1",

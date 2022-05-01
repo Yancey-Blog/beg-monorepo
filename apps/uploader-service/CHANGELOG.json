@@ -2,6 +2,18 @@
   "name": "uploader-service",
   "entries": [
     {
+      "version": "1.2.1",
+      "tag": "uploader-service_v1.2.1",
+      "date": "Sun, 01 May 2022 17:56:23 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@shared/utils\" from `~1.1.0` to `~1.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "uploader-service_v1.2.0",
       "date": "Sun, 01 May 2022 16:33:13 GMT",
