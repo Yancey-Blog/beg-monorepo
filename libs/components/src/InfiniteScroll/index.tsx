@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef, useEffect, RefObject, ReactNode } from 'react'
 import throttle from 'lodash.throttle'
 
-interface Props {
+export interface Props {
   onBottomHit: () => void
   isLoading: boolean
   hasMoreData: boolean

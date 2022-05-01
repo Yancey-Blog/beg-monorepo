@@ -1,7 +1,7 @@
 import React, { FC, ComponentType } from 'react'
 import { randomSeries } from 'yancey-js-util'
 
-interface Props {
+export interface Props {
   count: number
   skeletonComponent: ComponentType
 }
