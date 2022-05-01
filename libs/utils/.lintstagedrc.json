@@ -1,0 +1,3 @@
+{
+  "*.{ts,js}": ["pnpm run eslint"]
+}
