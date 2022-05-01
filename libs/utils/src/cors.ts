@@ -1,6 +1,6 @@
 const CORS_ORIGINS_PRODUCTION = [/\.?yanceyleo\.com$/, /\.?yancey\.app$/]
 
-const CORS_ORIGINS_UN_PRODUCTION = [
+const CORS_ORIGINS_DEVELOPMENT = [
   'http://localhost:3000',
   'http://localhost:3001'
 ]
@@ -8,7 +8,7 @@ const CORS_ORIGINS_UN_PRODUCTION = [
 export const configCORS = (isEnvProduction: boolean) => ({
   origin: isEnvProduction
     ? CORS_ORIGINS_PRODUCTION
-    : CORS_ORIGINS_UN_PRODUCTION,
+    : CORS_ORIGINS_DEVELOPMENT,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   credentials: true,
   preflightContinue: false,
