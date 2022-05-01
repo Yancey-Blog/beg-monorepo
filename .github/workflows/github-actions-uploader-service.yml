@@ -15,6 +15,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
 
@@ -34,8 +35,11 @@ jobs:
       - name: Install dependencies
         run: rush update --bypass-policy
 
+      - name: Build pre dependencies
+        run: rush build -T .
+
       - name: Pre compilation
-        run: rush build -o uploader-service --impacted-by @shared/utils
+        run: rush build -o uploader-service
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -61,6 +65,7 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
