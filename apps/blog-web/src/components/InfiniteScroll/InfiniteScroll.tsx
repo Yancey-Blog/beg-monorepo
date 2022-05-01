@@ -6,6 +6,7 @@ interface Props {
   isLoading: boolean
   hasMoreData: boolean
   loadOnMount: boolean
+  children: JSX.Element[]
 }
 
 function isBottom(ref: RefObject<HTMLDivElement>) {
