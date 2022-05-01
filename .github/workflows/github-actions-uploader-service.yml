@@ -36,7 +36,7 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Pre compilation
-        run: rush build -o uploader-service -t @shared/utils
+        run: rush build -o uploader-service -t @shared/utils @shared/components 
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage

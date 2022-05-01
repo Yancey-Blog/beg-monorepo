@@ -2,6 +2,18 @@
   "name": "@shared/utils",
   "entries": [
     {
+      "version": "1.2.2",
+      "tag": "@shared/utils_v1.2.2",
+      "date": "Sun, 01 May 2022 20:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "output cjs"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.1",
       "tag": "@shared/utils_v1.2.1",
       "date": "Sun, 01 May 2022 18:16:45 GMT",
