@@ -35,11 +35,8 @@ jobs:
       - name: Install dependencies
         run: rush update --bypass-policy
 
-      - name: Build pre dependencies
-        run: rush build -T .
-
       - name: Pre compilation
-        run: rush build -o uploader-service
+        run: rush build -o uploader-service -t @shared/utils
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
