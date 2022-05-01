@@ -1,4 +1,4 @@
-name: GitHub Actions for @shared/components
+name: @shared/components
 
 on:
   push:

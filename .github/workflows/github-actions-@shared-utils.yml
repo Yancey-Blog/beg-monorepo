@@ -1,4 +1,4 @@
-name: GitHub Actions for @shared/utils
+name: @shared/utils
 
 on:
   push:
@@ -15,7 +15,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
 

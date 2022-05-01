@@ -1,4 +1,4 @@
-name: GitHub Actions for blog-service
+name: blog-service
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: GitHub Actions for @shared/{{SUB_APP}}
+name: @shared/{{SUB_APP}}
 
 on:
   push:

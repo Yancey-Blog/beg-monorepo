@@ -1,4 +1,4 @@
-name: GitHub Actions for blog-web
+name: blog-web
 
 on:
   push:

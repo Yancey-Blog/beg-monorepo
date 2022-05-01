@@ -1,4 +1,4 @@
-name: GitHub Actions for {{SUB_APP}}
+name: {{SUB_APP}}
 
 on:
   push:

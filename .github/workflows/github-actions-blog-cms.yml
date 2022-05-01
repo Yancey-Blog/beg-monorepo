@@ -1,4 +1,4 @@
-name: GitHub Actions for blog-cms
+name: blog-cms
 
 on:
   push:
