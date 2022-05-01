@@ -35,7 +35,7 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Pre compilation
-        run: rush build -o {{SUB_APP}}
+        run: rush build -o {{SUB_APP}} --impacted-by @shared/utils
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
