@@ -7,7 +7,7 @@ const config = {
   input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
-    format: 'esm',
+    format: 'cjs',
     sourcemap: true
   },
   plugins: [
