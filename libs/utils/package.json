@@ -1,5 +1,5 @@
 {
-  "name": "@beg/utils",
+  "name": "@shared/utils",
   "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",

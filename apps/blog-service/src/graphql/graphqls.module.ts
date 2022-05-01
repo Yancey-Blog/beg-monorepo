@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ValidationError } from 'apollo-server-express'
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
+import { configCORS } from '@shared/utils'
 import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
 import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
-import { configCORS } from '../shared/utils'
 
 @Module({
   imports: [
