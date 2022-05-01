@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 21 Apr 2022 15:55:19 GMT and should not be manually modified.
+This log was last generated on Sun, 01 May 2022 18:16:45 GMT and should not be manually modified.
+
+## 4.26.1
+Sun, 01 May 2022 18:16:45 GMT
+
+### Patches
+
+- update types of SkeletonIterator
 
 ## 4.26.0
 Thu, 21 Apr 2022 15:55:19 GMT
