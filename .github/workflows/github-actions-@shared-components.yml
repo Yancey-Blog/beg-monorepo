@@ -1,4 +1,4 @@
-name: @shared/components
+name: shared/components
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: @shared/{{SUB_APP}}
+name: shared/{{SUB_APP}}
 
 on:
   push:
