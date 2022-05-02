@@ -34,7 +34,7 @@
     "chart.js": "^3.7.0",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
-    "graphql": "^15.7.2",
+    "graphql": "^16.4.0",
     "graphql-tag": "^2.12.4",
     "keycloak-js": "^16.1.0",
     "luxon": "^2.3.0",
