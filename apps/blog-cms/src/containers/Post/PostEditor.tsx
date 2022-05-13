@@ -1,5 +1,5 @@
 import { FC, useRef, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { TextField, Button, IconButton, Popover } from '@mui/material'
 import { PhotoCamera } from '@mui/icons-material'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
@@ -27,7 +27,7 @@ import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
-import { goBack, parseSearch } from 'src/shared/utils'
+import { parseSearch } from 'src/shared/utils'
 import {
   CREATE_ONE_POST,
   UPDATE_ONE_POST,
@@ -57,6 +57,12 @@ const PostEditor: FC = () => {
 
   /* message bar */
   const { enqueueSnackbar } = useSnackbar()
+
+  /* history */
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate('/post')
+  }
 
   /* graphql */
   const [createPostStatistics] = useMutation<
