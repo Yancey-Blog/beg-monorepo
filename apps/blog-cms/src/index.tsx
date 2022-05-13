@@ -29,6 +29,11 @@ ReactDOM.render(
       onTokens={({ token }) => {
         localStorage.setItem('token', token || '')
       }}
+      onEvent={(_, error) => {
+        if (error) {
+          keycloak.logout()
+        }
+      }}
     >
       <ApolloProvider client={client}>
         <StyledEngineProvider injectFirst>
