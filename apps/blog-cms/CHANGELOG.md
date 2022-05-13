@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Tue, 19 Apr 2022 02:31:22 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 19:14:57 GMT and should not be manually modified.
+
+## 4.3.2
+Fri, 13 May 2022 19:14:57 GMT
+
+### Patches
+
+- auto logout when 401
 
 ## 4.3.1
 Tue, 19 Apr 2022 02:31:22 GMT
