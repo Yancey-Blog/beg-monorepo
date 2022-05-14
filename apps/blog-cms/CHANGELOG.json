@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "4.3.3",
+      "tag": "blog-cms_v4.3.3",
+      "date": "Sat, 14 May 2022 09:55:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix types"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.3.2",
       "tag": "blog-cms_v4.3.2",
       "date": "Fri, 13 May 2022 19:14:57 GMT",
