@@ -35,7 +35,7 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Pre compilation
-        run: NODE_ENV=test rush build -o blog-web -t @shared/utils @shared/components 
+        run: NODE_ENV=test rush build -o blog-web
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
