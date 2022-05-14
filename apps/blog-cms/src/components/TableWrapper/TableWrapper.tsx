@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { Save } from '@mui/icons-material'
 import { makeStyles, createStyles } from '@mui/styles'
 
@@ -54,6 +54,7 @@ const useStyles = makeStyles(() =>
 interface Props {
   tableName: string
   icon: string
+  children?: ReactNode
 }
 
 const TableWrapper: FC<Props> = ({ children, tableName, icon }) => {

@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import styles from './settingItemWrapper.module.scss'
 
 interface Props {
   title: string
   imageUrl?: string
+  children?: ReactNode
 }
 
 const SettingItemWrapper: FC<Props> = ({ children, title, imageUrl }) => {

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import {
   Button,
@@ -14,6 +14,7 @@ import {
 
 interface Props {
   title?: string
+  children?: ReactNode
   onOk: () => void
 }
 

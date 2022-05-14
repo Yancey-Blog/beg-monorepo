@@ -67,7 +67,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
         <div className={classes.skeletonWrapper}>
           <SkeletonIterator
             count={10}
-            skeletonComponent={() => (
+            skeletonComponent={
               <Skeleton
                 className={classNames(classes.skeleton, {
                   [classes.skeletonHidenNotItem]: !open
@@ -76,7 +76,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                 animation="wave"
                 height={48}
               />
-            )}
+            }
           />
         </div>
       ) : (
@@ -123,7 +123,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
               ) : (
                 <NavLink
                   end
-                  className={({isActive}) =>
+                  className={({ isActive }) =>
                     classNames(classes.formatArrowTag, {
                       [classes.active]: isActive,
                       [classes.foldActive]: !open
@@ -165,7 +165,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                     ) : (
                       <NavLink
                         end
-                        className={({isActive}) =>
+                        className={({ isActive }) =>
                           classNames(classes.formatArrowTag, {
                             [classes.active]: isActive,
                             [classes.foldActive]: !open

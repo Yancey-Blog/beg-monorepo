@@ -15,7 +15,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
 
@@ -62,7 +61,6 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
-    continue-on-error: true
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:

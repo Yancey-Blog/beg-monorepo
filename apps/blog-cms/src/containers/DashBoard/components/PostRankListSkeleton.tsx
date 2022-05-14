@@ -39,7 +39,7 @@ const useStyles = makeStyles(() =>
 const PostRankListSkeleton: FC = () => {
   const classes = useStyles()
 
-  const SkeletonItem = () => (
+  const SkeletonItem = (
     <div className={classes.skeletonItem}>
       <div className={classes.skeletonMeta}>
         <Skeleton

@@ -1,19 +1,16 @@
-import { FC, ComponentType } from 'react'
+import { FC, Fragment, ReactNode } from 'react'
 import { randomSeries } from 'yancey-js-util'
 
 interface Props {
   count: number
-  skeletonComponent: ComponentType
+  skeletonComponent: ReactNode
 }
 
-const SkeletonIterator: FC<Props> = ({
-  count,
-  skeletonComponent: Skeleton
-}) => {
+const SkeletonIterator: FC<Props> = ({ count, skeletonComponent }) => {
   return (
     <>
       {Array.from({ length: count }, () => randomSeries(6)).map((val) => (
-        <Skeleton key={val} />
+        <Fragment key={val}>{skeletonComponent}</Fragment>
       ))}
     </>
   )

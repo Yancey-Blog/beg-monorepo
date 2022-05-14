@@ -1,9 +1,10 @@
-import { FC, useState, MouseEvent } from 'react'
+import { FC, useState, MouseEvent, ReactNode } from 'react'
 import { Paper, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 
 interface Props {
   handleToggleChange: Function
+  children?: ReactNode
 }
 
 // 1 week, 24 hours, 12 hours, 6 hours, 3 hours, 1 hour
