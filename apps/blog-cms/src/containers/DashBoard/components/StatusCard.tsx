@@ -99,7 +99,10 @@ const StatusCard: FC<Props> = ({ title, used, total, unit }) => {
       <h3 className={classes.cardTitle}>{title}</h3>
       <div className={classes.vision}>
         <span className={classes.percent}>{Math.ceil(percent)}%</span>
-        <BorderLinearProgress variant="determinate" value={percent} />
+        {
+          // @ts-ignore
+          <BorderLinearProgress variant="determinate" value={percent} />
+        }
       </div>
       <Divider light className={classes.divider} />
       <p>
