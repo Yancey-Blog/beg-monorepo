@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sat, 14 May 2022 09:55:06 GMT and should not be manually modified.
+This log was last generated on Sat, 14 May 2022 10:10:36 GMT and should not be manually modified.
+
+## 4.3.4
+Sat, 14 May 2022 10:10:36 GMT
+
+### Patches
+
+- fix types
 
 ## 4.3.3
 Sat, 14 May 2022 09:55:06 GMT
