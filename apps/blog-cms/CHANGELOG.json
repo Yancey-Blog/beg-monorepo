@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.0.0",
+      "tag": "blog-cms_v5.0.0",
+      "date": "Sun, 05 Jun 2022 21:37:31 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "big change for migrating to react 18 and using @mui/x-data-grid"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.3.4",
       "tag": "blog-cms_v4.3.4",
       "date": "Sat, 14 May 2022 10:10:36 GMT",

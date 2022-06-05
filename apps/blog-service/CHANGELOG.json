@@ -2,6 +2,18 @@
   "name": "blog-service",
   "entries": [
     {
+      "version": "2.5.0",
+      "tag": "blog-service_v2.5.0",
+      "date": "Sun, 05 Jun 2022 21:37:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update dependencies and use @nest/apollo"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.4.1",
       "tag": "blog-service_v2.4.1",
       "date": "Sun, 01 May 2022 17:56:23 GMT",

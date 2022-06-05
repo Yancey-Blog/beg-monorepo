@@ -51,6 +51,14 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "@mui/x-data-grid",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@nestjs/apollo",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@nestjs/axios",
       "allowedCategories": [ "apps" ]
     },
@@ -419,6 +427,10 @@
       "allowedCategories": [ "apps", "libs" ]
     },
     {
+      "name": "lottie-react",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "lottie-web",
       "allowedCategories": [ "apps" ]
     },
@@ -556,6 +568,10 @@
     },
     {
       "name": "react-lottie",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "react-lottie-player",
       "allowedCategories": [ "apps" ]
     },
     {

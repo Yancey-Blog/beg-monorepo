@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sun, 01 May 2022 18:16:45 GMT and should not be manually modified.
+This log was last generated on Sun, 05 Jun 2022 21:37:31 GMT and should not be manually modified.
+
+## 4.27.0
+Sun, 05 Jun 2022 21:37:31 GMT
+
+### Minor changes
+
+- migrate to react 18
 
 ## 4.26.1
 Sun, 01 May 2022 18:16:45 GMT

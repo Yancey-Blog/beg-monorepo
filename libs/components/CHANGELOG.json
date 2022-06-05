@@ -2,6 +2,18 @@
   "name": "@shared/components",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@shared/components_v0.4.0",
+      "date": "Sun, 05 Jun 2022 21:37:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update dependencies"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@shared/components_v0.3.0",
       "date": "Sun, 01 May 2022 20:21:45 GMT",

@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sat, 14 May 2022 10:10:36 GMT and should not be manually modified.
+This log was last generated on Sun, 05 Jun 2022 21:37:31 GMT and should not be manually modified.
+
+## 5.0.0
+Sun, 05 Jun 2022 21:37:31 GMT
+
+### Breaking changes
+
+- big change for migrating to react 18 and using @mui/x-data-grid
 
 ## 4.3.4
 Sat, 14 May 2022 10:10:36 GMT
