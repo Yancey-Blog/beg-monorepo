@@ -95,6 +95,7 @@ export class PostsService {
       next: next[0] ? next[0] : null
     }
 
+    // @ts-ignore78
     return res
   }
 

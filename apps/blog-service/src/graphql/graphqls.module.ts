@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ValidationError } from 'apollo-server-express'
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
@@ -9,8 +10,9 @@ import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
 
 @Module({
   imports: [
-    GraphQLModule.forRootAsync({
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
       imports: [ConfigModule],
+      driver: ApolloDriver,
       useFactory: async (configService: ConfigService) => ({
         debug: !configService.isEnvProduction,
         playground: false,
