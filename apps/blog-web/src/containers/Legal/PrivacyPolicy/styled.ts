@@ -10,26 +10,30 @@ export const Article = styled.article`
     font-size: 2.5rem;
     font-weight: 300;
   }
+
   h2 {
     margin-bottom: 1.6rem;
     font-size: 1.6rem;
     font-weight: 400;
   }
+
   h3 {
     font-size: 1.2rem;
     font-weight: bold;
   }
+
   p {
     margin: 1.6rem 0;
     font-size: 1.1rem;
     text-shadow: 0 0 1px rgba(44, 46, 47, 0.1);
     line-height: 1.8;
     font-weight: 300;
-
     color: ${({ theme }) => theme.text.primary};
+
     a {
       color: ${({ theme }) => theme.colors.linkBlue};
     }
+    
     span {
       font-weight: bold;
     }

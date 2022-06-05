@@ -63,7 +63,7 @@ const PostEditor: FC = () => {
     PostStatisticsVars
   >(CREATE_POST_STATISTICS)
 
-  const [fetchPostById, { loading: isFetching }] =
+  const [fetchPostById] =
     useLazyQuery<GetPostByIdQuery>(GET_POST_BY_ID, {
       variables: {
         id
