@@ -14,6 +14,7 @@ const bootstrap = async () => {
         }
       : {}
   )
+
   app.setGlobalPrefix('beg')
   configMiddlewares(app)
   configLogger(app)
