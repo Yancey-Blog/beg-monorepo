@@ -83,7 +83,10 @@ const PostList: FC = () => {
           )}
 
           {!posts ? (
-            <SkeletonIterator count={5} skeletonComponent={PostCardSkeleton} />
+            <SkeletonIterator
+              count={5}
+              skeletonComponent={<PostCardSkeleton />}
+            />
           ) : (
             posts.posts.items.map((post) => (
               <PostCard post={post} key={post._id} />

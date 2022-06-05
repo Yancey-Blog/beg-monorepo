@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, ReactNode } from 'react'
 import { useQuery } from '@apollo/client'
 import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
@@ -22,6 +22,7 @@ const initialGlobalSetting = {
 
 interface Props {
   title?: string
+  children?: any // TODO: fix this
 }
 
 const Layout: FC<Props> = ({ title, children }) => {

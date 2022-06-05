@@ -33,9 +33,9 @@ export interface Props {
   post: IPostItem
 }
 
-const TocComponent = dynamic(() => import('../components/Toc/Toc'), {
-  ssr: false
-})
+// const TocComponent = dynamic(() => import('../components/Toc/Toc'), {
+//   ssr: false
+// })
 
 const PostDetail: FC<Props> = ({ post }) => {
   const router = useRouter()
@@ -161,7 +161,7 @@ const PostDetail: FC<Props> = ({ post }) => {
         postUrl={generatePostUrl(id as string)}
       />
 
-      <TocComponent />
+      {/* <TocComponent /> */}
 
       <Content>
         <Poster src={posterUrl} alt={title} />

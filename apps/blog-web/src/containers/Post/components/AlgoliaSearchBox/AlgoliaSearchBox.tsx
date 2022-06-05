@@ -39,7 +39,10 @@ const AlgoliaSearchBox: FC = () => {
 
   const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
     isSearchStalled ? (
-      <SkeletonIterator count={5} skeletonComponent={AlgoliaSarchBoxSkeleton} />
+      <SkeletonIterator
+        count={5}
+        skeletonComponent={<AlgoliaSarchBoxSkeleton />}
+      />
     ) : null
   )
 
@@ -61,7 +64,10 @@ const AlgoliaSearchBox: FC = () => {
 
       <Result className={showDrawer ? 'showDrawer' : ''}>
         <LoadingIndicator />
-        <Hits hitComponent={Hit} />
+        <Hits
+          // @ts-ignore
+          hitComponent={Hit}
+        />
         <PoweredBy />
       </Result>
     </InstantSearch>

@@ -20,23 +20,24 @@ const ContentSkeletonWrapper = styled.div`
   width: 100%;
 `
 
+const ContentSkeleton = () => (
+  <Skeleton
+    animation="wave"
+    variant="text"
+    width="100%"
+    height="0.8rem"
+    style={{ marginBottom: '0.6rem' }}
+  />
+)
+
 const AlgoliaSarchBoxSkeleton: FC = () => {
-  const ContentSkeleton = () => (
-    <Skeleton
-      animation="wave"
-      variant="text"
-      width="100%"
-      height="0.8rem"
-      style={{ marginBottom: '0.6rem' }}
-    />
-  )
   return (
     <AlgoliaSarchBoxSkeletonWrapper>
       <TitleSkeletonWrapper>
         <Skeleton animation="wave" variant="text" width="60%" height="0.8rem" />
       </TitleSkeletonWrapper>
       <ContentSkeletonWrapper>
-        <SkeletonIterator count={8} skeletonComponent={ContentSkeleton} />
+        <SkeletonIterator count={8} skeletonComponent={<ContentSkeleton />} />
         <Skeleton
           animation="wave"
           variant="text"

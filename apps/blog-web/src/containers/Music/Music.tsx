@@ -48,7 +48,7 @@ const Music = () => {
             {!liveTours ? (
               <SkeletonIterator
                 count={1}
-                skeletonComponent={LiveTourSkeleton}
+                skeletonComponent={<LiveTourSkeleton />}
               />
             ) : (
               <LiveTour liveTours={liveTours.getLiveTours} />
@@ -59,7 +59,10 @@ const Music = () => {
 
             <MusicNotes>
               {!posts ? (
-                <SkeletonIterator count={4} skeletonComponent={CardSkeleton} />
+                <SkeletonIterator
+                  count={4}
+                  skeletonComponent={<CardSkeleton />}
+                />
               ) : (
                 posts.posts.items.map((post) => (
                   <Card
@@ -82,7 +85,7 @@ const Music = () => {
             {!bestAlbums ? (
               <SkeletonIterator
                 count={4}
-                skeletonComponent={BestAlbumSkeleton}
+                skeletonComponent={<BestAlbumSkeleton />}
               />
             ) : (
               bestAlbums.getBestAlbums
@@ -98,7 +101,10 @@ const Music = () => {
           <SubTitle>YANCEY MUSIC</SubTitle>
           <YanceyMusicWrapper>
             {!yanceymusics ? (
-              <SkeletonIterator count={4} skeletonComponent={CardSkeleton} />
+              <SkeletonIterator
+                count={4}
+                skeletonComponent={<CardSkeleton />}
+              />
             ) : (
               yanceymusics.getYanceyMusic.map((yanceyMusic) => (
                 <Card

@@ -89,9 +89,11 @@ const PostList: FC<Props> = ({ data: ssrData }) => {
     >
       <SubTitle icon={SVG_SPRITE.new} title="The Latest!" />
 
-      {data.map((post: IPostItem) => (
-        <PostCard post={post} key={post._id} />
-      ))}
+      <>
+        {data.map((post) => (
+          <PostCard post={post} key={post._id} />
+        ))}
+      </>
 
       <Status>
         {data.length > 0 && hasMore ? '正在加载中...' : '没有更多了...'}

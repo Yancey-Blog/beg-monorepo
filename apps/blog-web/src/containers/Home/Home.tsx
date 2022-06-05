@@ -1,4 +1,4 @@
-import { FC, ComponentType } from 'react'
+import { FC, ComponentType, ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { Props as HomePageProps } from 'src/pages/index'
 import { isAnniversary } from 'src/shared/utils'
@@ -19,7 +19,9 @@ export interface Props {
   data: HomePageProps
 }
 
-let FireWorksComponent: ComponentType | null = null
+// @ts-ignore
+let FireWorksComponent = null
+
 if (isAnniversary()) {
   FireWorksComponent = dynamic(
     () => import('src/components/Activities/Fireworks/Fireworks')
@@ -29,7 +31,10 @@ if (isAnniversary()) {
 const Home: FC<Props> = ({ data }) => {
   return (
     <HomeContainer>
-      {FireWorksComponent && <FireWorksComponent />}
+      {
+        // @ts-ignore
+        FireWorksComponent && <FireWorksComponent />
+      }
       <CoverWrapper>
         <Cover data={data.covers} />
         <MottoSocialMediaBar>

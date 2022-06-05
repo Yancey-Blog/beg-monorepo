@@ -77,7 +77,10 @@ const Top7PVPosts: FC<Props> = ({ topPVPosts }) => {
       <SubHeader title="Top 7 Most Viewed" icon={SVG_SPRITE.topRank} />
 
       {!topPVPosts ? (
-        <SkeletonIterator count={7} skeletonComponent={Top7PVPostsSkeleton} />
+        <SkeletonIterator
+          count={7}
+          skeletonComponent={<Top7PVPostsSkeleton />}
+        />
       ) : (
         topPVPosts.getTopPVPosts.map((post) => {
           const { _id, title, posterUrl } = post
