@@ -100,7 +100,7 @@ const Post: FC = () => {
     <PostTable
       total={data ? data.getPostsForCMS.total : 0}
       page={data ? data.getPostsForCMS.page : 0}
-      pageSize={data ? data.getPostsForCMS.pageSize : 0}
+      pageSize={data ? data.getPostsForCMS.pageSize : 10}
       dataSource={data ? data.getPostsForCMS.items : []}
       fetchPostsByPage={fetchPostsByPage}
       isFetching={isFetching}

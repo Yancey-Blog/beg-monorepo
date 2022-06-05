@@ -19,6 +19,8 @@ const BestAlbum: FC = () => {
   })
 
   const [createBestAlbum] = useMutation(CREATE_ONE_BEST_ALBUM, {
+    refetchQueries: [BEST_ALBUMS],
+
     update(proxy, { data: { createBestAlbum } }) {
       const data = proxy.readQuery<Query>({ query: BEST_ALBUMS })
 
@@ -40,6 +42,8 @@ const BestAlbum: FC = () => {
   })
 
   const [updateBestAlbumById] = useMutation(UPDATE_ONE_BEST_ALBUM, {
+    refetchQueries: [BEST_ALBUMS],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     }
@@ -48,6 +52,8 @@ const BestAlbum: FC = () => {
   const [deleteBestAlbumById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_BEST_ALBUM,
     {
+      refetchQueries: [BEST_ALBUMS],
+
       update(proxy, { data: { deleteBestAlbumById } }) {
         const data = proxy.readQuery<Query>({ query: BEST_ALBUMS })
 
@@ -73,6 +79,8 @@ const BestAlbum: FC = () => {
   const [deleteBestAlbums, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_BEST_ALBUMS,
     {
+      refetchQueries: [BEST_ALBUMS],
+      
       update(proxy, { data: { deleteBestAlbums } }) {
         const data = proxy.readQuery<Query>({ query: BEST_ALBUMS })
 

@@ -19,6 +19,8 @@ const YanceyMusic: FC = () => {
   })
 
   const [createYanceyMusic] = useMutation(CREATE_ONE_YANCEY_MUSIC, {
+    refetchQueries: [YANCEY_MUSIC],
+
     update(proxy, { data: { createYanceyMusic } }) {
       const data = proxy.readQuery<Query>({ query: YANCEY_MUSIC })
 
@@ -40,6 +42,8 @@ const YanceyMusic: FC = () => {
   })
 
   const [updateYanceyMusicById] = useMutation(UPDATE_ONE_YANCEY_MUSIC, {
+    refetchQueries: [YANCEY_MUSIC],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     }
@@ -48,6 +52,8 @@ const YanceyMusic: FC = () => {
   const [deleteYanceyMusicById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_YANCEY_MUSIC,
     {
+      refetchQueries: [YANCEY_MUSIC],
+
       update(proxy, { data: { deleteYanceyMusicById } }) {
         const data = proxy.readQuery<Query>({ query: YANCEY_MUSIC })
 
@@ -73,6 +79,8 @@ const YanceyMusic: FC = () => {
   const [deleteYanceyMusic, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_YANCEY_MUSIC,
     {
+      refetchQueries: [YANCEY_MUSIC],
+
       update(proxy, { data: { deleteYanceyMusic } }) {
         const data = proxy.readQuery<Query>({ query: YANCEY_MUSIC })
 

@@ -21,6 +21,8 @@ const Cover: FC = () => {
   })
 
   const [createCover] = useMutation(CREATE_ONE_COVER, {
+    refetchQueries: [COVERS],
+
     update(proxy, { data: { createCover } }) {
       const data = proxy.readQuery<Query>({ query: COVERS })
 
@@ -42,6 +44,8 @@ const Cover: FC = () => {
   })
 
   const [updateCoverById] = useMutation(UPDATE_ONE_COVER, {
+    refetchQueries: [COVERS],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     },
@@ -60,7 +64,9 @@ const Cover: FC = () => {
 
   const [publicCovers, { loading: isPublicingCovers }] = useMutation(
     BATCH_PUBLIC_COVERS,
+
     {
+      refetchQueries: [COVERS],
       update(proxy, { data: { publicCovers } }) {
         const data = proxy.readQuery<Query>({ query: COVERS })
 
@@ -89,6 +95,7 @@ const Cover: FC = () => {
   const [deleteCoverById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_COVER,
     {
+      refetchQueries: [COVERS],
       update(proxy, { data: { deleteCoverById } }) {
         const data = proxy.readQuery<Query>({ query: COVERS })
 
@@ -97,8 +104,7 @@ const Cover: FC = () => {
             query: COVERS,
             data: {
               getCovers: data.getCovers.filter(
-                (announcement: ICover) =>
-                  announcement._id !== deleteCoverById._id
+                (cover: ICover) => cover._id !== deleteCoverById._id
               )
             }
           })
@@ -114,6 +120,8 @@ const Cover: FC = () => {
   const [deleteCovers, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_COVERS,
     {
+      refetchQueries: [COVERS],
+
       update(proxy, { data: { deleteCovers } }) {
         const data = proxy.readQuery<Query>({ query: COVERS })
 

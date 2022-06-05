@@ -1,6 +1,5 @@
-import { FC } from 'react'
+import { FC, lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import loadable from '@loadable/component'
 import { useKeycloak } from '@react-keycloak/web'
 import { mapRoutes } from 'src/routes'
 import NotFound from 'src/components/NotFound/NotFound'
@@ -12,12 +11,9 @@ import useStyles from './styles'
 const routes = mapRoutes()
 const loadableComponents = routes.map((route) => ({
   ...route,
-  component: loadable(
+  component: lazy(
     () =>
-      import(/* webpackPrefetch: true */ `src/containers/${route.component}`),
-    {
-      fallback: <Loading />
-    }
+      import(/* webpackPrefetch: true */ `src/containers/${route.component}`)
   )
 }))
 
@@ -50,7 +46,9 @@ const Main: FC = () => {
               path={route.path}
               element={
                 isAutherized(route.roles) ? (
-                  <Comp />
+                  <Suspense fallback={<Loading />}>
+                    <Comp />
+                  </Suspense>
                 ) : (
                   <SSOStatus status={Status.Fail} />
                 )

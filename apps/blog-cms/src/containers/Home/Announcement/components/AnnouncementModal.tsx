@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -10,9 +11,9 @@ import {
   TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
-import client from 'src/graphql/apolloClient'
 import useStyles from 'src/shared/globalStyles'
-import { AnnouncementModalProps as Props } from '../types'
+import { parseSearch } from 'src/shared/utils'
+import { AnnouncementModalProps as Props, IAnnouncement } from '../types'
 
 const AnnouncementModal: FC<Props> = ({
   open,
@@ -20,8 +21,6 @@ const AnnouncementModal: FC<Props> = ({
   createAnnouncement,
   updateAnnouncementById
 }) => {
-  const { isOpen, id } = open
-
   const initialValues = {
     content: ''
   }
@@ -31,6 +30,9 @@ const AnnouncementModal: FC<Props> = ({
   })
 
   const classes = useStyles()
+
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const {
     handleSubmit,
@@ -48,7 +50,9 @@ const AnnouncementModal: FC<Props> = ({
           variables: { input: { ...values, id } }
         })
       } else {
-        await createAnnouncement({ variables: { input: values } })
+        await createAnnouncement({
+          variables: { input: values }
+        })
       }
 
       resetForm()
@@ -60,15 +64,13 @@ const AnnouncementModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      // @ts-ignore
-      const { content } = client.cache.data.data[`AnnouncementModel:${id}`]
-
+      const { content } = state as IAnnouncement
       setValues({ content })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} an Announcement</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

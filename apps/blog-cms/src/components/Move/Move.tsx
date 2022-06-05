@@ -1,20 +1,26 @@
 import { FC } from 'react'
-import { MUIDataTableMeta } from 'mui-datatables'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
 import { MoreVert } from '@mui/icons-material'
 import { Menu, MenuItem } from '@mui/material'
+import { DocumentNode } from '@apollo/client'
 
 interface Props {
+  refetchQueries?: DocumentNode[]
   dataSource: any[]
-  tableMeta: MUIDataTableMeta
+  curr: any
   exchangePosition: Function
 }
 
-const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
+const Move: FC<Props> = ({
+  refetchQueries,
+  dataSource,
+  curr,
+  exchangePosition
+}) => {
   const move = (
-    curId: string,
+    currId: string,
     nextId: string,
-    curWeight: number,
+    currWeight: number,
     nextWeight: number,
     closePoper: Function
   ) => {
@@ -23,36 +29,22 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
     exchangePosition({
       variables: {
         input: {
-          id: curId,
+          id: currId,
           exchangedId: nextId,
-          weight: curWeight,
+          weight: currWeight,
           exchangedWeight: nextWeight
         }
-      }
+      },
+      refetchQueries
     })
   }
 
-  const curId = tableMeta.rowData[0]
-  const curWeight = tableMeta.rowData[1]
+  const { _id: currId, weight: currWeight } = curr
+  const currIdx = dataSource.findIndex((item) => item._id === currId)
 
-  const prev = tableMeta.tableData[tableMeta.rowIndex - 1]
-  const next = tableMeta.tableData[tableMeta.rowIndex + 1]
-  const top = tableMeta.tableData[0]
-
-  // @ts-ignore
-  const prevId = prev && prev[0]
-  // @ts-ignore
-  const prevWeight = prev && prev[1]
-
-  // @ts-ignore
-  const nextId = next && next[0]
-  // @ts-ignore
-  const nextWeight = next && next[1]
-
-  // @ts-ignore
-  const topId = top[0]
-  // @ts-ignore
-  const topWeight = top[1]
+  const { _id: prevId, weight: prevWeight } = dataSource[currIdx - 1] || {}
+  const { _id: nextId, weight: nextWeight } = dataSource[currIdx + 1] || {}
+  const { _id: topId, weight: topWeight } = dataSource[0] || {}
 
   return (
     <>
@@ -66,23 +58,29 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
               />
 
               <Menu {...bindMenu(popupState)}>
-                {curWeight !== dataSource[0].weight ? (
+                {currWeight !== topWeight ? (
                   <MenuItem
                     onClick={() =>
-                      move(curId, topId, curWeight, topWeight, popupState.close)
+                      move(
+                        currId,
+                        topId,
+                        currWeight,
+                        topWeight,
+                        popupState.close
+                      )
                     }
                   >
                     Move to the top
                   </MenuItem>
                 ) : null}
 
-                {curWeight !== dataSource[0].weight ? (
+                {currWeight !== topWeight ? (
                   <MenuItem
                     onClick={() =>
                       move(
-                        curId,
+                        currId,
                         prevId,
-                        curWeight,
+                        currWeight,
                         prevWeight,
                         popupState.close
                       )
@@ -92,13 +90,13 @@ const Move: FC<Props> = ({ dataSource, tableMeta, exchangePosition }) => {
                   </MenuItem>
                 ) : null}
 
-                {curWeight !== 1 ? (
+                {currWeight !== 1 ? (
                   <MenuItem
                     onClick={() =>
                       move(
-                        curId,
+                        currId,
                         nextId,
-                        curWeight,
+                        currWeight,
                         nextWeight,
                         popupState.close
                       )

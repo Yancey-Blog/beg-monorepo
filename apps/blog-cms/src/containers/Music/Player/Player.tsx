@@ -20,6 +20,8 @@ const Player: FC = () => {
   })
 
   const [createPlayer] = useMutation(CREATE_ONE_PLAYER, {
+    refetchQueries: [PLAYERS],
+
     update(proxy, { data: { createPlayer } }) {
       const data = proxy.readQuery<Query>({ query: PLAYERS })
 
@@ -41,6 +43,8 @@ const Player: FC = () => {
   })
 
   const [updatePlayerById] = useMutation(UPDATE_ONE_PLAYER, {
+    refetchQueries: [PLAYERS],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     }
@@ -49,6 +53,8 @@ const Player: FC = () => {
   const [exchangePosition, { loading: isExchanging }] = useMutation(
     EXCHANGE_POSITION,
     {
+      refetchQueries: [PLAYERS],
+
       onCompleted() {
         enqueueSnackbar('Update success!', { variant: 'success' })
       },
@@ -59,6 +65,8 @@ const Player: FC = () => {
   const [deletePlayerById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_PLAYER,
     {
+      refetchQueries: [PLAYERS],
+
       update(proxy, { data: { deletePlayerById } }) {
         const data = proxy.readQuery<Query>({ query: PLAYERS })
 
@@ -83,6 +91,8 @@ const Player: FC = () => {
   const [deletePlayers, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_PLAYER,
     {
+      refetchQueries: [PLAYERS],
+      
       update(proxy, { data: { deletePlayers } }) {
         const data = proxy.readQuery<Query>({ query: PLAYERS })
 

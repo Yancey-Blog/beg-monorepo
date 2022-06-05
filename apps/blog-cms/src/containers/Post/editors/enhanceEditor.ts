@@ -29,21 +29,3 @@ export const insertImageButton = (setOpen: (open: boolean) => void) => {
 
   return button
 }
-
-export const enhanceUpload = (
-  editorRef: RefObject<Editor>,
-  setOpen: (open: boolean) => void
-) => {
-  if (editorRef.current) {
-    const instance = editorRef.current.getInstance()
-
-    instance.insertToolbarItem(
-      { groupIndex: 4, itemIndex: 3 },
-      {
-        name: 'IMG',
-        tooltip: 'Insert image',
-        el: insertImageButton(setOpen)
-      }
-    )
-  }
-}

@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useKeycloak } from '@react-keycloak/web'
-import Lottie from 'react-lottie';
-import authLottieData from 'src/assets/lotties/auth.json';
+import Lottie from 'react-lottie-player'
+import authLottieData from 'src/assets/lotties/auth.json'
 
 export enum Status {
   IsChecking,
@@ -11,12 +11,6 @@ export enum Status {
 export interface Props {
   status: Status
 }
-
-const lottieData = {
-  loop: true,
-  autoplay: true,
-  animationData: authLottieData,
-};
 
 const SSOStatus: FC<Props> = ({ status }) => {
   const { keycloak } = useKeycloak()
@@ -32,15 +26,17 @@ const SSOStatus: FC<Props> = ({ status }) => {
         flex: 1,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
       }}
     >
-      {status === Status.IsChecking &&
+      {status === Status.IsChecking && (
         <Lottie
-          options={lottieData}
-          width={500}
+          loop
+          animationData={authLottieData}
+          play
+          style={{ width: 500, height: 500 }}
         />
-      }
+      )}
     </div>
   )
 }

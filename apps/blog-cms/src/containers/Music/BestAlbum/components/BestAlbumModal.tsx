@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -13,13 +14,13 @@ import {
 import { useFormik } from 'formik'
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
 import useStyles from 'src/shared/globalStyles'
-import client from 'src/graphql/apolloClient'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
+import { IBestAlbum } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createBestAlbum: Function
   updateBestAlbumById: Function
@@ -31,7 +32,8 @@ const BestAlbumModal: FC<Props> = ({
   createBestAlbum,
   updateBestAlbumById
 }) => {
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const classes = useStyles()
 
@@ -89,27 +91,16 @@ const BestAlbumModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const {
-        title,
-        artist,
-        mvUrl,
-        releaseDate,
-        coverUrl
-        // @ts-ignore
-      } = client.cache.data.data[`BestAlbumModel:${id}`]
+      const { title, artist, mvUrl, releaseDate, coverUrl } =
+        state as IBestAlbum
 
-      setValues({
-        title,
-        artist,
-        mvUrl,
-        releaseDate,
-        coverUrl
-      })
+      // @ts-ignore
+      setValues({ title, artist, mvUrl, releaseDate, coverUrl })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Best Album</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

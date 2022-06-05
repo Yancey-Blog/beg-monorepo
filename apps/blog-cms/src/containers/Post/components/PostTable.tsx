@@ -1,29 +1,26 @@
 import { FC, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import MUIDataTable, {
-  MUIDataTableColumn,
-  MUIDataTableMeta
-} from 'mui-datatables'
+import {
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridRenderCellParams,
+  GridSelectionModel
+} from '@mui/x-data-grid'
 import {
   FormControl,
-  Fab,
   Switch,
   Tooltip,
   Chip,
-  Select,
-  MenuItem,
   Paper,
   IconButton,
   Divider,
   InputBase,
-  SelectChangeEvent,
-  Pagination
+  Button
 } from '@mui/material'
-import { DeleteOutline, Edit, AddBox, Search, Clear } from '@mui/icons-material'
+import { DeleteOutline, Edit, Search, Clear } from '@mui/icons-material'
 import { formatJSONDate } from 'yancey-js-util'
 import { stringfySearch } from 'src/shared/utils'
-import TableWrapper from 'src/components/TableWrapper/TableWrapper'
-import Loading from 'src/components/Loading/Loading'
 import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import globalUseStyles from 'src/shared/globalStyles'
@@ -59,17 +56,17 @@ const PostTable: FC<Props> = ({
 }) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const classes = useStyles()
+  const globalClasses = globalUseStyles()
+  const [searchTitle, setSearchTitle] = useState('')
+  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
+
   const toEditPage = (id?: string) => {
     navigate({
       pathname: `${pathname}/edit`,
       search: stringfySearch({ id })
     })
   }
-
-  const classes = useStyles()
-  const globalClasses = globalUseStyles()
-
-  const [searchTitle, setSearchTitle] = useState('')
 
   const fetchData = (page: number, pageSize: number, title?: string) => {
     fetchPostsByPage({
@@ -88,220 +85,192 @@ const PostTable: FC<Props> = ({
   }
 
   const handlePageChange = (currentPage: number) => {
-    fetchData(currentPage, pageSize, searchTitle)
+    fetchData(currentPage + 1, pageSize, searchTitle)
   }
 
-  const handlePageSizeChange = (e: SelectChangeEvent) => {
-    fetchData(page, parseInt(e.target.value, 10), searchTitle)
+  const handlePageSizeChange = (pageSize: number) => {
+    fetchData(page, pageSize, searchTitle)
   }
 
-  const columns: MUIDataTableColumn[] = [
-    { name: '_id', label: 'Id' },
-    { name: 'title', label: 'Title' },
+  const columns: GridColDef[] = [
     {
-      name: 'summary',
-      label: 'Summary',
-      options: {
-        customBodyRender: (value: string) => (
-          <Tooltip title={value} placement="top">
-            <span>{value.slice(0, 15)}...</span>
-          </Tooltip>
-        )
-      }
+      field: 'id',
+      headerName: 'ID',
+      valueGetter: (params: GridValueGetterParams<'string', IPostItem>) =>
+        params.row._id,
+      flex: 1
+    },
+    { field: 'title', headerName: 'Title', flex: 2 },
+    {
+      field: 'summary',
+      headerName: 'Summary',
+      renderCell: (params: GridRenderCellParams<string, IPostItem>) => (
+        <Tooltip title={params.row.summary} placement="top">
+          <span>{params.row.summary.slice(0, 15)}...</span>
+        </Tooltip>
+      ),
+      flex: 2
     },
     {
-      name: 'tags',
-      label: 'Tags',
-      options: {
-        // @ts-ignore
-        customBodyRender: (value: string[]) => (
-          <>
-            {value.map((tag) => (
-              <Chip
-                key={tag}
-                className={classes.btn}
-                label={tag}
-                clickable
-                color="primary"
-              />
-            ))}
-          </>
-        )
-      }
-    },
-    {
-      name: 'posterUrl',
-      label: 'Poster Url',
-      options: {
-        customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
-          const curTitle = tableMeta.rowData[1]
-          return <ImagePopup imgName={curTitle} imgUrl={value} />
-        }
-      }
-    },
-    {
-      name: 'isPublic',
-      label: 'IsPublic',
-      options: {
-        // @ts-ignore
-        customBodyRender: (value: boolean, tableMeta: MUIDataTableMeta) => {
-          const id = tableMeta.rowData[0]
-
-          return (
-            <Switch
-              checked={value}
-              onChange={(e) => {
-                updatePostById({
-                  variables: { input: { isPublic: e.target.checked, id } },
-                  optimisticResponse: {
-                    __typename: 'Mutation',
-                    updatePostById: {
-                      id,
-                      __typename: 'PostItemModel',
-                      isPublic: e.target.checked
-                    }
-                  }
-                })
-              }}
+      field: 'tags',
+      headerName: 'Tags',
+      renderCell: (params: GridRenderCellParams<string[], IPostItem>) => (
+        <>
+          {params.row.tags.map((tag: string) => (
+            <Chip
+              key={tag}
+              className={classes.btn}
+              label={tag}
+              clickable
+              color="primary"
             />
-          )
-        }
-      }
+          ))}
+        </>
+      ),
+      flex: 2
     },
-    { name: 'like', label: 'Like' },
-    { name: 'pv', label: 'PV' },
     {
-      name: 'createdAt',
-      label: 'CreatedAt',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
+      field: 'posterUrl',
+      headerName: 'Poster Url',
+      renderCell: (params: GridRenderCellParams<string, IPostItem>) => {
+        const curTitle = params.row.title
+        return <ImagePopup imgName={curTitle} imgUrl={params.row.posterUrl} />
+      },
+      flex: 1
+    },
+    {
+      field: 'isPublic',
+      headerName: 'IsPublic',
+      renderCell: (params: GridRenderCellParams<boolean, IPostItem>) => {
+        const { _id, isPublic } = params.row
+
+        return (
+          <Switch
+            checked={isPublic}
+            onChange={(e) => {
+              updatePostById({
+                variables: { input: { isPublic: e.target.checked, id: _id } },
+                optimisticResponse: {
+                  __typename: 'Mutation',
+                  updatePostById: {
+                    id: _id,
+                    __typename: 'PostItemModel',
+                    isPublic: e.target.checked
+                  }
+                }
+              })
+            }}
+          />
         )
       }
     },
+    { field: 'like', headerName: 'Like', flex: 0.5 },
+    { field: 'pv', headerName: 'PV', flex: 0.5 },
     {
-      name: 'lastModifiedDate',
-      label: 'Last Modified Date',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
+      field: 'createdAt',
+      headerName: 'CreatedAt',
+      valueGetter: (params: GridValueGetterParams<string, IPostItem>) =>
+        formatJSONDate(params.row.createdAt),
+      flex: 1
     },
     {
-      name: 'action',
-      label: 'Action',
-      options: {
-        filter: false,
-        customBodyRender(value, tableMeta) {
-          const curId = tableMeta.rowData[0]
-          return (
-            <>
-              <FormControl>
-                <Edit
-                  className={globalClasses.editIcon}
-                  onClick={() => toEditPage(curId)}
-                />
-              </FormControl>
-              <FormControl>
-                <ConfirmPoper
-                  onOk={() => deletePostById({ variables: { id: curId } })}
-                >
-                  <DeleteOutline />
-                </ConfirmPoper>
-              </FormControl>
-            </>
-          )
-        }
-      }
+      field: 'updatedAt',
+      headerName: 'UpdatedAt',
+      valueGetter: (params: GridValueGetterParams<string, IPostItem>) =>
+        formatJSONDate(params.row.updatedAt),
+      flex: 1
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      renderCell: (params: GridRenderCellParams<string, IPostItem>) => (
+        <>
+          <FormControl>
+            <Edit
+              className={globalClasses.editIcon}
+              onClick={() => toEditPage(params.row._id)}
+            />
+          </FormControl>
+          <FormControl>
+            <ConfirmPoper
+              onOk={() => deletePostById({ variables: { id: params.row._id } })}
+            >
+              <DeleteOutline />
+            </ConfirmPoper>
+          </FormControl>
+        </>
+      ),
+      flex: 1
     }
   ]
 
   return (
-    <>
-      <Paper className={classes.search}>
-        <InputBase
-          className={classes.input}
-          placeholder="Search Posts by Title"
-          inputProps={{ 'aria-label': 'search post by title' }}
-          onChange={handleInputChange}
-        />
-        <IconButton
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-          onClick={() => fetchData(page, pageSize, searchTitle)}
-        >
-          <Search />
-        </IconButton>
-        <Divider className={classes.divider} orientation="vertical" />
-        <IconButton
-          color="primary"
-          className={classes.iconButton}
-          aria-label="clear"
-          onClick={() => fetchData(page, pageSize, '')}
-        >
-          <Clear />
-        </IconButton>
-      </Paper>
-      <TableWrapper tableName="Post" icon="save">
-        <MUIDataTable
-          title=""
-          data={dataSource}
-          columns={columns}
-          options={{
-            search: false,
-            pagination: false,
-            filterType: 'textField',
-            searchPlaceholder: 'Search...',
-            customToolbar() {
-              return (
-                <Fab size="medium" className={globalClasses.addIconFab}>
-                  <AddBox onClick={() => toEditPage()} />
-                </Fab>
-              )
-            },
-            customToolbarSelect(selectedRows) {
-              const ids = selectedRows.data.map(
-                (row: { index: number; dataIndex: number }) =>
-                  dataSource[row.index]._id
-              )
-              return (
-                <Fab size="medium" className={globalClasses.addIconFab}>
-                  <ConfirmPoper
-                    onOk={() => deletePosts({ variables: { ids } })}
-                  >
-                    <DeleteOutline />
-                  </ConfirmPoper>
-                </Fab>
-              )
-            }
-          }}
-        />
-
-        {total === 0 || (
-          <div className={classes.pagination}>
-            <Select
-              value={pageSize.toString()}
-              onChange={handlePageSizeChange}
-              className={classes.selector}
+    <div className={classes.tableWrapper}>
+      <section className={classes.headerWrapper}>
+        <div>
+          <Button variant="contained" onClick={() => toEditPage()}>
+            Create One
+          </Button>
+          {selectedRows.length > 0 && (
+            <Button
+              variant="contained"
+              color="error"
+              style={{ marginLeft: 24 }}
             >
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={20}>20</MenuItem>
-              <MenuItem value={50}>50</MenuItem>
-            </Select>
-            <Pagination
-              count={Math.ceil(total / 10)}
-              color="primary"
-              page={page}
-              onChange={(e, page) => handlePageChange(page)}
-            />
-          </div>
-        )}
-
-        {(isFetching || isDeleting || isBatchDeleting) && <Loading />}
-      </TableWrapper>
-    </>
+              <ConfirmPoper
+                onOk={() => deletePosts({ variables: { ids: selectedRows } })}
+              >
+                Batch Delete
+              </ConfirmPoper>
+            </Button>
+          )}
+        </div>
+        <Paper className={classes.search}>
+          <InputBase
+            className={classes.input}
+            placeholder="Search Posts by Title"
+            inputProps={{ 'aria-label': 'search post by title' }}
+            onChange={handleInputChange}
+          />
+          <IconButton
+            type="submit"
+            className={classes.iconButton}
+            aria-label="search"
+            onClick={() => fetchData(page, pageSize, searchTitle)}
+          >
+            <Search />
+          </IconButton>
+          <Divider className={classes.divider} orientation="vertical" />
+          <IconButton
+            color="primary"
+            className={classes.iconButton}
+            aria-label="clear"
+            onClick={() => fetchData(page, pageSize, '')}
+          >
+            <Clear />
+          </IconButton>
+        </Paper>
+      </section>
+      <DataGrid
+        rowHeight={100}
+        loading={isFetching || isDeleting || isBatchDeleting}
+        getRowId={(row) => row._id}
+        rows={dataSource}
+        columns={columns}
+        checkboxSelection
+        disableSelectionOnClick
+        autoHeight
+        onSelectionModelChange={(selected) => {
+          setSelectedRows(selected)
+        }}
+        rowCount={total}
+        pageSize={pageSize}
+        paginationMode="server"
+        onPageChange={handlePageChange}
+        onPageSizeChange={handlePageSizeChange}
+        rowsPerPageOptions={[10, 20, 40]}
+      />
+    </div>
   )
 }
 

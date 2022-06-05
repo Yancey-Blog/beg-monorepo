@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -13,15 +14,15 @@ import {
 } from '@mui/material'
 import { useFormik } from 'formik'
 import classNames from 'classnames'
-import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import globalUseStyles from 'src/shared/globalStyles'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
 import useStyles from '../styles'
+import { IPlayer } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createPlayer: Function
   updatePlayerById: Function
@@ -33,7 +34,8 @@ const PlayerModal: FC<Props> = ({
   createPlayer,
   updatePlayerById
 }) => {
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const globalClasses = globalUseStyles()
   const classes = useStyles()
@@ -94,28 +96,16 @@ const PlayerModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const {
-        title,
-        artist,
-        lrc,
-        coverUrl,
-        musicFileUrl,
-        isPublic
-        // @ts-ignore
-      } = client.cache.data.data[`PlayerModel:${id}`]
-      setValues({
-        title,
-        artist,
-        lrc,
-        coverUrl,
-        musicFileUrl,
-        isPublic
-      })
+      const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } =
+        state as IPlayer
+
+      // @ts-ignore
+      setValues({ title, artist, lrc, coverUrl, musicFileUrl, isPublic })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Music Track</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

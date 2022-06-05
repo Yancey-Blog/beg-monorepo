@@ -1,5 +1,3 @@
-import { Open } from 'src/hooks/useOpenModal'
-
 export interface IAnnouncement {
   _id: string
   weight: number
@@ -44,7 +42,7 @@ export interface AnnouncementTableProps {
 }
 
 export interface AnnouncementModalProps {
-  open: Open
+  open: boolean
   handleOpen: Function
   createAnnouncement: Function
   updateAnnouncementById: Function

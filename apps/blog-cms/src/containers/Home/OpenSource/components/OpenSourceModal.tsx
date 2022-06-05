@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -11,14 +12,14 @@ import {
   FormLabel
 } from '@mui/material'
 import { useFormik } from 'formik'
-import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
+import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
-import { Open } from 'src/hooks/useOpenModal'
+import { IOpenSource } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createOpenSource: Function
   updateOpenSourceById: Function
@@ -30,7 +31,8 @@ const OpenSourceModal: FC<Props> = ({
   createOpenSource,
   updateOpenSourceById
 }) => {
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const classes = useStyles()
 
@@ -80,16 +82,13 @@ const OpenSourceModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, description, url, posterUrl } =
-        // @ts-ignore
-        client.cache.data.data[`OpenSourceModel:${id}`]
-
+      const { title, description, url, posterUrl } = state as IOpenSource
       setValues({ title, description, url, posterUrl })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} an Open Source</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

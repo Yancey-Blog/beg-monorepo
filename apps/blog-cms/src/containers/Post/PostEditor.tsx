@@ -20,7 +20,6 @@ import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
 import chartPlugin from '@toast-ui/editor-plugin-chart'
 import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
 import ChipInput from 'src/components/ChipInput/ChipInput'
-import Loading from 'src/components/Loading/Loading'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import {
@@ -35,7 +34,7 @@ import {
   GET_POST_BY_ID
 } from './typeDefs'
 import UploaderModal from './components/UploaderModal'
-import { enhanceUpload, insertImage } from './editors/enhanceEditor'
+import { insertImage, insertImageButton } from './editors/enhanceEditor'
 import { getMarkdown, getHTML, setMarkdown } from './editors/editorIO'
 import { sendPostToAlgolia } from './algolia/algoliaSearch'
 import {
@@ -114,7 +113,7 @@ const PostEditor: FC = () => {
         )
       }
     },
-    onError() { }
+    onError() {}
   })
 
   const [updatePostById, { loading: isUpdatingPost }] = useMutation<
@@ -147,7 +146,7 @@ const PostEditor: FC = () => {
         )
       }
     },
-    onError() { }
+    onError() {}
   })
 
   /* css styles */
@@ -188,7 +187,7 @@ const PostEditor: FC = () => {
     useFormik({
       initialValues,
       validationSchema,
-      onSubmit() { }
+      onSubmit() {}
     })
 
   const onSubmit = async (type: SaveType) => {
@@ -236,7 +235,6 @@ const PostEditor: FC = () => {
   }
 
   useEffect(() => {
-    enhanceUpload(editorRef, setOpen)
     if (id) {
       fetchPostById()
     } else {
@@ -260,10 +258,6 @@ const PostEditor: FC = () => {
       clearInterval(timer)
     }
   }, [])
-
-  if (isFetching) {
-    return <Loading />
-  }
 
   return (
     <section className={classes.editorWrapper}>
@@ -384,6 +378,22 @@ const PostEditor: FC = () => {
           [codeSyntaxHighlightPlugin, { highlighter: Prism }]
         ]}
         ref={editorRef}
+        toolbarItems={[
+          ['heading', 'bold', 'italic', 'strike'],
+          ['hr', 'quote'],
+          ['ul', 'ol', 'task', 'indent', 'outdent'],
+          ['table', 'image', 'link'],
+          [
+            'code',
+            'codeblock',
+            // @ts-ignore
+            {
+              el: insertImageButton(setOpen),
+              tooltip: 'ImageX'
+            }
+          ],
+          ['scrollSync']
+        ]}
       />
 
       <UploaderModal

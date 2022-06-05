@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -12,14 +13,14 @@ import {
   Switch
 } from '@mui/material'
 import { useFormik } from 'formik'
-import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
+import { ICover } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createCover: Function
   updateCoverById: Function
@@ -33,7 +34,8 @@ const CoverModal: FC<Props> = ({
 }) => {
   const classes = useStyles()
 
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const initialValues = {
     title: '',
@@ -81,16 +83,13 @@ const CoverModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, coverUrl, isPublic } =
-        // @ts-ignore
-        client.cache.data.data[`CoverModel:${id}`]
-
-      setValues({ title, coverUrl, isPublic })
+      const { coverUrl, title, isPublic } = state as ICover
+      setValues({ coverUrl, title, isPublic })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Cover</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

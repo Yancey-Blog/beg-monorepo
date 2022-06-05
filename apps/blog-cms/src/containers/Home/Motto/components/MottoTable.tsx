@@ -1,20 +1,20 @@
-import { FC } from 'react'
-import MUIDataTable, {
-  MUIDataTableOptions,
-  MUIDataTableColumn
-} from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
-import { FormControl, Fab } from '@mui/material'
+import { FC, useState } from 'react'
+import {
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridRenderCellParams,
+  GridSelectionModel
+} from '@mui/x-data-grid'
+import { DeleteForever, Edit } from '@mui/icons-material'
+import { Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import MottoModal from './MottoModal'
-import TableWrapper from 'src/components/TableWrapper/TableWrapper'
-import Loading from 'src/components/Loading/Loading'
 import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
 import Move from 'src/components/Move/Move'
-import { TABLE_OPTIONS } from 'src/shared/constants'
-import useStyles from 'src/shared/globalStyles'
 import { IMotto } from '../types'
+import { MOTTOS } from '../typeDefs'
 
 interface Props {
   dataSource: IMotto[]
@@ -42,103 +42,93 @@ const MottoTable: FC<Props> = ({
   isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
+  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
+  const [pageSize, setPageSize] = useState(20)
 
-  const classes = useStyles()
-
-  const columns: MUIDataTableColumn[] = [
-    { name: '_id', label: 'Id' },
-    { name: 'weight', label: 'Weight' },
-    { name: 'content', label: 'Content' },
+  const columns: GridColDef[] = [
+    { field: '_id', headerName: 'ID', flex: 1 },
+    { field: 'weight', headerName: 'Weight', flex: 0.5 },
+    { field: 'content', headerName: 'Content', flex: 2 },
     {
-      name: 'createdAt',
-      label: 'Created At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
+      field: 'createdAt',
+      headerName: 'CreatedAt',
+      valueGetter: (params: GridValueGetterParams) =>
+        formatJSONDate(params.row.createdAt),
+      flex: 1
     },
     {
-      name: 'updatedAt',
-      label: 'Updated At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
+      field: 'updatedAt',
+      headerName: 'UpdatedAt',
+      valueGetter: (params: GridValueGetterParams) =>
+        formatJSONDate(params.row.updatedAt),
+      flex: 1
     },
     {
-      name: 'action',
-      label: 'Action',
-      options: {
-        filter: false,
-        customBodyRender(value, tableMeta) {
-          const curId = tableMeta.rowData[0]
+      field: 'action',
+      headerName: 'Action',
+      renderCell: (params: GridRenderCellParams) => (
+        <>
+          <Edit
+            onClick={() => handleOpen({ id: params.row._id, data: params.row })}
+          />
 
-          return (
-            <>
-              <FormControl>
-                <Edit
-                  className={classes.editIcon}
-                  onClick={() => handleOpen(curId)}
-                />
-              </FormControl>
-              <FormControl>
-                <ConfirmPoper
-                  onOk={() => deleteMottoById({ variables: { id: curId } })}
-                >
-                  <DeleteOutline className={classes.editIcon} />
-                </ConfirmPoper>
-              </FormControl>
+          <ConfirmPoper
+            onOk={() => deleteMottoById({ variables: { id: params.row._id } })}
+          >
+            <DeleteForever
+              style={{ margin: '0 20px', position: 'relative', top: 3 }}
+            />
+          </ConfirmPoper>
 
-              <Move
-                dataSource={dataSource}
-                tableMeta={tableMeta}
-                exchangePosition={exchangePosition}
-              />
-            </>
-          )
-        }
-      }
+          <Move
+            refetchQueries={[MOTTOS]}
+            dataSource={dataSource}
+            curr={params.row}
+            exchangePosition={exchangePosition}
+          />
+        </>
+      ),
+      flex: 1
     }
   ]
-
-  const options: MUIDataTableOptions = {
-    ...TABLE_OPTIONS,
-    customToolbar() {
-      return (
-        <Fab size="medium" className={classes.addIconFab}>
-          <AddBox onClick={() => handleOpen()} />
-        </Fab>
-      )
-    },
-    customToolbarSelect(selectedRows) {
-      const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
-      )
-      return (
-        <Fab size="medium" className={classes.addIconFab}>
-          <ConfirmPoper onOk={() => deleteMottos({ variables: { ids } })}>
-            <DeleteOutline />
-          </ConfirmPoper>
-        </Fab>
-      )
-    }
-  }
-
   return (
-    <>
-      <TableWrapper tableName="Motto" icon="save">
-        <MUIDataTable
-          title=""
-          data={dataSource}
-          columns={columns}
-          options={options}
-        />
-        {(isFetching || isDeleting || isBatchDeleting || isExchanging) && (
-          <Loading />
+    <div style={{ width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginBottom: 24
+        }}
+      >
+        <Button variant="contained" onClick={() => handleOpen()}>
+          Create One
+        </Button>
+        {selectedRows.length > 0 && (
+          <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
+            <ConfirmPoper
+              onOk={() => deleteMottos({ variables: { ids: selectedRows } })}
+            >
+              Batch Delete
+            </ConfirmPoper>
+          </Button>
         )}
-      </TableWrapper>
+      </div>
+      <DataGrid
+        rowHeight={100}
+        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        getRowId={(row) => row._id}
+        rows={dataSource}
+        columns={columns}
+        checkboxSelection
+        disableSelectionOnClick
+        autoHeight
+        onSelectionModelChange={(selected) => {
+          setSelectedRows(selected)
+        }}
+        pageSize={pageSize}
+        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        rowsPerPageOptions={[20, 40, 60]}
+      />
 
       <MottoModal
         open={open}
@@ -146,7 +136,7 @@ const MottoTable: FC<Props> = ({
         createMotto={createMotto}
         updateMottoById={updateMottoById}
       />
-    </>
+    </div>
   )
 }
 

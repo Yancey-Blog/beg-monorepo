@@ -19,6 +19,8 @@ const OpenSource: FC = () => {
   })
 
   const [createOpenSource] = useMutation(CREATE_ONE_OPEN_SOURCE, {
+    refetchQueries: [OPEN_SOURCES],
+
     update(proxy, { data: { createOpenSource } }) {
       const data = proxy.readQuery<Query>({ query: OPEN_SOURCES })
 
@@ -40,6 +42,8 @@ const OpenSource: FC = () => {
   })
 
   const [updateOpenSourceById] = useMutation(UPDATE_ONE_OPEN_SOURCE, {
+    refetchQueries: [OPEN_SOURCES],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     }
@@ -48,6 +52,8 @@ const OpenSource: FC = () => {
   const [deleteOpenSourceById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_OPEN_SOURCE,
     {
+      refetchQueries: [OPEN_SOURCES],
+
       update(proxy, { data: { deleteOpenSourceById } }) {
         const data = proxy.readQuery<Query>({ query: OPEN_SOURCES })
 
@@ -73,6 +79,8 @@ const OpenSource: FC = () => {
   const [deleteOpenSources, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_OPEN_SOURCE,
     {
+      refetchQueries: [OPEN_SOURCES],
+      
       update(proxy, { data: { deleteOpenSources } }) {
         const data = proxy.readQuery<Query>({ query: OPEN_SOURCES })
 

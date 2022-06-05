@@ -1,5 +1,4 @@
 import { PopoverOrigin, SnackbarOrigin } from '@mui/material'
-import { MUIDataTableOptions } from 'mui-datatables'
 
 export const SNACKBAR_ANCHOR_ORIGIN: SnackbarOrigin = {
   vertical: 'top',
@@ -28,13 +27,6 @@ export const PASSWORD_REGEXP =
 export const DRAWER_WIDTH = 260
 
 export const FOLDER_DRAWER_WIDTH = 80
-
-export const TABLE_OPTIONS: MUIDataTableOptions = {
-  filterType: 'textField',
-  rowsPerPage: 10,
-  rowsPerPageOptions: [10, 20, 50],
-  searchPlaceholder: 'Search...'
-}
 
 export const AZURE_BLOB_PATH = 'https://edge.yancey.app/beg'
 

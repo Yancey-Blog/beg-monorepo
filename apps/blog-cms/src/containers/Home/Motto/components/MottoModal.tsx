@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -10,12 +11,12 @@ import {
   TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
-import client from 'src/graphql/apolloClient'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
+import { IMotto } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createMotto: Function
   updateMottoById: Function
@@ -29,7 +30,8 @@ const MottoModal: FC<Props> = ({
 }) => {
   const classes = useStyles()
 
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const initialValues = {
     content: ''
@@ -66,15 +68,13 @@ const MottoModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      // @ts-ignore
-      const { content } = client.cache.data.data[`MottoModel:${id}`]
-
+      const { content } = state as IMotto
       setValues({ content })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Motto</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

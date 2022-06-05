@@ -31,6 +31,8 @@ const Announcement: FC = () => {
     CreateAnnouncementMutation,
     CreateAnnouncementVars
   >(CREATE_ONE_ANNOUNCEMENT, {
+    refetchQueries: [ANNOUNCEMENTS],
+
     update(proxy, { data: updateData }) {
       const data = proxy.readQuery<Query>({ query: ANNOUNCEMENTS })
 
@@ -56,6 +58,8 @@ const Announcement: FC = () => {
   })
 
   const [updateAnnouncementById] = useMutation(UPDATE_ONE_ANNOUNCEMENT, {
+    refetchQueries: [ANNOUNCEMENTS],
+
     onCompleted() {
       enqueueSnackbar('Update announcement success!', { variant: 'success' })
     },
@@ -78,6 +82,8 @@ const Announcement: FC = () => {
     DeleteAnnouncementByIdMutation,
     DeleteAnnouncementByIdVars
   >(DELETE_ONE_ANNOUNCEMENT, {
+    refetchQueries: [ANNOUNCEMENTS],
+
     update(proxy, { data: updateData }) {
       const data = proxy.readQuery<Query>({ query: ANNOUNCEMENTS })
 
@@ -103,6 +109,8 @@ const Announcement: FC = () => {
   const [deleteAnnouncements, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_ANNOUNCEMENT,
     {
+      refetchQueries: [ANNOUNCEMENTS],
+      
       update(proxy, { data: { deleteAnnouncements } }) {
         const data = proxy.readQuery<Query>({ query: ANNOUNCEMENTS })
 

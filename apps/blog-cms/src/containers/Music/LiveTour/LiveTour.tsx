@@ -19,6 +19,8 @@ const LiveTour: FC = () => {
   })
 
   const [createLiveTour] = useMutation(CREATE_ONE_LIVE_TOUR, {
+    refetchQueries: [LIVE_TOURS],
+
     update(proxy, { data: { createLiveTour } }) {
       const data = proxy.readQuery<Query>({ query: LIVE_TOURS })
 
@@ -40,6 +42,8 @@ const LiveTour: FC = () => {
   })
 
   const [updateLiveTourById] = useMutation(UPDATE_ONE_LIVE_TOUR, {
+    refetchQueries: [LIVE_TOURS],
+
     onCompleted() {
       enqueueSnackbar('Update success!', { variant: 'success' })
     }
@@ -48,6 +52,8 @@ const LiveTour: FC = () => {
   const [deleteLiveTourById, { loading: isDeleting }] = useMutation(
     DELETE_ONE_LIVE_TOUR,
     {
+      refetchQueries: [LIVE_TOURS],
+
       update(proxy, { data: { deleteLiveTourById } }) {
         const data = proxy.readQuery<Query>({ query: LIVE_TOURS })
 
@@ -72,6 +78,8 @@ const LiveTour: FC = () => {
   const [deleteLiveTours, { loading: isBatchDeleting }] = useMutation(
     BATCH_DELETE_LIVE_TOUR,
     {
+      refetchQueries: [LIVE_TOURS],
+      
       update(proxy, { data: { deleteLiveTours } }) {
         const data = proxy.readQuery<Query>({ query: LIVE_TOURS })
 

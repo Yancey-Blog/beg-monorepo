@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -13,13 +14,13 @@ import {
 import { useFormik } from 'formik'
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
 import useStyles from 'src/shared/globalStyles'
-import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
+import { ILiveTour } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createLiveTour: Function
   updateLiveTourById: Function
@@ -31,7 +32,8 @@ const LiveTourModal: FC<Props> = ({
   createLiveTour,
   updateLiveTourById
 }) => {
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const classes = useStyles()
 
@@ -81,20 +83,15 @@ const LiveTourModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, showTime, posterUrl } =
-        // @ts-ignore
-        client.cache.data.data[`LiveTourModel:${id}`]
+      const { title, showTime, posterUrl } = state as ILiveTour
 
-      setValues({
-        title,
-        showTime,
-        posterUrl
-      })
+      // @ts-ignore
+      setValues({ title, showTime, posterUrl })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Live Tour</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>

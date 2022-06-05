@@ -1,27 +1,21 @@
-import { FC } from 'react'
-import MUIDataTable, {
-  MUIDataTableOptions,
-  MUIDataTableColumn,
-  MUIDataTableMeta
-} from 'mui-datatables'
+import { FC, useState } from 'react'
 import {
-  DeleteOutline,
-  Edit,
-  AddBox,
-  UpdateOutlined
-} from '@mui/icons-material'
-import { FormControl, Fab, Switch } from '@mui/material'
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridRenderCellParams,
+  GridSelectionModel
+} from '@mui/x-data-grid'
+import { Edit, DeleteForever } from '@mui/icons-material'
+import { Switch, Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
-import TableWrapper from 'src/components/TableWrapper/TableWrapper'
-import Loading from 'src/components/Loading/Loading'
 import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
 import Move from 'src/components/Move/Move'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
-import useStyles from 'src/shared/globalStyles'
-import { TABLE_OPTIONS } from 'src/shared/constants'
 import CoverModal from './CoverModal'
 import { ICover } from '../types'
+import { COVERS } from '../typeDefs'
 
 interface Props {
   dataSource: ICover[]
@@ -45,159 +39,133 @@ const CoverTable: FC<Props> = ({
   createCover,
   updateCoverById,
   exchangePosition,
-  publicCovers,
   isFetching,
   isDeleting,
   isExchanging,
-  isBatchDeleting,
-  isPublicingCovers
+  isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
+  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
+  const [pageSize, setPageSize] = useState(20)
 
-  const classes = useStyles()
-
-  const columns: MUIDataTableColumn[] = [
-    { name: '_id', label: 'Id' },
-    { name: 'weight', label: 'Weight' },
-    { name: 'title', label: 'title' },
+  const columns: GridColDef[] = [
+    { field: '_id', headerName: 'ID', flex: 1 },
+    { field: 'weight', headerName: 'Weight', flex: 0.5 },
+    { field: 'title', headerName: 'Title', flex: 2 },
     {
-      name: 'coverUrl',
-      label: 'Cover Url',
-      options: {
-        customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
-          const curName = tableMeta.rowData[2]
-          return <ImagePopup imgName={curName} imgUrl={value} />
-        }
-      }
+      field: 'coverUrl',
+      headerName: 'Cover Url',
+      renderCell: (params: GridValueGetterParams) => (
+        <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
+      ),
+      flex: 1
     },
     {
-      name: 'isPublic',
-      label: 'Is Public',
-      options: {
-        // @ts-ignore
-        customBodyRender: (value: boolean, tableMeta: MUIDataTableMeta) => {
-          const id = tableMeta.rowData[0]
+      field: 'isPublic',
+      headerName: 'Is Public',
+      renderCell: (params: GridValueGetterParams) => (
+        <Switch
+          checked={params.row.isPublic}
+          onChange={(e) => {
+            updateCoverById({
+              variables: {
+                input: { isPublic: e.target.checked, id: params.row._id }
+              },
+              optimisticResponse: {
+                __typename: 'Mutation',
+                updateCoverById: {
+                  id: params.row._id,
+                  __typename: 'CoverModel',
+                  isPublic: e.target.checked
+                }
+              }
+            })
+          }}
+        />
+      ),
+      flex: 1
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Created At',
+      valueGetter: (params: GridValueGetterParams) =>
+        formatJSONDate(params.row.createdAt),
+      flex: 1
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Updated At',
+      valueGetter: (params: GridValueGetterParams) =>
+        formatJSONDate(params.row.updatedAt),
+      flex: 1
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      renderCell: (params: GridRenderCellParams) => (
+        <>
+          <Edit
+            onClick={() => handleOpen({ id: params.row._id, data: params.row })}
+          />
 
-          return (
-            <Switch
-              checked={value}
-              onChange={(e) => {
-                updateCoverById({
-                  variables: { input: { isPublic: e.target.checked, id } },
-                  optimisticResponse: {
-                    __typename: 'Mutation',
-                    updateCoverById: {
-                      id,
-                      __typename: 'CoverModel',
-                      isPublic: e.target.checked
-                    }
-                  }
-                })
-              }}
+          <ConfirmPoper
+            onOk={() => deleteCoverById({ variables: { id: params.row._id } })}
+          >
+            <DeleteForever
+              style={{ margin: '0 20px', position: 'relative', top: 3 }}
             />
-          )
-        }
-      }
-    },
-    {
-      name: 'createdAt',
-      label: 'Created At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
-    },
-    {
-      name: 'updatedAt',
-      label: 'Updated At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
-    },
-    {
-      name: 'action',
-      label: 'Action',
-      options: {
-        filter: false,
-        customBodyRender(value, tableMeta) {
-          const curId = tableMeta.rowData[0]
+          </ConfirmPoper>
 
-          return (
-            <>
-              <FormControl>
-                <Edit
-                  className={classes.editIcon}
-                  onClick={() => handleOpen(curId)}
-                />
-              </FormControl>
-              <FormControl>
-                <ConfirmPoper
-                  onOk={() => deleteCoverById({ variables: { id: curId } })}
-                >
-                  <DeleteOutline className={classes.editIcon} />
-                </ConfirmPoper>
-              </FormControl>
-
-              <Move
-                dataSource={dataSource}
-                tableMeta={tableMeta}
-                exchangePosition={exchangePosition}
-              />
-            </>
-          )
-        }
-      }
+          <Move
+            refetchQueries={[COVERS]}
+            dataSource={dataSource}
+            curr={params.row}
+            exchangePosition={exchangePosition}
+          />
+        </>
+      ),
+      flex: 1
     }
   ]
 
-  const options: MUIDataTableOptions = {
-    ...TABLE_OPTIONS,
-    customToolbar() {
-      return (
-        <Fab size="medium" className={classes.addIconFab}>
-          <AddBox onClick={() => handleOpen()} />
-        </Fab>
-      )
-    },
-    customToolbarSelect(selectedRows) {
-      const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
-      )
-      return (
-        <div>
-          <Fab size="medium" className={classes.addIconFab}>
-            <ConfirmPoper onOk={() => deleteCovers({ variables: { ids } })}>
-              <DeleteOutline />
-            </ConfirmPoper>
-          </Fab>
-          <Fab size="medium" className={classes.addIconFab}>
-            <UpdateOutlined
-              onClick={() => publicCovers({ variables: { ids } })}
-            />
-          </Fab>
-        </div>
-      )
-    }
-  }
-
   return (
-    <>
-      <TableWrapper tableName="Cover" icon="save">
-        <MUIDataTable
-          title=""
-          data={dataSource}
-          columns={columns}
-          options={options}
-        />
-        {(isFetching ||
-          isDeleting ||
-          isBatchDeleting ||
-          isExchanging ||
-          isPublicingCovers) && <Loading />}
-      </TableWrapper>
+    <div style={{ width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginBottom: 24
+        }}
+      >
+        <Button variant="contained" onClick={() => handleOpen()}>
+          Create One
+        </Button>
+        {selectedRows.length > 0 && (
+          <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
+            <ConfirmPoper
+              onOk={() => deleteCovers({ variables: { ids: selectedRows } })}
+            >
+              Batch Delete
+            </ConfirmPoper>
+          </Button>
+        )}
+      </div>
+      <DataGrid
+        rowHeight={100}
+        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        getRowId={(row) => row._id}
+        rows={dataSource}
+        columns={columns}
+        checkboxSelection
+        disableSelectionOnClick
+        autoHeight
+        onSelectionModelChange={(selected) => {
+          setSelectedRows(selected)
+        }}
+        pageSize={pageSize}
+        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        rowsPerPageOptions={[20, 40, 60]}
+      />
 
       <CoverModal
         open={open}
@@ -205,7 +173,7 @@ const CoverTable: FC<Props> = ({
         createCover={createCover}
         updateCoverById={updateCoverById}
       />
-    </>
+    </div>
   )
 }
 

@@ -1,17 +1,28 @@
 import { useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-export interface Open {
-  isOpen: boolean
+export interface Params<T> {
   id?: string
+  data?: T
 }
 
-const useOpenModal = () => {
-  const [open, setOpen] = useState<Open>({ isOpen: false })
+const useOpenModal = <T>() => {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
 
-  const handleOpen = (id?: string) => {
-    const params: Open = { isOpen: !open.isOpen }
-    params.id = id ? id : ''
-    setOpen(params)
+  const handleOpen = (params?: Params<T>) => {
+    if (open) {
+      setOpen(false)
+      navigate(pathname, { replace: true })
+    } else {
+      setOpen(true)
+      if (params?.id) {
+        navigate(pathname + '?id=' + params?.id, {
+          state: params?.data || {}
+        })
+      }
+    }
   }
 
   return { open, handleOpen }

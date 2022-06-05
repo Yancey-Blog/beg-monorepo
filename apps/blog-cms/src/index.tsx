@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
@@ -22,19 +22,16 @@ import {
 } from './shared/constants'
 import './assets/global.scss'
 
-ReactDOM.render(
-  <StrictMode>
-    <ReactKeycloakProvider
-      authClient={keycloak}
-      onTokens={({ token }) => {
-        localStorage.setItem('token', token || '')
-      }}
-      onEvent={(_, error) => {
-        if (error) {
-          keycloak.logout()
-        }
-      }}
-    >
+const root = createRoot(document.getElementById('root') as Element)
+
+root.render(
+  <ReactKeycloakProvider
+    authClient={keycloak}
+    onTokens={({ token }) => {
+      localStorage.setItem('token', token || '')
+    }}
+  >
+    <StrictMode>
       <ApolloProvider client={client}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={theme}>
@@ -55,9 +52,8 @@ ReactDOM.render(
           </ThemeProvider>
         </StyledEngineProvider>
       </ApolloProvider>
-    </ReactKeycloakProvider>
-  </StrictMode>,
-  document.getElementById('root')
+    </StrictMode>
+  </ReactKeycloakProvider>
 )
 
 // If you want your app to work offline and load faster, you can change

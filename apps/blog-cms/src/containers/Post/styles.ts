@@ -47,9 +47,6 @@ const useStyles = makeStyles(() =>
     },
 
     search: {
-      position: 'absolute',
-      right: '24px',
-      top: '83px',
       padding: '2px 4px',
       display: 'flex',
       alignItems: 'center',
@@ -66,6 +63,17 @@ const useStyles = makeStyles(() =>
     divider: {
       height: 28,
       margin: 4
+    },
+    tableWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%'
+    },
+    headerWrapper: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 16
     }
   })
 )

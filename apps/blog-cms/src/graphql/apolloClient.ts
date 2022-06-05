@@ -1,11 +1,9 @@
-import { ApolloClient, InMemoryCache, from } from '@apollo/client'
-import { BatchHttpLink } from '@apollo/client/link/batch-http'
+import { ApolloClient, InMemoryCache, from, HttpLink } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context'
-import { persistCache } from 'apollo-cache-persist'
 import SnackbarUtils from 'src/components/Toast/Toast'
 
-const httpLink = new BatchHttpLink({
+const httpLink = new HttpLink({
   uri: process.env.REACT_APP_BEG_SERVICE_DOMAIN
 })
 
@@ -31,26 +29,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 })
 
-const cache = new InMemoryCache()
-
-async function handlePersistCache() {
-  await persistCache({
-    cache,
-    // @ts-ignore
-    storage: window.localStorage,
-    maxSize: false
-  })
-}
-
-handlePersistCache()
-
 const client = new ApolloClient({
-  cache,
+  cache: new InMemoryCache(),
   resolvers: {},
   link: from([errorLink, authLink, httpLink]),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'no-cache'
     },
     query: {
       fetchPolicy: 'no-cache',

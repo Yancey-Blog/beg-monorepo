@@ -1,19 +1,17 @@
-import { FC } from 'react'
-import MUIDataTable, {
-  MUIDataTableOptions,
-  MUIDataTableColumn,
-  MUIDataTableMeta
-} from 'mui-datatables'
-import { DeleteOutline, Edit, AddBox } from '@mui/icons-material'
-import { FormControl, Fab, Button } from '@mui/material'
+import { FC, useState } from 'react'
+import {
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridRenderCellParams,
+  GridSelectionModel
+} from '@mui/x-data-grid'
+import { Edit, DeleteForever } from '@mui/icons-material'
+import { Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
-import TableWrapper from 'src/components/TableWrapper/TableWrapper'
-import Loading from 'src/components/Loading/Loading'
 import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
-import { TABLE_OPTIONS } from 'src/shared/constants'
-import useStyles from 'src/shared/globalStyles'
 import BestAlbumModal from './BestAlbumModal'
 import { IBestAlbum } from '../types'
 
@@ -39,129 +37,122 @@ const BestAlbumTable: FC<Props> = ({
   isBatchDeleting
 }) => {
   const { open, handleOpen } = useOpenModal()
+  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
+  const [pageSize, setPageSize] = useState(20)
 
-  const classes = useStyles()
-
-  const columns: MUIDataTableColumn[] = [
-    { name: '_id', label: 'ID' },
-    { name: 'title', label: 'Title' },
-    { name: 'artist', label: 'Artist' },
+  const columns: GridColDef<IBestAlbum>[] = [
+    { field: '_id', headerName: 'ID', flex: 1 },
+    { field: 'title', headerName: 'Title', flex: 1 },
+    { field: 'artist', headerName: 'Artist', flex: 1 },
     {
-      name: 'mvUrl',
-      label: 'Mv Url',
-      options: {
-        customBodyRender: (value: string) => (
-          <Button
-            href={value}
-            color="secondary"
-            target="_blank"
-            rel="noopener noreferrer"
+      field: 'mvUrl',
+      headerName: 'Mv Url',
+      renderCell: (params: GridValueGetterParams<'string', IBestAlbum>) => (
+        <Button
+          href={params.row.mvUrl}
+          color="secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click to jump
+        </Button>
+      ),
+      flex: 1
+    },
+    {
+      field: 'coverUrl',
+      headerName: 'Cover Url',
+      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+        <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
+      ),
+      flex: 1
+    },
+    {
+      field: 'releaseDate',
+      headerName: 'Release Date',
+      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+        <span>{formatJSONDate(params.row.releaseDate)}</span>
+      ),
+      flex: 1
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Created At',
+      valueGetter: (params: GridValueGetterParams<'string', IBestAlbum>) =>
+        formatJSONDate(params.row.createdAt),
+      flex: 1
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Updated At',
+      valueGetter: (params: GridValueGetterParams<'string', IBestAlbum>) =>
+        formatJSONDate(params.row.updatedAt),
+      flex: 1
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+        <>
+          <Edit
+            onClick={() => handleOpen({ id: params.row._id, data: params.row })}
+          />
+
+          <ConfirmPoper
+            onOk={() =>
+              deleteBestAlbumById({ variables: { id: params.row._id } })
+            }
           >
-            {value.slice(0, 20)}...
-          </Button>
-        )
-      }
-    },
-    {
-      name: 'coverUrl',
-      label: 'Cover Url',
-      options: {
-        customBodyRender: (value: string, tableMeta: MUIDataTableMeta) => {
-          const curName = tableMeta.rowData[1]
-          return <ImagePopup imgName={curName} imgUrl={value} />
-        }
-      }
-    },
-    {
-      name: 'releaseDate',
-      label: 'Release Date',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
-    },
-    {
-      name: 'createdAt',
-      label: 'Created At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
-    },
-    {
-      name: 'updatedAt',
-      label: 'Updated At',
-      options: {
-        customBodyRender: (value: string) => (
-          <span>{formatJSONDate(value)}</span>
-        )
-      }
-    },
-    {
-      name: 'action',
-      label: 'Action',
-      options: {
-        filter: false,
-        customBodyRender(value, tableMeta) {
-          const curId = tableMeta.rowData[0]
-          return (
-            <>
-              <FormControl>
-                <Edit
-                  className={classes.editIcon}
-                  onClick={() => handleOpen(curId)}
-                />
-              </FormControl>
-              <FormControl>
-                <ConfirmPoper
-                  onOk={() => deleteBestAlbumById({ variables: { id: curId } })}
-                >
-                  <DeleteOutline />
-                </ConfirmPoper>
-              </FormControl>
-            </>
-          )
-        }
-      }
+            <DeleteForever
+              style={{ margin: '0 20px', position: 'relative', top: 3 }}
+            />
+          </ConfirmPoper>
+        </>
+      ),
+      flex: 1
     }
   ]
 
-  const options: MUIDataTableOptions = {
-    ...TABLE_OPTIONS,
-    customToolbar() {
-      return (
-        <Fab size="medium" className={classes.addIconFab}>
-          <AddBox onClick={() => handleOpen()} />
-        </Fab>
-      )
-    },
-    customToolbarSelect(selectedRows) {
-      const ids = selectedRows.data.map(
-        (row: { index: number; dataIndex: number }) => dataSource[row.index]._id
-      )
-      return (
-        <Fab size="medium" className={classes.addIconFab}>
-          <ConfirmPoper onOk={() => deleteBestAlbums({ variables: { ids } })}>
-            <DeleteOutline />
-          </ConfirmPoper>
-        </Fab>
-      )
-    }
-  }
-
   return (
-    <>
-      <TableWrapper tableName="Best Album" icon="save">
-        <MUIDataTable
-          title=""
-          data={dataSource}
-          columns={columns}
-          options={options}
-        />
-        {(isFetching || isDeleting || isBatchDeleting) && <Loading />}
-      </TableWrapper>
+    <div style={{ width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginBottom: 24
+        }}
+      >
+        <Button variant="contained" onClick={() => handleOpen()}>
+          Create One
+        </Button>
+        {selectedRows.length > 0 && (
+          <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
+            <ConfirmPoper
+              onOk={() =>
+                deleteBestAlbums({ variables: { ids: selectedRows } })
+              }
+            >
+              Batch Delete
+            </ConfirmPoper>
+          </Button>
+        )}
+      </div>
+      <DataGrid
+        rowHeight={100}
+        loading={isFetching || isDeleting || isBatchDeleting}
+        getRowId={(row) => row._id}
+        rows={dataSource}
+        columns={columns}
+        checkboxSelection
+        disableSelectionOnClick
+        autoHeight
+        onSelectionModelChange={(selected) => {
+          setSelectedRows(selected)
+        }}
+        pageSize={pageSize}
+        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        rowsPerPageOptions={[20, 40, 60]}
+      />
 
       <BestAlbumModal
         open={open}
@@ -169,7 +160,7 @@ const BestAlbumTable: FC<Props> = ({
         createBestAlbum={createBestAlbum}
         updateBestAlbumById={updateBestAlbumById}
       />
-    </>
+    </div>
   )
 }
 

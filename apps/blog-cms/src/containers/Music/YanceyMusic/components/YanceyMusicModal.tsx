@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import {
   Button,
@@ -12,14 +13,14 @@ import {
 } from '@mui/material'
 import { useFormik } from 'formik'
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
-import client from 'src/graphql/apolloClient'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { Open } from 'src/hooks/useOpenModal'
+import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
+import { IYanceyMusic } from '../types'
 
 interface Props {
-  open: Open
+  open: boolean
   handleOpen: Function
   createYanceyMusic: Function
   updateYanceyMusicById: Function
@@ -31,7 +32,8 @@ const YanceyMusicModal: FC<Props> = ({
   createYanceyMusic,
   updateYanceyMusicById
 }) => {
-  const { isOpen, id } = open
+  const { search, state } = useLocation()
+  const { id } = parseSearch(search)
 
   const classes = useStyles()
 
@@ -83,24 +85,16 @@ const YanceyMusicModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const {
-        title,
-        soundCloudUrl,
-        releaseDate,
-        posterUrl
-        // @ts-ignore
-      } = client.cache.data.data[`YanceyMusicModel:${id}`]
-      setValues({
-        title,
-        soundCloudUrl,
-        releaseDate,
-        posterUrl
-      })
+      const { title, soundCloudUrl, releaseDate, posterUrl } =
+        state as IYanceyMusic
+
+      // @ts-ignore
+      setValues({ title, soundCloudUrl, releaseDate, posterUrl })
     }
-  }, [id, resetForm, setValues])
+  }, [id, resetForm, setValues, state])
 
   return (
-    <Dialog open={isOpen} onClose={() => handleOpen()}>
+    <Dialog open={open} onClose={() => handleOpen()}>
       <DialogTitle>{id ? 'Update' : 'Add'} a Yancey Music</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>
