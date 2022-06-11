@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.28.0",
+      "tag": "blog-web_v4.28.0",
+      "date": "Sat, 11 Jun 2022 11:35:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "error pages are mobile compatible, fix searchbox not closing when switching blog detail pages"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.27.0",
       "tag": "blog-web_v4.27.0",
       "date": "Sun, 05 Jun 2022 21:37:31 GMT",
