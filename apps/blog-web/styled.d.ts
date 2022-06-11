@@ -74,6 +74,7 @@ export interface ThemeVariables {
     overlay: number
   }
   headerHeight: string
+  headerHeightMobile: string
 }
 
 // and extend them!

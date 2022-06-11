@@ -1,4 +1,12 @@
-import { FC, useState, SyntheticEvent, useCallback } from 'react'
+import {
+  FC,
+  useState,
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useRef
+} from 'react'
+import { useRouter } from 'next/router'
 import algoliasearch from 'algoliasearch/lite'
 import {
   InstantSearch,
@@ -20,6 +28,8 @@ const searchClient = algoliasearch(
 )
 
 const AlgoliaSearchBox: FC = () => {
+  const router = useRouter()
+  const inputRef = useRef<HTMLInputElement>(null)
   const [showDrawer, setShowDrawer] = useState(false)
 
   const closeKeyboard = () => {
@@ -29,12 +39,22 @@ const AlgoliaSearchBox: FC = () => {
 
   const handleInputChange = (e: SyntheticEvent<HTMLInputElement, Event>) => {
     const val = e.currentTarget.value.trim()
-    setShowDrawer(!!val)
+
+    if (showDrawer && val !== '') {
+      return
+    }
+
+    setShowDrawer(val !== '')
   }
 
   const handleClose = useCallback(() => {
+    console.log('fuck me')
     setShowDrawer(false)
     closeKeyboard()
+
+    if (inputRef.current) {
+      inputRef.current.value = ''
+    }
   }, [])
 
   const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
@@ -45,6 +65,14 @@ const AlgoliaSearchBox: FC = () => {
       />
     ) : null
   )
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => {
+      if (showDrawer) {
+        handleClose()
+      }
+    })
+  }, [handleClose, router.events, showDrawer])
 
   return (
     <InstantSearch
@@ -57,6 +85,7 @@ const AlgoliaSearchBox: FC = () => {
       />
       <SearchBoxWrapper>
         <SearchBox
+          inputRef={inputRef}
           onChange={(e) => handleInputChange(e)}
           onReset={handleClose}
         />

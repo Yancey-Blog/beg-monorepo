@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { flexMixin } from 'src/styled/mixins'
+import breakpoints from 'src/styled/breakpoints'
 
 interface ColorProps {
   is404Page: boolean
@@ -12,28 +13,59 @@ const ErrorWrapper = styled.section`
   flex-direction: column;
   padding-top: ${({ theme }) => theme.headerHeight};
   min-height: 100vh;
+
+  @media only screen and ${breakpoints.device.laptop} {
+    min-height: auto;
+    padding-top: ${({ theme }) => theme.headerHeightMobile};
+  }
+`
+
+const ContentWrapper = styled.div`
+  @media only screen and ${breakpoints.device.laptop} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Header = styled.div`
   ${flexMixin()};
   height: calc(50vh - ${({ theme }) => theme.headerHeight});
+
+  @media only screen and ${breakpoints.device.laptop} {
+    flex-direction: column;
+  }
 `
 
 const Title = styled.h1<ColorProps>`
   margin-right: 4rem;
   font-size: 16rem !important;
   color: ${({ is404Page }) => (is404Page ? '#fef1da' : '#e5f8f2')};
+
+  @media only screen and ${breakpoints.device.laptop} {
+    margin-right: 0;
+    font-size: 10rem !important;
+    line-height: 1;
+  }
 `
 
 const Tips = styled.p<ColorProps>`
   font-size: 3.6rem !important;
   color: ${({ is404Page }) => (is404Page ? '#a89888' : '#88a899')};
+
+  @media only screen and ${breakpoints.device.laptop} {
+    font-size: 2rem !important;
+  }
 `
 
 const SubTips = styled(Tips)<ColorProps>`
   margin: 1.8rem 0;
   font-size: 2rem !important;
   font-weight: 300;
+
+  @media only screen and ${breakpoints.device.laptop} {
+    font-size: 1rem !important;
+  }
 `
 
 const BackToHomeBtn = styled.button<ColorProps>`
@@ -66,7 +98,7 @@ const Error: FC<Props> = ({ statusCode, imageUrl }) => {
     <ErrorWrapper>
       <Header>
         <Title is404Page={is404Page}>{statusCode}</Title>
-        <div>
+        <ContentWrapper>
           <Tips is404Page={is404Page}>Oops, You found me!</Tips>
           <SubTips is404Page={is404Page}>
             {statusCode === 404
@@ -78,7 +110,7 @@ const Error: FC<Props> = ({ statusCode, imageUrl }) => {
               <BackToHomeBtn is404Page={is404Page}>TAKE ME HOME</BackToHomeBtn>
             </a>
           </Link>
-        </div>
+        </ContentWrapper>
       </Header>
       <ErrorImg src={imgUrl} alt={statusCode.toString()} />
     </ErrorWrapper>
