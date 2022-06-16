@@ -1,19 +1,26 @@
-**Before submitting a pull request,** please make sure the following is done:
+<!-- Thank you for contributing! -->
 
-1. Fork the repository and create your branch from master.
+### Description
 
-2. Run pnpm run in the repository root.
+<!-- Please insert your description here and provide especially info about the "what" this PR is solving -->
 
-3. If you've fixed a bug or added code that should be tested, add tests!
+### Additional context
 
-4. Ensure the test suite passes (pnpm run test). Tip: pnpm run test --watch TestName is helpful in development.
+<!-- e.g. is there anything you'd like reviewers to focus on? -->
 
-5. Run pnpm run test-prod to test in the production environment. It supports the same options as pnpm run test.
+---
 
-6. If you need a debugger, run pnpm run debug-test --watch TestName, open chrome://inspect, and press "Inspect".
+### What is the purpose of this pull request? <!-- (put an "X" next to an item) -->
 
-7. Format your code with prettier (pnpm run prettier).
+- [ ] Bug fix
+- [ ] New Feature
+- [ ] Documentation update
+- [ ] Other
 
-8. Make sure your code lints (pnpm run lint). Tip: pnpm run linc to only check changed files.
+### Before submitting the PR, please make sure you do the following
 
-9. If you haven't already, complete the CLA.
+- [ ] Read the [Contributing Guidelines](https://github.com/Yancey-Blog/beg-monorepo/blob/master/CONTRIBUTING.md).
+- [ ] Read the [Pull Request Guidelines](https://github.com/Yancey-Blog/beg-monorepo/blob/master/CONTRIBUTING.md#pull-request-guidelines) and follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit).
+- [ ] Check that there isn't already a PR that solves the problem the same way to avoid creating a duplicate.
+- [ ] Provide a description in this PR that addresses **what** the PR is solving, or reference the issue that it solves (e.g. `fixes #123`).
+- [ ] Ideally, include relevant tests that fail without this PR but pass with it.

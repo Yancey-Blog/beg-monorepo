@@ -1,5 +1,40 @@
-# Contributing to BEG Monorepo
+# BEG Monorepo Contributing Guide
 
-Want to contribute to BEG Monorepo? There are a few things you need to know.
+Hi! We are really excited that you are interested in contributing to BEG Monorepo. Before submitting your contribution, please make sure to take a moment and read through the following guide:
 
-We wrote a [contribution guide](https://reactjs.org/contributing/how-to-contribute.html) to help you get started.
+## Repo Setup
+
+The BEG Monorepo repo is a monorepo using pnpm and rush.js. The package manager used to install and link dependencies must be [pnpm](https://pnpm.io/).
+
+To develop and test the core `BEG Monorepo` package:
+
+1. Run `rush update` in BEG Monorepo's root folder
+
+2. Run `pnpm run build` in each BEG Monorepo's sub app.
+
+> BEG Monorepo uses pnpm v7. If you are working on multiple projects with different versions of pnpm, it's recommend to enable [Corepack](https://github.com/nodejs/corepack) by running `corepack enable`.
+
+## Pull Request Guidelines
+
+- Checkout a topic branch from a base branch, e.g. `master`, and merge back against that branch.
+
+- If adding a new feature:
+
+  - Add accompanying test case.
+  - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
+
+- If fixing bug:
+
+  - If you are resolving a special issue, add `(fix #xxxx[,#xxxx])` (#xxxx is the issue id) in your PR title for a better release log, e.g. `fix: update entities encoding/decoding (fix #3899)`.
+  - Provide a detailed description of the bug in the PR. Live demo preferred.
+  - Add appropriate test coverage if applicable.
+
+- It's OK to have multiple small commits as you work on the PR - GitHub can automatically squash them before merging.
+
+- Make sure tests pass!
+
+- Commit messages must follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks).
+
+- No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks).
+
+We recommend talking with others in [BEG Monorepo](https://discord.gg/4ysK62cHxN) so you find more contributors for your language to share the maintenance work. Once the translation is done, communicate it to the BEG Monorepo team so the repo can be moved to the official BEG Monorepojs org in GitHub.
