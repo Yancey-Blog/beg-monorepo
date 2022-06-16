@@ -36,5 +36,3 @@ To develop and test the core `BEG Monorepo` package:
 - Commit messages must follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks).
 
 - No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks).
-
-We recommend talking with others in [BEG Monorepo](https://discord.gg/4ysK62cHxN) so you find more contributors for your language to share the maintenance work. Once the translation is done, communicate it to the BEG Monorepo team so the repo can be moved to the official BEG Monorepojs org in GitHub.
