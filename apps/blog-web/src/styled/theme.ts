@@ -111,6 +111,7 @@ const defaultTheme = {
     overlay: 400,
   },
   headerHeight: '4.5rem',
+  headerHeightMobile: '.87rem',
 }
 
 export const lightTheme: ThemeVariables = { ...defaultTheme, ...light }

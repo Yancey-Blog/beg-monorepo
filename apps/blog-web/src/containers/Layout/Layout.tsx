@@ -1,4 +1,4 @@
-import { FC, useEffect, ReactNode } from 'react'
+import { FC, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
