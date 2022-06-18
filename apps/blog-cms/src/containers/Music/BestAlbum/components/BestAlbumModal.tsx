@@ -12,7 +12,7 @@ import {
   FormLabel
 } from '@mui/material'
 import { useFormik } from 'formik'
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import Uploader from 'src/components/Uploader/Uploader'

@@ -12,11 +12,17 @@ export const createButton = () => {
 
 export const insertImage = (
   editorRef: RefObject<Editor>,
-  image: UploaderResponse
+  images: UploaderResponse[]
 ) => {
   if (editorRef.current) {
+    let imageText = ''
     const instance = editorRef.current.getInstance()
-    instance.insertText(`\n\n![${image.name}](${image.url})\n\n`)
+
+    images.forEach((image) => {
+      imageText += `\n\n![${image.name}](${image.url})\n\n`
+    })
+
+    instance.insertText(imageText)
   }
 }
 

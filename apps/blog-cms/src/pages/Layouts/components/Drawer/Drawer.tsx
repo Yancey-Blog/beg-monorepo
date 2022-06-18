@@ -1,4 +1,4 @@
-import { FC, Fragment, useState, useEffect } from 'react'
+import { FC, Fragment, useState, useEffect, useCallback } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Avatar, Skeleton } from '@mui/material'
 import { Home, Face } from '@mui/icons-material'
@@ -25,19 +25,18 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
     setfoldName(foldName === name ? '' : name)
   }
 
-  const matchChilren = (routeList: Route[]) => {
+  const matchChilren = useCallback((routeList: Route[]) => {
     const currRoute = routeList.find(
       (route) =>
         route.routes &&
         route.routes.find((childRoute) => pathname.includes(childRoute.path))
     )
     currRoute && setfoldName(currRoute.name)
-  }
+  }, [pathname])
 
   useEffect(() => {
     matchChilren(routes)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  }, [matchChilren, pathname])
 
   return (
     <menu

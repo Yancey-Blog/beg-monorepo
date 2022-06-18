@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { Card, CircularProgress, Button } from '@mui/material'
 import { Add, CloudUpload } from '@mui/icons-material'
 import { useSnackbar } from 'notistack'
-import axios from 'axios'
+import useUploadRequest from 'src/hooks/useUploadRequest'
 import { getURLPathName } from 'src/shared/utils'
 import { UploaderResponse, Props } from './types'
 import useclasses from './styles'
@@ -13,53 +13,26 @@ const Uploader: FC<Props> = ({
   variant = 'elevation',
   accept = 'image/*',
   defaultFile = '',
+  multiple = false,
   needMarginLeft = true,
   onChange,
   className
 }) => {
   const classes = useclasses()
-  const [loading, setLoading] = useState(false)
   const { enqueueSnackbar } = useSnackbar()
   const [currFile, setCurrFile] = useState<UploaderResponse>()
+  const { loading, uploadRequest } = useUploadRequest(onChange, setCurrFile)
 
-  const onUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    const token = localStorage.getItem('token')
+  const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
-    if (files) {
-      const file = files[0]
-      const formData = new FormData()
-      formData.append('file', file)
-      setLoading(true)
 
-      axios({
-        method: 'post',
-        url: `${process.env.REACT_APP_UPLOADER_SERVICE_DOMAIN}/uploadSingleFile`,
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`
-        }
-      })
-        .then((res) => {
-          setCurrFile(res.data)
-          onChange(res.data)
+    if (!files) {
+      enqueueSnackbar('Please upload a file!', { variant: 'error' })
+      return
+    }
 
-          enqueueSnackbar(
-            <span>
-              <span style={{ fontWeight: 'bold' }}>{res.data.name}</span> has
-              been uploaded successfully.
-            </span>,
-            {
-              variant: 'success'
-            }
-          )
-        })
-        .catch((e) => {
-          enqueueSnackbar('Upload failed', { variant: 'error' })
-        })
-        .finally(() => {
-          setLoading(false)
-        })
+    for (let i = 0; i < files.length; i++) {
+      uploadRequest(files[i])
     }
   }
 
@@ -101,6 +74,7 @@ const Uploader: FC<Props> = ({
           {avatarContent()}
           <input
             type="file"
+            multiple={multiple}
             accept={accept}
             onChange={(e) => onUpload(e)}
             className={classes.customInput}
@@ -123,6 +97,7 @@ const Uploader: FC<Props> = ({
             Upload
             <input
               type="file"
+              multiple={multiple}
               accept={accept}
               className={classes.customInput}
               onChange={(e) => onUpload(e)}

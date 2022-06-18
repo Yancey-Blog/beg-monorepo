@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, useState, RefObject } from 'react'
+import { flushSync } from 'react-dom'
 import {
   DialogActions,
   DialogTitle,
@@ -7,13 +8,15 @@ import {
   Button
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
+import { Editor } from '@toast-ui/react-editor'
 import Uploader from 'src/components/Uploader/Uploader'
+import { UploaderResponse } from 'src/components/Uploader/types'
+import { insertImage } from '../editors/enhanceEditor'
 
 interface Props {
   open: boolean
-  onOk: Function
-  onClose: Function
-  onChange: Function
+  editorRef: RefObject<Editor>
+  onClose: () => void
 }
 
 const useStyles = makeStyles({
@@ -22,24 +25,38 @@ const useStyles = makeStyles({
   }
 })
 
-const UploaderModal: FC<Props> = ({ open, onOk, onClose, onChange }) => {
+const UploaderModal: FC<Props> = ({ open, onClose, editorRef }) => {
   const classes = useStyles()
+  const [images, setImages] = useState<UploaderResponse[]>([])
 
-  const handleOk = () => {
-    onClose(false)
-    onOk()
+  const handleChange = (file: UploaderResponse) => {
+    flushSync(() => {
+      setImages((oldImages) => [...oldImages, file])
+    })
   }
+
+  const handleClose = () => {
+    setImages([])
+    onClose()
+  }
+
+  const hanldeOk = () => {
+    console.log(images)
+    insertImage(editorRef, images)
+    handleClose()
+  }
+
   return (
-    <Dialog open={open} onClose={() => onClose(false)}>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle>Insert image to markdown editor.</DialogTitle>
       <DialogContent className={classes.uploaderModalContent}>
-        <Uploader onChange={onChange} needMarginLeft={false} />
+        <Uploader onChange={handleChange} needMarginLeft={false} multiple />
       </DialogContent>
       <DialogActions>
-        <Button color="primary" onClick={() => onClose(false)}>
+        <Button color="primary" onClick={handleClose}>
           Cancel
         </Button>
-        <Button color="primary" onClick={handleOk}>
+        <Button color="primary" onClick={hanldeOk}>
           Insert
         </Button>
       </DialogActions>

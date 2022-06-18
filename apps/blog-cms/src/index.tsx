@@ -5,8 +5,8 @@ import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
-import DateAdapter from '@mui/lab/AdapterLuxon'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { SnackbarProvider } from 'notistack'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import Layouts from './pages/Layouts/Layouts'
@@ -41,7 +41,7 @@ root.render(
               autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
               preventDuplicate
             >
-              <LocalizationProvider dateAdapter={DateAdapter}>
+              <LocalizationProvider dateAdapter={AdapterLuxon}>
                 <SnackbarUtilsConfigurator />
                 <CssBaseline />
                 <BrowserRouter>

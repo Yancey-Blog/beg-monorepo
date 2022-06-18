@@ -21,7 +21,9 @@ import chartPlugin from '@toast-ui/editor-plugin-chart'
 import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
 import ChipInput from 'src/components/ChipInput/ChipInput'
 import Uploader from 'src/components/Uploader/Uploader'
+import Loading from 'src/components/Loading/Loading'
 import { UploaderResponse } from 'src/components/Uploader/types'
+import useUploadRequest from 'src/hooks/useUploadRequest'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
@@ -34,7 +36,7 @@ import {
   GET_POST_BY_ID
 } from './typeDefs'
 import UploaderModal from './components/UploaderModal'
-import { insertImage, insertImageButton } from './editors/enhanceEditor'
+import { insertImageButton, insertImage } from './editors/enhanceEditor'
 import { getMarkdown, getHTML, setMarkdown } from './editors/editorIO'
 import { sendPostToAlgolia } from './algolia/algoliaSearch'
 import {
@@ -57,32 +59,36 @@ const PostEditor: FC = () => {
   /* message bar */
   const { enqueueSnackbar } = useSnackbar()
 
+  const onCopyImageChange = (file: UploaderResponse) => {
+    insertImage(editorRef, [file])
+  }
+  const { loading, uploadRequest } = useUploadRequest(onCopyImageChange)
+
   /* graphql */
   const [createPostStatistics] = useMutation<
     CreatePostStatisticsMutation,
     PostStatisticsVars
   >(CREATE_POST_STATISTICS)
 
-  const [fetchPostById] =
-    useLazyQuery<GetPostByIdQuery>(GET_POST_BY_ID, {
-      variables: {
-        id
-      },
-      onCompleted(data) {
-        const { title, content, summary, tags, posterUrl } =
-          data.getPostByIdForCMS
+  const [fetchPostById] = useLazyQuery<GetPostByIdQuery>(GET_POST_BY_ID, {
+    variables: {
+      id
+    },
+    onCompleted(data) {
+      const { title, content, summary, tags, posterUrl } =
+        data.getPostByIdForCMS
 
-        setValues({
-          title,
-          summary,
-          tags,
-          posterUrl
-        })
+      setValues({
+        title,
+        summary,
+        tags,
+        posterUrl
+      })
 
-        setMarkdown(editorRef, content)
-      },
-      notifyOnNetworkStatusChange: true
-    })
+      setMarkdown(editorRef, content)
+    },
+    notifyOnNetworkStatusChange: true
+  })
 
   const [createPost, { loading: isCreatingPost }] = useMutation<
     CreatePostMutation,
@@ -155,8 +161,6 @@ const PostEditor: FC = () => {
   /* editor */
   const editorRef = useRef<Editor>(null)
   const [open, setOpen] = useState(false)
-  const [image, setImage] = useState<UploaderResponse>({ name: '', url: '' })
-  const handleEditorImageChange = (file: UploaderResponse) => setImage(file)
 
   /* posterUrl */
   const handlePosterImageChange = (data: UploaderResponse) => {
@@ -257,6 +261,36 @@ const PostEditor: FC = () => {
     return () => {
       clearInterval(timer)
     }
+  }, [])
+
+  useEffect(() => {
+    document.querySelector('.toastui-editor-pseudo-clipboard')?.remove()
+
+    if (editorRef.current) {
+      editorRef.current
+        .getInstance()
+        .getEditorElements()
+        .mdEditor.addEventListener('paste', (e: ClipboardEvent) => {
+          const items = e.clipboardData && e.clipboardData.items
+
+          if (!items) {
+            return
+          }
+
+          let file = null
+          for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+              file = items[i].getAsFile()
+              break
+            }
+          }
+
+          if (file) {
+            uploadRequest(file)
+          }
+        })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -398,10 +432,11 @@ const PostEditor: FC = () => {
 
       <UploaderModal
         open={open}
-        onClose={setOpen}
-        onChange={handleEditorImageChange}
-        onOk={() => insertImage(editorRef, image)}
+        editorRef={editorRef}
+        onClose={() => setOpen(false)}
       />
+
+      {loading && <Loading />}
     </section>
   )
 }
