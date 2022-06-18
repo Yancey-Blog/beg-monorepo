@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.29.1",
+      "tag": "blog-web_v4.29.1",
+      "date": "Sat, 18 Jun 2022 18:25:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reuse normalize.css"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.29.0",
       "tag": "blog-web_v4.29.0",
       "date": "Sat, 18 Jun 2022 17:45:06 GMT",

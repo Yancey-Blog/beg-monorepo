@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 18 Jun 2022 17:45:06 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Jun 2022 18:25:00 GMT and should not be manually modified.
+
+## 4.29.1
+Sat, 18 Jun 2022 18:25:00 GMT
+
+### Patches
+
+- reuse normalize.css
 
 ## 4.29.0
 Sat, 18 Jun 2022 17:45:06 GMT
