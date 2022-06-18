@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 11 Jun 2022 11:35:53 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Jun 2022 17:45:06 GMT and should not be manually modified.
+
+## 4.29.0
+Sat, 18 Jun 2022 17:45:06 GMT
+
+### Minor changes
+
+- 1. delete toc-bot; 2. supports dark logo; 3. adjust sumaary's css style of PostCard
 
 ## 4.28.0
 Sat, 11 Jun 2022 11:35:53 GMT

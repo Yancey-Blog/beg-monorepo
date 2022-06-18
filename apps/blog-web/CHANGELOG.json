@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.29.0",
+      "tag": "blog-web_v4.29.0",
+      "date": "Sat, 18 Jun 2022 17:45:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "1. delete toc-bot; 2. supports dark logo; 3. adjust sumaary's css style of PostCard"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.28.0",
       "tag": "blog-web_v4.28.0",
       "date": "Sat, 11 Jun 2022 11:35:53 GMT",
