@@ -33,10 +33,6 @@ export interface Props {
   post: IPostItem
 }
 
-// const TocComponent = dynamic(() => import('../components/Toc/Toc'), {
-//   ssr: false
-// })
-
 const PostDetail: FC<Props> = ({ post }) => {
   const router = useRouter()
   const theme = useTheme()
@@ -160,8 +156,6 @@ const PostDetail: FC<Props> = ({ post }) => {
         handleLikeChange={(newLike: number) => handleLikeChange(newLike)}
         postUrl={generatePostUrl(id as string)}
       />
-
-      {/* <TocComponent /> */}
 
       <Content>
         <Poster src={posterUrl} alt={title} />

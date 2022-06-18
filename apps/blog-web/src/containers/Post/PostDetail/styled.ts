@@ -150,35 +150,6 @@ export const ImageAlt = styled.figcaption`
   border-bottom: 1px dashed ${({ theme }) => theme.text.secondary};
 `
 
-export const Menu = styled.aside`
-  position: fixed;
-  top: 20rem;
-  left: 0;
-
-  .toc-link {
-    font-size: 1rem;
-    color: ${({ theme }) => theme.text.primary};
-  }
-
-  .toc-list {
-    padding-left: 1rem;
-    line-height: 1.6;
-    list-style-type: none;
-  }
-
-  .is-active-link {
-    color: ${({ theme }) => theme.colors.orange};
-
-    &::before {
-      background: ${({ theme }) => theme.colors.orange};
-    }
-  }
-
-  @media only screen and ${breakpoints.device.laptop} {
-    display: none;
-  }
-`
-
 export const TableWrapper = styled.div`
   display: flex;
   justify-content: center;

@@ -29,7 +29,6 @@
     "marked": "^4.0.8",
     "next": "^12.1.6",
     "next-pwa": "^5.4.0",
-    "normalize.css": "^8.0.1",
     "notistack": "^2.0.3",
     "nprogress": "^0.2.0",
     "nuka-carousel": "^4.8.4",
@@ -45,7 +44,6 @@
     "rehype-raw": "^6.1.0",
     "remark-gfm": "^3.0.0",
     "styled-components": "^5.3.3",
-    "tocbot": "^4.18.2",
     "yancey-js-util": "^3.0.0"
   },
   "devDependencies": {

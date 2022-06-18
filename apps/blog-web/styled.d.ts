@@ -75,6 +75,7 @@ export interface ThemeVariables {
   }
   headerHeight: string
   headerHeightMobile: string
+  logo: string
 }
 
 // and extend them!

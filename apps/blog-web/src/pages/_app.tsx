@@ -1,6 +1,7 @@
 import { SnackbarProvider } from 'notistack'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 import ToggleTheme from 'src/components/ToggleTheme/ToggleTheme'
@@ -16,9 +17,7 @@ import {
 } from 'src/shared/constants'
 import { devToolsWarning } from 'src/shared/utils'
 import { NextWebVitalsMetrics } from 'src/shared/types'
-import 'normalize.css'
 import 'aplayer/dist/APlayer.min.css'
-import 'tocbot/dist/tocbot.css'
 import 'src/styled/nprogress.css'
 
 interface Props extends AppProps {
@@ -57,6 +56,7 @@ const App = ({ Component, pageProps, err }: Props) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <ApolloProvider client={apolloClient}>
+        <CssBaseline />
         <SnackbarProvider
           maxSnack={SNACKBAR_MAX_NUM}
           anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}

@@ -103,8 +103,8 @@ export const MetaItem = styled.div`
 
 export const Summary = styled.p`
   margin: 1.4rem 0 1rem;
-  min-height: 8rem;
-  font-size: 1.1rem;
+  min-height: 7rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: ${({ theme }) => theme.text.header};
   display: -webkit-box;

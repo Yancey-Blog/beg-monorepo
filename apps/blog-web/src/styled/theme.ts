@@ -31,7 +31,8 @@ const light = {
   gradient: 'linear-gradient(#39598A, #79D7ED)',
   postSvg: '#fcf8db',
   codeEl: '#f0f0f0',
-  dot: '#ddd'
+  dot: '#ddd',
+  logo: 'images/logo-light.png'
 }
 
 const dark = {
@@ -65,7 +66,8 @@ const dark = {
   gradient: 'linear-gradient(#091236, #1E215D)',
   postSvg: '#181a1b',
   codeEl: '#181a1b',
-  dot: '#333'
+  dot: '#333',
+  logo: 'images/logo-dark.png'
 }
 
 const defaultTheme = {
