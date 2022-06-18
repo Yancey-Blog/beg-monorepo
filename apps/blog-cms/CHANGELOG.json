@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "blog-cms_v5.1.0",
+      "date": "Sat, 18 Jun 2022 06:33:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "1. use @mui/x-date-pickers instead of @mui/lab; 2. supports multipl and clipboarde upload"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.0",
       "tag": "blog-cms_v5.0.0",
       "date": "Sun, 05 Jun 2022 21:37:31 GMT",
