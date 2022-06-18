@@ -23,6 +23,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "@date-io/luxon",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@emotion/react",
       "allowedCategories": [ "apps" ]
     },
@@ -52,6 +56,10 @@
     },
     {
       "name": "@mui/x-data-grid",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@mui/x-date-pickers",
       "allowedCategories": [ "apps" ]
     },
     {
