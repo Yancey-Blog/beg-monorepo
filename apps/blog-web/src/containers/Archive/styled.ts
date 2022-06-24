@@ -29,7 +29,7 @@ export const YearList = styled.ul`
     position: absolute;
     content: '';
     top: 0;
-    left: 7rem;
+    left: 7.05rem;
     width: 4px;
     height: 100%;
     background: ${({ theme }) => theme.colors.archiveBlue};
@@ -86,6 +86,7 @@ export const DayItem = styled.li`
   position: relative;
   line-height: 2.4;
   white-space: nowrap;
+  list-style-type: none;
 
   &::after {
     position: absolute;

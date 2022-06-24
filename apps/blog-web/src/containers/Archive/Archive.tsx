@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client'
 import orderBy from 'lodash.orderby'
 import { months } from 'src/shared/constants'
 import { ARCHIVE } from 'src/containers/Post/typeDefs'
-import { ArchiveQuery } from 'src/containers/Post/types'
+import { ArchiveQuery, IArchive } from 'src/containers/Post/types'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import {
   ArchiveWrapper,
@@ -23,6 +23,11 @@ const Archive: FC = () => {
     notifyOnNetworkStatusChange: true
   })
 
+  const totalYearCount = (year: IArchive) => {
+    const total = year.months.reduce((acc, month) => acc + month.days.length, 0)
+    return total > 1 ? `${total} posts` : `${total} post`
+  }
+
   return (
     <>
       <ImageHeader title="Archive" imageUrl="/archive_page_header.jpg" />
@@ -31,48 +36,48 @@ const Archive: FC = () => {
         {!data
           ? null
           : data.archive.map((year) => (
-              <Fragment key={year._id}>
-                <Year>{year._id}</Year>
-                <YearList>
-                  {year.months.map((month) => (
-                    <li key={month.month}>
-                      <input type="checkbox" name="tabs" />
-                      <label>
-                        <Month>
-                          <MonthTxt>
-                            {months[month.month - 1]}
-                            {'. '}({month.days.length}{' '}
-                            {month.days.length > 1 ? 'posts' : 'post'})
-                          </MonthTxt>
-                        </Month>
-                      </label>
-                      <DayList className="dayListContainer">
-                        {
-                          // TODO:
-                          // The problem of descend ordering by `createdAt`
-                          // need to be solved by the backend.
-                          orderBy(month.days, ['createdAt'], ['desc']).map(
-                            (day) => (
-                              <DayItem key={day.id}>
-                                <Day>
-                                  {DateTime.fromISO(day.createdAt).day}
-                                  {': '}
-                                </Day>
-                                <Link href={`/post/${day.id}`}>
-                                  <a>
-                                    {day.title} ({day.pv} PV )
-                                  </a>
-                                </Link>
-                              </DayItem>
-                            )
+            <Fragment key={year._id}>
+              <Year>{`${year._id} (${totalYearCount(year)})`}</Year>
+              <YearList>
+                {year.months.map((month) => (
+                  <li key={month.month}>
+                    <input type="checkbox" name="tabs" />
+                    <label>
+                      <Month>
+                        <MonthTxt>
+                          {months[month.month - 1]}
+                          {'. '}({month.days.length}{' '}
+                          {month.days.length > 1 ? 'posts' : 'post'})
+                        </MonthTxt>
+                      </Month>
+                    </label>
+                    <DayList className="dayListContainer">
+                      {
+                        // TODO:
+                        // The problem of descend ordering by `createdAt`
+                        // need to be solved by the backend.
+                        orderBy(month.days, ['createdAt'], ['desc']).map(
+                          (day) => (
+                            <DayItem key={day.id}>
+                              <Day>
+                                {DateTime.fromISO(day.createdAt).day}
+                                {': '}
+                              </Day>
+                              <Link href={`/post/${day.id}`}>
+                                <a>
+                                  {day.title} ({day.pv} PV)
+                                </a>
+                              </Link>
+                            </DayItem>
                           )
-                        }
-                      </DayList>
-                    </li>
-                  ))}
-                </YearList>
-              </Fragment>
-            ))}
+                        )
+                      }
+                    </DayList>
+                  </li>
+                ))}
+              </YearList>
+            </Fragment>
+          ))}
       </ArchiveWrapper>
     </>
   )
