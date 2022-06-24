@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.30.0",
+      "tag": "blog-web_v4.30.0",
+      "date": "Fri, 24 Jun 2022 05:55:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add year posts total count"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.29.1",
       "tag": "blog-web_v4.29.1",
       "date": "Sat, 18 Jun 2022 18:25:00 GMT",

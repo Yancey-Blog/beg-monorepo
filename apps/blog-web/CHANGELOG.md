@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sat, 18 Jun 2022 18:25:00 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jun 2022 05:55:42 GMT and should not be manually modified.
+
+## 4.30.0
+Fri, 24 Jun 2022 05:55:42 GMT
+
+### Minor changes
+
+- add year posts total count
 
 ## 4.29.1
 Sat, 18 Jun 2022 18:25:00 GMT
