@@ -635,6 +635,18 @@
       "allowedCategories": [ "libs" ]
     },
     {
+      "name": "rollup-plugin-progress",
+      "allowedCategories": [ "libs" ]
+    },
+    {
+      "name": "rollup-plugin-terser",
+      "allowedCategories": [ "libs" ]
+    },
+    {
+      "name": "rollup-plugin-visualizer",
+      "allowedCategories": [ "libs" ]
+    },
+    {
       "name": "rxjs",
       "allowedCategories": [ "apps" ]
     },

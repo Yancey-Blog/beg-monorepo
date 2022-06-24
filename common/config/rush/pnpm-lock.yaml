@@ -158,6 +158,9 @@ specifiers:
   remark-gfm: ^3.0.0
   rimraf: ^3.0.2
   rollup: ^2.71.1
+  rollup-plugin-progress: ^1.1.2
+  rollup-plugin-terser: ^7.0.2
+  rollup-plugin-visualizer: ^5.6.0
   rxjs: ^7.3.0
   sass: ^1.34.0
   serve-favicon: ^2.5.0
@@ -171,7 +174,6 @@ specifiers:
   stylelint-config-styled-components: ^0.1.1
   stylelint-processor-styled-components: ^1.10.0
   supertest: ^6.1.6
-  tocbot: ^4.18.2
   ts-jest: ^28.0.4
   ts-loader: ^9.2.5
   ts-morph: ^15.1.0
@@ -359,6 +361,9 @@ dependencies:
   remark-gfm: 3.0.1
   rimraf: 3.0.2
   rollup: 2.75.6
+  rollup-plugin-progress: 1.1.2
+  rollup-plugin-terser: 7.0.2_rollup@2.75.6
+  rollup-plugin-visualizer: 5.6.0_rollup@2.75.6
   rxjs: 7.5.5
   sass: 1.52.2
   serve-favicon: 2.5.0
@@ -372,7 +377,6 @@ dependencies:
   stylelint-config-styled-components: 0.1.1
   stylelint-processor-styled-components: 1.10.0
   supertest: 6.2.3
-  tocbot: 4.18.2
   ts-jest: 28.0.4_418ecd02f6772da558843244b2b4abff
   ts-loader: 9.3.0_typescript@4.7.3
   ts-morph: 15.1.0
@@ -11605,8 +11609,8 @@ packages:
     engines: {node: '>=6.0'}
     dev: false
 
-  /chromedriver/102.0.0:
-    resolution: {integrity: sha512-xer/0g1Oarkjc2e+4nyoLgZT4kJHYhcj3PcxD1nEoGJQYEllTjprN1uDpSb4BkgMGo0ydfIS1VDkszrr/J9OOg==}
+  /chromedriver/103.0.0:
+    resolution: {integrity: sha512-7BHf6HWt0PeOHCzWO8qlnD13sARzr5AKTtG8Csn+czsuAsajwPxdLNtry5GPh8HYFyl+i0M+yg3bT43AGfgU9w==}
     engines: {node: '>=10'}
     hasBin: true
     requiresBuild: true
@@ -18973,7 +18977,7 @@ packages:
     dependencies:
       jwk-to-pem: 2.0.5
     optionalDependencies:
-      chromedriver: 102.0.0
+      chromedriver: 103.0.0
     transitivePeerDependencies:
       - debug
       - supports-color
@@ -24513,6 +24517,12 @@ packages:
     resolution: {integrity: sha1-8z/pz7Urv9UgqhgyO8ZdsRCht2w=}
     dev: false
 
+  /rollup-plugin-progress/1.1.2:
+    resolution: {integrity: sha512-6ehSZOMTZdAlRpe45kf56BnIOsDYC2GKWhGlK/Dh/Ae/AMUneMDyKdiv9ZlRrW/HVc986frTZcc2Zka+oF6W7Q==}
+    dependencies:
+      chalk: 2.4.2
+    dev: false
+
   /rollup-plugin-sourcemaps/0.6.3_cee02032b0848704d2fcd580f5c5dc57:
     resolution: {integrity: sha512-paFu+nT1xvuO1tPFYXGe+XnQvg4Hjqv/eIhG8i5EspfYYPBKL57X7iVbfv55aNVASg3dzWvES9dmWsL2KhfByw==}
     engines: {node: '>=10.0.0'}
@@ -24567,6 +24577,20 @@ packages:
       rollup: 1.32.1
       tslib: 2.0.1
       typescript: 3.9.10
+    dev: false
+
+  /rollup-plugin-visualizer/5.6.0_rollup@2.75.6:
+    resolution: {integrity: sha512-CKcc8GTUZjC+LsMytU8ocRr/cGZIfMR7+mdy4YnlyetlmIl/dM8BMnOEpD4JPIGt+ZVW7Db9ZtSsbgyeBH3uTA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    peerDependencies:
+      rollup: ^2.0.0
+    dependencies:
+      nanoid: 3.3.4
+      open: 8.4.0
+      rollup: 2.75.6
+      source-map: 0.7.4
+      yargs: 17.5.1
     dev: false
 
   /rollup-pluginutils/2.8.2:
@@ -28906,7 +28930,7 @@ packages:
     dev: false
 
   file:projects/blog-web.tgz_29c6c06d75043ca84ef5ae764024cc72:
-    resolution: {integrity: sha512-7JfGSOXYURZrbvHeHFHZgwqifA3JmW1ZylXeSX+8w18UdxRPlva9Ry03jFMaCZbCnbufSK8Yv6K/w0dHWIhZHA==, tarball: file:projects/blog-web.tgz}
+    resolution: {integrity: sha512-OjUnY1uFITHL0UirRBvzwrT6n2dyDzZ6+CFmw0oUWyW0RIAITYQ/0MD1c3YMXJk39JENeA2PNp10E1JKY9lI3Q==, tarball: file:projects/blog-web.tgz}
     id: file:projects/blog-web.tgz
     name: '@rush-temp/blog-web'
     version: 0.0.0
@@ -29152,7 +29176,7 @@ packages:
     dev: false
 
   file:projects/utils.tgz:
-    resolution: {integrity: sha512-AaCwo09Y8PRKgcyMQZI1g42bjYi30W0dKbAEMQuKQ+z4yuXXtWe/UNcExF8thciZGFF5DyUFBnYS0kT4fa1IOA==, tarball: file:projects/utils.tgz}
+    resolution: {integrity: sha512-z+qynZG4sb9r41PmqDr7GQj7AkHCPWEXFMdFFmeMGRQZybF+yY+aVUjBZ860rGvH8V52HdfWAwXx1vpmS+/x1w==, tarball: file:projects/utils.tgz}
     name: '@rush-temp/utils'
     version: 0.0.0
     dependencies:
@@ -29164,6 +29188,9 @@ packages:
       eslint-config-prettier: 8.5.0_eslint@8.17.0
       eslint-plugin-prettier: 4.0.0_ec1e505292ae08396b4b1e71ab408299
       rollup: 2.75.6
+      rollup-plugin-progress: 1.1.2
+      rollup-plugin-terser: 7.0.2_rollup@2.75.6
+      rollup-plugin-visualizer: 5.6.0_rollup@2.75.6
       ts-node: 10.8.1_2f4904d2ea745e9acb99fb2a8412b575
       tslib: 2.4.0
       typescript: 4.7.3
