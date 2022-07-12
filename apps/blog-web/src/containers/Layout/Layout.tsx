@@ -48,6 +48,13 @@ const Layout: FC<Props> = ({ title, children }) => {
     router.events.on('routeChangeError', () => NProgress.done())
   }, [router.events])
 
+  useEffect(() => {
+    if (data?.getGlobalSetting?.isGrayTheme) {
+      document.body.style.filter = 'grayscale(1)'
+    }
+
+  }, [data?.getGlobalSetting?.isGrayTheme])
+
   return (
     <Layouts>
       <Head title={title} />
