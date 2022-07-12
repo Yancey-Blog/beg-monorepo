@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.31.0",
+      "tag": "blog-web_v4.31.0",
+      "date": "Tue, 12 Jul 2022 13:02:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "wip Abe san"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.30.0",
       "tag": "blog-web_v4.30.0",
       "date": "Fri, 24 Jun 2022 05:55:42 GMT",

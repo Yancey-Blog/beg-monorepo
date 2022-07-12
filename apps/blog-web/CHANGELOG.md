@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Fri, 24 Jun 2022 05:55:42 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jul 2022 13:02:42 GMT and should not be manually modified.
+
+## 4.31.0
+Tue, 12 Jul 2022 13:02:42 GMT
+
+### Minor changes
+
+- wip Abe san
 
 ## 4.30.0
 Fri, 24 Jun 2022 05:55:42 GMT
