@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Tue, 12 Jul 2022 13:02:42 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 07:06:11 GMT and should not be manually modified.
+
+## 4.31.1
+Thu, 14 Jul 2022 07:06:11 GMT
+
+### Patches
+
+-  fix overflowX when grayscale(1)
 
 ## 4.31.0
 Tue, 12 Jul 2022 13:02:42 GMT

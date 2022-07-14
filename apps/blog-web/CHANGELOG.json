@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.31.1",
+      "tag": "blog-web_v4.31.1",
+      "date": "Thu, 14 Jul 2022 07:06:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " fix overflowX when grayscale(1)"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.31.0",
       "tag": "blog-web_v4.31.0",
       "date": "Tue, 12 Jul 2022 13:02:42 GMT",
