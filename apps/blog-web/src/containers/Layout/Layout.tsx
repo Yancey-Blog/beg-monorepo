@@ -50,7 +50,7 @@ const Layout: FC<Props> = ({ title, children }) => {
 
   useEffect(() => {
     if (data?.getGlobalSetting?.isGrayTheme) {
-      document.body.style.filter = 'grayscale(1)'
+      document.body.style.cssText = 'filter: grayscale(1); overflow-x: hidden';
     }
 
   }, [data?.getGlobalSetting?.isGrayTheme])
