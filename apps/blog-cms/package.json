@@ -62,7 +62,7 @@
     "@testing-library/user-event": "^13.1.9",
     "@types/jest": "^27.0.1",
     "@types/loadable__component": "^5.13.3",
-    "@types/luxon": "^2.0.7",
+    "@types/luxon": "^3.0.0",
     "@types/mui-datatables": "^3.7.5",
     "@types/node": "^16.11.6",
     "@types/prismjs": "^1.16.6",
