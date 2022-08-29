@@ -40,7 +40,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^15.7.2",
-    "helmet": "^5.0.0",
+    "helmet": "^6.0.0",
     "joi": "^17.4.2",
     "keycloak-connect": "^16.1.0",
     "luxon": "^2.3.0",
