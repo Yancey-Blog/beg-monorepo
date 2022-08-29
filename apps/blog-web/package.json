@@ -57,7 +57,7 @@
     "@types/react": "^17.0.38",
     "@types/react-instantsearch-core": "^6.10.5",
     "@types/react-instantsearch-dom": "^6.10.0",
-    "@types/react-syntax-highlighter": "^13.5.2",
+    "@types/react-syntax-highlighter": "^15.5.5",
     "@types/styled-components": "^5.1.19",
     "eslint": "^8.6.0",
     "eslint-config-next": "^12.0.7",
