@@ -90,7 +90,7 @@
     "sass": "^1.34.0",
     "source-map-explorer": "^2.5.2",
     "typescript": "^4.5.4",
-    "web-vitals": "^2.1.2",
+    "web-vitals": "^3.0.0",
     "workbox-background-sync": "^6.1.5",
     "workbox-broadcast-update": "^6.1.5",
     "workbox-cacheable-response": "^6.1.5",
