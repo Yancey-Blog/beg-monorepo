@@ -38,7 +38,7 @@
     "graphql-tag": "^2.12.4",
     "keycloak-js": "^16.1.0",
     "luxon": "^2.3.0",
-    "material-ui-popup-state": "^2.0.0",
+    "material-ui-popup-state": "^4.1.0",
     "mui-datatables": "^4.0.0",
     "notistack": "^2.0.3",
     "prismjs": "^1.25.0",
