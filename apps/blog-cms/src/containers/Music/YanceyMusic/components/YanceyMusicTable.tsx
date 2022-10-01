@@ -46,7 +46,7 @@ const YanceyMusicTable: FC<Props> = ({
     {
       field: 'soundCloudUrl',
       headerName: 'SoundCloud Url',
-      renderCell: (params: GridValueGetterParams<'string', IYanceyMusic>) => (
+      renderCell: (params: GridRenderCellParams<'string', IYanceyMusic>) => (
         <Button
           href={params.row.soundCloudUrl}
           color="secondary"

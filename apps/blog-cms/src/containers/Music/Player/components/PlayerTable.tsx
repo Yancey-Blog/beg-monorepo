@@ -62,7 +62,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'lrc',
       headerName: 'LRC',
-      renderCell: (params: GridValueGetterParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
         <PopupState variant="popover" popupId="lrcPoperOver">
           {(popupState) => (
             <div>
@@ -90,7 +90,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'coverUrl',
       headerName: 'Cover Url',
-      renderCell: (params: GridValueGetterParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
       ),
       flex: 1
@@ -98,7 +98,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'musicFileUrl',
       headerName: 'Music File Url',
-      renderCell: (params: GridValueGetterParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
         <audio src={params.row.musicFileUrl} controls>
           Your browser does not support the audio element.
         </audio>
@@ -108,7 +108,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'isPublic',
       headerName: 'Is Public',
-      renderCell: (params: GridValueGetterParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
         <Switch
           checked={params.row.isPublic}
           onChange={(e) => {

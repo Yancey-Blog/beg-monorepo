@@ -46,7 +46,7 @@ const LiveTourTable: FC<Props> = ({
     {
       field: 'posterUrl',
       headerName: 'Poster Url',
-      renderCell: (params: GridValueGetterParams<'string', ILiveTour>) => (
+      renderCell: (params: GridRenderCellParams<'string', ILiveTour>) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.posterUrl} />
       ),
       flex: 1

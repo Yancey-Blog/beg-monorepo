@@ -55,7 +55,7 @@ const CoverTable: FC<Props> = ({
     {
       field: 'coverUrl',
       headerName: 'Cover Url',
-      renderCell: (params: GridValueGetterParams) => (
+      renderCell: (params: GridRenderCellParams) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
       ),
       flex: 1
@@ -63,7 +63,7 @@ const CoverTable: FC<Props> = ({
     {
       field: 'isPublic',
       headerName: 'Is Public',
-      renderCell: (params: GridValueGetterParams) => (
+      renderCell: (params: GridRenderCellParams) => (
         <Switch
           checked={params.row.isPublic}
           onChange={(e) => {

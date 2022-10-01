@@ -47,7 +47,7 @@ const OpenSourceTable: FC<Props> = ({
     {
       field: 'url',
       headerName: 'Url',
-      renderCell: (params: GridValueGetterParams<'string', IOpenSource>) => (
+      renderCell: (params: GridRenderCellParams<'string', IOpenSource>) => (
         <Button
           href={params.row.url}
           color="secondary"
@@ -62,7 +62,7 @@ const OpenSourceTable: FC<Props> = ({
     {
       field: 'posterUrl',
       headerName: 'Poster Url',
-      renderCell: (params: GridValueGetterParams<'string', IOpenSource>) => (
+      renderCell: (params: GridRenderCellParams<'string', IOpenSource>) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.posterUrl} />
       ),
       flex: 1

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import cur from 'public/images/normal.cur'
 import breakpoints from './breakpoints'
 import { ThemeVariables as DefaultTheme } from '../../styled'
 
@@ -19,7 +18,6 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }: { theme: DefaultTheme }) =>
       theme.background.primary};
     color: ${({ theme }: { theme: DefaultTheme }) => theme.text.base};  
-    cursor: url(${cur}), auto;
   }
 
   a {
