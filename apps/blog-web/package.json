@@ -38,7 +38,7 @@
     "react-instantsearch-core": "^6.12.1",
     "react-instantsearch-dom": "^6.15.0",
     "react-markdown": "^8.0.3",
-    "react-medium-image-zoom": "^4.3.7",
+    "react-medium-image-zoom": "^5.0.3",
     "react-share": "^4.4.0",
     "react-syntax-highlighter": "^15.4.4",
     "rehype-raw": "^6.1.0",
