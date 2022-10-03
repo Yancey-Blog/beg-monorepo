@@ -41,7 +41,7 @@
     "notistack": "^2.0.3",
     "prismjs": "^1.25.0",
     "query-string": "^7.0.1",
-    "react": "^18.1.0",
+    "react": "^17.0.2",
     "react-calendar-heatmap": "^1.8.1",
     "react-chartjs-2": "^4.0.0",
     "react-copy-to-clipboard": "^5.0.2",
