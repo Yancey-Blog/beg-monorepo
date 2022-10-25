@@ -17,6 +17,7 @@ export const NavBar = styled.nav`
   background: ${({ theme }) => theme.background.primary};
   box-shadow: 0 1px 40px -8px ${({ theme }) => theme.colors.fiveOpcityBlack};
   z-index: ${({ theme }) => theme.zIndex.fixed};
+  opacity: 0.9;
   ${transitionMixin('background', 250, 'linear')};
 
   @media only screen and ${breakpoints.device.laptop} {
