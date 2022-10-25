@@ -47,7 +47,7 @@ const BestAlbumTable: FC<Props> = ({
     {
       field: 'mvUrl',
       headerName: 'Mv Url',
-      renderCell: (params: GridValueGetterParams<'string', IBestAlbum>) => (
+      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
         <Button
           href={params.row.mvUrl}
           color="secondary"
