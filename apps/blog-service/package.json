@@ -23,7 +23,7 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
-    "@apollo/gateway": "^0.50.0",
+    "@apollo/gateway": "^2.2.2",
     "@azure/storage-blob": "^12.8.0",
     "@nestjs/apollo": "^10.0.14",
     "@nestjs/axios": "^0.1.0",
