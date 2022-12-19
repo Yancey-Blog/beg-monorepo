@@ -47,7 +47,7 @@
     "yancey-js-util": "^3.0.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.2.5",
+    "@next/bundle-analyzer": "^13.0.7",
     "@types/lodash.orderby": "^4.6.6",
     "@types/lodash.throttle": "^4.1.6",
     "@types/luxon": "^3.0.1",
