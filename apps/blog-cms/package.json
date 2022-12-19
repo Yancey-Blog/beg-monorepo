@@ -40,7 +40,7 @@
     "material-ui-popup-state": "^4.0.2",
     "notistack": "^2.0.3",
     "prismjs": "^1.25.0",
-    "query-string": "^7.0.1",
+    "query-string": "^8.0.3",
     "react": "^18.1.0",
     "react-calendar-heatmap": "^1.8.1",
     "react-chartjs-2": "^4.0.0",
