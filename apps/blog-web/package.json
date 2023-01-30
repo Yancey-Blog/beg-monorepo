@@ -60,7 +60,7 @@
     "@types/react-syntax-highlighter": "^15.5.5",
     "@types/styled-components": "^5.1.19",
     "eslint": "^8.17.0",
-    "eslint-config-next": "^12.0.7",
+    "eslint-config-next": "^13.1.6",
     "lint-staged": "^13.0.3",
     "stylelint": "^14.2.0",
     "stylelint-config-recommended": "^6.0.0",
