@@ -18,7 +18,7 @@
     "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.1.0",
     "@mui/styles": "^5.1.0",
-    "@mui/x-data-grid": "^5.11.0",
+    "@mui/x-data-grid": "^6.0.0",
     "@mui/x-date-pickers": "^5.0.0-alpha.6",
     "@react-keycloak/web": "^3.4.0",
     "@toast-ui/editor": "^3.2.1",
