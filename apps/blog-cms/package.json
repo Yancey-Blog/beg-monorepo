@@ -52,7 +52,7 @@
     "react-tooltip": "^4.2.14",
     "tui-color-picker": "^2.2.8",
     "yancey-js-util": "^3.0.0",
-    "yup": "^0.32.8"
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
