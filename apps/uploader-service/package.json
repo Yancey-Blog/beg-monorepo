@@ -37,7 +37,7 @@
     "nest-keycloak-connect": "^1.7.6",
     "nest-winston": "^1.6.1",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.3.0",
     "rxjs": "^7.3.0",
     "sharp": "^0.31.0",
     "winston": "^3.3.3",
