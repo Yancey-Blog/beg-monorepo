@@ -563,6 +563,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "react-ga4",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "react-hotjar",
       "allowedCategories": [ "apps" ]
     },
