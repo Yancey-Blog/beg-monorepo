@@ -267,6 +267,10 @@
       "allowedCategories": [ "apps" ]
     },
     {
+      "name": "chromedriver",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "class-transformer",
       "allowedCategories": [ "apps" ]
     },
