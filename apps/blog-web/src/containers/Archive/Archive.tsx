@@ -36,48 +36,46 @@ const Archive: FC = () => {
         {!data
           ? null
           : data.archive.map((year) => (
-            <Fragment key={year._id}>
-              <Year>{`${year._id} (${totalYearCount(year)})`}</Year>
-              <YearList>
-                {year.months.map((month) => (
-                  <li key={month.month}>
-                    <input type="checkbox" name="tabs" />
-                    <label>
-                      <Month>
-                        <MonthTxt>
-                          {months[month.month - 1]}
-                          {'. '}({month.days.length}{' '}
-                          {month.days.length > 1 ? 'posts' : 'post'})
-                        </MonthTxt>
-                      </Month>
-                    </label>
-                    <DayList className="dayListContainer">
-                      {
-                        // TODO:
-                        // The problem of descend ordering by `createdAt`
-                        // need to be solved by the backend.
-                        orderBy(month.days, ['createdAt'], ['desc']).map(
-                          (day) => (
-                            <DayItem key={day.id}>
-                              <Day>
-                                {DateTime.fromISO(day.createdAt).day}
-                                {': '}
-                              </Day>
-                              <Link href={`/post/${day.id}`}>
-                                <a>
+              <Fragment key={year._id}>
+                <Year>{`${year._id} (${totalYearCount(year)})`}</Year>
+                <YearList>
+                  {year.months.map((month) => (
+                    <li key={month.month}>
+                      <input type="checkbox" name="tabs" />
+                      <label>
+                        <Month>
+                          <MonthTxt>
+                            {months[month.month - 1]}
+                            {'. '}({month.days.length}{' '}
+                            {month.days.length > 1 ? 'posts' : 'post'})
+                          </MonthTxt>
+                        </Month>
+                      </label>
+                      <DayList className="dayListContainer">
+                        {
+                          // TODO:
+                          // The problem of descend ordering by `createdAt`
+                          // need to be solved by the backend.
+                          orderBy(month.days, ['createdAt'], ['desc']).map(
+                            (day) => (
+                              <DayItem key={day.id}>
+                                <Day>
+                                  {DateTime.fromISO(day.createdAt).day}
+                                  {': '}
+                                </Day>
+                                <Link href={`/post/${day.id}`}>
                                   {day.title} ({day.pv} PV)
-                                </a>
-                              </Link>
-                            </DayItem>
+                                </Link>
+                              </DayItem>
+                            )
                           )
-                        )
-                      }
-                    </DayList>
-                  </li>
-                ))}
-              </YearList>
-            </Fragment>
-          ))}
+                        }
+                      </DayList>
+                    </li>
+                  ))}
+                </YearList>
+              </Fragment>
+            ))}
       </ArchiveWrapper>
     </>
   )

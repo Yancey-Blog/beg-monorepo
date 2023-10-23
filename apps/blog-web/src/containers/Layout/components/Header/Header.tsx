@@ -18,44 +18,34 @@ const Header: FC<Props> = ({ globalSetting }) => {
       </Link>
       <NavBarItem>
         <Link href="/">
-          <a>
-            <svg>
-              <use xlinkHref={SVG_SPRITE.home} />
-            </svg>
-            Home
-          </a>
+          <svg>
+            <use xlinkHref={SVG_SPRITE.home} />
+          </svg>
+          Home
         </Link>
         <Link href="/post">
-          <a>
-            <svg>
-              <use xlinkHref={SVG_SPRITE.blog} />
-            </svg>
-            Blog
-          </a>
+          <svg>
+            <use xlinkHref={SVG_SPRITE.blog} />
+          </svg>
+          Blog
         </Link>
         <Link href="/archive">
-          <a>
-            <svg>
-              <use xlinkHref={SVG_SPRITE.archive} />
-            </svg>
-            Archive
-          </a>
+          <svg>
+            <use xlinkHref={SVG_SPRITE.archive} />
+          </svg>
+          Archive
         </Link>
         <Link href="/music">
-          <a>
-            <svg>
-              <use xlinkHref={SVG_SPRITE.music} />
-            </svg>
-            Music
-          </a>
+          <svg>
+            <use xlinkHref={SVG_SPRITE.music} />
+          </svg>
+          Music
         </Link>
         <Link href={`/post/${cvPostId}`}>
-          <a>
-            <svg>
-              <use xlinkHref={SVG_SPRITE.cv} />
-            </svg>
-            About
-          </a>
+          <svg>
+            <use xlinkHref={SVG_SPRITE.cv} />
+          </svg>
+          About
         </Link>
       </NavBarItem>
     </NavBar>

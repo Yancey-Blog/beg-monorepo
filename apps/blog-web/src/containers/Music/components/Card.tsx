@@ -98,9 +98,7 @@ const Card: FC<Props> = ({ type, url, title, date, cover }) => {
 
         {type === 'note' ? (
           <Link href={`/post/${url}`}>
-            <a>
-              <Btn>READ MORE</Btn>
-            </a>
+            <Btn>READ MORE</Btn>
           </Link>
         ) : (
           <a href={url} target="_blank" rel="noopener noreferrer">

@@ -94,13 +94,11 @@ const PrevAndNext: FC<Props> = ({ prev, next }) => {
     type: ItemType
   ) => (
     <Link href={`/post/${id}`}>
-      <a>
-        <PictureContainer>
-          <Image src={posterUrl} alt={title} />
-          <Title>{type} POST</Title>
-          <Title>{title}</Title>
-        </PictureContainer>
-      </a>
+      <PictureContainer>
+        <Image src={posterUrl} alt={title} />
+        <Title>{type} POST</Title>
+        <Title>{title}</Title>
+      </PictureContainer>
     </Link>
   )
 

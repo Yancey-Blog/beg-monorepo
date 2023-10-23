@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import LazyLoadImage from 'src/components/LazyLoadImage/LazyLoadImage'
 import { formatDate } from 'src/shared/utils'
 import { SVG_SPRITE } from 'src/shared/constants'
 import {
   PostCardWrapper,
-  PosterAnchor,
+  PosterImg,
   SummaryWrapper,
   ReleasedAt,
   SVG,
@@ -27,9 +26,7 @@ const PostCard: FC<Props> = ({ post }) => {
   return (
     <PostCardWrapper>
       <Link href={`/post/${_id}`} passHref>
-        <PosterAnchor>
-          <LazyLoadImage src={posterUrl} alt={title} />
-        </PosterAnchor>
+        <PosterImg src={posterUrl} alt={title}/>
       </Link>
       <SummaryWrapper>
         <ReleasedAt>
@@ -40,9 +37,7 @@ const PostCard: FC<Props> = ({ post }) => {
         </ReleasedAt>
 
         <Link href={`/post/${_id}`}>
-          <a>
-            <Title>{title}</Title>
-          </a>
+          <Title>{title}</Title>
         </Link>
 
         <Meta>
@@ -62,20 +57,16 @@ const PostCard: FC<Props> = ({ post }) => {
             <SVG>
               <use xlinkHref={SVG_SPRITE.folder} />
             </SVG>
-            <Link href={`/post?tag=${tags[0]}`}>
-              <a>{tags[0]}</a>
-            </Link>
+            <Link href={`/post?tag=${tags[0]}`}>{tags[0]}</Link>
           </MetaItem>
         </Meta>
 
         <Summary>{summary}</Summary>
 
         <Link href={`/post/${_id}`}>
-          <a>
-            <ReadMoreSVG>
-              <use xlinkHref={SVG_SPRITE.more} />
-            </ReadMoreSVG>
-          </a>
+          <ReadMoreSVG>
+            <use xlinkHref={SVG_SPRITE.more} />
+          </ReadMoreSVG>
         </Link>
       </SummaryWrapper>
     </PostCardWrapper>

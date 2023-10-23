@@ -86,19 +86,17 @@ const Top7PVPosts: FC<Props> = ({ topPVPosts }) => {
           const { _id, title, posterUrl } = post
           return (
             <Link href={`/post/${_id}`} key={_id}>
-              <a>
-                <CardItem>
-                  <BlurBg imageUrl={posterUrl} />
+              <CardItem>
+                <BlurBg imageUrl={posterUrl} />
 
-                  <CardContent>
-                    <span>
-                      <Title>{title}</Title>
-                      <Url>{generatePostUrl(_id)}</Url>
-                    </span>
-                    <Thumb alt={title} src={posterUrl} />
-                  </CardContent>
-                </CardItem>
-              </a>
+                <CardContent>
+                  <span>
+                    <Title>{title}</Title>
+                    <Url>{generatePostUrl(_id)}</Url>
+                  </span>
+                  <Thumb alt={title} src={posterUrl} />
+                </CardContent>
+              </CardItem>
             </Link>
           )
         })

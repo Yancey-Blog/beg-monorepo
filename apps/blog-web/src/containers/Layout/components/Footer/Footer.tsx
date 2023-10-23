@@ -36,14 +36,10 @@ const Footer: FC<Props> = ({ globalSetting }) => {
         </CopyRight>
         <nav>
           <Link href={`/post/${releasePostId}`}>
-            <a>
-              <InnerLink>Chronicle of Events</InnerLink>
-            </a>
+            <InnerLink>Chronicle of Events</InnerLink>
           </Link>
           <Link href="/legal/privacy-policy">
-            <a>
-              <InnerLink>Privacy Policy</InnerLink>
-            </a>
+            <InnerLink>Privacy Policy</InnerLink>
           </Link>
           <Email href={SOCIAL_MEDIA.email.url}>Contact Me</Email>
         </nav>

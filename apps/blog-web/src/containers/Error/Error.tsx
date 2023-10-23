@@ -106,9 +106,7 @@ const Error: FC<Props> = ({ statusCode, imageUrl }) => {
               : 'An error occurred on server!'}
           </SubTips>
           <Link href="/">
-            <a>
-              <BackToHomeBtn is404Page={is404Page}>TAKE ME HOME</BackToHomeBtn>
-            </a>
+            <BackToHomeBtn is404Page={is404Page}>TAKE ME HOME</BackToHomeBtn>
           </Link>
         </ContentWrapper>
       </Header>

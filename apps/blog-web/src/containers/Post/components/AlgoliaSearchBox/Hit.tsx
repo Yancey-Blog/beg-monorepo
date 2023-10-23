@@ -20,22 +20,20 @@ interface Props {
 const HitComponent: ComponentType<Props> = ({ hit }) => {
   return (
     <Link href={`/post/${hit.objectID}`}>
-      <a>
-        <HitName>
-          <Highlight attribute="name" hit={hit} />
-          {hit.labels.map((val: string) => (
-            <HitTag key={val}>{val}</HitTag>
-          ))}
-        </HitName>
-        <br />
-        <HitDescription>
-          <Snippet attribute="description" hit={hit} />
-        </HitDescription>
-        <br />
-        <HitContent>
-          <Snippet hit={hit} attribute="content" />
-        </HitContent>
-      </a>
+      <HitName>
+        <Highlight attribute="name" hit={hit} />
+        {hit.labels.map((val: string) => (
+          <HitTag key={val}>{val}</HitTag>
+        ))}
+      </HitName>
+      <br />
+      <HitDescription>
+        <Snippet attribute="description" hit={hit} />
+      </HitDescription>
+      <br />
+      <HitContent>
+        <Snippet hit={hit} attribute="content" />
+      </HitContent>
     </Link>
   )
 }

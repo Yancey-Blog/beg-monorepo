@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import LazyLoadImage from 'src/components/LazyLoadImage/LazyLoadImage'
 import { ICover } from '../types'
 
 const Covers = styled.figure`

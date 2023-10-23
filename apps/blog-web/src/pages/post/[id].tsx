@@ -9,7 +9,7 @@ import { GetPostByIdQuery, GetPostByIdVar } from 'src/containers/Post/types'
 
 const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
   return (
-    <Layout>
+    <Layout title={post.title}>
       <PostDetailContainer post={post} />
     </Layout>
   )

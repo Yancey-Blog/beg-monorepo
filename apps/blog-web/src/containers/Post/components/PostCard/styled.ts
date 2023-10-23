@@ -35,9 +35,10 @@ export const PostCardWrapper = styled.section`
   }
 `
 
-export const PosterAnchor = styled.a`
+export const PosterImg = styled.img`
   position: relative;
   width: 33rem;
+  height: 22rem;
   overflow: hidden;
   cursor: pointer;
 
