@@ -2,6 +2,18 @@
   "name": "uploader-service",
   "entries": [
     {
+      "version": "1.4.0",
+      "tag": "uploader-service_v1.4.0",
+      "date": "Mon, 23 Oct 2023 05:51:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update dependenies"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "uploader-service_v1.3.0",
       "date": "Sun, 05 Jun 2022 21:37:31 GMT",

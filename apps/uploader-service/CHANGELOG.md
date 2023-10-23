@@ -1,6 +1,13 @@
 # Change Log - uploader-service
 
-This log was last generated on Sun, 05 Jun 2022 21:37:31 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 05:51:02 GMT and should not be manually modified.
+
+## 1.4.0
+Mon, 23 Oct 2023 05:51:02 GMT
+
+### Minor changes
+
+- update dependenies
 
 ## 1.3.0
 Sun, 05 Jun 2022 21:37:31 GMT

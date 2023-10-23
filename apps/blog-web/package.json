@@ -1,6 +1,6 @@
 {
   "name": "blog-web",
-  "version": "4.31.1",
+  "version": "4.32.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.32.0",
+      "tag": "blog-web_v4.32.0",
+      "date": "Mon, 23 Oct 2023 05:51:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "supports next v13"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.31.1",
       "tag": "blog-web_v4.31.1",
       "date": "Thu, 14 Jul 2022 07:06:11 GMT",
