@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.33.2",
+      "tag": "blog-web_v4.33.2",
+      "date": "Sun, 29 Oct 2023 08:05:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete the useless ReactGA.exception"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.33.1",
       "tag": "blog-web_v4.33.1",
       "date": "Sun, 29 Oct 2023 07:40:16 GMT",

@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Sun, 29 Oct 2023 07:40:16 GMT and should not be manually modified.
+This log was last generated on Sun, 29 Oct 2023 08:05:12 GMT and should not be manually modified.
+
+## 4.33.2
+Sun, 29 Oct 2023 08:05:12 GMT
+
+### Patches
+
+- delete the useless ReactGA.exception
 
 ## 4.33.1
 Sun, 29 Oct 2023 07:40:16 GMT
