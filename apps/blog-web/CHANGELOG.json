@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.33.1",
+      "tag": "blog-web_v4.33.1",
+      "date": "Sun, 29 Oct 2023 07:40:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "supports react-ga4"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.33.0",
       "tag": "blog-web_v4.33.0",
       "date": "Mon, 23 Oct 2023 07:00:46 GMT",

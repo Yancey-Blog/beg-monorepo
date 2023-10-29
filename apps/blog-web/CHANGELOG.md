@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Mon, 23 Oct 2023 07:00:46 GMT and should not be manually modified.
+This log was last generated on Sun, 29 Oct 2023 07:40:16 GMT and should not be manually modified.
+
+## 4.33.1
+Sun, 29 Oct 2023 07:40:16 GMT
+
+### Patches
+
+- supports react-ga4
 
 ## 4.33.0
 Mon, 23 Oct 2023 07:00:46 GMT
