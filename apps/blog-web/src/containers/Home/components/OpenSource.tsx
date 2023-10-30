@@ -110,7 +110,10 @@ const OpenSource: FC<Props> = ({ data }) => {
           return (
             <a href={url} target="_blank" rel="noopener noreferrer" key={_id}>
               <OpenSourceItem data-title={title} data-intro={description}>
-                <img src={posterUrl} alt={title} />
+                {
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={posterUrl} alt={title} />
+                }
                 <Overlay className="openSourceOverlay" />
               </OpenSourceItem>
             </a>

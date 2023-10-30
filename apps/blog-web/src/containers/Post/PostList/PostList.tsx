@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ChangeEvent } from 'react'
+import { FC, useState, useEffect, ChangeEvent, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { useQuery, useLazyQuery } from '@apollo/client'
 import Pagination from '@mui/material/Pagination'
@@ -44,17 +44,20 @@ const PostList: FC = () => {
     notifyOnNetworkStatusChange: true
   })
 
-  const fetchPosts = (currPage = 1, tag?: string) => {
-    getPosts({
-      variables: {
-        input: {
-          page: currPage,
-          pageSize: 10,
-          tag
+  const fetchPosts = useCallback(
+    (currPage = 1, tag?: string) => {
+      getPosts({
+        variables: {
+          input: {
+            page: currPage,
+            pageSize: 10,
+            tag
+          }
         }
-      }
-    })
-  }
+      })
+    },
+    [getPosts]
+  )
 
   // @ts-ignore
   const handlePageChange = (e: ChangeEvent<unknown>, val: number) => {
@@ -66,7 +69,7 @@ const PostList: FC = () => {
   useEffect(() => {
     setPage(1)
     fetchPosts(1, searchTag as string)
-  }, [searchTag])
+  }, [searchTag, fetchPosts])
 
   return (
     <>

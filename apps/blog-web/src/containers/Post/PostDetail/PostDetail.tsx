@@ -89,7 +89,10 @@ const PostDetail: FC<Props> = ({ post }) => {
           overlayBgColorEnd={theme.background.mask}
         >
           <ImageGroup {...props}>
-            <img src={src} alt={alt} />
+            {
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={src} alt={alt} />
+            }
             <ImageAlt>{alt}</ImageAlt>
           </ImageGroup>
         </Zoom>
@@ -123,7 +126,7 @@ const PostDetail: FC<Props> = ({ post }) => {
 
   useEffect(() => {
     router.events.on('routeChangeComplete', () => updatePV())
-  }, [router.events])
+  }, [router.events, updatePV])
 
   const {
     title,
