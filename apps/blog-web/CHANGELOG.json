@@ -2,6 +2,18 @@
   "name": "blog-web",
   "entries": [
     {
+      "version": "4.34.0",
+      "tag": "blog-web_v4.34.0",
+      "date": "Mon, 30 Oct 2023 08:59:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "follow the advice of eslint"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.33.2",
       "tag": "blog-web_v4.33.2",
       "date": "Sun, 29 Oct 2023 08:05:12 GMT",
