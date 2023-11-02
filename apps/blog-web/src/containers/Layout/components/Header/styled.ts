@@ -76,6 +76,7 @@ export const NavBarItem = styled.div`
 `
 
 export const Logo = styled.span`
+  display: inline-block;
   width: 14.67rem;
   height: 2.93rem;
   background: url(${({ theme }) => theme.logo});
