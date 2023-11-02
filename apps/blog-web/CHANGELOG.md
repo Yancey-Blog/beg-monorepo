@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Mon, 30 Oct 2023 08:59:59 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 09:26:03 GMT and should not be manually modified.
+
+## 4.34.1
+Thu, 02 Nov 2023 09:26:03 GMT
+
+### Patches
+
+- show logo img needs a block element
 
 ## 4.34.0
 Mon, 30 Oct 2023 08:59:59 GMT
