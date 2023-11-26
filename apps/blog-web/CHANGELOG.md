@@ -1,6 +1,13 @@
 # Change Log - blog-web
 
-This log was last generated on Thu, 02 Nov 2023 09:26:03 GMT and should not be manually modified.
+This log was last generated on Sun, 26 Nov 2023 14:52:06 GMT and should not be manually modified.
+
+## 4.35.0
+Sun, 26 Nov 2023 14:52:06 GMT
+
+### Minor changes
+
+- update social media link
 
 ## 4.34.1
 Thu, 02 Nov 2023 09:26:03 GMT
