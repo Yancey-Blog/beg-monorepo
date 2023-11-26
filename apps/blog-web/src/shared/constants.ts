@@ -58,7 +58,7 @@ export const SOCIAL_MEDIA: SocialMedia = {
     icon: SVG_SPRITE.twitter
   },
   instagram: {
-    url: 'https://www.instagram.com/yancey_leo/',
+    url: 'https://www.instagram.com/YanceyOfficial/',
     icon: SVG_SPRITE.instagram
   },
   soundCloud: {
@@ -70,7 +70,7 @@ export const SOCIAL_MEDIA: SocialMedia = {
     icon: SVG_SPRITE.telegram
   },
   paypal: {
-    url: 'https://www.paypal.me/yanceyleo/10usd',
+    url: 'https://www.paypal.me/yanceyofficial/10usd',
     icon: SVG_SPRITE.paypal
   },
   wechat: {
