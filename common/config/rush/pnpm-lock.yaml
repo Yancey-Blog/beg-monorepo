@@ -161,6 +161,9 @@ dependencies:
   '@types/express':
     specifier: ^4.17.13
     version: 4.17.21
+  '@types/express-serve-static-core':
+    specifier: ^4.17.41
+    version: 4.17.41
   '@types/jest':
     specifier: ^29.0.0
     version: 29.5.11
@@ -8547,7 +8550,7 @@ packages:
     resolution: {integrity: sha512-TEbt+vaPFQ+xpxFLFssxUDXj5cWCxZJjIcB7Yg0k0GMHGtgtQgpvx/MUQUeAkNbA9AAGrwkAsoeItdTgS7FMyg==}
     dependencies:
       '@types/body-parser': 1.19.2
-      '@types/express-serve-static-core': 4.17.31
+      '@types/express-serve-static-core': 4.17.41
       '@types/qs': 6.9.11
       '@types/serve-static': 1.15.5
     dev: false
@@ -20960,6 +20963,7 @@ packages:
   /normalize-path@2.1.1:
     resolution: {integrity: sha512-3pKJwH184Xo/lnH6oyP1q2pMd7HcypqqmRs91/6/i2CGtWwIKGCkOOMTm/zXbgTEWHw1uNpNi/igc3ePOYHb6w==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       remove-trailing-separator: 1.1.0
     dev: false
@@ -24062,6 +24066,7 @@ packages:
 
   /remove-trailing-separator@1.1.0:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
+    requiresBuild: true
     dev: false
 
   /renderkid@2.0.7:
@@ -28853,7 +28858,7 @@ packages:
     dev: false
 
   file:projects/blog-service.tgz(@babel/core@7.23.6)(eslint-plugin-jsx-a11y@6.8.0)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2):
-    resolution: {integrity: sha512-ix7TlcUdM791pjxf774vWFPP3yfAi+NqctrVV7Zu5zFRIbB4pS0+RTekEVC1HaPS3ipiLIVfyQ2ggn9FozKvEQ==, tarball: file:projects/blog-service.tgz}
+    resolution: {integrity: sha512-CN1HNGKCVsywsbWNZupO3W/zOJEfb0DT7M2sf0FJQyX4ZD9cWxSKDHH4Wa46TkuCmp7Ha1rYVWRQ5vC2KgpY7Q==, tarball: file:projects/blog-service.tgz}
     id: file:projects/blog-service.tgz
     name: '@rush-temp/blog-service'
     version: 0.0.0
@@ -28871,6 +28876,7 @@ packages:
       '@nestjs/platform-express': 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)
       '@nestjs/schematics': 9.2.0(chokidar@3.5.3)(typescript@4.9.5)
       '@nestjs/testing': 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/platform-express@9.4.3)
+      '@types/express-serve-static-core': 4.17.41
       '@types/jest': 29.5.11
       '@types/luxon': 3.3.7
       '@types/multer': 1.4.11
