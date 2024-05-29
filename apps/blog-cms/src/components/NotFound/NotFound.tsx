@@ -15,7 +15,7 @@ const NotFound: FC = () => {
   return (
     <section className={classes.notFound}>
       <h1 className={classes.header}>
-        404: The page you are looking for isn’t here
+        404: The page you are looking for isn't here
       </h1>
       <p className={classes.tips}>
         You either tried some shady route or you came here by mistake. Whichever
