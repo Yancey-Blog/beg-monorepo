@@ -41,7 +41,7 @@ Chart.register(
   SubTitle
 )
 
-const DashBoard: FC = () => {
+const Dashboard: FC = () => {
   const classes = useStyles()
 
   const { loading: isFechingServiceInfo, data: serviceInfo } = useQuery(
@@ -133,4 +133,4 @@ const DashBoard: FC = () => {
   )
 }
 
-export default DashBoard
+export default Dashboard
