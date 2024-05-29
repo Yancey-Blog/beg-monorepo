@@ -19,15 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - name: Install Pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.22.2
+          version: latest
 
       - name: Install rush.js globally
         run: pnpm add @microsoft/rush --global
@@ -62,17 +62,39 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
-    continue-on-error: true
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.4
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install rush.js globally
+        run: pnpm add @microsoft/rush --global
+
+      - name: Install dependencies
+        run: rush update --bypass-policy
+  
+      - name: Compilation
+        run: rush build -o blog-cms --impacted-by @shared/utils
+
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-blog-cms-deploy.sh
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: 'build'
+          target: '/var/www/beg-monorepo/apps/blog-cms'
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
