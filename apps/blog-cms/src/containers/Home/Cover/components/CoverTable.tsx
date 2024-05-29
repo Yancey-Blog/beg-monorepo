@@ -23,7 +23,7 @@ interface Props {
   isDeleting: boolean
   isExchanging: boolean
   isBatchDeleting: boolean
-  isPublicingCovers: boolean
+  isPublicCovers: boolean
   deleteCoverById: Function
   deleteCovers: Function
   createCover: Function
