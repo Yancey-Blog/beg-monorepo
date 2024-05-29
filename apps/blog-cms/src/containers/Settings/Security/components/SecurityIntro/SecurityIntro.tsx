@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   }
 })
 
-const SecurtyIntro: FC = () => {
+const SecurityIntro: FC = () => {
   const classes = useStyles()
 
   return (
@@ -29,4 +29,4 @@ const SecurtyIntro: FC = () => {
   )
 }
 
-export default SecurtyIntro
+export default SecurityIntro
