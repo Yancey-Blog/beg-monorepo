@@ -88,15 +88,22 @@ jobs:
         run: rush build -o blog-cms --impacted-by @shared/utils
         continue-on-error: true
 
+      - name: Run a multi-line script
+        run: |
+          mkdir ../build
+          cp -TR . ../build
+          tar -cvf deploy.tar ../build/
+
       - name: Copy file via ssh key
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: 'build'
+          source: "deploy.tar"
           target: '/var/www/beg-monorepo/apps/blog-cms'
+          overwrite: true
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
