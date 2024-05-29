@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Wed, 29 May 2024 14:52:38 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2024 15:09:02 GMT and should not be manually modified.
+
+## 5.2.1
+Wed, 29 May 2024 15:09:02 GMT
+
+### Patches
+
+- typo: `DashBoard` to `Dashboard`
 
 ## 5.2.0
 Wed, 29 May 2024 14:52:38 GMT

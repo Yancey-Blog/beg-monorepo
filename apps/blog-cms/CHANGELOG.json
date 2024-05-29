@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.2.1",
+      "tag": "blog-cms_v5.2.1",
+      "date": "Wed, 29 May 2024 15:09:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "typo: `DashBoard` to `Dashboard`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "blog-cms_v5.2.0",
       "date": "Wed, 29 May 2024 14:52:38 GMT",
