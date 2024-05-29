@@ -27,7 +27,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: latest
+          version: 8.x
 
       - name: Install rush.js globally
         run: pnpm add @microsoft/rush --global
@@ -75,7 +75,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 8.x
 
       - name: Install rush.js globally
         run: pnpm add @microsoft/rush --global
