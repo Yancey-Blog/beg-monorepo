@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.2.2",
+      "tag": "blog-cms_v5.2.2",
+      "date": "Wed, 29 May 2024 15:22:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "typo: `isPublicingCovers` to `isPublicCovers`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.1",
       "tag": "blog-cms_v5.2.1",
       "date": "Wed, 29 May 2024 15:09:02 GMT",

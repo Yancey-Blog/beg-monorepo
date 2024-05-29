@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Wed, 29 May 2024 15:09:02 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2024 15:22:27 GMT and should not be manually modified.
+
+## 5.2.2
+Wed, 29 May 2024 15:22:27 GMT
+
+### Patches
+
+- typo: `isPublicingCovers` to `isPublicCovers`
 
 ## 5.2.1
 Wed, 29 May 2024 15:09:02 GMT
