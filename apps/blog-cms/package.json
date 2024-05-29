@@ -1,6 +1,6 @@
 {
   "name": "blog-cms",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
