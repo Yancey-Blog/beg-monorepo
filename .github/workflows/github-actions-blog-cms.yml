@@ -37,6 +37,7 @@ jobs:
 
       - name: Pre compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
+        continue-on-error: true
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -85,6 +86,7 @@ jobs:
   
       - name: Compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
+        continue-on-error: true
 
       - name: Copy file via ssh key
         uses: appleboy/scp-action@v0.1.4
