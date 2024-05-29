@@ -62,7 +62,7 @@ const Cover: FC = () => {
     }
   )
 
-  const [publicCovers, { loading: isPublicingCovers }] = useMutation(
+  const [publicCovers, { loading: isPublicCovers }] = useMutation(
     BATCH_PUBLIC_COVERS,
 
     {
@@ -151,7 +151,7 @@ const Cover: FC = () => {
       isDeleting={isDeleting}
       isExchanging={isExchanging}
       isBatchDeleting={isBatchDeleting}
-      isPublicingCovers={isPublicingCovers}
+      isPublicCovers={isPublicCovers}
       deleteCoverById={deleteCoverById}
       createCover={createCover}
       updateCoverById={updateCoverById}
