@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sat, 18 Jun 2022 06:33:21 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2024 14:52:38 GMT and should not be manually modified.
+
+## 5.2.0
+Wed, 29 May 2024 14:52:38 GMT
+
+### Minor changes
+
+- Typo: `Securty` to `Security`
 
 ## 5.1.0
 Sat, 18 Jun 2022 06:33:21 GMT
