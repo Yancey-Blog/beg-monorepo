@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { ChartData } from 'chart.js'
-import { IBandwagonUsageStatus } from 'src/containers/Dashboard/types'
+import { IBandwagonUsageStatus } from './types'
 
 const chartConfig = (
   usageStatus: IBandwagonUsageStatus[],

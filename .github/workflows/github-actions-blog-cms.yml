@@ -37,7 +37,6 @@ jobs:
 
       - name: Pre compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
-        continue-on-error: true
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -86,7 +85,6 @@ jobs:
 
       - name: Compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
-        continue-on-error: true
 
       - name: List build directory
         run: ls -al apps/blog-cms/build/
