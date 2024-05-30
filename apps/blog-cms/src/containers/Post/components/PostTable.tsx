@@ -20,7 +20,7 @@ import {
 } from '@mui/material'
 import { DeleteOutline, Edit, Search, Clear } from '@mui/icons-material'
 import { formatJSONDate } from 'yancey-js-util'
-import { stringfySearch } from 'src/shared/utils'
+import { stringifySearch } from 'src/shared/utils'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import globalUseStyles from 'src/shared/globalStyles'
@@ -64,7 +64,7 @@ const PostTable: FC<Props> = ({
   const toEditPage = (id?: string) => {
     navigate({
       pathname: `${pathname}/edit`,
-      search: stringfySearch({ id })
+      search: stringifySearch({ id })
     })
   }
 

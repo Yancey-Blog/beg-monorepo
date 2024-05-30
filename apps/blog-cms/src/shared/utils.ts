@@ -18,7 +18,7 @@ export const goBack = () => window.history.back()
 export const parseSearch = (search: string) =>
   qs.parse(search, { parseBooleans: true })
 
-export const stringfySearch = (searchObj: Dict) => qs.stringify(searchObj)
+export const stringifySearch = (searchObj: Dict) => qs.stringify(searchObj)
 
 export const noop = () => {}
 
