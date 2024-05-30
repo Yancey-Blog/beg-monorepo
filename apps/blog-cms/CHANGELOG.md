@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Wed, 29 May 2024 16:06:09 GMT and should not be manually modified.
+This log was last generated on Thu, 30 May 2024 13:29:12 GMT and should not be manually modified.
+
+## 5.2.4
+Thu, 30 May 2024 13:29:12 GMT
+
+### Patches
+
+- typo: `ConfirmPoper` to `ConfirmPopover`
 
 ## 5.2.3
 Wed, 29 May 2024 16:06:09 GMT
