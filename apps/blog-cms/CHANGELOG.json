@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.2.5",
+      "tag": "blog-cms_v5.2.5",
+      "date": "Thu, 30 May 2024 13:55:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "typo: `stringfySearch` to `stringifySearch`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.4",
       "tag": "blog-cms_v5.2.4",
       "date": "Thu, 30 May 2024 13:29:12 GMT",
