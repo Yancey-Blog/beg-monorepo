@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.2.6",
+      "tag": "blog-cms_v5.2.6",
+      "date": "Thu, 30 May 2024 14:03:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "typo: `hanldeOk` to `handleOk`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.5",
       "tag": "blog-cms_v5.2.5",
       "date": "Thu, 30 May 2024 13:55:08 GMT",
