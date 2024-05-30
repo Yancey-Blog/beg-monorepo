@@ -85,7 +85,9 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Compilation
-        run: rush build -o blog-cms --impacted-by @shared/utils
+        run: |
+          cd apps/blog-cms
+          rushx build
         continue-on-error: true
 
       - name: List build directory

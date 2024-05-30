@@ -29,7 +29,7 @@ const ImagePopup: FC<Props> = ({ imgUrl, imgName }) => {
   const classes = useStyles()
 
   return (
-    <PopupState variant="popover" popupId="imagePoperOver">
+    <PopupState variant="popover" popupId="imagePopover">
       {(popupState) => (
         <div>
           <img
