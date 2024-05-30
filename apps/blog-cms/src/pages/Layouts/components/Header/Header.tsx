@@ -90,7 +90,7 @@ const Header: FC<Props> = ({
           </Badge>
         </IconButton>
 
-        <PopupState variant="popover" popupId="deleteOnePoperOver">
+        <PopupState variant="popover" popupId="deleteOnePopover">
           {(popupState) => {
             const handleLogout = () => {
               popupState.close()

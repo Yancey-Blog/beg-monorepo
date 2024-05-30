@@ -18,9 +18,9 @@ interface Props {
   onOk: () => void
 }
 
-const ConfirmPoper: FC<Props> = ({ children, onOk, title }) => {
+const ConfirmPopover: FC<Props> = ({ children, onOk, title }) => {
   return (
-    <PopupState variant="popover" popupId="deleteOnePoperOver">
+    <PopupState variant="popover" popupId="deleteOnePopover">
       {(popupState) => (
         <>
           <div style={{ cursor: 'pointer' }} {...bindTrigger(popupState)}>
@@ -58,4 +58,4 @@ const ConfirmPoper: FC<Props> = ({ children, onOk, title }) => {
   )
 }
 
-export default ConfirmPoper
+export default ConfirmPopover

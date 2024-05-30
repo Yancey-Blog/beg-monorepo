@@ -11,7 +11,7 @@ import { Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import MottoModal from './MottoModal'
-import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
+import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import Move from 'src/components/Move/Move'
 import { IMotto } from '../types'
 import { MOTTOS } from '../typeDefs'
@@ -72,13 +72,13 @@ const MottoTable: FC<Props> = ({
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
           />
 
-          <ConfirmPoper
+          <ConfirmPopover
             onOk={() => deleteMottoById({ variables: { id: params.row._id } })}
           >
             <DeleteForever
               style={{ margin: '0 20px', position: 'relative', top: 3 }}
             />
-          </ConfirmPoper>
+          </ConfirmPopover>
 
           <Move
             refetchQueries={[MOTTOS]}
@@ -105,11 +105,11 @@ const MottoTable: FC<Props> = ({
         </Button>
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
-            <ConfirmPoper
+            <ConfirmPopover
               onOk={() => deleteMottos({ variables: { ids: selectedRows } })}
             >
               Batch Delete
-            </ConfirmPoper>
+            </ConfirmPopover>
           </Button>
         )}
       </div>

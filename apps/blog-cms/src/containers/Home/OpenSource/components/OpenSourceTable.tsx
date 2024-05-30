@@ -10,7 +10,7 @@ import { Edit, DeleteForever } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
-import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
+import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import OpenSourceModal from './OpenSourceModal'
 import { IOpenSource } from '../types'
@@ -90,7 +90,7 @@ const OpenSourceTable: FC<Props> = ({
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
           />
 
-          <ConfirmPoper
+          <ConfirmPopover
             onOk={() =>
               deleteOpenSourceById({ variables: { id: params.row._id } })
             }
@@ -98,7 +98,7 @@ const OpenSourceTable: FC<Props> = ({
             <DeleteForever
               style={{ margin: '0 20px', position: 'relative', top: 3 }}
             />
-          </ConfirmPoper>
+          </ConfirmPopover>
         </>
       ),
       flex: 1
@@ -119,13 +119,13 @@ const OpenSourceTable: FC<Props> = ({
         </Button>
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
-            <ConfirmPoper
+            <ConfirmPopover
               onOk={() =>
                 deleteOpenSources({ variables: { ids: selectedRows } })
               }
             >
               Batch Delete
-            </ConfirmPoper>
+            </ConfirmPopover>
           </Button>
         )}
       </div>

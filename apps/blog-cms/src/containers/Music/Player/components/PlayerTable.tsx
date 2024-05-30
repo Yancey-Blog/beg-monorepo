@@ -12,7 +12,7 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import { formatJSONDate } from 'yancey-js-util'
 import useOpenModal from 'src/hooks/useOpenModal'
 import Move from 'src/components/Move/Move'
-import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
+import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import {
   POPOVER_ANCHOR_ORIGIN,
@@ -153,13 +153,13 @@ const PlayerTable: FC<Props> = ({
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
           />
 
-          <ConfirmPoper
+          <ConfirmPopover
             onOk={() => deletePlayerById({ variables: { id: params.row._id } })}
           >
             <DeleteForever
               style={{ margin: '0 20px', position: 'relative', top: 3 }}
             />
-          </ConfirmPoper>
+          </ConfirmPopover>
 
           <Move
             refetchQueries={[PLAYERS]}
@@ -187,11 +187,11 @@ const PlayerTable: FC<Props> = ({
         </Button>
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
-            <ConfirmPoper
+            <ConfirmPopover
               onOk={() => deletePlayers({ variables: { ids: selectedRows } })}
             >
               Batch Delete
-            </ConfirmPoper>
+            </ConfirmPopover>
           </Button>
         )}
       </div>

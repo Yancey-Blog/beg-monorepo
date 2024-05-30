@@ -21,7 +21,7 @@ import {
 import { DeleteOutline, Edit, Search, Clear } from '@mui/icons-material'
 import { formatJSONDate } from 'yancey-js-util'
 import { stringfySearch } from 'src/shared/utils'
-import ConfirmPoper from 'src/components/ConfirmPoper/ConfirmPoper'
+import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import globalUseStyles from 'src/shared/globalStyles'
 import { IPostItem } from '../types'
@@ -192,11 +192,11 @@ const PostTable: FC<Props> = ({
             />
           </FormControl>
           <FormControl>
-            <ConfirmPoper
+            <ConfirmPopover
               onOk={() => deletePostById({ variables: { id: params.row._id } })}
             >
               <DeleteOutline />
-            </ConfirmPoper>
+            </ConfirmPopover>
           </FormControl>
         </>
       ),
@@ -217,11 +217,11 @@ const PostTable: FC<Props> = ({
               color="error"
               style={{ marginLeft: 24 }}
             >
-              <ConfirmPoper
+              <ConfirmPopover
                 onOk={() => deletePosts({ variables: { ids: selectedRows } })}
               >
                 Batch Delete
-              </ConfirmPoper>
+              </ConfirmPopover>
             </Button>
           )}
         </div>
