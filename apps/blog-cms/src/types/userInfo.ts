@@ -1,5 +1,4 @@
 export interface UserInfo {
-  // address: {}
   email: string
   email_verified: true
   family_name: string
