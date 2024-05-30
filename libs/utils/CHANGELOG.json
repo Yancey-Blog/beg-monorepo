@@ -2,6 +2,18 @@
   "name": "@shared/utils",
   "entries": [
     {
+      "version": "1.2.3",
+      "tag": "@shared/utils_v1.2.3",
+      "date": "Thu, 30 May 2024 15:38:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "eleminate compile warnings"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.2",
       "tag": "@shared/utils_v1.2.2",
       "date": "Sun, 01 May 2022 20:21:45 GMT",

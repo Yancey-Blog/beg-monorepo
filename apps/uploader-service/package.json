@@ -43,7 +43,7 @@
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5",
     "yancey-js-util": "^3.0.0",
-    "@shared/utils": "~1.2.2"
+    "@shared/utils": "~1.2.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.1.2",

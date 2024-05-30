@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Thu, 30 May 2024 14:49:29 GMT and should not be manually modified.
+This log was last generated on Thu, 30 May 2024 15:38:51 GMT and should not be manually modified.
+
+## 5.3.2
+Thu, 30 May 2024 15:38:51 GMT
+
+### Patches
+
+- eleminate compile warnings
 
 ## 5.3.1
 Thu, 30 May 2024 14:49:29 GMT
