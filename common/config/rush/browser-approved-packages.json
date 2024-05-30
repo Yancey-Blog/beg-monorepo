@@ -19,6 +19,14 @@
       "allowedCategories": [ "libs" ]
     },
     {
+      "name": "@babel/plugin-proposal-private-property-in-object",
+      "allowedCategories": [ "apps" ]
+    },
+    {
+      "name": "@babel/plugin-transform-private-property-in-object",
+      "allowedCategories": [ "apps" ]
+    },
+    {
       "name": "@babel/runtime",
       "allowedCategories": [ "apps" ]
     },

@@ -50,6 +50,7 @@ const PostStatistics: FC<Props> = ({ loading, data }) => {
           date: postStatisticsItem._id,
           ...postStatisticsItem
         }))}
+        // @ts-ignore
         classForValue={(value: IPostStatisticsGroupItem) => {
           if (!value) {
             return 'color-empty'
