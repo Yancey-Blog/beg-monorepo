@@ -35,6 +35,18 @@ jobs:
       - name: Install dependencies
         run: rush update --bypass-policy
 
+      - name: Create .env.production file
+        run: |
+          mkdir -p ./apps/blog-cms
+          echo "REACT_APP_BEG_SERVICE_DOMAIN=${{ vars.REACT_APP_BEG_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_UPLOADER_SERVICE_DOMAIN=${{ vars.REACT_APP_UPLOADER_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_APPLICATION_ID=${{ vars.REACT_APP_ALGOLIA_APPLICATION_ID }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_ADMIN_API_KEY=${{ vars.REACT_APP_ALGOLIA_ADMIN_API_KEY }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_SEARCH_INDEX=${{ vars.REACT_APP_ALGOLIA_SEARCH_INDEX }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_REALM=${{ vars.REACT_APP_KEY_CLOAK_REALM }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_URL=${{ vars.REACT_APP_KEY_CLOAK_URL }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_CLIENT_ID=${{ vars.REACT_APP_KEY_CLOAK_CLIENT_ID }}" >> ./apps/blog-cms/.env.production
+
       - name: Pre compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
 
@@ -83,11 +95,20 @@ jobs:
       - name: Install dependencies
         run: rush update --bypass-policy
 
+      - name: Create .env.production file
+        run: |
+          mkdir -p ./apps/blog-cms
+          echo "REACT_APP_BEG_SERVICE_DOMAIN=${{ vars.REACT_APP_BEG_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_UPLOADER_SERVICE_DOMAIN=${{ vars.REACT_APP_UPLOADER_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_APPLICATION_ID=${{ vars.REACT_APP_ALGOLIA_APPLICATION_ID }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_ADMIN_API_KEY=${{ vars.REACT_APP_ALGOLIA_ADMIN_API_KEY }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_ALGOLIA_SEARCH_INDEX=${{ vars.REACT_APP_ALGOLIA_SEARCH_INDEX }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_REALM=${{ vars.REACT_APP_KEY_CLOAK_REALM }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_URL=${{ vars.REACT_APP_KEY_CLOAK_URL }}" >> ./apps/blog-cms/.env.production
+          echo "REACT_APP_KEY_CLOAK_CLIENT_ID=${{ vars.REACT_APP_KEY_CLOAK_CLIENT_ID }}" >> ./apps/blog-cms/.env.production
+
       - name: Compilation
         run: rush build -o blog-cms --impacted-by @shared/utils
-
-      - name: List build directory
-        run: ls -al apps/blog-cms/build/
 
       - name: Prepare files for deployment
         run: |
