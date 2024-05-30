@@ -40,7 +40,7 @@ const UploaderModal: FC<Props> = ({ open, onClose, editorRef }) => {
     onClose()
   }
 
-  const hanldeOk = () => {
+  const handleOk = () => {
     console.log(images)
     insertImage(editorRef, images)
     handleClose()
@@ -56,7 +56,7 @@ const UploaderModal: FC<Props> = ({ open, onClose, editorRef }) => {
         <Button color="primary" onClick={handleClose}>
           Cancel
         </Button>
-        <Button color="primary" onClick={hanldeOk}>
+        <Button color="primary" onClick={handleOk}>
           Insert
         </Button>
       </DialogActions>

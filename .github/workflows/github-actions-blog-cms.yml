@@ -89,7 +89,7 @@ jobs:
         continue-on-error: true
 
       - name: List build directory
-        run: ls -al pps/blog-cms/build/
+        run: ls -al apps/blog-cms/build/
 
       - name: Upload build output as artifact
         uses: actions/upload-artifact@v3
