@@ -85,23 +85,15 @@ jobs:
         run: rush update --bypass-policy
 
       - name: Compilation
-        run: |
-          cd apps/blog-cms
-          rushx build
+        run: rush build -o blog-cms --impacted-by @shared/utils
         continue-on-error: true
 
       - name: List build directory
         run: ls -al apps/blog-cms/build/
 
-      - name: Upload build output as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: apps/blog-cms/build
-
       - name: Prepare files for deployment
         run: |
-          mkdir -p build_output
+          mkdir -p build
           cp -r apps/blog-cms/build/* build/
 
       - name: Copy file via ssh key
