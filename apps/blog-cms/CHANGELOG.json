@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.2.7",
+      "tag": "blog-cms_v5.2.7",
+      "date": "Thu, 30 May 2024 14:24:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "typo `imagePoperOver` to `imagePopover`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.6",
       "tag": "blog-cms_v5.2.6",
       "date": "Thu, 30 May 2024 14:03:33 GMT",
