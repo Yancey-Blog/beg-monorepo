@@ -30,6 +30,7 @@ const useSSO = () => {
     didInit.current = true
 
     initial()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [didInit])
 
   return keycloak
