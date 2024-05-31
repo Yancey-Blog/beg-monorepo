@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Fri, 31 May 2024 05:54:56 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2024 06:04:50 GMT and should not be manually modified.
+
+## 5.4.5
+Fri, 31 May 2024 06:04:50 GMT
+
+### Patches
+
+- add eslint-disable-next-line react-hooks/exhaustive-deps temporarily
 
 ## 5.4.4
 Fri, 31 May 2024 05:54:56 GMT

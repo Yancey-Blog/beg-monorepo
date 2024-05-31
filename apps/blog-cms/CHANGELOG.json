@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.4.5",
+      "tag": "blog-cms_v5.4.5",
+      "date": "Fri, 31 May 2024 06:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add eslint-disable-next-line react-hooks/exhaustive-deps temporarily"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.4",
       "tag": "blog-cms_v5.4.4",
       "date": "Fri, 31 May 2024 05:54:56 GMT",
