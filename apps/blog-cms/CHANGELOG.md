@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Fri, 31 May 2024 04:07:50 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2024 05:04:35 GMT and should not be manually modified.
+
+## 5.4.2
+Fri, 31 May 2024 05:04:35 GMT
+
+### Patches
+
+- try not use @react-keycloak/web
 
 ## 5.4.1
 Fri, 31 May 2024 04:07:50 GMT
