@@ -17,7 +17,8 @@ const useSSO = () => {
       checkLoginIframe: false
     })
 
-    if (isInitial) {
+    if (isInitial && keycloak?.authenticated) {
+      localStorage.setItem('token', keycloak?.token || '')
       setKeycloak(instance)
     }
   }
