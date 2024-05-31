@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.4.1",
+      "tag": "blog-cms_v5.4.1",
+      "date": "Fri, 31 May 2024 04:07:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "try close StrictMode to prevent infinite loop of keycloak"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "blog-cms_v5.4.0",
       "date": "Thu, 30 May 2024 16:06:16 GMT",

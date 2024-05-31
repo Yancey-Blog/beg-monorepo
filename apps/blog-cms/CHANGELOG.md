@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Thu, 30 May 2024 16:06:16 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2024 04:07:50 GMT and should not be manually modified.
+
+## 5.4.1
+Fri, 31 May 2024 04:07:50 GMT
+
+### Patches
+
+- try close StrictMode to prevent infinite loop of keycloak
 
 ## 5.4.0
 Thu, 30 May 2024 16:06:16 GMT
