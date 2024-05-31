@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.4.4",
+      "tag": "blog-cms_v5.4.4",
+      "date": "Fri, 31 May 2024 05:54:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "write token to localStorage"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.3",
       "tag": "blog-cms_v5.4.3",
       "date": "Fri, 31 May 2024 05:15:19 GMT",

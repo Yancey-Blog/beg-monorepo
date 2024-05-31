@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Fri, 31 May 2024 05:15:19 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2024 05:54:56 GMT and should not be manually modified.
+
+## 5.4.4
+Fri, 31 May 2024 05:54:56 GMT
+
+### Patches
+
+- write token to localStorage
 
 ## 5.4.3
 Fri, 31 May 2024 05:15:19 GMT
