@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
-import { useKeycloak } from '@react-keycloak/web'
 import Lottie from 'react-lottie-player'
 import authLottieData from 'src/assets/lotties/auth.json'
+import useSSO from 'src/hooks/useSSO'
 
 export enum Status {
   IsChecking,
@@ -13,11 +13,11 @@ export interface Props {
 }
 
 const SSOStatus: FC<Props> = ({ status }) => {
-  const { keycloak } = useKeycloak()
+  const keycloak = useSSO()
 
   useEffect(() => {
     if (status === Status.Fail) {
-      keycloak.login()
+      keycloak?.login()
     }
   }, [keycloak, status])
   return (

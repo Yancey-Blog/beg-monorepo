@@ -1,7 +1,5 @@
-// import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
@@ -25,33 +23,26 @@ import './assets/global.scss'
 const root = createRoot(document.getElementById('root') as Element)
 
 root.render(
-  <ReactKeycloakProvider
-    authClient={keycloak}
-    onTokens={({ token }) => {
-      localStorage.setItem('token', token || '')
-    }}
-  >
-      <ApolloProvider client={client}>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <SnackbarProvider
-              maxSnack={SNACKBAR_MAX_NUM}
-              anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
-              autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-              preventDuplicate
-            >
-              <LocalizationProvider dateAdapter={AdapterLuxon}>
-                <SnackbarUtilsConfigurator />
-                <CssBaseline />
-                <BrowserRouter>
-                  <Layouts />
-                </BrowserRouter>
-              </LocalizationProvider>
-            </SnackbarProvider>
-          </ThemeProvider>
-        </StyledEngineProvider>
-      </ApolloProvider>
-  </ReactKeycloakProvider>
+  <ApolloProvider client={client}>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider
+          maxSnack={SNACKBAR_MAX_NUM}
+          anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
+          autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
+          preventDuplicate
+        >
+          <LocalizationProvider dateAdapter={AdapterLuxon}>
+            <SnackbarUtilsConfigurator />
+            <CssBaseline />
+            <BrowserRouter>
+              <Layouts />
+            </BrowserRouter>
+          </LocalizationProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  </ApolloProvider>
 )
 
 // If you want your app to work offline and load faster, you can change
