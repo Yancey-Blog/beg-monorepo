@@ -1,11 +1,11 @@
-import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
-import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { SnackbarProvider } from 'notistack'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -31,7 +31,6 @@ root.render(
       localStorage.setItem('token', token || '')
     }}
   >
-    <StrictMode>
       <ApolloProvider client={client}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={theme}>
@@ -52,7 +51,6 @@ root.render(
           </ThemeProvider>
         </StyledEngineProvider>
       </ApolloProvider>
-    </StrictMode>
   </ReactKeycloakProvider>
 )
 
