@@ -11,7 +11,6 @@ import Layouts from './pages/Layouts/Layouts'
 import { SnackbarUtilsConfigurator } from './components/Toast/Toast'
 import client from './graphql/apolloClient'
 import reportWebVitals from './reportWebVitals'
-import keycloak from './shared/configKeyCloak'
 import { theme } from './shared/globalStyles'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
