@@ -48,8 +48,8 @@ dependencies:
     specifier: ^10.0.14
     version: 10.2.1(@apollo/gateway@0.50.2)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/graphql@10.2.1)(apollo-server-core@3.13.0)(apollo-server-express@3.13.0)(graphql@16.8.1)
   '@nestjs/axios':
-    specifier: ^0.1.0
-    version: 0.1.2(@nestjs/common@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+    specifier: ^3.0.2
+    version: 3.0.2(@nestjs/common@9.4.3)(axios@1.7.2)(rxjs@7.8.1)
   '@nestjs/cli':
     specifier: ^9.1.2
     version: 9.5.0
@@ -83,9 +83,6 @@ dependencies:
   '@next/bundle-analyzer':
     specifier: ^12.2.5
     version: 12.3.4
-  '@react-keycloak/web':
-    specifier: ^3.4.0
-    version: 3.4.0(keycloak-js@24.0.4)(react-dom@18.3.1)(react@18.3.1)(typescript@4.9.5)
   '@rollup/plugin-typescript':
     specifier: ^8.3.2
     version: 8.5.0(rollup@2.79.1)(tslib@2.6.2)(typescript@4.9.5)
@@ -252,8 +249,8 @@ dependencies:
     specifier: ^3.5.0
     version: 3.13.0(express@4.19.2)(graphql@16.8.1)
   axios:
-    specifier: ^0.27.2
-    version: 0.27.2
+    specifier: ^1.7.2
+    version: 1.7.2
   babel-loader:
     specifier: ^8.2.5
     version: 8.3.0(@babel/core@7.24.6)(webpack@4.47.0)
@@ -5312,20 +5309,16 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@nestjs/axios@0.1.2(@nestjs/common@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1):
-    resolution: {integrity: sha512-KFW37K5ujSce3lukNp9Uym5T6/oKCDw8EQRYhAKdNiBveMtotkokJwKIHVKCc21qfXMyes4291eR2No1Sf/fow==}
-    deprecated: Deprecated
+  /@nestjs/axios@3.0.2(@nestjs/common@9.4.3)(axios@1.7.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-Z6GuOUdNQjP7FX+OuV2Ybyamse+/e0BFdTWBX5JxpBDKA+YkdLynDgG6HTF04zy6e9zPa19UX0WA2VDoehwhXQ==}
     peerDependencies:
-      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
-      reflect-metadata: ^0.1.12
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
+      axios: ^1.3.1
       rxjs: ^6.0.0 || ^7.0.0
     dependencies:
       '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)
-      axios: 1.2.1
-      reflect-metadata: 0.1.14
+      axios: 1.7.2
       rxjs: 7.8.1
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /@nestjs/cli@9.5.0:
@@ -10570,25 +10563,6 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /axios@0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
-    dependencies:
-      follow-redirects: 1.15.6
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
-  /axios@1.2.1:
-    resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
-    dependencies:
-      follow-redirects: 1.15.6
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /axios@1.7.2:
     resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
     dependencies:
@@ -11774,8 +11748,8 @@ packages:
       - supports-color
     dev: false
 
-  /chromedriver@125.0.2:
-    resolution: {integrity: sha512-H2mIy3r//bIGVouQQrp2UzS93cjGCV2f+I6qNimAOyIiWkaKCiLEuDMQnuC21rewo/UuyOA8CDqa4a7RIT/8EQ==}
+  /chromedriver@125.0.3:
+    resolution: {integrity: sha512-Qzuk5Wian2o3EVGjtbz6V/jv+pT/AV9246HbG6kUljZXXjsKZLZxqJC+kHR3qEh/wdv4EJD0YwAOWV72v9hogw==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
@@ -19493,7 +19467,7 @@ packages:
     dependencies:
       jwk-to-pem: 2.0.5
     optionalDependencies:
-      chromedriver: 125.0.2
+      chromedriver: 125.0.3
     transitivePeerDependencies:
       - debug
       - supports-color
@@ -29220,7 +29194,7 @@ packages:
     dev: false
 
   file:projects/blog-cms.tgz(@babel/core@7.24.6)(@typescript-eslint/parser@5.62.0)(jest@28.1.3)(ts-node@10.9.2):
-    resolution: {integrity: sha512-3eLZayP3eO7TmxNmXM+QwzAJfUHD7OmN90n6moLpd3EDjE6/4Abo2AEoW35HUvlL65lO7/0/ptpsqYEdSZukPw==, tarball: file:projects/blog-cms.tgz}
+    resolution: {integrity: sha512-cLp8TE/nTrtkOLVs95D5ZN4UDyQ8cpIBoGrW5gUFRwVxEH3TkzHs0Je0Rk/Su51/k+Y3yEx/jiATwWwVJPuzeg==, tarball: file:projects/blog-cms.tgz}
     id: file:projects/blog-cms.tgz
     name: '@rush-temp/blog-cms'
     version: 0.0.0
@@ -29259,7 +29233,7 @@ packages:
       '@types/react-router-dom': 5.3.3
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.57.0)(typescript@4.9.5)
       algoliasearch: 4.23.3
-      axios: 0.27.2
+      axios: 1.7.2
       babel-plugin-import: 1.13.8
       chart.js: 3.9.1
       classnames: 2.5.1
@@ -29356,7 +29330,7 @@ packages:
     dev: false
 
   file:projects/blog-service.tgz(@babel/core@7.24.6)(eslint-plugin-jsx-a11y@6.8.0)(eslint-plugin-react-hooks@4.6.2)(eslint-plugin-react@7.34.2):
-    resolution: {integrity: sha512-Fu6L5SRyt5+L5YcrmhDWy9kMC9lpsh+1Ubtnu9CDcnzYYCYOA5HQ0OmVUNKtH2OhfukBRA9X0+1gtws9AJbpLg==, tarball: file:projects/blog-service.tgz}
+    resolution: {integrity: sha512-KQ3K0lcVqChe+0s6HVTi92pCUGgr1Uu1LBhlz0ihzxYOdWnl4oSGlLpsXZWMa1yxBTpO0sFqZNjG7FAOG3bncw==, tarball: file:projects/blog-service.tgz}
     id: file:projects/blog-service.tgz
     name: '@rush-temp/blog-service'
     version: 0.0.0
@@ -29364,7 +29338,7 @@ packages:
       '@apollo/gateway': 0.50.2(graphql@16.8.1)
       '@azure/storage-blob': 12.18.0
       '@nestjs/apollo': 10.2.1(@apollo/gateway@0.50.2)(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)(@nestjs/graphql@10.2.1)(apollo-server-core@3.13.0)(apollo-server-express@3.13.0)(graphql@16.8.1)
-      '@nestjs/axios': 0.1.2(@nestjs/common@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/axios': 3.0.2(@nestjs/common@9.4.3)(axios@1.7.2)(rxjs@7.8.1)
       '@nestjs/cli': 9.5.0
       '@nestjs/common': 9.4.3(class-transformer@0.5.1)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/config': 2.3.4(@nestjs/common@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
@@ -29386,6 +29360,7 @@ packages:
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@4.9.5)
       apollo-server-core: 3.13.0(graphql@16.8.1)
       apollo-server-express: 3.13.0(express@4.19.2)(graphql@16.8.1)
+      axios: 1.7.2
       class-transformer: 0.5.1
       class-validator: 0.13.2
       codecov: 3.8.3

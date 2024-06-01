@@ -25,14 +25,24 @@ export class ServiceInfoModel {
   public readonly ve_mac1: string
 
   @Field()
+  @IsNumber()
+  @IsNotEmpty()
+  public readonly ve_used_disk_space_b: number
+
+  @Field()
   @IsString()
   @IsNotEmpty()
-  public readonly ve_used_disk_space_b: string
+  public readonly ve_disk_quota_gb: string
 
   @Field()
   @IsString()
   @IsNotEmpty()
   public readonly is_cpu_throttled: string
+
+  @Field()
+  @IsString()
+  @IsNotEmpty()
+  public readonly is_disk_throttled: string
 
   @Field()
   @IsNumber()
@@ -215,7 +225,17 @@ export class ServiceInfoModel {
   @Field()
   @IsNumber()
   @IsNotEmpty()
+  public readonly total_abuse_points: number
+
+  @Field()
+  @IsNumber()
+  @IsNotEmpty()
   public readonly max_abuse_points: number
+
+  @Field()
+  @IsNumber()
+  @IsNotEmpty()
+  public readonly free_ip_replacement_interval: number
 
   @Field()
   @IsNumber()

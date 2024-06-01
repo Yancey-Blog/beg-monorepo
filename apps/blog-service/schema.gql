@@ -36,8 +36,10 @@ type ServiceInfoModel {
   vm_type: String!
   ve_status: String!
   ve_mac1: String!
-  ve_used_disk_space_b: String!
+  ve_used_disk_space_b: Float!
+  ve_disk_quota_gb: String!
   is_cpu_throttled: String!
+  is_disk_throttled: String!
   ssh_port: Float!
   live_hostname: String!
   load_average: String!
@@ -75,18 +77,20 @@ type ServiceInfoModel {
   suspended: Boolean!
   policy_violation: Boolean!
   suspension_count: Float
+  total_abuse_points: Float!
   max_abuse_points: Float!
+  free_ip_replacement_interval: Float!
   error: Float!
   veid: Float!
 }
 
 type UsageStatesModel {
-  timestamp: String!
-  network_in_bytes: String!
-  network_out_bytes: String!
-  disk_read_bytes: String!
-  disk_write_bytes: String!
-  cpu_usage: String!
+  timestamp: Float!
+  network_in_bytes: Float!
+  network_out_bytes: Float!
+  disk_read_bytes: Float!
+  disk_write_bytes: Float!
+  cpu_usage: Float!
 }
 
 type LiveTourModel {

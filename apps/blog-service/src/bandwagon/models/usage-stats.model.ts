@@ -1,35 +1,35 @@
 import { Field, ObjectType } from '@nestjs/graphql'
-import { IsString, IsNotEmpty } from 'class-validator'
+import { IsNumber, IsNotEmpty } from 'class-validator'
 
 @ObjectType()
 export class UsageStatesModel {
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly timestamp: string
+  public readonly timestamp: number
 
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly network_in_bytes: string
+  public readonly network_in_bytes: number
 
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly network_out_bytes: string
+  public readonly network_out_bytes: number
 
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly disk_read_bytes: string
+  public readonly disk_read_bytes: number
 
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly disk_write_bytes: string
+  public readonly disk_write_bytes: number
 
   @Field()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  public readonly cpu_usage: string
+  public readonly cpu_usage: number
 }
