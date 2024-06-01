@@ -1,6 +1,13 @@
 # Change Log - blog-service
 
-This log was last generated on Sun, 05 Jun 2022 21:37:31 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Jun 2024 05:37:05 GMT and should not be manually modified.
+
+## 2.5.1
+Sat, 01 Jun 2024 05:37:05 GMT
+
+### Patches
+
+- try fix bandwagon service
 
 ## 2.5.0
 Sun, 05 Jun 2022 21:37:31 GMT

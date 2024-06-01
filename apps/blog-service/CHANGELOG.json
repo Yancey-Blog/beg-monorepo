@@ -2,6 +2,18 @@
   "name": "blog-service",
   "entries": [
     {
+      "version": "2.5.1",
+      "tag": "blog-service_v2.5.1",
+      "date": "Sat, 01 Jun 2024 05:37:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "try fix bandwagon service"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.5.0",
       "tag": "blog-service_v2.5.0",
       "date": "Sun, 05 Jun 2022 21:37:31 GMT",
