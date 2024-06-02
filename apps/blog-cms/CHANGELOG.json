@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.6.2",
+      "tag": "blog-cms_v5.6.2",
+      "date": "Sun, 02 Jun 2024 09:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update user method"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.1",
       "tag": "blog-cms_v5.6.1",
       "date": "Sun, 02 Jun 2024 09:04:34 GMT",

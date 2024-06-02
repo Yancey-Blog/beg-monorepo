@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Sun, 02 Jun 2024 09:04:34 GMT and should not be manually modified.
+This log was last generated on Sun, 02 Jun 2024 09:14:36 GMT and should not be manually modified.
+
+## 5.6.2
+Sun, 02 Jun 2024 09:14:36 GMT
+
+### Patches
+
+- update user method
 
 ## 5.6.1
 Sun, 02 Jun 2024 09:04:34 GMT
