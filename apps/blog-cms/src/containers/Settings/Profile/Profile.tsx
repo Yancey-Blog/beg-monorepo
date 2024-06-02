@@ -31,8 +31,8 @@ const Profile: FC = () => {
   const updateUser = async (data: typeof initialValues) => {
     await axios({
       method: 'put',
-      url: `https://${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
-        process.env.REACT_APP_KEY_CLOAKREACT_APP_KEY_CLOAK_REALM_URL
+      url: `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
+        process.env.REACT_APP_KEY_CLOAK_REALM
       }/users/${localStorage.getItem('userId')}`,
       data,
       headers: {
