@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.6.0",
+      "tag": "blog-cms_v5.6.0",
+      "date": "Sun, 02 Jun 2024 08:58:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "support update user profile"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "blog-cms_v5.5.0",
       "date": "Sat, 01 Jun 2024 05:37:05 GMT",
