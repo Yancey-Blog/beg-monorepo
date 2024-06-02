@@ -29,7 +29,7 @@ const Profile: FC = () => {
   }
 
   const updateUser = async (data: typeof initialValues) => {
-    const res = await axios({
+    await axios({
       method: 'put',
       url: `https://${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
         process.env.REACT_APP_KEY_CLOAKREACT_APP_KEY_CLOAK_REALM_URL
