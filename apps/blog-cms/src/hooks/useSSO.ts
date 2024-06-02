@@ -20,6 +20,14 @@ const useSSO = () => {
     if (isInitial && instance?.authenticated) {
       localStorage.setItem('token', instance?.token || '')
       localStorage.setItem('userId', instance?.subject || '')
+
+      const userProfile = await instance.loadUserProfile()
+      const userInfo = await instance.loadUserInfo()
+      const userInfo2 = await instance.userInfo
+      localStorage.setItem('userProfile', JSON.stringify(userProfile) || '')
+      localStorage.setItem('userInfo', JSON.stringify(userInfo) || '')
+      localStorage.setItem('userInfo2', JSON.stringify(userInfo2) || '')
+
       setKeycloak(instance)
     }
   }

@@ -34,7 +34,7 @@ const Profile: FC = () => {
       url: `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
         process.env.REACT_APP_KEY_CLOAK_REALM
       }/users/${localStorage.getItem('userId')}`,
-      data,
+      data: { attributes: data },
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
