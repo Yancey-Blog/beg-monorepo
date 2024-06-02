@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.6.3",
+      "tag": "blog-cms_v5.6.3",
+      "date": "Sun, 02 Jun 2024 09:31:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "try load userInfo"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.2",
       "tag": "blog-cms_v5.6.2",
       "date": "Sun, 02 Jun 2024 09:14:36 GMT",
