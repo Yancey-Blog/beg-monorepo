@@ -33,7 +33,7 @@ const routes: Route[] = [
     name: 'Dashboard',
     path: '/',
     icon: <Dashboard />,
-    component: 'DashBoard/DashBoard',
+    component: 'Dashboard/Dashboard',
     roles: [Roles.ADMIN]
   },
   {

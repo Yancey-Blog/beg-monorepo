@@ -1,8 +1,6 @@
 import { FC } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useSnackbar } from 'notistack'
-import { useMutation } from '@apollo/client'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
 import SettingItemWrapper from '../components/SettingItemWrapper/SettingItemWrapper'
@@ -10,24 +8,12 @@ import { Button, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { UPDATE_USER } from './typeDefs'
 import useStyles from './styles'
+import axios from 'axios'
 
 const Profile: FC = () => {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
-
   const classes = useStyles()
-
   const { enqueueSnackbar } = useSnackbar()
-
-  const [updateUser] = useMutation(UPDATE_USER, {
-    onCompleted() {
-      enqueueSnackbar(`Your profile has been updated!`, {
-        variant: 'success'
-      })
-    }
-  })
 
   const validationSchema = Yup.object().shape({
     website: Yup.string().url()
@@ -42,26 +28,34 @@ const Profile: FC = () => {
     avatarUrl: ''
   }
 
+  const updateUser = async (data: typeof initialValues) => {
+    const res = await axios({
+      method: 'put',
+      url: `https://${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
+        process.env.REACT_APP_KEY_CLOAKREACT_APP_KEY_CLOAK_REALM_URL
+      }/users/${localStorage.getItem('userId')}`,
+      data,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    enqueueSnackbar(`Your profile has been updated!`, {
+      variant: 'success'
+    })
+  }
+
   const { setFieldValue, handleSubmit, getFieldProps, isSubmitting, errors } =
     useFormik({
       initialValues,
       validationSchema,
       onSubmit: async (values) => {
-        await updateUser({
-          variables: { input: values }
-        })
-
-        navigate(pathname)
+        updateUser(values)
       }
     })
 
   const onChange = async (data: UploaderResponse) => {
     setFieldValue('avatarUrl', data.url)
-    await updateUser({
-      variables: { input: { avatarUrl: data.url } }
-    })
-
-    navigate(pathname)
   }
 
   return (

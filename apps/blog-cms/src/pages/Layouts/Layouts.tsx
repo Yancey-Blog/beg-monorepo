@@ -7,6 +7,7 @@ import Mains from './components/Main/Main'
 import Footer from './components/Footer/Footer'
 import useSSO from 'src/hooks/useSSO'
 import { UserInfo } from 'src/types/userInfo'
+import SSOStatus from 'src/components/SSOStatus/SSOStatus'
 
 const Layouts: FC = () => {
   const classes = useStyles()
@@ -18,7 +19,7 @@ const Layouts: FC = () => {
   }
 
   if (!keycloak?.authenticated) {
-    return null
+    return <SSOStatus />
   }
 
   return (

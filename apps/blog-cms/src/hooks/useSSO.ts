@@ -19,6 +19,7 @@ const useSSO = () => {
 
     if (isInitial && instance?.authenticated) {
       localStorage.setItem('token', instance?.token || '')
+      localStorage.setItem('userId', instance?.subject || '')
       setKeycloak(instance)
     }
   }

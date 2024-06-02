@@ -54,7 +54,7 @@ const GlobalConfig: FC = () => {
         <>
           <SettingsHeader
             title="Global Config"
-            subTitle="Global config for Yancey Blog pc and mobile"
+            subTitle="Global config for Yancey Blog PC and Mobile"
           />
 
           <ReleasePicker
