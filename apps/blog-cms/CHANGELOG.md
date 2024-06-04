@@ -1,6 +1,13 @@
 # Change Log - blog-cms
 
-This log was last generated on Tue, 04 Jun 2024 03:30:42 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2024 03:48:22 GMT and should not be manually modified.
+
+## 5.6.5
+Tue, 04 Jun 2024 03:48:22 GMT
+
+### Patches
+
+- try use axios.put
 
 ## 5.6.4
 Tue, 04 Jun 2024 03:30:42 GMT

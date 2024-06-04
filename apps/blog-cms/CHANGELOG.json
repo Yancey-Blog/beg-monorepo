@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.6.5",
+      "tag": "blog-cms_v5.6.5",
+      "date": "Tue, 04 Jun 2024 03:48:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "try use axios.put"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.4",
       "tag": "blog-cms_v5.6.4",
       "date": "Tue, 04 Jun 2024 03:30:42 GMT",
