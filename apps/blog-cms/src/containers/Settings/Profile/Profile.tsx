@@ -19,6 +19,14 @@ const Profile: FC = () => {
     website: Yup.string().url()
   })
 
+  const formatData = (values: typeof initialValues) => {
+    const data = {} as { [index: string]: string[] }
+    Object.keys(values).forEach((key) => {
+      // @ts-ignore
+      data[key] = [values[key]]
+    })
+  }
+
   const initialValues = {
     name: '',
     location: '',
@@ -31,10 +39,8 @@ const Profile: FC = () => {
   const updateUser = async (data: typeof initialValues) => {
     await axios({
       method: 'put',
-      url: `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${
-        process.env.REACT_APP_KEY_CLOAK_REALM
-      }/users/${localStorage.getItem('userId')}`,
-      data: { attributes: data },
+      url: `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/profile`,
+      data: { attributes: formatData(data) },
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
