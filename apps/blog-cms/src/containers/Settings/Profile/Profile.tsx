@@ -37,15 +37,17 @@ const Profile: FC = () => {
   }
 
   const updateUser = async (data: typeof initialValues) => {
-    await axios({
-      method: 'put',
-      url: `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/profile`,
-      data: { attributes: formatData(data) },
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+    await axios.put(
+      `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/profile`,
+      { attributes: formatData(data) },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       }
-    })
+    )
+
     enqueueSnackbar(`Your profile has been updated!`, {
       variant: 'success'
     })
