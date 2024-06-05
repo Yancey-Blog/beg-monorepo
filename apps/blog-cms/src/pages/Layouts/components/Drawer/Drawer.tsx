@@ -1,7 +1,7 @@
 import { FC, Fragment, useState, useEffect, useCallback } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Avatar, Skeleton } from '@mui/material'
-import { Home, Face } from '@mui/icons-material'
+import { Home } from '@mui/icons-material'
 import classNames from 'classnames'
 import routes, { Route } from 'src/routes'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'

@@ -6,7 +6,6 @@ import Drawer from './components/Drawer/Drawer'
 import Mains from './components/Main/Main'
 import Footer from './components/Footer/Footer'
 import useSSO from 'src/hooks/useSSO'
-import { UserInfo } from 'src/types/userInfo'
 import SSOStatus from 'src/components/SSOStatus/SSOStatus'
 
 const Layouts: FC = () => {
