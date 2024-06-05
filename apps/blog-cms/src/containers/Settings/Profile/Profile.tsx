@@ -28,6 +28,8 @@ const Profile: FC = () => {
       // @ts-ignore
       data[key] = [values[key]]
     })
+
+    return data
   }
 
   // TODO:
