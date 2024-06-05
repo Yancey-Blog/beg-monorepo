@@ -24,11 +24,7 @@ const Layouts: FC = () => {
 
   return (
     <div className={classes.layouts}>
-      <Drawer
-        open={open}
-        isFetching={false}
-        userInfo={keycloak.userInfo as UserInfo}
-      />
+      <Drawer open={open} isFetching={false} userInfo={keycloak.profile} />
       <section
         className={classNames(
           classes.mainWrapper,
@@ -39,7 +35,7 @@ const Layouts: FC = () => {
           open={open}
           handleDrawerChange={handleDrawerChange}
           isFetching={false}
-          userInfo={keycloak.userInfo as UserInfo}
+          userInfo={keycloak.profile}
           logout={keycloak.logout}
         />
         <Mains />

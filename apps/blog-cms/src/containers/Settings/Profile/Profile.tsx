@@ -14,6 +14,9 @@ import axios from 'axios'
 const Profile: FC = () => {
   const classes = useStyles()
   const { enqueueSnackbar } = useSnackbar()
+  const { id: userId, attributes } = JSON.parse(
+    localStorage.getItem('userProfile') || '{}'
+  )
 
   const validationSchema = Yup.object().shape({
     website: Yup.string().url()
@@ -27,18 +30,19 @@ const Profile: FC = () => {
     })
   }
 
+  // TODO:
   const initialValues = {
-    name: '',
-    location: '',
-    organization: '',
-    website: '',
-    bio: '',
-    avatarUrl: ''
+    name: (attributes?.['name']?.[0] as string) || '',
+    location: (attributes?.['location']?.[0] as string) || '',
+    organization: (attributes?.['organization']?.[0] as string) || '',
+    website: (attributes?.['website']?.[0] as string) || '',
+    bio: (attributes?.['bio']?.[0] as string) || '',
+    avatarUrl: (attributes?.['avatarUrl']?.[0] as string) || ''
   }
 
   const updateUser = async (data: typeof initialValues) => {
     await axios.put(
-      `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/profile`,
+      `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/${userId}`,
       { attributes: formatData(data) },
       {
         headers: {

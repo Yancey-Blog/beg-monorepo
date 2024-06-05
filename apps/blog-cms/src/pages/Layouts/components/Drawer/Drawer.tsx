@@ -4,16 +4,16 @@ import { Avatar, Skeleton } from '@mui/material'
 import { Home, Face } from '@mui/icons-material'
 import classNames from 'classnames'
 import routes, { Route } from 'src/routes'
-import { UserInfo } from 'src/types/userInfo'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
 import ChildItem from './components/ChildItem'
 import ParentItem from './components/ParentItem'
 import useStyles from './styles'
+import { KeycloakProfile } from 'keycloak-js'
 
 interface Props {
   open: boolean
   isFetching: boolean
-  userInfo: UserInfo | null
+  userInfo?: KeycloakProfile
 }
 
 const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
@@ -25,14 +25,17 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
     setfoldName(foldName === name ? '' : name)
   }
 
-  const matchChilren = useCallback((routeList: Route[]) => {
-    const currRoute = routeList.find(
-      (route) =>
-        route.routes &&
-        route.routes.find((childRoute) => pathname.includes(childRoute.path))
-    )
-    currRoute && setfoldName(currRoute.name)
-  }, [pathname])
+  const matchChilren = useCallback(
+    (routeList: Route[]) => {
+      const currRoute = routeList.find(
+        (route) =>
+          route.routes &&
+          route.routes.find((childRoute) => pathname.includes(childRoute.path))
+      )
+      currRoute && setfoldName(currRoute.name)
+    },
+    [pathname]
+  )
 
   useEffect(() => {
     matchChilren(routes)
@@ -86,24 +89,24 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
               [classes.hidenNotItem]: !open
             })}
           >
-            {userInfo?.profile ? (
-              <Avatar
-                alt="user-avatar"
-                src={userInfo?.profile}
-                className={classes.avatar}
-              />
-            ) : (
-              <Avatar className={classes.avatar}>
-                <Face />
-              </Avatar>
-            )}
+            <Avatar
+              alt="user-avatar"
+              // @ts-ignore
+              src={userInfo?.attributes?.avatar?.[0] || ''}
+              className={classes.avatar}
+            />
 
             <div
               className={classNames(classes.detail, {
                 [classes.hideDetail]: !open
               })}
             >
-              <span className={classes.userName}>{userInfo?.name}</span>
+              <span className={classes.userName}>
+                {
+                  // @ts-ignore
+                  userInfo?.attributes?.name?.[0] || ''
+                }
+              </span>
               <span className={classes.arrow} />
             </div>
           </div>

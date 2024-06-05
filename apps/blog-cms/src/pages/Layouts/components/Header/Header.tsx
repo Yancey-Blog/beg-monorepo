@@ -34,14 +34,14 @@ import {
   Search,
   ViewList
 } from '@mui/icons-material'
-import { UserInfo } from 'src/types/userInfo'
 import useStyles from './styles'
+import { KeycloakProfile } from 'keycloak-js'
 
 interface Props {
   open: boolean
   handleDrawerChange: Function
   isFetching: boolean
-  userInfo: UserInfo | null
+  userInfo?: KeycloakProfile
   logout: () => void
 }
 
@@ -105,7 +105,11 @@ const Header: FC<Props> = ({
                   {isFetching ? (
                     <Person />
                   ) : (
-                    <Avatar alt="user-avatar" src={userInfo?.profile} />
+                    <Avatar
+                      alt="user-avatar"
+                      // @ts-ignore
+                      src={userInfo?.attributes?.avatar?.[0] || ''}
+                    />
                   )}
                 </IconButton>
                 <Menu
