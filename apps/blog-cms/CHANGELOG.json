@@ -2,6 +2,18 @@
   "name": "blog-cms",
   "entries": [
     {
+      "version": "5.7.1",
+      "tag": "blog-cms_v5.7.1",
+      "date": "Wed, 05 Jun 2024 05:53:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete usesless code"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "blog-cms_v5.7.0",
       "date": "Wed, 05 Jun 2024 05:45:49 GMT",
