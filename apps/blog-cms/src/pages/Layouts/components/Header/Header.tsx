@@ -108,7 +108,7 @@ const Header: FC<Props> = ({
                     <Avatar
                       alt="user-avatar"
                       // @ts-ignore
-                      src={userInfo?.attributes?.avatar?.[0] || ''}
+                      src={userInfo?.attributes?.avatarUrl?.[0] || ''}
                     />
                   )}
                 </IconButton>

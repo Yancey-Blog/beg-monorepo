@@ -92,7 +92,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
             <Avatar
               alt="user-avatar"
               // @ts-ignore
-              src={userInfo?.attributes?.avatar?.[0] || ''}
+              src={userInfo?.attributes?.avatarUrl?.[0] || ''}
               className={classes.avatar}
             />
 
