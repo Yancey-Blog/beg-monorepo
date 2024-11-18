@@ -125,8 +125,8 @@ const PostDetail: FC<Props> = ({ post }) => {
   }
 
   useEffect(() => {
-    router.events.on('routeChangeComplete', () => updatePV())
-  }, [router.events, updatePV])
+    updatePV()
+  }, [updatePV])
 
   const {
     title,
