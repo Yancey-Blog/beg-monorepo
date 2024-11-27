@@ -21,5 +21,5 @@ for SUB_APP in $(ls packages); do
 	WORKFLOW=$(echo "${PACKAGES_WORKFLOW_TEMPLATE}" | sed "s/{{SUB_APP}}/${SUB_APP}/g")
 	
 	# save workflow to .github/workflows/{SUB_APP}
-	echo "${WORKFLOW}" > .github/workflows/github-actions-@shared-${SUB_APP}.yml
+	echo "${WORKFLOW}" > .github/workflows/github-actions-@repo-${SUB_APP}.yml
 done
