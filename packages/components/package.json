@@ -1,0 +1,76 @@
+{
+  "name": "@repo/components",
+  "version": "0.4.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "eslint": "eslint src --ext .ts,.tsx",
+    "lint-staged": "lint-staged"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "author": "Yancey Leo",
+  "module": "dist/components.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/components.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/components.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+"dependencies": {
+  "lodash.throttle": "^4.1.1",
+  "yancey-js-util": "^3.0.0"
+}, 
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/addons": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@types/lodash.throttle": "^4.1.6",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "babel-loader": "^8.2.5",
+    "eslint": "^8.17.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^27.0.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-testing-library": "^5.0.0",
+    "lint-staged": "^13.0.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-is": "^18.1.0",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.5.4"
+  }
+}

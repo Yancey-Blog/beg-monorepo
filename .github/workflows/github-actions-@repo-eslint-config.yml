@@ -1,14 +1,14 @@
-name: '@repo/utils'
+name: '@repo/eslint-config'
 
 on:
   push:
     paths:
-      - 'packages/utils/**'
+      - 'packages/eslint-config/**'
     branches:
       - '**'
   pull_request:
     paths:
-      - 'packages/utils/**'
+      - 'packages/eslint-config/**'
     branches:
       - '**'
 
@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Pre compilation
-        run: pnpm run build --filter @repo/utils
+        run: pnpm run build --filter @repo/eslint-config
 
       - name: Size Limit
         uses: andresz1/size-limit-action@v1

@@ -1,14 +1,14 @@
-name: '@repo/utils'
+name: '@repo/typescript-config'
 
 on:
   push:
     paths:
-      - 'packages/utils/**'
+      - 'packages/typescript-config/**'
     branches:
       - '**'
   pull_request:
     paths:
-      - 'packages/utils/**'
+      - 'packages/typescript-config/**'
     branches:
       - '**'
 
@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Pre compilation
-        run: pnpm run build --filter @repo/utils
+        run: pnpm run build --filter @repo/typescript-config
 
       - name: Size Limit
         uses: andresz1/size-limit-action@v1

@@ -1,14 +1,14 @@
-name: {{SUB_APP}}
+name: frontend
 
 on:
   push:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/frontend/**"
     branches: 
       - "**"
   pull_request:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/frontend/**"
     branches:
       - "**"
 
@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Pre compilation
-        run: pnpm run build --filter {{SUB_APP}}
+        run: pnpm run build --filter frontend
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -69,7 +69,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-{{SUB_APP}}-deploy.sh
+          script: sh ./@beg-monorepo-frontend-deploy.sh
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
