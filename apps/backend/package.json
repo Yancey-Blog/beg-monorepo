@@ -13,14 +13,13 @@
     "start:prod": "node dist/main",
     "start:dev": "NODE_ENV=development nest start --watch",
     "document": "npx compodoc -p tsconfig.json -s",
-    "eslint": "eslint src --ext .ts,.tsx",
+    "lint": "eslint src --ext .ts,.tsx",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "codecov": "node_modules/.bin/codecov -t 7b33b616-c7c6-465f-a858-91ca93071f98",
-    "lint-staged": "lint-staged"
+    "codecov": "node_modules/.bin/codecov -t 7b33b616-c7c6-465f-a858-91ca93071f98"
   },
   "dependencies": {
     "@apollo/gateway": "^0.50.0",

@@ -7,8 +7,7 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "analyze": "pnpm run build && source-map-explorer 'build/static/js/*.js'",
-    "eslint": "eslint src --ext .ts,.tsx",
-    "lint-staged": "lint-staged"
+    "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
     "@apollo/client": "^3.6.6",

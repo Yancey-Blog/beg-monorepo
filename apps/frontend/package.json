@@ -5,11 +5,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "eslint": "next lint",
+    "lint": "next lint",
     "analyze": "ANALYZE=true pnpm run build",
     "feed": "node scripts/generatorFeed",
-    "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\" --color",
-    "lint-staged": "lint-staged -c .lintstagedrc.js"
+    "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\" --color"
   },
   "dependencies": {
     "@apollo/client": "^3.6.6",
