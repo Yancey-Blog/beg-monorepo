@@ -290,7 +290,7 @@ const PostEditor: FC = () => {
           }
         })
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -420,7 +420,8 @@ const PostEditor: FC = () => {
           [
             'code',
             'codeblock',
-            // @ts-ignore
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
             {
               el: insertImageButton(setOpen),
               tooltip: 'ImageX'

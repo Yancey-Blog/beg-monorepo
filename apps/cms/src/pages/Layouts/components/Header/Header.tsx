@@ -39,7 +39,7 @@ import { KeycloakProfile } from 'keycloak-js'
 
 interface Props {
   open: boolean
-  handleDrawerChange: Function
+  handleDrawerChange: () => void
   isFetching: boolean
   userInfo?: KeycloakProfile
   logout: () => void
@@ -107,7 +107,8 @@ const Header: FC<Props> = ({
                   ) : (
                     <Avatar
                       alt="user-avatar"
-                      // @ts-ignore
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
                       src={userInfo?.attributes?.avatarUrl?.[0] || ''}
                     />
                   )}

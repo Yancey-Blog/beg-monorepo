@@ -21,9 +21,9 @@ import { IYanceyMusic } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createYanceyMusic: Function
-  updateYanceyMusicById: Function
+  handleOpen: () => void
+  createYanceyMusic: () => void
+  updateYanceyMusicById: () => void
 }
 
 const YanceyMusicModal: FC<Props> = ({
@@ -88,7 +88,8 @@ const YanceyMusicModal: FC<Props> = ({
       const { title, soundCloudUrl, releaseDate, posterUrl } =
         state as IYanceyMusic
 
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       setValues({ title, soundCloudUrl, releaseDate, posterUrl })
     }
   }, [id, resetForm, setValues, state])

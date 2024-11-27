@@ -20,9 +20,9 @@ import { IOpenSource } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createOpenSource: Function
-  updateOpenSourceById: Function
+  handleOpen: () => void
+  createOpenSource: () => void
+  updateOpenSourceById: () => void
 }
 
 const OpenSourceModal: FC<Props> = ({

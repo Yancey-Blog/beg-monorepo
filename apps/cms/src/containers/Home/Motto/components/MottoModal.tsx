@@ -17,9 +17,9 @@ import { IMotto } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createMotto: Function
-  updateMottoById: Function
+  handleOpen: () => void
+  createMotto: () => void
+  updateMottoById: () => void
 }
 
 const MottoModal: FC<Props> = ({

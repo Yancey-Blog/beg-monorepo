@@ -20,10 +20,10 @@ interface Props {
   isFetching: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  createLiveTour: Function
-  updateLiveTourById: Function
-  deleteLiveTourById: Function
-  deleteLiveTours: Function
+  createLiveTour: () => void
+  updateLiveTourById: () => void
+  deleteLiveTourById: () => void
+  deleteLiveTours: () => void
 }
 
 const LiveTourTable: FC<Props> = ({

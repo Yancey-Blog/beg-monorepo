@@ -6,9 +6,12 @@ import { DocumentNode } from '@apollo/client'
 
 interface Props {
   refetchQueries?: DocumentNode[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dataSource: any[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   curr: any
-  exchangePosition: Function
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  exchangePosition: (params: any) => void
 }
 
 const Move: FC<Props> = ({
@@ -22,7 +25,7 @@ const Move: FC<Props> = ({
     nextId: string,
     currWeight: number,
     nextWeight: number,
-    closePoper: Function
+    closePoper: () => void
   ) => {
     closePoper()
 

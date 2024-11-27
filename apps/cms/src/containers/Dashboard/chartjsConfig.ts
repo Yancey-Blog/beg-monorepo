@@ -13,7 +13,8 @@ const chartConfig = (
       DateTime.fromSeconds(+timestamp).toFormat('MM-dd HH:mm')
     )
     .slice(-limit),
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
   datasets: [
     {
       data: usageStatus

@@ -25,7 +25,8 @@ const Profile: FC = () => {
   const formatData = (values: typeof initialValues) => {
     const data = {} as { [index: string]: string[] }
     Object.keys(values).forEach((key) => {
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       data[key] = [values[key]]
     })
 
@@ -44,7 +45,7 @@ const Profile: FC = () => {
 
   const updateUser = async (data: typeof initialValues) => {
     await axios.put(
-      `${process.env.REACT_APP_KEY_CLOAK_URL}/admin/realms/${process.env.REACT_APP_KEY_CLOAK_REALM}/users/${userId}`,
+      `${import.meta.env.VITE_KEY_CLOAK_URL}/admin/realms/${import.meta.env.VITE_KEY_CLOAK_REALM}/users/${userId}`,
       { attributes: formatData(data) },
       {
         headers: {

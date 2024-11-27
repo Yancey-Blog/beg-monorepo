@@ -79,7 +79,7 @@ const LiveTour: FC = () => {
     BATCH_DELETE_LIVE_TOUR,
     {
       refetchQueries: [LIVE_TOURS],
-      
+
       update(proxy, { data: { deleteLiveTours } }) {
         const data = proxy.readQuery<Query>({ query: LIVE_TOURS })
 

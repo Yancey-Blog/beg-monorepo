@@ -110,7 +110,7 @@ const Announcement: FC = () => {
     BATCH_DELETE_ANNOUNCEMENT,
     {
       refetchQueries: [ANNOUNCEMENTS],
-      
+
       update(proxy, { data: { deleteAnnouncements } }) {
         const data = proxy.readQuery<Query>({ query: ANNOUNCEMENTS })
 

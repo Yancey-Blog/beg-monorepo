@@ -21,9 +21,9 @@ import { IBestAlbum } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createBestAlbum: Function
-  updateBestAlbumById: Function
+  handleOpen: () => void
+  createBestAlbum: () => void
+  updateBestAlbumById: () => void
 }
 
 const BestAlbumModal: FC<Props> = ({
@@ -94,7 +94,8 @@ const BestAlbumModal: FC<Props> = ({
       const { title, artist, mvUrl, releaseDate, coverUrl } =
         state as IBestAlbum
 
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       setValues({ title, artist, mvUrl, releaseDate, coverUrl })
     }
   }, [id, resetForm, setValues, state])

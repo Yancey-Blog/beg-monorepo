@@ -22,11 +22,11 @@ interface Props {
   isDeleting: boolean
   isExchanging: boolean
   isBatchDeleting: boolean
-  createMotto: Function
-  updateMottoById: Function
-  deleteMottoById: Function
-  deleteMottos: Function
-  exchangePosition: Function
+  createMotto: () => void
+  updateMottoById: () => void
+  deleteMottoById: () => void
+  deleteMottos: () => void
+  exchangePosition: () => void
 }
 
 const MottoTable: FC<Props> = ({

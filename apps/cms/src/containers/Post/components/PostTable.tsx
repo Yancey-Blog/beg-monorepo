@@ -35,10 +35,10 @@ interface Props {
   isFetching: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  fetchPostsByPage: Function
-  deletePostById: Function
-  deletePosts: Function
-  updatePostById: Function
+  fetchPostsByPage: () => void
+  deletePostById: () => void
+  deletePosts: () => void
+  updatePostById: () => void
 }
 
 const PostTable: FC<Props> = ({

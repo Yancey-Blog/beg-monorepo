@@ -11,10 +11,12 @@ export const useScriptUrl = (
     $scriptEl.src = url
     if (isAsync) $scriptEl.async = true
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     htmlEl
       ? htmlEl.appendChild($scriptEl)
       : document.body.appendChild($scriptEl)
     return () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       htmlEl
         ? htmlEl.removeChild($scriptEl)
         : document.body.removeChild($scriptEl)
@@ -22,15 +24,18 @@ export const useScriptUrl = (
   }, [htmlEl, url, isAsync])
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useScript = (content: any, htmlEl?: HTMLElement) => {
   useEffect(() => {
     const $scriptEl = document.createElement('script')
     $scriptEl.innerHTML = content
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     htmlEl
       ? htmlEl.appendChild($scriptEl)
       : document.body.appendChild($scriptEl)
     return () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       htmlEl
         ? htmlEl.removeChild($scriptEl)
         : document.body.removeChild($scriptEl)

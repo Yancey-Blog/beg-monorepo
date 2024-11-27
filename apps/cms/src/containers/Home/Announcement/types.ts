@@ -34,16 +34,16 @@ export interface AnnouncementTableProps {
   isDeleting: boolean
   isExchanging: boolean
   isBatchDeleting: boolean
-  createAnnouncement: Function
-  updateAnnouncementById: Function
-  deleteAnnouncementById: Function
-  deleteAnnouncements: Function
-  exchangePosition: Function
+  createAnnouncement: () => void
+  updateAnnouncementById: () => void
+  deleteAnnouncementById: () => void
+  deleteAnnouncements: () => void
+  exchangePosition: () => void
 }
 
 export interface AnnouncementModalProps {
   open: boolean
-  handleOpen: Function
-  createAnnouncement: Function
-  updateAnnouncementById: Function
+  handleOpen: () => void
+  createAnnouncement: () => void
+  updateAnnouncementById: () => void
 }

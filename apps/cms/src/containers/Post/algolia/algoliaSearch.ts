@@ -1,16 +1,16 @@
 import algoliasearch from 'algoliasearch'
 
 const {
-  REACT_APP_ALGOLIA_APPLICATION_ID,
-  REACT_APP_ALGOLIA_ADMIN_API_KEY,
-  REACT_APP_ALGOLIA_SEARCH_INDEX
-} = process.env
+  VITE_ALGOLIA_APPLICATION_ID,
+  VITE_ALGOLIA_ADMIN_API_KEY,
+  VITE_ALGOLIA_SEARCH_INDEX
+} = import.meta.env
 
 const client = algoliasearch(
-  REACT_APP_ALGOLIA_APPLICATION_ID,
-  REACT_APP_ALGOLIA_ADMIN_API_KEY
+  VITE_ALGOLIA_APPLICATION_ID,
+  VITE_ALGOLIA_ADMIN_API_KEY
 )
-const index = client.initIndex(REACT_APP_ALGOLIA_SEARCH_INDEX)
+const index = client.initIndex(VITE_ALGOLIA_SEARCH_INDEX)
 
 export const sendPostToAlgolia = async (
   objectID: string,

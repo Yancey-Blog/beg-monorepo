@@ -6,7 +6,7 @@ import useStyles from '../styles'
 
 interface Props {
   isDeletingAccount: boolean
-  deleteAccount: Function
+  deleteAccount: () => void
 }
 
 const DeleteAccount: FC<Props> = ({ isDeletingAccount, deleteAccount }) => {

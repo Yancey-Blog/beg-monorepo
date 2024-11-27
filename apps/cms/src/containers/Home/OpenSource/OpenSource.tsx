@@ -80,7 +80,7 @@ const OpenSource: FC = () => {
     BATCH_DELETE_OPEN_SOURCE,
     {
       refetchQueries: [OPEN_SOURCES],
-      
+
       update(proxy, { data: { deleteOpenSources } }) {
         const data = proxy.readQuery<Query>({ query: OPEN_SOURCES })
 

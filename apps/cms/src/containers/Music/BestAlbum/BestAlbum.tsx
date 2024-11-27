@@ -80,7 +80,7 @@ const BestAlbum: FC = () => {
     BATCH_DELETE_BEST_ALBUMS,
     {
       refetchQueries: [BEST_ALBUMS],
-      
+
       update(proxy, { data: { deleteBestAlbums } }) {
         const data = proxy.readQuery<Query>({ query: BEST_ALBUMS })
 

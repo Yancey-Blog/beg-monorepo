@@ -92,7 +92,7 @@ const Player: FC = () => {
     BATCH_DELETE_PLAYER,
     {
       refetchQueries: [PLAYERS],
-      
+
       update(proxy, { data: { deletePlayers } }) {
         const data = proxy.readQuery<Query>({ query: PLAYERS })
 

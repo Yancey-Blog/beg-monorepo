@@ -19,9 +19,7 @@ import {
 } from './shared/constants'
 import './assets/global.scss'
 
-const root = createRoot(document.getElementById('root') as Element)
-
-root.render(
+createRoot(document.getElementById('root')!).render(
   <ApolloProvider client={client}>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>

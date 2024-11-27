@@ -3,7 +3,7 @@ import { Paper, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 
 interface Props {
-  handleToggleChange: Function
+  handleToggleChange: () => void
   children?: ReactNode
 }
 
@@ -42,7 +42,7 @@ const ToggleChart: FC<Props> = ({ children, handleToggleChange }) => {
 
   const [value, setValue] = useState(countByHour)
 
-  const handleChange = (e: MouseEvent<HTMLElement>, value: number) => {
+  const handleChange = (_: MouseEvent<HTMLElement>, value: number) => {
     handleToggleChange(value)
     setValue(value)
   }

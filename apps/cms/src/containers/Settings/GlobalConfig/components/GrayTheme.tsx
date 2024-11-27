@@ -7,7 +7,7 @@ interface Props {
   id: string
   isSubmitting: boolean
   isGrayTheme: boolean
-  updateGlobalSettingById: Function
+  updateGlobalSettingById: () => void
 }
 
 const useStyles = makeStyles(() =>

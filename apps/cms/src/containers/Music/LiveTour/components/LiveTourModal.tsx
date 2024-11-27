@@ -21,9 +21,9 @@ import { ILiveTour } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createLiveTour: Function
-  updateLiveTourById: Function
+  handleOpen: () => void
+  createLiveTour: () => void
+  updateLiveTourById: () => void
 }
 
 const LiveTourModal: FC<Props> = ({
@@ -85,7 +85,8 @@ const LiveTourModal: FC<Props> = ({
     if (id) {
       const { title, showTime, posterUrl } = state as ILiveTour
 
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       setValues({ title, showTime, posterUrl })
     }
   }, [id, resetForm, setValues, state])

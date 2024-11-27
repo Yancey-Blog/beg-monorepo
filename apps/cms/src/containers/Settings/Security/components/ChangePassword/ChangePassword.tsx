@@ -35,7 +35,6 @@ const ChangePassword: FC = () => {
       .required('New Password is required.')
       .matches(PASSWORD_REGEXP, 'Please enter a more complex password'),
     confirmNewPassword: Yup.string()
-      // @ts-ignore
       // FIXME: oneOf's first parameter is an array, and the
       // second element of the array is assignable to type
       // 'string | Ref | undefined', but `@types/yup` has not
@@ -49,6 +48,7 @@ const ChangePassword: FC = () => {
       initialValues,
       validationSchema,
       onSubmit: async (values) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { confirmNewPassword, ...rest } = values
         await changePassword({
           variables: { input: rest }

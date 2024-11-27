@@ -32,6 +32,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
           route.routes &&
           route.routes.find((childRoute) => pathname.includes(childRoute.path))
       )
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       currRoute && setfoldName(currRoute.name)
     },
     [pathname]
@@ -91,7 +92,8 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
           >
             <Avatar
               alt="user-avatar"
-              // @ts-ignore
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
               src={userInfo?.attributes?.avatarUrl?.[0] || ''}
               className={classes.avatar}
             />
@@ -103,7 +105,8 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
             >
               <span className={classes.userName}>
                 {
-                  // @ts-ignore
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
                   userInfo?.attributes?.name?.[0] || ''
                 }
               </span>

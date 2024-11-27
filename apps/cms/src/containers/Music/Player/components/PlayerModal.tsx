@@ -23,9 +23,9 @@ import { IPlayer } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createPlayer: Function
-  updatePlayerById: Function
+  handleOpen: () => void
+  createPlayer: () => void
+  updatePlayerById: () => void
 }
 
 const PlayerModal: FC<Props> = ({
@@ -99,7 +99,8 @@ const PlayerModal: FC<Props> = ({
       const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } =
         state as IPlayer
 
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       setValues({ title, artist, lrc, coverUrl, musicFileUrl, isPublic })
     }
   }, [id, resetForm, setValues, state])

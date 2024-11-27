@@ -9,7 +9,7 @@ const NotFound: FC = () => {
   const navigate = useNavigate()
 
   const toHomePage = () => {
-    navigate('/');
+    navigate('/')
   }
 
   return (

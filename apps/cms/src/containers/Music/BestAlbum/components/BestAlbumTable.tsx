@@ -20,10 +20,10 @@ interface Props {
   isFetching: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  createBestAlbum: Function
-  updateBestAlbumById: Function
-  deleteBestAlbumById: Function
-  deleteBestAlbums: Function
+  createBestAlbum: () => void
+  updateBestAlbumById: () => void
+  deleteBestAlbumById: () => void
+  deleteBestAlbums: () => void
 }
 
 const BestAlbumTable: FC<Props> = ({

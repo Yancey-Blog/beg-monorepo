@@ -20,10 +20,10 @@ interface Props {
   isFetching: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  createYanceyMusic: Function
-  updateYanceyMusicById: Function
-  deleteYanceyMusicById: Function
-  deleteYanceyMusic: Function
+  createYanceyMusic: () => void
+  updateYanceyMusicById: () => void
+  deleteYanceyMusicById: () => void
+  deleteYanceyMusic: () => void
 }
 
 const YanceyMusicTable: FC<Props> = ({

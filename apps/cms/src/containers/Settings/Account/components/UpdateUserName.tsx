@@ -8,7 +8,7 @@ import useStyles from '../styles'
 
 interface Props {
   username: string
-  updateUserName: Function
+  updateUserName: () => void
 }
 
 const validationSchema = Yup.object().shape({

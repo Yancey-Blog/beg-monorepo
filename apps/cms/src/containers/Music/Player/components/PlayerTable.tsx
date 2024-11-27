@@ -29,11 +29,11 @@ interface Props {
   isExchanging: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  createPlayer: Function
-  updatePlayerById: Function
-  deletePlayerById: Function
-  deletePlayers: Function
-  exchangePosition: Function
+  createPlayer: () => void
+  updatePlayerById: () => void
+  deletePlayerById: () => void
+  deletePlayers: () => void
+  exchangePosition: () => void
 }
 
 const PlayerTable: FC<Props> = ({

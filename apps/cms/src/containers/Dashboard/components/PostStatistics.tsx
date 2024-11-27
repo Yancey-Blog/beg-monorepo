@@ -38,19 +38,22 @@ interface Props {
   data: IPostStatistics[]
 }
 
-const PostStatistics: FC<Props> = ({ loading, data }) => {
+const PostStatistics: FC<Props> = ({ data }) => {
   const classes = useStyles()
 
   return (
     <Paper className={classNames(classes.paper, classes.heatmapPaper)}>
-      {/* <CalendarHeatmap
+      {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* @ts-expect-error */
+      }
+      <CalendarHeatmap
         startDate={new Date(DateTime.now().plus({ years: -1 }).toISODate())}
         endDate={new Date(DateTime.now().toISODate())}
         values={data.map((postStatisticsItem) => ({
           date: postStatisticsItem._id,
           ...postStatisticsItem
         }))}
-        // @ts-ignore
         classForValue={(value: IPostStatisticsGroupItem) => {
           if (!value) {
             return 'color-empty'
@@ -72,7 +75,7 @@ const PostStatistics: FC<Props> = ({ loading, data }) => {
             : `No contributions on the day.`
         })}
         showWeekdayLabels
-      /> */}
+      />
       <ReactTooltip multiline />
     </Paper>
   )

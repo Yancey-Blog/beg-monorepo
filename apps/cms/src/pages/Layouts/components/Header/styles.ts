@@ -5,7 +5,8 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
     flexDirection: 'row!important',
     padding: '12px 24px 48px',
     backgroundColor: 'transparent!important',

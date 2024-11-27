@@ -70,7 +70,8 @@ const Cover: FC = () => {
       update(proxy, { data: { publicCovers } }) {
         const data = proxy.readQuery<Query>({ query: COVERS })
 
-        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
         const res = data.getCovers.map((cover) =>
           publicCovers.ids.includes(cover._id) ? (cover.isPublic = false) : null
         )

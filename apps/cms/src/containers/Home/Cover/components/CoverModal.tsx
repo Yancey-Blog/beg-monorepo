@@ -21,9 +21,9 @@ import { ICover } from '../types'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createCover: Function
-  updateCoverById: Function
+  handleOpen: () => void
+  createCover: () => void
+  updateCoverById: () => void
 }
 
 const CoverModal: FC<Props> = ({

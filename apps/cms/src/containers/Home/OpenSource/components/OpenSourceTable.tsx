@@ -20,10 +20,10 @@ interface Props {
   isFetching: boolean
   isDeleting: boolean
   isBatchDeleting: boolean
-  createOpenSource: Function
-  updateOpenSourceById: Function
-  deleteOpenSourceById: Function
-  deleteOpenSources: Function
+  createOpenSource: () => void
+  updateOpenSourceById: () => void
+  deleteOpenSourceById: () => void
+  deleteOpenSources: () => void
 }
 
 const OpenSourceTable: FC<Props> = ({

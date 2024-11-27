@@ -4,7 +4,7 @@ import { setContext } from '@apollo/client/link/context'
 import SnackbarUtils from 'src/components/Toast/Toast'
 
 const httpLink = new HttpLink({
-  uri: process.env.REACT_APP_BEG_SERVICE_DOMAIN
+  uri: import.meta.env.VITE_BEG_SERVICE_DOMAIN
 })
 
 const authLink = setContext((_, { headers }) => {

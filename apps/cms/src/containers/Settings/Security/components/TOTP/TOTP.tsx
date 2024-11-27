@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, FormEvent } from 'react'
 import * as Yup from 'yup'
 import { useSnackbar } from 'notistack'
 import { useFormik } from 'formik'
@@ -34,7 +34,7 @@ interface TOTPRes {
 }
 
 interface Props {
-  setOpen: Function
+  setOpen: (open: boolean) => void
   open: boolean
 }
 
@@ -105,7 +105,6 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
       open={open}
       onClose={onClose}
       className={styles.totpDialog}
-      // @ts-ignore
       TransitionComponent={Transition}
       keepMounted
     >
@@ -132,8 +131,8 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
           {step === 0
             ? 'Get codes from the Authenticator app'
             : qrcodeMode
-            ? 'Set up Authenticator'
-            : "Can't scan the barcode?"}
+              ? 'Set up Authenticator'
+              : "Can't scan the barcode?"}
         </header>
 
         {step === 0 && (
@@ -263,7 +262,9 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
           type="submit"
           disabled={isSubmitting || loading}
           onClick={
-            step === 2 ? (e: any) => handleSubmit(e) : () => setStep(step + 1)
+            step === 2
+              ? (e) => handleSubmit(e as unknown as FormEvent<HTMLFormElement>)
+              : () => setStep(step + 1)
           }
         >
           {step === 2 ? 'Verify' : 'Next'}
@@ -273,4 +274,5 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default TOTP

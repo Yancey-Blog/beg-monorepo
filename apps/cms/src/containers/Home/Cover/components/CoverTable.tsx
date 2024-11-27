@@ -24,12 +24,12 @@ interface Props {
   isExchanging: boolean
   isBatchDeleting: boolean
   isPublicCovers: boolean
-  deleteCoverById: Function
-  deleteCovers: Function
-  createCover: Function
-  updateCoverById: Function
-  exchangePosition: Function
-  publicCovers: Function
+  deleteCoverById: () => void
+  deleteCovers: () => void
+  createCover: () => void
+  updateCoverById: () => void
+  exchangePosition: () => void
+  publicCovers: () => void
 }
 
 const CoverTable: FC<Props> = ({

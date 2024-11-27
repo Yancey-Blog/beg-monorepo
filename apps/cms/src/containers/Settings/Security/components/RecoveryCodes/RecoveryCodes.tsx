@@ -17,7 +17,7 @@ import { CREATE_RECOVERY_CODES } from '../../typeDefs'
 import styles from './recoveryCode.module.scss'
 
 interface Props {
-  setOpen: Function
+  setOpen: () => void
   open: boolean
 }
 
@@ -45,7 +45,8 @@ const RecoveryCodes: FC<Props> = ({ setOpen, open }) => {
       className={styles.recoveryCode}
       open={open}
       onClose={onClose}
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-expect-error
       TransitionComponent={Transition}
       keepMounted
     >

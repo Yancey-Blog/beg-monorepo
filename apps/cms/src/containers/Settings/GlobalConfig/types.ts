@@ -4,8 +4,8 @@ export interface PostFilterProps {
   id: string
   isFetching: boolean
   isSubmitting: boolean
-  fetchPosts: Function
-  updateGlobalSettingById: Function
+  fetchPosts: () => void
+  updateGlobalSettingById: () => void
   posts: IPostItem[]
 }
 
