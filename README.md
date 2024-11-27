@@ -9,7 +9,6 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-ff3f59.svg)](https://www.paypal.me/yanceyleo)
 [![Twitter](https://img.shields.io/twitter/follow/YanceyOfficial.svg?style=social&label=Follow)](https://twitter.com/YanceyOfficial)
-[![Semantic-Release: Angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 All services for Blog Environment Group. The monorepo system is powered by [Turborepo](https://turbo.build/repo/docs).
 
@@ -37,11 +36,15 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [backend-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
 [@repo/utils-version]: https://img.shields.io/badge/Version-v1.2.3-brightgreen
+[@repo/eslint-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
+[@repo/typescript-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-cms.yml/badge.svg
 [frontend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-frontend.yml/badge.svg
 [backend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-backend.yml/badge.svg
 [uploader-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader.yml/badge.svg
 [@repo/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-utils.yml/badge.svg
+[@repo/eslint-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-eslint-config.yml/badge.svg
+[@repo/typescript-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-typescript-config.yml/badge.svg
 
 ## Prerequisite
 
