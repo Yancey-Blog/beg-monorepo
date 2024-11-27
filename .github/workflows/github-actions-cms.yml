@@ -1,16 +1,16 @@
-name: blog-cms
+name: cms
 
 on:
   push:
     paths:
-      - 'apps/blog-cms/**'
-    branches:
-      - '**'
+      - "apps/cms/**"
+    branches: 
+      - "**"
   pull_request:
     paths:
-      - 'apps/blog-cms/**'
+      - "apps/cms/**"
     branches:
-      - '**'
+      - "**"
 
 jobs:
   test:
@@ -31,18 +31,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Create .env.production file
-        run: |
-          mkdir -p ./apps/cms
-          echo "REACT_APP_BEG_SERVICE_DOMAIN=${{ vars.REACT_APP_BEG_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_UPLOADER_SERVICE_DOMAIN=${{ vars.REACT_APP_UPLOADER_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_APPLICATION_ID=${{ vars.REACT_APP_ALGOLIA_APPLICATION_ID }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_ADMIN_API_KEY=${{ vars.REACT_APP_ALGOLIA_ADMIN_API_KEY }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_SEARCH_INDEX=${{ vars.REACT_APP_ALGOLIA_SEARCH_INDEX }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_REALM=${{ vars.REACT_APP_KEY_CLOAK_REALM }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_URL=${{ vars.REACT_APP_KEY_CLOAK_URL }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_CLIENT_ID=${{ vars.REACT_APP_KEY_CLOAK_CLIENT_ID }}" >> ./apps/blog-cms/.env.production
 
       - name: Pre compilation
         run: pnpm run build --filter cms
@@ -71,54 +59,17 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Create .env.production file
-        run: |
-          mkdir -p ./apps/cms
-          echo "REACT_APP_BEG_SERVICE_DOMAIN=${{ vars.REACT_APP_BEG_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_UPLOADER_SERVICE_DOMAIN=${{ vars.REACT_APP_UPLOADER_SERVICE_DOMAIN }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_APPLICATION_ID=${{ vars.REACT_APP_ALGOLIA_APPLICATION_ID }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_ADMIN_API_KEY=${{ vars.REACT_APP_ALGOLIA_ADMIN_API_KEY }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_ALGOLIA_SEARCH_INDEX=${{ vars.REACT_APP_ALGOLIA_SEARCH_INDEX }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_REALM=${{ vars.REACT_APP_KEY_CLOAK_REALM }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_URL=${{ vars.REACT_APP_KEY_CLOAK_URL }}" >> ./apps/blog-cms/.env.production
-          echo "REACT_APP_KEY_CLOAK_CLIENT_ID=${{ vars.REACT_APP_KEY_CLOAK_CLIENT_ID }}" >> ./apps/blog-cms/.env.production
-
-      - name: Compilation
-        run: pnpm run build --filter cms
-
-      - name: Prepare files for deployment
-        run: |
-          mkdir -p build
-          cp -r apps/cms/build/* build/
-
-      - name: Copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          source: 'build/*'
-          target: '/var/www/beg-monorepo/apps/cms'
-          overwrite: true
+          password: ${{ secrets.PASSWORD }}
+          script: sh ./@beg-monorepo-cms-deploy.sh
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
