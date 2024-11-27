@@ -4,11 +4,11 @@ Hi! We are really excited that you are interested in contributing to BEG Monorep
 
 ## Repo Setup
 
-The BEG Monorepo repo is a monorepo using pnpm and rush.js. The package manager used to install and link dependencies must be [pnpm](https://pnpm.io/).
+The BEG Monorepo repo is a monorepo using pnpm and Turborepo. The package manager used to install and link dependencies must be [pnpm](https://pnpm.io/).
 
 To develop and test the core `BEG Monorepo` package:
 
-1. Run `rush update` in BEG Monorepo's root folder
+1. Run `pnpm install` in BEG Monorepo's root folder
 
 2. Run `pnpm run build` in each BEG Monorepo's sub app.
 

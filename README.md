@@ -9,44 +9,45 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-ff3f59.svg)](https://www.paypal.me/yanceyleo)
 [![Twitter](https://img.shields.io/twitter/follow/YanceyOfficial.svg?style=social&label=Follow)](https://twitter.com/YanceyOfficial)
+[![Semantic-Release: Angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-All services for Blog Environment Group. The monorepo system is powered by [rushjs](https://rushjs.io/).
+All services for Blog Environment Group. The monorepo system is powered by [Turborepo](https://turbo.build/repo/docs).
 
 ## Ecosystem
 
 | Project               | Version                       | Build Status                       | Description                                             |
 | --------------------- | ----------------------------- | ---------------------------------- | ------------------------------------------------------- |
-| [blog-cms]            | ![blog-cms-version]           | ![blog-cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL. |
-| [blog-web]            | ![blog-web-version]           | ![blog-web-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL. |
-| [blog-service]        | ![blog-service-version]       | ![blog-service-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
-| [uploader-service]    | ![uploader-service-version]   | ![uploader-service-build-status]   | The Uploader service powered by Azure Blob. |
-| [@shared/components]  | ![@shared/components-version] | ![@shared/components-build-status] | Common components library. |
-| [@shared/utils]       | ![@shared/utils-version]      | ![@shared/utils-build-status]      | Common utils library. |
+| [cms]            | ![cms-version]           | ![cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL. |
+| [frontend]            | ![frontend-version]           | ![frontend-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL. |
+| [backend]        | ![backend-version]       | ![backend-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
+| [uploader]    | ![uploader-version]   | ![uploader-build-status]   | The Uploader backend powered by Azure Blob. |
+| [@repo/utils]       | ![@repo/utils-version]      | ![@repo/utils-build-status]      | Common utils library. |
+| [@repo/eslint-config]       | ![@repo/eslint-config-version]      | ![@repo/eslint-config-build-status]      | Common Eslint Config library. |
+| [@repo/typescript-config]       | ![@repo/typescript-config-version]      | ![@repo/typescript-config-build-status]      | Common TypeScript Config library. |
 
-[blog-cms]: ./apps/blog-cms
-[blog-web]: ./apps/blog-web
-[blog-service]: ./apps/blog-service
-[uploader-service]:./apps/uploader-service
-[@shared/components]:./libs/components
-[@shared/utils]:./libs/utils
-[blog-cms-version]: https://img.shields.io/badge/Version-v5.7.3-brightgreen
-[blog-web-version]: https://img.shields.io/badge/Version-v4.35.0-brightgreen
-[blog-service-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
-[uploader-service-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
-[@shared/components-version]: https://img.shields.io/badge/Version-v0.4.0-brightgreen
-[@shared/utils-version]: https://img.shields.io/badge/Version-v1.2.3-brightgreen
-[blog-cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-cms.yml/badge.svg
-[blog-web-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-web.yml/badge.svg
-[blog-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-blog-service.yml/badge.svg
-[uploader-service-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader-service.yml/badge.svg
-[@shared/components-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@shared-components.yml/badge.svg
-[@shared/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@shared-utils.yml/badge.svg
+[cms]: ./apps/cms
+[frontend]: ./apps/frontend
+[backend]: ./apps/backend
+[uploader]:./apps/uploader
+[@repo/utils]:./packages/utils
+[@repo/eslint-config]:./packages/eslint-config
+[@repo/typescript-config]:./packages/typescript-config
+[cms-version]: https://img.shields.io/badge/Version-v5.7.3-brightgreen
+[frontend-version]: https://img.shields.io/badge/Version-v4.35.0-brightgreen
+[backend-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
+[uploader-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
+[@repo/utils-version]: https://img.shields.io/badge/Version-v1.2.3-brightgreen
+[cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-cms.yml/badge.svg
+[frontend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-frontend.yml/badge.svg
+[backend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-backend.yml/badge.svg
+[uploader-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader.yml/badge.svg
+[@repo/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-utils.yml/badge.svg
 
 ## Prerequisite
 
 ### Installing Node.js and [PNPM](https://pnpm.io)
 
-We recommend the basic environment is Node.js 14 LTS and PNPM. A better way to manage versions of Node.js is using [nvm](https://github.com/nvm-sh/nvm). And PNPM is a fast, disk space efficient package manager, [rushjs](https://rushjs.io/) default uses PNPM to manage dependencies.
+We recommend the basic environment is Node.js 20 LTS and PNPM. A better way to manage versions of Node.js is using [nvm](https://github.com/nvm-sh/nvm).
 
 ```bash
 # Installing NVM
@@ -56,54 +57,43 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 npm install -g pnpm
 ```
 
-### Installing [rushjs](https://rushjs.io/)
-
-BEG Monorepo uses rushjs to manage monorepo. Please install it globally.
-
-```bash
-pnpm install -g @microsoft/rush
-```
-
 ### Installing [commitizen](https://github.com/commitizen/cz-cli)
 
 BEG Monorepo follows the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit), your git commit will be checked by commitlint, please use `git cz` instead of `git commit`. For this reason, please install `commitizen` globally.
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `rush add -p YOUR_DEPENDENCY`
-
-To install dependencies for sub projects, enters the sub project directory and execute the command. If install `devDependencies`, add `--dev` at the end.
-
-### `rush update`
-
-Executing this command after registering a new sub project or modifying `rush.json`. If throw **ERROR Broken lockfile: no entry for '...' in pnpm-lock.yaml**, please try `rush update --full`.
-
-### [`rush build`](https://rushjs.io/pages/commands/rush_build/)
+To install global dependencies, you can run this command under the project root folder:
 
 ```bash
-# Force all projects to be rebuilt:
-rush rebuild
-
-# Incremental build:
-rush build
+pnpm i YOUR_DEPENDENCY -w
 ```
 
-If you want to build `specified` project, use `rush build -o YOUR_SUB_PROJECT`.
+To install dependencies for sub projects, enters the sub project directory and execute the command. If install `devDependencies`, add `-D` at the end.
 
-### `rushx YOUR_SCRIPT`
+```bash
+pnpm i YOUR_DEPENDENCY
+```
 
-If you want to execute script of `package.json` in one project, you can use the `rushx` command. You run it under the project folder that you want to operate on. The `rushx` command is analogous to `pnpm run`, but with slightly less typing, slightly better error reporting, and command-line help.
+To build all **apps** and **packages**, you can run this command under the project root folder:
 
-### `rush change`
+```bash
+pnpm run build
+```
 
-Note your changes will eventually be published in a changelog.md file in each package. The `publish` or `version` command will consume these files and
-perform the proper version bumps.
+To build a specific **app**, you can runthis command  under the project root folder:
 
-### `rush version --bump`
+```bash
+pnpm run build --filter YOU_APP_NAME
+```
 
-Uses this command to bump the version of the package and generate a changelog. Please execute this command after you have made changes to the package and executed `rush change`.
+To build a specific **package**, you can run this command under the project root folder:
+
+```bash
+pnpm run build --filter @repo/YOU_PACKAGE_NAME
+```
+
+If you want to execute script of `package.json` in one project, run `pnpm run YOUR_SCRIPT_NAME` under the project folder that you want to operate on.
 
 ## Recipes
 
@@ -111,9 +101,7 @@ Uses this command to bump the version of the package and generate a changelog. P
 
 To generate or update GitHub Actions CI/CD config file easily, you can execute `sh bin/workflows.sh` under the project root folder.
 
-### Bumping versions
-
-You must execute `rush change` and `rush version --bump` before merge reuqest.
+### Semantic Release
 
 ## Contributing
 
