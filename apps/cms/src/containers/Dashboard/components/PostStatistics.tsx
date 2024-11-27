@@ -43,10 +43,8 @@ const PostStatistics: FC<Props> = ({ data }) => {
 
   return (
     <Paper className={classNames(classes.paper, classes.heatmapPaper)}>
-      {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        /* @ts-expect-error */
-      }
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-expect-error */}
       <CalendarHeatmap
         startDate={new Date(DateTime.now().plus({ years: -1 }).toISODate())}
         endDate={new Date(DateTime.now().toISODate())}
