@@ -1,5 +1,7 @@
 {
-	"npm.packageManager": "pnpm",
-	"eslint.packageManager": "pnpm",
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }

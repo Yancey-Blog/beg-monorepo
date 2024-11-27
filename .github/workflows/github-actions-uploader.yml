@@ -1,14 +1,14 @@
-name: {{SUB_APP}}
+name: uploader
 
 on:
   push:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/uploader/**"
     branches: 
       - "**"
   pull_request:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/uploader/**"
     branches:
       - "**"
 
@@ -32,7 +32,7 @@ jobs:
         run: pnpm install
 
       - name: Pre compilation
-        run: pnpm run build --filter {{SUB_APP}}
+        run: pnpm run build --filter uploader
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -68,7 +68,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-{{SUB_APP}}-deploy.sh
+          script: sh ./@beg-monorepo-uploader-deploy.sh
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage

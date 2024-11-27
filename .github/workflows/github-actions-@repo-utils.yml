@@ -1,0 +1,62 @@
+name: '@repo/utils'
+
+on:
+  push:
+    paths:
+      - 'packages/utils/**'
+    branches:
+      - '**'
+  pull_request:
+    paths:
+      - 'packages/utils/**'
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+         version: 9.14.2
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Pre compilation
+        run: pnpm run build --filter @repo/utils
+
+      - name: Size Limit
+        uses: andresz1/size-limit-action@v1
+        with:
+          github_token: ${{ secrets.TOKEN_FOR_SIZE_LIMIT_ACTION }}
+
+      # テスト成功時はこちらのステップが実行される
+      - name: Slack Notification on Success at Testing Stage
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
+          SLACK_CHANNEL: github-actions
+          SLACK_TITLE: Test Success
+          SLACK_COLOR: good
+          SLACK_FOOTER: 'Powered by Yancey Inc. and its affiliates.'
+
+      # テスト失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure at Testing Stage
+        uses: rtCamp/action-slack-notify@v2
+        if: failure()
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOKS }}
+          SLACK_CHANNEL: github-actions
+          SLACK_TITLE: Test Failure
+          SLACK_COLOR: danger
+          SLACK_FOOTER: 'Powered by Yancey Inc. and its affiliates.'

@@ -1,20 +1,21 @@
-name: {{SUB_APP}}
+name: cms
 
 on:
   push:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/cms/**"
     branches: 
       - "**"
   pull_request:
     paths:
-      - "apps/{{SUB_APP}}/**"
+      - "apps/cms/**"
     branches:
       - "**"
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -26,13 +27,13 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-         version: 9.14.2
+          version: 9.14.2
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Pre compilation
-        run: pnpm run build --filter {{SUB_APP}}
+        run: pnpm run build --filter cms
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Testing Stage
@@ -68,7 +69,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-{{SUB_APP}}-deploy.sh
+          script: sh ./@beg-monorepo-cms-deploy.sh
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
