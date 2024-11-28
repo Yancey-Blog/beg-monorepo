@@ -93,7 +93,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
             <Avatar
               alt="user-avatar"
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+              // @ts-expect-error
               src={userInfo?.attributes?.avatarUrl?.[0] || ''}
               className={classes.avatar}
             />
@@ -106,7 +106,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
               <span className={classes.userName}>
                 {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+                  // @ts-expect-error
                   userInfo?.attributes?.name?.[0] || ''
                 }
               </span>

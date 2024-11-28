@@ -101,7 +101,7 @@ const StatusCard: FC<Props> = ({ title, used, total, unit }) => {
         <span className={classes.percent}>{Math.ceil(percent)}%</span>
         {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+          // @ts-expect-error
           <BorderLinearProgress variant="determinate" value={percent} />
         }
       </div>

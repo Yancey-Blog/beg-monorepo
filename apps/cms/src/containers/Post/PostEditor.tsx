@@ -421,7 +421,7 @@ const PostEditor: FC = () => {
             'code',
             'codeblock',
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+            // @ts-expect-error
             {
               el: insertImageButton(setOpen),
               tooltip: 'ImageX'

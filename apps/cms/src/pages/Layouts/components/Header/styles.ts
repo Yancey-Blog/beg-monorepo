@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+    // @ts-expect-error
     flexDirection: 'row!important',
     padding: '12px 24px 48px',
     backgroundColor: 'transparent!important',

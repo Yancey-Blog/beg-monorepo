@@ -89,7 +89,7 @@ const YanceyMusicModal: FC<Props> = ({
         state as IYanceyMusic
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       setValues({ title, soundCloudUrl, releaseDate, posterUrl })
     }
   }, [id, resetForm, setValues, state])

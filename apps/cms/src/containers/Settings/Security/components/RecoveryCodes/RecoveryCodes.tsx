@@ -46,7 +46,7 @@ const RecoveryCodes: FC<Props> = ({ setOpen, open }) => {
       open={open}
       onClose={onClose}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       TransitionComponent={Transition}
       keepMounted
     >

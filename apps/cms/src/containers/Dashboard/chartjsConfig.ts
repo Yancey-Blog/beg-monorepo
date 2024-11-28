@@ -14,7 +14,7 @@ const chartConfig = (
     )
     .slice(-limit),
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+  // @ts-expect-error
   datasets: [
     {
       data: usageStatus

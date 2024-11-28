@@ -30,7 +30,7 @@ const useStyles = makeStyles(() =>
 
     footerItem: {
       display: 'inline-block',
-      marginRight: 60,
+      marginRight: 16,
       fontSize: '12px',
       fontWeight: 500,
       color: '#3c4858'

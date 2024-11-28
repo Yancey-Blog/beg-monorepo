@@ -2,8 +2,11 @@ import { FC } from 'react'
 import { DateTime } from 'luxon'
 import { formatJSONDate } from 'yancey-js-util'
 import classNames from 'classnames'
-import ReactTooltip from 'react-tooltip'
-import CalendarHeatmap from 'react-calendar-heatmap'
+import { Tooltip } from 'react-tooltip'
+import CalendarHeatmap, {
+  ReactCalendarHeatmapValue,
+  TooltipDataAttrs
+} from 'react-calendar-heatmap'
 import 'react-calendar-heatmap/dist/styles.css'
 import { Paper } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
@@ -29,6 +32,10 @@ const useStyles = makeStyles(() =>
         width: '100%',
         height: '100%'
       }
+    },
+
+    preWrap: {
+      whiteSpace: 'pre-wrap'
     }
   })
 )
@@ -43,8 +50,6 @@ const PostStatistics: FC<Props> = ({ data }) => {
 
   return (
     <Paper className={classNames(classes.paper, classes.heatmapPaper)}>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-expect-error */}
       <CalendarHeatmap
         startDate={new Date(DateTime.now().plus({ years: -1 }).toISODate())}
         endDate={new Date(DateTime.now().toISODate())}
@@ -52,29 +57,32 @@ const PostStatistics: FC<Props> = ({ data }) => {
           date: postStatisticsItem._id,
           ...postStatisticsItem
         }))}
-        classForValue={(value: IPostStatisticsGroupItem) => {
+        classForValue={(value?: ReactCalendarHeatmapValue<string>) => {
           if (!value) {
             return 'color-empty'
           }
           return `color-gitlab-${value.count}`
         }}
-        tooltipDataAttrs={(value: IPostStatisticsGroupItem) => ({
-          'data-tip': value.date
-            ? `
-            ${value.items
-              .map(
-                (item) =>
-                  `「${item.postName}」 is ${item.scenes} at ${formatJSONDate(
-                    item.operatedAt
-                  )}`
-              )
-              .join('<br/>')}
-          `
+        tooltipDataAttrs={(
+          value?: ReactCalendarHeatmapValue<string>
+        ): TooltipDataAttrs => ({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          'data-tooltip-id': 'my-tooltip',
+          'data-tooltip-content': value?.date
+            ? value?.items
+                ?.map(
+                  (item: IPostStatisticsGroupItem) =>
+                    `「${item.postName}」 is ${item.scenes} at ${formatJSONDate(
+                      item.operatedAt
+                    )}`
+                )
+                .join('\n')
             : `No contributions on the day.`
         })}
         showWeekdayLabels
       />
-      <ReactTooltip multiline />
+      <Tooltip id="my-tooltip" className={classes.preWrap} />
     </Paper>
   )
 }

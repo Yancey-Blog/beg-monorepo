@@ -95,7 +95,7 @@ const BestAlbumModal: FC<Props> = ({
         state as IBestAlbum
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       setValues({ title, artist, mvUrl, releaseDate, coverUrl })
     }
   }, [id, resetForm, setValues, state])

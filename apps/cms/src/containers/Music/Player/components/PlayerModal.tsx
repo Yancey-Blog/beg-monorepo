@@ -100,7 +100,7 @@ const PlayerModal: FC<Props> = ({
         state as IPlayer
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       setValues({ title, artist, lrc, coverUrl, musicFileUrl, isPublic })
     }
   }, [id, resetForm, setValues, state])

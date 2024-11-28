@@ -70,6 +70,13 @@ export enum SaveType {
 /* PostStatistics */
 
 export interface IPostStatisticsGroupItem {
+  readonly postId: string
+  readonly postName: string
+  readonly scenes: string
+  readonly operatedAt: string
+}
+
+export interface IPostStatisticsGroup {
   readonly _id: string
   readonly date: string
   readonly count: number

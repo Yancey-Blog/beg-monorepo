@@ -86,7 +86,7 @@ const LiveTourModal: FC<Props> = ({
       const { title, showTime, posterUrl } = state as ILiveTour
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       setValues({ title, showTime, posterUrl })
     }
   }, [id, resetForm, setValues, state])

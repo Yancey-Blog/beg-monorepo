@@ -26,7 +26,7 @@ const Profile: FC = () => {
     const data = {} as { [index: string]: string[] }
     Object.keys(values).forEach((key) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
+      // @ts-expect-error
       data[key] = [values[key]]
     })
 
