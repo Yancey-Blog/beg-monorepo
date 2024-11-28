@@ -7,3 +7,5 @@ test/
 
 # jest config
 jest.config.js
+
+src/__generated__

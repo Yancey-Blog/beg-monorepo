@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import { Popover } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
+import { FC } from 'react'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN

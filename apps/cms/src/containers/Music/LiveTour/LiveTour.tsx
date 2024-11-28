@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import LiveTourTable from './components/LiveTourTable'
 import {
-  LIVE_TOURS,
+  BATCH_DELETE_LIVE_TOUR,
   CREATE_ONE_LIVE_TOUR,
-  UPDATE_ONE_LIVE_TOUR,
   DELETE_ONE_LIVE_TOUR,
-  BATCH_DELETE_LIVE_TOUR
+  LIVE_TOURS,
+  UPDATE_ONE_LIVE_TOUR
 } from './typeDefs'
 import { ILiveTour, Query } from './types'
-import LiveTourTable from './components/LiveTourTable'
 
 const LiveTour: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

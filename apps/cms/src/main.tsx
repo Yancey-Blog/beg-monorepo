@@ -1,23 +1,22 @@
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
-import { CssBaseline } from '@mui/material'
 import { ApolloProvider } from '@apollo/client'
+import { CssBaseline } from '@mui/material'
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles'
 import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { SnackbarProvider } from 'notistack'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import Layouts from './pages/Layouts/Layouts'
-import { SnackbarUtilsConfigurator } from './components/Toast/Toast'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import './assets/global.scss'
 import client from './graphql/apolloClient'
+import Layouts from './pages/Layouts/Layouts'
 import reportWebVitals from './reportWebVitals'
-import { theme } from './shared/globalStyles'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
-  SNACKBAR_MAX_NUM,
-  SNACKBAR_AUTO_HIDE_DURATION
+  SNACKBAR_AUTO_HIDE_DURATION,
+  SNACKBAR_MAX_NUM
 } from './shared/constants'
-import './assets/global.scss'
+import { theme } from './shared/globalStyles'
 
 createRoot(document.getElementById('root')!).render(
   <ApolloProvider client={client}>
@@ -30,7 +29,6 @@ createRoot(document.getElementById('root')!).render(
           preventDuplicate
         >
           <LocalizationProvider dateAdapter={AdapterLuxon}>
-            <SnackbarUtilsConfigurator />
             <CssBaseline />
             <BrowserRouter>
               <Layouts />

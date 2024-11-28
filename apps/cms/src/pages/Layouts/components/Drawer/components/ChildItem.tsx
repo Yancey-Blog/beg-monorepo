@@ -1,8 +1,8 @@
-import { FC } from 'react'
-import classNames from 'classnames'
 import { Link } from '@mui/icons-material'
-import { getInitials } from 'src/shared/utils'
+import classNames from 'classnames'
+import { FC } from 'react'
 import { RouteChildren } from 'src/routes'
+import { getInitials } from 'src/shared/utils'
 import useStyles from '../styles'
 
 interface ChildItemProps {

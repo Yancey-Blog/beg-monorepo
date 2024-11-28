@@ -1,18 +1,18 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
+  DialogTitle,
   TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
-import { parseSearch } from 'src/shared/utils'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import useStyles from 'src/shared/globalStyles'
+import { parseSearch } from 'src/shared/utils'
+import * as Yup from 'yup'
 import { IMotto } from '../types'
 
 interface Props {

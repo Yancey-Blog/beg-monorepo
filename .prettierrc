@@ -4,5 +4,8 @@
 	"bracketSpacing": true,
 	"proseWrap": "preserve",
 	"semi": false,
-	"printWidth": 80
+	"printWidth": 80,
+	"plugins": [
+		"prettier-plugin-organize-imports"
+	  ]
 }

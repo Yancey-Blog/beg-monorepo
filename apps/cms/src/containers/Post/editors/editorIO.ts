@@ -1,5 +1,5 @@
-import { RefObject } from 'react'
 import { Editor } from '@toast-ui/react-editor'
+import { RefObject } from 'react'
 
 export const getMarkdown = (editorRef: RefObject<Editor>) => {
   if (editorRef.current) {

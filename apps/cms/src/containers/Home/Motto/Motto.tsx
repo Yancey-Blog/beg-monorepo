@@ -1,16 +1,16 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import MottoTable from './components/MottoTable'
 import {
-  MOTTOS,
-  CREATE_ONE_MOTTO,
-  UPDATE_ONE_MOTTO,
-  DELETE_ONE_MOTTO,
   BATCH_DELETE_MOTTO,
-  EXCHANGE_POSITION
+  CREATE_ONE_MOTTO,
+  DELETE_ONE_MOTTO,
+  EXCHANGE_POSITION,
+  MOTTOS,
+  UPDATE_ONE_MOTTO
 } from './typeDefs'
 import { IMotto, Query } from './types'
-import MottoTable from './components/MottoTable'
 
 const Motto: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

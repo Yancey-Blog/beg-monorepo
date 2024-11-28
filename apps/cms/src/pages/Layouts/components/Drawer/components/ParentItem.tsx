@@ -1,8 +1,8 @@
-import { FC } from 'react'
-import classNames from 'classnames'
 import { Link } from '@mui/icons-material'
-import { noop } from 'src/shared/utils'
+import classNames from 'classnames'
+import { FC } from 'react'
 import { Route } from 'src/routes'
+import { noop } from 'src/shared/utils'
 import useStyles from '../styles'
 
 interface ParentItemProps {

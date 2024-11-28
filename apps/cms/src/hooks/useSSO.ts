@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
 import Keycloak from 'keycloak-js'
+import { useEffect, useRef, useState } from 'react'
 
 const instance = new Keycloak({
   realm: import.meta.env.VITE_KEY_CLOAK_REALM,

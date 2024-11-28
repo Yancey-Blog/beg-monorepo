@@ -1,7 +1,7 @@
-import { FC, useState, useEffect, KeyboardEvent } from 'react'
-import { makeStyles, createStyles } from '@mui/styles'
 import { Chip, TextField } from '@mui/material'
+import { createStyles, makeStyles } from '@mui/styles'
 import { useSnackbar } from 'notistack'
+import { FC, KeyboardEvent, useEffect, useState } from 'react'
 
 interface Props {
   required: boolean

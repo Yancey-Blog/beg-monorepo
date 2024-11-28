@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon'
 import { ChartData } from 'chart.js'
+import { DateTime } from 'luxon'
 import { IBandwagonUsageStatus } from './types'
 
 const chartConfig = (

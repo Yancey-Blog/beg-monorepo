@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import BestAlbumTable from './components/BestAlbumTable'
 import {
+  BATCH_DELETE_BEST_ALBUMS,
   BEST_ALBUMS,
   CREATE_ONE_BEST_ALBUM,
-  UPDATE_ONE_BEST_ALBUM,
   DELETE_ONE_BEST_ALBUM,
-  BATCH_DELETE_BEST_ALBUMS
+  UPDATE_ONE_BEST_ALBUM
 } from './typeDefs'
 import { IBestAlbum, Query } from './types'
-import BestAlbumTable from './components/BestAlbumTable'
 
 const BestAlbum: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

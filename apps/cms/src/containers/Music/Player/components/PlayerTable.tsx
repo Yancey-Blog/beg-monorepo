@@ -1,27 +1,27 @@
-import { FC, useState } from 'react'
+import { DeleteForever, Edit } from '@mui/icons-material'
+import { Button, Popover, Switch } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams,
   GridRenderCellParams,
-  GridSelectionModel
+  GridSelectionModel,
+  GridValueGetterParams
 } from '@mui/x-data-grid'
-import { Edit, DeleteForever } from '@mui/icons-material'
-import { Popover, Switch, Button } from '@mui/material'
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
-import { formatJSONDate } from 'yancey-js-util'
-import useOpenModal from 'src/hooks/useOpenModal'
-import Move from 'src/components/Move/Move'
+import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
+import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
+import Move from 'src/components/Move/Move'
+import useOpenModal from 'src/hooks/useOpenModal'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
-import PlayerModal from './PlayerModal'
+import { formatJSONDate } from 'yancey-js-util'
 import useStyles from '../styles'
-import { IPlayer } from '../types'
 import { PLAYERS } from '../typeDefs'
+import { IPlayer } from '../types'
+import PlayerModal from './PlayerModal'
 
 interface Props {
   dataSource: IPlayer[]

@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import * as Yup from 'yup'
+import { Button, TextField } from '@mui/material'
+import axios from 'axios'
+import { useFormik } from 'formik'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import { UploaderResponse } from 'src/components/Uploader/types'
+import Uploader from 'src/components/Uploader/Uploader'
+import * as Yup from 'yup'
+import SettingItemWrapper from '../components/SettingItemWrapper/SettingItemWrapper'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
-import SettingItemWrapper from '../components/SettingItemWrapper/SettingItemWrapper'
-import { Button, TextField } from '@mui/material'
-import { useFormik } from 'formik'
-import Uploader from 'src/components/Uploader/Uploader'
-import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from './styles'
-import axios from 'axios'
 
 const Profile: FC = () => {
   const classes = useStyles()

@@ -1,5 +1,5 @@
-import { RefObject } from 'react'
 import { Editor } from '@toast-ui/react-editor'
+import { RefObject } from 'react'
 import { UploaderResponse } from 'src/components/Uploader/types'
 
 export const createButton = () => {

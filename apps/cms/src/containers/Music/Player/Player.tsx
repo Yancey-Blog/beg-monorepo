@@ -1,16 +1,16 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import PlayerTable from './components/PlayerTable'
 import {
-  PLAYERS,
-  CREATE_ONE_PLAYER,
-  UPDATE_ONE_PLAYER,
-  DELETE_ONE_PLAYER,
   BATCH_DELETE_PLAYER,
-  EXCHANGE_POSITION
+  CREATE_ONE_PLAYER,
+  DELETE_ONE_PLAYER,
+  EXCHANGE_POSITION,
+  PLAYERS,
+  UPDATE_ONE_PLAYER
 } from './typeDefs'
 import { IPlayer, Query } from './types'
-import PlayerTable from './components/PlayerTable'
 
 const Player: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

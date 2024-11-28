@@ -1,7 +1,7 @@
-import { ApolloClient, InMemoryCache, from, HttpLink } from '@apollo/client'
-import { onError } from '@apollo/client/link/error'
+import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import SnackbarUtils from 'src/components/Toast/Toast'
+import { onError } from '@apollo/client/link/error'
+import { enqueueSnackbar } from 'notistack'
 
 const httpLink = new HttpLink({
   uri: import.meta.env.VITE_BEG_SERVICE_DOMAIN
@@ -20,12 +20,16 @@ const authLink = setContext((_, { headers }) => {
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.forEach((graphQLError) => {
-      SnackbarUtils.error(`[GraphQL error]: ${graphQLError.message}`)
+      enqueueSnackbar(`[GraphQL error]: ${graphQLError.message}`, {
+        variant: 'error'
+      })
     })
   }
 
   if (networkError) {
-    SnackbarUtils.error(`[Network error]: ${networkError.message}`)
+    enqueueSnackbar(`[Network error]: ${networkError.message}`, {
+      variant: 'error'
+    })
   }
 })
 

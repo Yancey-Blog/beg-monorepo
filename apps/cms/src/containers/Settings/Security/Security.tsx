@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import ChangePassword from './components/ChangePassword/ChangePassword'
-import TwoFactors from './components/TwoFactors/TwoFactors'
-import SecurityIntro from './components/SecurityIntro/SecurityIntro'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
+import ChangePassword from './components/ChangePassword/ChangePassword'
+import SecurityIntro from './components/SecurityIntro/SecurityIntro'
+import TwoFactors from './components/TwoFactors/TwoFactors'
 
 const Security: FC = () => {
   return (

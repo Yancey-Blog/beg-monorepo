@@ -1,5 +1,5 @@
+import { createStyles, makeStyles } from '@mui/styles'
 import { FC, ReactNode } from 'react'
-import { makeStyles, createStyles } from '@mui/styles'
 
 export interface Props {
   children?: ReactNode

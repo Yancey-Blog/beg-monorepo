@@ -1,12 +1,12 @@
-import { FC, ReactNode } from 'react'
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import {
   Button,
-  Popover,
-  Paper,
   DialogActions,
-  DialogTitle
+  DialogTitle,
+  Paper,
+  Popover
 } from '@mui/material'
+import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
+import { FC, ReactNode } from 'react'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN

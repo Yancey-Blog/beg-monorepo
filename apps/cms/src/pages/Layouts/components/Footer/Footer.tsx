@@ -1,14 +1,15 @@
-import { FC } from 'react'
-import { Link } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
 import { useQuery } from '@apollo/client'
-import {
-  YANCEY_BLOG_URL,
-  YANCEY_GITHUB_URL,
-  YANCEY_EMAIL_URL
-} from 'src/shared/constants'
+import { Link } from '@mui/material'
+import { createStyles, makeStyles } from '@mui/styles'
+import classNames from 'classnames'
+import { FC } from 'react'
 import { GLOBAL_SETTING } from 'src/containers/Settings/GlobalConfig/typeDefs'
 import { Query } from 'src/containers/Settings/GlobalConfig/types'
+import {
+  YANCEY_BLOG_URL,
+  YANCEY_EMAIL_URL,
+  YANCEY_GITHUB_URL
+} from 'src/shared/constants'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -17,10 +18,22 @@ const useStyles = makeStyles(() =>
       justifyContent: 'space-between',
       alignItems: 'center',
       margin: 0,
-      padding: '12px 24px',
+      padding: 16,
       fontSize: '14px',
       textAlign: 'right',
-      color: '#3c4858'
+      color: '#3c4858',
+      position: 'fixed',
+      right: 0,
+      bottom: 0,
+      zIndex: 10000,
+      width: 'calc(100% - 260px)',
+      background: '#fff',
+      transition: 'all 300ms cubic-bezier(0.4, 0, 0.6, 1)'
+    },
+
+    footerExpand: {
+      width: 'calc(100% - 80px)',
+      transition: 'all 300ms cubic-bezier(0.4, 0, 0.6, 1)'
     },
 
     footerList: {
@@ -38,7 +51,11 @@ const useStyles = makeStyles(() =>
   })
 )
 
-const Footer: FC = () => {
+interface Props {
+  open: boolean
+}
+
+const Footer: FC<Props> = ({ open }) => {
   const classes = useStyles()
 
   const { data } = useQuery<Query>(GLOBAL_SETTING, {
@@ -46,7 +63,9 @@ const Footer: FC = () => {
   })
 
   return (
-    <footer className={classes.footer}>
+    <footer
+      className={classNames(classes.footer, { [classes.footerExpand]: !open })}
+    >
       <ul className={classes.footerList}>
         <li className={classes.footerItem}>
           <Link

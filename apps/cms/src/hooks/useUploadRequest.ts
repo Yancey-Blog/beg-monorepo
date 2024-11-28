@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import axios from 'axios'
 import { useSnackbar } from 'notistack'
+import { useState } from 'react'
 import { UploaderResponse } from 'src/components/Uploader/types'
 
 const useUploadRequest = (

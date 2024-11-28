@@ -1,12 +1,12 @@
-import { FC } from 'react'
-import { useSnackbar } from 'notistack'
 import { useMutation } from '@apollo/client'
-import { UPDATE_USERNAME, UPDATE_EMAIL, DELETE_ACCOUNT } from './typeDefs'
+import { useSnackbar } from 'notistack'
+import { FC } from 'react'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
-import UpdateUserName from './components/UpdateUserName'
-import UpdateEmail from './components/UpdateEmail'
 import DeleteAccount from './components/DeleteAccount'
+import UpdateEmail from './components/UpdateEmail'
+import UpdateUserName from './components/UpdateUserName'
+import { DELETE_ACCOUNT, UPDATE_EMAIL, UPDATE_USERNAME } from './typeDefs'
 
 const Account: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

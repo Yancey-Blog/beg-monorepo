@@ -1,33 +1,33 @@
-import { FC } from 'react'
+import { useQuery } from '@apollo/client'
 import {
-  Chart,
   CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
+  Chart,
   Filler,
   Legend,
-  Tooltip,
+  LinearScale,
+  LineElement,
+  PointElement,
+  SubTitle,
   Title,
-  SubTitle
+  Tooltip
 } from 'chart.js'
-import { useQuery } from '@apollo/client'
-import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
+import { FC } from 'react'
 import {
-  GET_TOP_PV_POSTS,
-  GET_TOP_LIKE_POSTS,
   GET_ALL_TAGS,
-  GET_POST_STATISTICS
+  GET_POST_STATISTICS,
+  GET_TOP_LIKE_POSTS,
+  GET_TOP_PV_POSTS
 } from '../Post/typeDefs'
-import { PostRankListType } from './types'
-import useStyles from './styles'
 import BandwagonServiceStatus from './components/BandwagonServiceStatus'
+import CPUChart from './components/CPUChart'
 import DiskChart from './components/DiskChart'
 import NetWorkChart from './components/NetWorkChart'
-import CPUChart from './components/CPUChart'
 import PostRankList from './components/PostRankList'
 import PostStatistics from './components/PostStatistics'
 import TagClouds from './components/TagClouds'
+import useStyles from './styles'
+import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
+import { PostRankListType } from './types'
 
 Chart.register(
   CategoryScale,

@@ -1,8 +1,8 @@
-import { FC } from 'react'
-import classNames from 'classnames'
-import { Card, LinearProgress, Divider } from '@mui/material'
-import { makeStyles, ClassNameMap, createStyles, withStyles } from '@mui/styles'
+import { Card, Divider, LinearProgress } from '@mui/material'
 import { lighten } from '@mui/material/styles'
+import { ClassNameMap, createStyles, makeStyles, withStyles } from '@mui/styles'
+import classNames from 'classnames'
+import { FC } from 'react'
 
 interface Props {
   title: string
@@ -99,13 +99,9 @@ const StatusCard: FC<Props> = ({ title, used, total, unit }) => {
       <h3 className={classes.cardTitle}>{title}</h3>
       <div className={classes.vision}>
         <span className={classes.percent}>{Math.ceil(percent)}%</span>
-        {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          <BorderLinearProgress variant="determinate" value={percent} />
-        }
+        {<BorderLinearProgress variant="determinate" value={percent} />}
       </div>
-      <Divider light className={classes.divider} />
+      <Divider className={classes.divider} />
       <p>
         <span className={classNames(classes.bottomTxt, classes.margin)}>
           Used: {switchUnit(unit, used)} {unit}

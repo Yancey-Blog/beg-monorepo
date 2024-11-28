@@ -1,20 +1,20 @@
-import { FC, useState } from 'react'
+import { DeleteForever, Edit } from '@mui/icons-material'
+import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams,
   GridRenderCellParams,
-  GridSelectionModel
+  GridSelectionModel,
+  GridValueGetterParams
 } from '@mui/x-data-grid'
-import { DeleteForever, Edit } from '@mui/icons-material'
-import { Button } from '@mui/material'
-import { formatJSONDate } from 'yancey-js-util'
-import useOpenModal from 'src/hooks/useOpenModal'
-import MottoModal from './MottoModal'
+import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import Move from 'src/components/Move/Move'
-import { IMotto } from '../types'
+import useOpenModal from 'src/hooks/useOpenModal'
+import { formatJSONDate } from 'yancey-js-util'
 import { MOTTOS } from '../typeDefs'
+import { IMotto } from '../types'
+import MottoModal from './MottoModal'
 
 interface Props {
   dataSource: IMotto[]

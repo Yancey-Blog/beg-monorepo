@@ -1,9 +1,9 @@
-import { FC, useState, MouseEvent, ReactNode } from 'react'
 import { Paper, ToggleButton, ToggleButtonGroup } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import { FC, MouseEvent, ReactNode, useState } from 'react'
 
 interface Props {
-  handleToggleChange: () => void
+  handleToggleChange: (value: number) => void
   children?: ReactNode
 }
 

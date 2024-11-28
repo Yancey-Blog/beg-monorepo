@@ -1,12 +1,12 @@
-import { FC, useState } from 'react'
 import classNames from 'classnames'
-import useStyles from './styles'
-import Header from './components/Header/Header'
-import Drawer from './components/Drawer/Drawer'
-import Mains from './components/Main/Main'
-import Footer from './components/Footer/Footer'
-import useSSO from 'src/hooks/useSSO'
+import { FC, useState } from 'react'
 import SSOStatus from 'src/components/SSOStatus/SSOStatus'
+import useSSO from 'src/hooks/useSSO'
+import Drawer from './components/Drawer/Drawer'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
+import Mains from './components/Main/Main'
+import useStyles from './styles'
 
 const Layouts: FC = () => {
   const classes = useStyles()
@@ -38,7 +38,7 @@ const Layouts: FC = () => {
           logout={keycloak.logout}
         />
         <Mains />
-        <Footer />
+        <Footer open={open} />
       </section>
     </div>
   )

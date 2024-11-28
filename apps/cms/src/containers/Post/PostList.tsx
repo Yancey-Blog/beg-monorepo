@@ -1,116 +1,253 @@
-import { FC, useEffect, useCallback } from 'react'
-import { useLazyQuery, useMutation } from '@apollo/client'
-import { useSnackbar } from 'notistack'
+import { useQuery } from '@apollo/client'
+import { Clear, DeleteOutline, Edit, Search } from '@mui/icons-material'
 import {
-  POSTS,
-  DELETE_ONE_POST,
-  BATCH_DELETE_POSTS,
-  UPDATE_ONE_POST,
-  CREATE_POST_STATISTICS
-} from './typeDefs'
+  Button,
+  Chip,
+  Divider,
+  FormControl,
+  IconButton,
+  InputBase,
+  Paper,
+  Switch,
+  Tooltip
+} from '@mui/material'
 import {
-  Query,
-  UpdatePostByIdMutation,
-  PostStatisticsVars,
-  CreatePostStatisticsMutation
-} from './types'
-import PostTable from './components/PostTable'
-import {
-  deletePostOnAlgolia,
-  deletePostsOnAlgolia
-} from './algolia/algoliaSearch'
+  DataGrid,
+  GridColDef,
+  GridPaginationModel,
+  GridRenderCellParams,
+  GridRowSelectionModel
+} from '@mui/x-data-grid'
+import { FC, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
+import ImagePopup from 'src/components/ImagePopup/ImagePopup'
+import globalUseStyles from 'src/shared/globalStyles'
+import { stringifySearch } from 'src/shared/utils'
+import { formatJSONDate } from 'yancey-js-util'
+import useStyles from './styles'
+import { POSTS } from './typeDefs'
+import { IPostItem } from './types'
+import usePost from './usePost'
 
-const Post: FC = () => {
-  const { enqueueSnackbar } = useSnackbar()
+const PostList: FC = () => {
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const classes = useStyles()
+  const globalClasses = globalUseStyles()
+  const [title, setTitle] = useState('')
+  const [rowCount, setRowCount] = useState(0)
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 0,
+    pageSize: 10
+  })
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const { updatePostById, deletePostById, deletePosts } = usePost()
 
-  const [fetchPostsByPage, { loading: isFetching, data }] = useLazyQuery<Query>(
-    POSTS,
-    {
-      notifyOnNetworkStatusChange: true
-    }
-  )
+  const { loading, data } = useQuery(POSTS, {
+    variables: {
+      input: { page: pageModel.page + 1, pageSize: pageModel.pageSize, title }
+    },
+    notifyOnNetworkStatusChange: true,
+    onCompleted(_data) {
+      setRowCount(_data?.getPostsForCMS?.total ?? 0)
+    },
+    onError() {}
+  })
 
-  const fetchFirstData = useCallback(() => {
-    fetchPostsByPage({
-      variables: {
-        input: {
-          page: 1,
-          pageSize: 10
-        }
-      }
+  const toEditPage = (id?: string) => {
+    navigate({
+      pathname: `${pathname}/edit`,
+      search: stringifySearch({ id })
     })
-  }, [fetchPostsByPage])
+  }
 
-  const [createPostStatistics] = useMutation<
-    CreatePostStatisticsMutation,
-    PostStatisticsVars
-  >(CREATE_POST_STATISTICS)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+  }
 
-  const [updatePostById] = useMutation<UpdatePostByIdMutation>(
-    UPDATE_ONE_POST,
+  const columns: GridColDef[] = [
     {
-      onCompleted(data) {
-        const { _id, title, isPublic } = data.updatePostById
-        enqueueSnackbar(`「${title}」 is ${isPublic ? 'public' : 'hide'}.`, {
-          variant: 'success'
-        })
-
-        createPostStatistics({
-          variables: {
-            input: {
-              postId: _id,
-              postName: title,
-              scenes: `switched to ${isPublic ? 'public' : 'hide'}`
-            }
-          }
-        })
-      }
-    }
-  )
-
-  const [deletePostById, { loading: isDeleting }] = useMutation(
-    DELETE_ONE_POST,
+      field: 'id',
+      headerName: 'ID',
+      valueGetter: (_, row) => row._id,
+      flex: 1
+    },
+    { field: 'title', headerName: 'Title', flex: 2 },
     {
-      onCompleted(data) {
-        const { _id } = data.deletePostById
-        enqueueSnackbar('Delete success!', { variant: 'success' })
-        fetchFirstData()
-        deletePostOnAlgolia(_id)
-      }
-    }
-  )
-
-  const [deletePosts, { loading: isBatchDeleting }] = useMutation(
-    BATCH_DELETE_POSTS,
+      field: 'summary',
+      headerName: 'Summary',
+      renderCell: (params: GridRenderCellParams<IPostItem>) => (
+        <Tooltip title={params.row.summary} placement="top">
+          <span>{params.row.summary.slice(0, 15)}...</span>
+        </Tooltip>
+      ),
+      flex: 2
+    },
     {
-      onCompleted(data) {
-        const { ids } = data.deletePosts
-        enqueueSnackbar('Delete success!', { variant: 'success' })
-        fetchFirstData()
-        deletePostsOnAlgolia(ids)
-      }
-    }
-  )
+      field: 'tags',
+      headerName: 'Tags',
+      renderCell: (params: GridRenderCellParams<IPostItem>) => (
+        <>
+          {params.row.tags.map((tag: string) => (
+            <Chip
+              key={tag}
+              className={classes.btn}
+              label={tag}
+              clickable
+              color="primary"
+            />
+          ))}
+        </>
+      ),
+      flex: 2
+    },
+    {
+      field: 'posterUrl',
+      headerName: 'Poster Url',
+      renderCell: (params: GridRenderCellParams<IPostItem>) => {
+        const curTitle = params.row.title
+        return <ImagePopup imgName={curTitle} imgUrl={params.row.posterUrl} />
+      },
+      flex: 1
+    },
+    {
+      field: 'isPublic',
+      headerName: 'IsPublic',
+      renderCell: (params: GridRenderCellParams<IPostItem>) => {
+        const { _id, isPublic } = params.row
 
-  useEffect(() => {
-    fetchFirstData()
-  }, [fetchFirstData])
+        return (
+          <Switch
+            checked={isPublic}
+            onChange={(e) => {
+              updatePostById({
+                variables: { input: { isPublic: e.target.checked, id: _id } },
+                optimisticResponse: {
+                  updatePostById: {
+                    ...params.row,
+                    __typename: 'PostItemModel',
+                    isPublic: e.target.checked
+                  }
+                }
+              })
+            }}
+          />
+        )
+      }
+    },
+    { field: 'like', headerName: 'Like', flex: 0.5 },
+    { field: 'pv', headerName: 'PV', flex: 0.5 },
+    {
+      field: 'createdAt',
+      headerName: 'CreatedAt',
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
+      flex: 1
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'UpdatedAt',
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
+      flex: 1
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      renderCell: (params: GridRenderCellParams<IPostItem>) => (
+        <>
+          <FormControl>
+            <Edit
+              className={globalClasses.editIcon}
+              onClick={() => toEditPage(params.row._id)}
+            />
+          </FormControl>
+          <FormControl>
+            <ConfirmPopover
+              onOk={() => deletePostById({ variables: { id: params.row._id } })}
+            >
+              <DeleteOutline />
+            </ConfirmPopover>
+          </FormControl>
+        </>
+      ),
+      flex: 1
+    }
+  ]
 
   return (
-    <PostTable
-      total={data ? data.getPostsForCMS.total : 0}
-      page={data ? data.getPostsForCMS.page : 0}
-      pageSize={data ? data.getPostsForCMS.pageSize : 10}
-      dataSource={data ? data.getPostsForCMS.items : []}
-      fetchPostsByPage={fetchPostsByPage}
-      isFetching={isFetching}
-      isDeleting={isDeleting}
-      isBatchDeleting={isBatchDeleting}
-      deletePostById={deletePostById}
-      deletePosts={deletePosts}
-      updatePostById={updatePostById}
-    />
+    <div className={classes.tableWrapper}>
+      <section className={classes.headerWrapper}>
+        <div>
+          <Button variant="contained" onClick={() => toEditPage()}>
+            Create One
+          </Button>
+          {selectedRows.length > 0 && (
+            <Button
+              variant="contained"
+              color="error"
+              style={{ marginLeft: 24 }}
+            >
+              <ConfirmPopover
+                onOk={() =>
+                  deletePosts({
+                    variables: {
+                      ids: selectedRows.map((row) => row.toString())
+                    }
+                  })
+                }
+              >
+                Batch Delete
+              </ConfirmPopover>
+            </Button>
+          )}
+        </div>
+        <Paper className={classes.search}>
+          <InputBase
+            className={classes.input}
+            placeholder="Search Posts by Title"
+            inputProps={{ 'aria-label': 'search post by title' }}
+            onChange={handleInputChange}
+          />
+          <IconButton
+            type="submit"
+            className={classes.iconButton}
+            aria-label="search"
+            // onClick={() => fetchData(page, pageSize, title)}
+          >
+            <Search />
+          </IconButton>
+          <Divider className={classes.divider} orientation="vertical" />
+          <IconButton
+            color="primary"
+            className={classes.iconButton}
+            aria-label="clear"
+            // onClick={() => fetchData(page, pageSize, '')}
+          >
+            <Clear />
+          </IconButton>
+        </Paper>
+      </section>
+      <DataGrid
+        rowHeight={88}
+        loading={loading}
+        getRowId={(row) => row._id}
+        rows={data?.getPostsForCMS.items ?? []}
+        columns={columns}
+        rowCount={rowCount}
+        checkboxSelection
+        onRowSelectionModelChange={(selected) => {
+          setSelectedRows(selected)
+        }}
+        pageSizeOptions={[5, 10, 25, { value: -1, label: 'All' }]}
+        paginationModel={pageModel}
+        paginationMode="server"
+        onPaginationModelChange={(paginationModel) => {
+          console.log(paginationModel)
+          setPageModel(paginationModel)
+        }}
+      />
+    </div>
   )
 }
 
-export default Post
+export default PostList

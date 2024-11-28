@@ -1,14 +1,12 @@
-import { ReactElement } from 'react'
 import {
   Dashboard,
-  Home,
   Headset,
+  Home,
   PostAdd,
   Settings
 } from '@mui/icons-material'
+import { FC, lazy, LazyExoticComponent, ReactElement } from 'react'
 import { Roles } from 'src/types/roles'
-import { lazy } from 'react'
-import { LazyExoticComponent, FC } from 'react'
 
 export interface Route {
   name: string
@@ -35,7 +33,7 @@ const routes: Route[] = [
     name: 'Dashboard',
     path: '/',
     icon: <Dashboard />,
-    component: lazy(() => import('src/containers/Dashboard/Dashboard')),
+    component: lazy(() => import('src/containers/Dashboard')),
     roles: [Roles.ADMIN]
   },
   {
@@ -46,15 +44,13 @@ const routes: Route[] = [
       {
         name: 'Announcement',
         path: 'announcement',
-        component: lazy(
-          () => import('src/containers/Home/Announcement/Announcement')
-        ),
+        component: lazy(() => import('src/containers/Home/Announcement')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Cover',
         path: 'cover',
-        component: lazy(() => import('src/containers/Home/Cover/Cover')),
+        component: lazy(() => import('src/containers/Home/Cover')),
         roles: [Roles.ADMIN]
       },
       {

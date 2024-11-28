@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import YanceyMusicTable from './components/YanceyMusicTable'
 import {
-  YANCEY_MUSIC,
+  BATCH_DELETE_YANCEY_MUSIC,
   CREATE_ONE_YANCEY_MUSIC,
-  UPDATE_ONE_YANCEY_MUSIC,
   DELETE_ONE_YANCEY_MUSIC,
-  BATCH_DELETE_YANCEY_MUSIC
+  UPDATE_ONE_YANCEY_MUSIC,
+  YANCEY_MUSIC
 } from './typeDefs'
 import { IYanceyMusic, Query } from './types'
-import YanceyMusicTable from './components/YanceyMusicTable'
 
 const YanceyMusic: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

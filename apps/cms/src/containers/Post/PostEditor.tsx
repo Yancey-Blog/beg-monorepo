@@ -1,55 +1,55 @@
-import { FC, useRef, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { TextField, Button, IconButton, Popover } from '@mui/material'
+import { useLazyQuery, useMutation } from '@apollo/client'
 import { PhotoCamera } from '@mui/icons-material'
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
-import * as Yup from 'yup'
+import { Button, IconButton, Popover, TextField } from '@mui/material'
+import chartPlugin from '@toast-ui/editor-plugin-chart'
+import codeSyntaxHighlightPlugin from '@toast-ui/editor-plugin-code-syntax-highlight'
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css'
+import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
+import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css'
+import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
+import umlPlugin from '@toast-ui/editor-plugin-uml'
+import '@toast-ui/editor/dist/toastui-editor.css'
+import { Editor } from '@toast-ui/react-editor'
 import { useFormik } from 'formik'
-import { useMutation, useLazyQuery } from '@apollo/client'
+import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
 import { useSnackbar } from 'notistack'
 import Prism from 'prismjs'
-import { Editor } from '@toast-ui/react-editor'
 import 'prismjs/themes/prism-dark.css'
-import 'tui-color-picker/dist/tui-color-picker.css'
-import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css'
-import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css'
-import '@toast-ui/editor/dist/toastui-editor.css'
-import codeSyntaxHighlightPlugin from '@toast-ui/editor-plugin-code-syntax-highlight'
-import umlPlugin from '@toast-ui/editor-plugin-uml'
-import tableMergedCellPlugin from '@toast-ui/editor-plugin-table-merged-cell'
-import chartPlugin from '@toast-ui/editor-plugin-chart'
-import colorSyntaxPlugin from '@toast-ui/editor-plugin-color-syntax'
+import { FC, useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import ChipInput from 'src/components/ChipInput/ChipInput'
-import Uploader from 'src/components/Uploader/Uploader'
 import Loading from 'src/components/Loading/Loading'
 import { UploaderResponse } from 'src/components/Uploader/types'
+import Uploader from 'src/components/Uploader/Uploader'
 import useUploadRequest from 'src/hooks/useUploadRequest'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 import { goBack, parseSearch } from 'src/shared/utils'
+import 'tui-color-picker/dist/tui-color-picker.css'
+import * as Yup from 'yup'
+import { sendPostToAlgolia } from './algolia/algoliaSearch'
+import UploaderModal from './components/UploaderModal'
+import { getHTML, getMarkdown, setMarkdown } from './editors/editorIO'
+import { insertImage, insertImageButton } from './editors/enhanceEditor'
+import useStyles from './styles'
 import {
   CREATE_ONE_POST,
-  UPDATE_ONE_POST,
   CREATE_POST_STATISTICS,
-  GET_POST_BY_ID
+  GET_POST_BY_ID,
+  UPDATE_ONE_POST
 } from './typeDefs'
-import UploaderModal from './components/UploaderModal'
-import { insertImageButton, insertImage } from './editors/enhanceEditor'
-import { getMarkdown, getHTML, setMarkdown } from './editors/editorIO'
-import { sendPostToAlgolia } from './algolia/algoliaSearch'
 import {
-  SaveType,
-  PostStatisticsVars,
-  CreatePostStatisticsMutation,
-  UpdatePostByIdMutation,
-  CreatePostVars,
-  UpdatePostVars,
   CreatePostMutation,
-  GetPostByIdQuery
+  CreatePostStatisticsMutation,
+  CreatePostVars,
+  GetPostByIdQuery,
+  PostStatisticsVars,
+  SaveType,
+  UpdatePostByIdMutation,
+  UpdatePostVars
 } from './types'
-import useStyles from './styles'
 
 const PostEditor: FC = () => {
   /* query */

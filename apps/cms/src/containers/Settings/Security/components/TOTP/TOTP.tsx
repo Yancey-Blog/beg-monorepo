@@ -1,30 +1,30 @@
-import { FC, useState, useEffect, FormEvent } from 'react'
-import * as Yup from 'yup'
-import { useSnackbar } from 'notistack'
-import { useFormik } from 'formik'
-import CopyToClipboard from 'react-copy-to-clipboard'
 import { useMutation } from '@apollo/client'
+import { Close } from '@mui/icons-material'
 import {
   Button,
   CircularProgress,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
-  IconButton,
-  TextField,
+  DialogContent,
+  DialogTitle,
   FormControl,
-  RadioGroup,
+  FormControlLabel,
+  IconButton,
   Radio,
-  FormControlLabel
+  RadioGroup,
+  TextField
 } from '@mui/material'
-import { Close } from '@mui/icons-material'
+import { useFormik } from 'formik'
+import { useSnackbar } from 'notistack'
+import { FC, FormEvent, useEffect, useState } from 'react'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import Transition from 'src/components/Transition/Transition'
 import {
   AZURE_BLOB_PATH,
-  GOOGLE_AUTHENTICATOR_FOR_IOS,
-  GOOGLE_AUTHENTICATOR_FOR_ANDROID
+  GOOGLE_AUTHENTICATOR_FOR_ANDROID,
+  GOOGLE_AUTHENTICATOR_FOR_IOS
 } from 'src/shared/constants'
-import Transition from 'src/components/Transition/Transition'
+import * as Yup from 'yup'
 import { CREATE_TOTP, VALIDATE_TOTP } from '../../typeDefs'
 import styles from './totp.module.scss'
 

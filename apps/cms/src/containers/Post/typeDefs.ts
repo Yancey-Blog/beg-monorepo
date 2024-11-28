@@ -1,5 +1,16 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  BatchDeleteModel,
+  CreatePostInput,
+  MutationDeletePostByIdArgs,
+  MutationDeletePostsArgs,
+  PaginationInput,
+  PostItemModel,
+  PostModel,
+  UpdatePostInput
+} from 'backend/src/__generated__/graphql'
 import { BATCH_DELETE_FRAGMENT } from 'src/graphql/graphqlFragment'
+import { GraphQInputWrapper } from 'src/types/common'
 
 const POST_FRAGMENT = gql`
   fragment PostFragment on PostItemModel {
@@ -18,7 +29,10 @@ const POST_FRAGMENT = gql`
   }
 `
 
-export const CREATE_ONE_POST = gql`
+export const CREATE_ONE_POST: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<CreatePostInput>
+> = gql`
   mutation CreatePost($input: CreatePostInput!) {
     createPost(input: $input) {
       ...PostFragment
@@ -27,7 +41,10 @@ export const CREATE_ONE_POST = gql`
   ${POST_FRAGMENT}
 `
 
-export const UPDATE_ONE_POST = gql`
+export const UPDATE_ONE_POST: TypedDocumentNode<
+  { updatePostById: PostItemModel },
+  GraphQInputWrapper<UpdatePostInput>
+> = gql`
   mutation UpdatePostById($input: UpdatePostInput!) {
     updatePostById(input: $input) {
       ...PostFragment
@@ -36,7 +53,10 @@ export const UPDATE_ONE_POST = gql`
   ${POST_FRAGMENT}
 `
 
-export const POSTS = gql`
+export const POSTS: TypedDocumentNode<
+  { getPostsForCMS: PostModel },
+  GraphQInputWrapper<PaginationInput>
+> = gql`
   query GetPostsForCMS($input: PaginationInput!) {
     getPostsForCMS(input: $input) {
       total
@@ -50,7 +70,10 @@ export const POSTS = gql`
   ${POST_FRAGMENT}
 `
 
-export const GET_POST_BY_ID = gql`
+export const GET_POST_BY_ID: TypedDocumentNode<
+  PostModel,
+  GraphQInputWrapper<{ id: string }>
+> = gql`
   query GetPostByIdForCMS($id: ID!) {
     getPostByIdForCMS(id: $id) {
       ...PostFragment
@@ -59,7 +82,10 @@ export const GET_POST_BY_ID = gql`
   ${POST_FRAGMENT}
 `
 
-export const DELETE_ONE_POST = gql`
+export const DELETE_ONE_POST: TypedDocumentNode<
+  { deletePostById: PostItemModel },
+  MutationDeletePostByIdArgs
+> = gql`
   mutation DeletePostById($id: ID!) {
     deletePostById(id: $id) {
       ...PostFragment
@@ -68,7 +94,10 @@ export const DELETE_ONE_POST = gql`
   ${POST_FRAGMENT}
 `
 
-export const BATCH_DELETE_POSTS = gql`
+export const BATCH_DELETE_POSTS: TypedDocumentNode<
+  { deletePosts: BatchDeleteModel },
+  MutationDeletePostsArgs
+> = gql`
   mutation DeletePosts($ids: [ID!]!) {
     deletePosts(ids: $ids) {
       ...BatchDeleteFragment

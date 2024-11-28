@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import OpenSourceTable from './components/OpenSourceTable'
 import {
-  OPEN_SOURCES,
+  BATCH_DELETE_OPEN_SOURCE,
   CREATE_ONE_OPEN_SOURCE,
-  UPDATE_ONE_OPEN_SOURCE,
   DELETE_ONE_OPEN_SOURCE,
-  BATCH_DELETE_OPEN_SOURCE
+  OPEN_SOURCES,
+  UPDATE_ONE_OPEN_SOURCE
 } from './typeDefs'
 import { IOpenSource, Query } from './types'
-import OpenSourceTable from './components/OpenSourceTable'
 
 const OpenSource: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

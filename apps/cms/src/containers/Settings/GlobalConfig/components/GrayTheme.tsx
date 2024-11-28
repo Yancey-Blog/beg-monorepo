@@ -1,6 +1,6 @@
-import { FC, ChangeEvent } from 'react'
 import { FormControlLabel, Switch } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import { ChangeEvent, FC } from 'react'
 import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
 
 interface Props {

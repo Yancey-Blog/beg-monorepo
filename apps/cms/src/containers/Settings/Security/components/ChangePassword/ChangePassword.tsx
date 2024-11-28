@@ -1,13 +1,13 @@
-import { FC } from 'react'
-import * as Yup from 'yup'
-import { useSnackbar } from 'notistack'
-import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
-import { TextField, Button } from '@mui/material'
-import { PASSWORD_REGEXP, AZURE_BLOB_PATH } from 'src/shared/constants'
+import { Button, TextField } from '@mui/material'
+import { useFormik } from 'formik'
+import { useSnackbar } from 'notistack'
+import { FC } from 'react'
 import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
-import styles from './changePassword.module.scss'
+import { AZURE_BLOB_PATH, PASSWORD_REGEXP } from 'src/shared/constants'
+import * as Yup from 'yup'
 import { CHANGE_PASSWORD } from '../../typeDefs'
+import styles from './changePassword.module.scss'
 
 const ChangePassword: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

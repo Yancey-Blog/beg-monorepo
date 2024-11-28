@@ -1,52 +1,40 @@
-import { FC, useState } from 'react'
+import { useQuery } from '@apollo/client'
+import { DeleteForever, Edit } from '@mui/icons-material'
+import { Button, Switch } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
-import { Edit, DeleteForever } from '@mui/icons-material'
-import { Switch, Button } from '@mui/material'
-import { formatJSONDate } from 'yancey-js-util'
-import useOpenModal from 'src/hooks/useOpenModal'
+import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
-import Move from 'src/components/Move/Move'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
-import CoverModal from './CoverModal'
-import { ICover } from '../types'
-import { COVERS } from '../typeDefs'
+import Move from 'src/components/Move/Move'
+import useOpenModal from 'src/hooks/useOpenModal'
+import { formatJSONDate } from 'yancey-js-util'
+import CoverModal from './components/CoverModal'
+import { COVERS } from './typeDefs'
+import useCover from './useCover'
 
-interface Props {
-  dataSource: ICover[]
-  isFetching: boolean
-  isDeleting: boolean
-  isExchanging: boolean
-  isBatchDeleting: boolean
-  isPublicCovers: boolean
-  deleteCoverById: () => void
-  deleteCovers: () => void
-  createCover: () => void
-  updateCoverById: () => void
-  exchangePosition: () => void
-  publicCovers: () => void
-}
-
-const CoverTable: FC<Props> = ({
-  dataSource,
-  deleteCoverById,
-  deleteCovers,
-  createCover,
-  updateCoverById,
-  exchangePosition,
-  isFetching,
-  isDeleting,
-  isExchanging,
-  isBatchDeleting
-}) => {
+const Cover: FC = () => {
+  const { loading: isFetching, data } = useQuery(COVERS, {
+    notifyOnNetworkStatusChange: true
+  })
+  const {
+    loading,
+    updateCoverById,
+    deleteCoverById,
+    deleteCovers,
+    exchangePosition
+  } = useCover()
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 20
+  })
 
   const columns: GridColDef[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
@@ -88,15 +76,13 @@ const CoverTable: FC<Props> = ({
     {
       field: 'createdAt',
       headerName: 'Created At',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'Updated At',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
@@ -118,7 +104,7 @@ const CoverTable: FC<Props> = ({
 
           <Move
             refetchQueries={[COVERS]}
-            dataSource={dataSource}
+            dataSource={data?.getCovers ?? []}
             curr={params.row}
             exchangePosition={exchangePosition}
           />
@@ -129,7 +115,7 @@ const CoverTable: FC<Props> = ({
   ]
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', maxHeight: 'calc(100vh - 240px)' }}>
       <div
         style={{
           display: 'flex',
@@ -143,7 +129,11 @@ const CoverTable: FC<Props> = ({
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
-              onOk={() => deleteCovers({ variables: { ids: selectedRows } })}
+              onOk={() =>
+                deleteCovers({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
+              }
             >
               Batch Delete
             </ConfirmPopover>
@@ -151,30 +141,24 @@ const CoverTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        loading={isFetching || loading}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getCovers ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <CoverModal
-        open={open}
-        handleOpen={handleOpen}
-        createCover={createCover}
-        updateCoverById={updateCoverById}
-      />
+      <CoverModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }
 
-export default CoverTable
+export default Cover

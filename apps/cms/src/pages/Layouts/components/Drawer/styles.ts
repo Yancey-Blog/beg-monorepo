@@ -1,8 +1,8 @@
 import { makeStyles } from '@mui/styles'
 import {
+  AZURE_BLOB_PATH,
   DRAWER_WIDTH,
-  FOLDER_DRAWER_WIDTH,
-  AZURE_BLOB_PATH
+  FOLDER_DRAWER_WIDTH
 } from 'src/shared/constants'
 import { transition } from '../../styles'
 

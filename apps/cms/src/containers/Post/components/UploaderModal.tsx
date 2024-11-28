@@ -1,14 +1,14 @@
-import { FC, useState, RefObject } from 'react'
-import { flushSync } from 'react-dom'
 import {
-  DialogActions,
-  DialogTitle,
+  Button,
   Dialog,
+  DialogActions,
   DialogContent,
-  Button
+  DialogTitle
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { Editor } from '@toast-ui/react-editor'
+import { FC, RefObject, useState } from 'react'
+import { flushSync } from 'react-dom'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import { insertImage } from '../editors/enhanceEditor'

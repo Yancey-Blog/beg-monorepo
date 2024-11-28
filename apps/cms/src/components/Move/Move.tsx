@@ -1,8 +1,8 @@
-import { FC } from 'react'
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
+import { DocumentNode } from '@apollo/client'
 import { MoreVert } from '@mui/icons-material'
 import { Menu, MenuItem } from '@mui/material'
-import { DocumentNode } from '@apollo/client'
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state'
+import { FC } from 'react'
 
 interface Props {
   refetchQueries?: DocumentNode[]

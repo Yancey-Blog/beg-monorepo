@@ -1,36 +1,38 @@
-import { FC, useState } from 'react'
+import { useQuery } from '@apollo/client'
+import { DeleteForever, Edit } from '@mui/icons-material'
+import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
-import { DeleteForever, Edit } from '@mui/icons-material'
-import { Button } from '@mui/material'
-import { formatJSONDate } from 'yancey-js-util'
-import useOpenModal from 'src/hooks/useOpenModal'
+import { AnnouncementModel } from 'backend/src/__generated__/graphql'
+import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import Move from 'src/components/Move/Move'
-import AnnouncementModal from './AnnouncementModal'
-import { AnnouncementTableProps as Props, IAnnouncement } from '../types'
-import { ANNOUNCEMENTS } from '../typeDefs'
+import useOpenModal from 'src/hooks/useOpenModal'
+import { formatJSONDate } from 'yancey-js-util'
+import AnnouncementModal from './components/AnnouncementModal'
+import { ANNOUNCEMENTS } from './typeDefs'
+import useAnnouncement from './useAnnouncement'
 
-const AnnouncementTable: FC<Props> = ({
-  dataSource,
-  deleteAnnouncementById,
-  deleteAnnouncements,
-  exchangePosition,
-  createAnnouncement,
-  updateAnnouncementById,
-  isFetching,
-  isDeleting,
-  isExchanging,
-  isBatchDeleting
-}) => {
-  const { open, handleOpen } = useOpenModal<IAnnouncement>()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+const Announcement: FC = () => {
+  const { deleteAnnouncementById, deleteAnnouncements, exchangePosition } =
+    useAnnouncement()
+
+  const { loading, data } = useQuery(ANNOUNCEMENTS, {
+    notifyOnNetworkStatusChange: true,
+    onError() {}
+  })
+
+  const { open, handleOpen } = useOpenModal<AnnouncementModel>()
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 20
+  })
 
   const columns: GridColDef[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
@@ -39,15 +41,13 @@ const AnnouncementTable: FC<Props> = ({
     {
       field: 'createdAt',
       headerName: 'CreatedAt',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'UpdatedAt',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
@@ -71,7 +71,7 @@ const AnnouncementTable: FC<Props> = ({
 
           <Move
             refetchQueries={[ANNOUNCEMENTS]}
-            dataSource={dataSource}
+            dataSource={data?.getAnnouncements ?? []}
             curr={params.row}
             exchangePosition={exchangePosition}
           />
@@ -82,7 +82,7 @@ const AnnouncementTable: FC<Props> = ({
   ]
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', maxHeight: 'calc(100vh - 240px)' }}>
       <div
         style={{
           display: 'flex',
@@ -97,7 +97,9 @@ const AnnouncementTable: FC<Props> = ({
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
               onOk={() =>
-                deleteAnnouncements({ variables: { ids: selectedRows } })
+                deleteAnnouncements({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
               }
             >
               Batch Delete
@@ -106,30 +108,24 @@ const AnnouncementTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        loading={loading}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getAnnouncements ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <AnnouncementModal
-        open={open}
-        handleOpen={handleOpen}
-        createAnnouncement={createAnnouncement}
-        updateAnnouncementById={updateAnnouncementById}
-      />
+      <AnnouncementModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }
 
-export default AnnouncementTable
+export default Announcement

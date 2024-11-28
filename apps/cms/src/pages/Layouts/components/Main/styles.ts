@@ -4,7 +4,7 @@ const useStyles = makeStyles({
   main: {
     display: 'flex',
     flex: 1,
-    padding: '0 24px 24px'
+    padding: '72px 16px 72px'
   }
 })
 

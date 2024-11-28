@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { makeStyles } from '@mui/styles'
+import { FC } from 'react'
 
 interface Props {
   title: string

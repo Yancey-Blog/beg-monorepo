@@ -1,41 +1,37 @@
-import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import {
-  Menu,
-  MenuItem,
-  Divider,
-  Fade,
-  ListItemIcon,
-  ListItemText,
-  Avatar
-} from '@mui/material'
-import {
-  LockOutlined,
-  FaceOutlined,
-  PermDataSettingOutlined,
   AccountBalanceOutlined,
-  ExitToAppOutlined
-} from '@mui/icons-material'
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
-import classNames from 'classnames'
-import {
-  AppBar,
-  Input,
-  Fab,
-  Badge,
-  Typography,
-  IconButton
-} from '@mui/material'
-import {
-  MoreVert,
   Dashboard,
+  ExitToAppOutlined,
+  FaceOutlined,
+  LockOutlined,
+  MoreVert,
   Notifications,
+  PermDataSettingOutlined,
   Person,
   Search,
   ViewList
 } from '@mui/icons-material'
-import useStyles from './styles'
+import {
+  AppBar,
+  Avatar,
+  Badge,
+  Divider,
+  Fab,
+  Fade,
+  IconButton,
+  Input,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Typography
+} from '@mui/material'
+import classNames from 'classnames'
 import { KeycloakProfile } from 'keycloak-js'
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import useStyles from './styles'
 
 interface Props {
   open: boolean
@@ -55,7 +51,10 @@ const Header: FC<Props> = ({
   const classes = useStyles()
 
   return (
-    <AppBar position="relative" className={classes.header}>
+    <AppBar
+      position="relative"
+      className={classNames(classes.header, { [classes.headerExpand]: !open })}
+    >
       <section className={classes.left}>
         <Fab
           size="small"

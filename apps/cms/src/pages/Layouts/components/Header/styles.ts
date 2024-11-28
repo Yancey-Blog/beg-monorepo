@@ -5,12 +5,19 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    flexDirection: 'row!important',
-    padding: '12px 24px 48px',
-    backgroundColor: 'transparent!important',
-    boxShadow: 'none!important'
+    flexDirection: 'row',
+    padding: '0 8px 0 16px',
+    background: '#fff',
+    position: 'fixed',
+    right: 0,
+    top: 0,
+    zIndex: 10000,
+    width: 'calc(100% - 260px)',
+    transition: 'all 300ms cubic-bezier(0.4, 0, 0.6, 1)'
+  },
+  headerExpand: {
+    width: 'calc(100% - 80px)',
+    transition: 'all 300ms cubic-bezier(0.4, 0, 0.6, 1)'
   },
   fabIcon: {
     color: '#999!important',

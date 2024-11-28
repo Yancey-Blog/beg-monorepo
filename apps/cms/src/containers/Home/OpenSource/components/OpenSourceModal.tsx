@@ -1,21 +1,21 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
-  FormLabel
+  DialogTitle,
+  FormLabel,
+  TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Uploader from 'src/components/Uploader/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
+import { parseSearch } from 'src/shared/utils'
+import * as Yup from 'yup'
 import { IOpenSource } from '../types'
 
 interface Props {

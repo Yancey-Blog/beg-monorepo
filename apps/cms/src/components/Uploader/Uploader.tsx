@@ -1,12 +1,12 @@
-import { FC, useState, ChangeEvent } from 'react'
-import classNames from 'classnames'
-import { Card, CircularProgress, Button } from '@mui/material'
 import { Add, CloudUpload } from '@mui/icons-material'
+import { Button, Card, CircularProgress } from '@mui/material'
+import classNames from 'classnames'
 import { useSnackbar } from 'notistack'
+import { ChangeEvent, FC, useState } from 'react'
 import useUploadRequest from 'src/hooks/useUploadRequest'
 import { getURLPathName } from 'src/shared/utils'
-import { UploaderResponse, Props } from './types'
 import useclasses from './styles'
+import { Props, UploaderResponse } from './types'
 
 const Uploader: FC<Props> = ({
   type = 'avatar',

@@ -1,16 +1,16 @@
-import { FC } from 'react'
-import { useLazyQuery, useQuery, useMutation } from '@apollo/client'
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { FC } from 'react'
 import Loading from 'src/components/Loading/Loading'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import { Query as PostsQuery } from 'src/containers/Post/types'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
 import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
-import { GLOBAL_SETTING, UPDATE_GLOBAL_SETTING_BY_ID } from './typeDefs'
-import { Query } from './types'
-import ReleasePicker from './components/ReleasePicker'
 import CVPicker from './components/CVPicker'
 import GrayTheme from './components/GrayTheme'
+import ReleasePicker from './components/ReleasePicker'
+import { GLOBAL_SETTING, UPDATE_GLOBAL_SETTING_BY_ID } from './typeDefs'
+import { Query } from './types'
 
 const GlobalConfig: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
