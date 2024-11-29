@@ -4,7 +4,6 @@ import { createStyles, makeStyles } from '@mui/styles'
 import classNames from 'classnames'
 import { FC } from 'react'
 import { GLOBAL_SETTING } from 'src/containers/Settings/GlobalConfig/typeDefs'
-import { Query } from 'src/containers/Settings/GlobalConfig/types'
 import {
   YANCEY_BLOG_URL,
   YANCEY_EMAIL_URL,
@@ -58,7 +57,7 @@ interface Props {
 const Footer: FC<Props> = ({ open }) => {
   const classes = useStyles()
 
-  const { data } = useQuery<Query>(GLOBAL_SETTING, {
+  const { data } = useQuery(GLOBAL_SETTING, {
     notifyOnNetworkStatusChange: true
   })
 

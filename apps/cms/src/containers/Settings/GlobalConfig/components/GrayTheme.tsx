@@ -28,14 +28,14 @@ const GrayTheme: FC<Props> = ({ globalSettings }) => {
     await updateGlobalSettingById({
       variables: {
         input: { isGrayTheme: e.target.checked, id: globalSettings._id }
+      },
+      optimisticResponse: {
+        updateGlobalSettingById: {
+          ...globalSettings,
+          __typename: 'GlobalSettingModel',
+          isGrayTheme: e.target.checked
+        }
       }
-      // optimisticResponse: {
-      //   updateGlobalSettingById: {
-      //     ...globalSettings,
-      //     __typename: 'GlobalSettingModel',
-      //     isGrayTheme: e.target.checked
-      //   }
-      // }
     })
   }
 
