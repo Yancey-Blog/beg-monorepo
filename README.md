@@ -104,7 +104,9 @@ If you want to execute script of `package.json` in one project, run `pnpm run YO
 
 To generate or update GitHub Actions CI/CD config file easily, you can execute `sh bin/workflows.sh` under the project root folder.
 
-### Semantic Release
+### Changeset
+
+BEG Monorepo adopts [changesets](https://github.com/changesets/changesets) to manage the version and CHANGELOG.md. If you want to launch a version, execute `pnpm run changeset:collection` and follow its instruction. Then execute `pnpm run changeset:version` to update `package.json` and `CHANGELOG.md`.
 
 ## Contributing
 
