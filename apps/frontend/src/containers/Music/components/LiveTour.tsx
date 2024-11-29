@@ -42,7 +42,7 @@ interface Props {
 
 const LiveTour: FC<Props> = ({ liveTours }) => {
   return (
-    // @ts-ignore
+    // @ts-expect-error TODO:
     <Carousel
       autoplay
       autoplayInterval={2000}

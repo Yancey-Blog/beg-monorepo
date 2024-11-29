@@ -59,7 +59,6 @@ const PostList: FC = () => {
     [getPosts]
   )
 
-  // @ts-ignore
   const handlePageChange = (e: ChangeEvent<unknown>, val: number) => {
     setPage(val)
     fetchPosts(val, searchTag as string)

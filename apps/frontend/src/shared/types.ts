@@ -1,4 +1,4 @@
-export type Dict<T = any> = Record<string, T>
+export type Dict<T> = Record<string, T>
 
 export interface SocialMedia {
   [x: string]: {

@@ -7,11 +7,11 @@ import styled from 'styled-components'
 
 interface Props {
   theme: string
-  onToggle: Function
+  onToggle: () => void
 }
 
 interface ButtonProps {
-  readonly lightTheme: boolean
+  readonly $lightTheme: boolean
 }
 
 const ToggleContainer = styled.button`
@@ -38,13 +38,13 @@ const SVG = styled.svg<ButtonProps>`
   ${transitionMixin('all', 300, 'linear')}
 
   &:first-child {
-    transform: ${({ lightTheme }) =>
-      !lightTheme ? 'translateY(-55px)' : 'translateY(0)'};
+    transform: ${({ $lightTheme }) =>
+      !$lightTheme ? 'translateY(-55px)' : 'translateY(0)'};
   }
 
   &:nth-child(2) {
-    transform: ${({ lightTheme }) =>
-      !lightTheme ? 'translateY(0)' : 'translateY(-55px)'};
+    transform: ${({ $lightTheme }) =>
+      !$lightTheme ? 'translateY(0)' : 'translateY(-55px)'};
   }
 `
 
@@ -69,10 +69,10 @@ const ToggleTheme: FC<Props> = ({ theme, onToggle }) => {
   return (
     <>
       <ToggleContainer onClick={() => onToggle()}>
-        <SVG lightTheme={theme === 'light'}>
+        <SVG $lightTheme={theme === 'light'}>
           <use xlinkHref={SVG_SPRITE.sun} />
         </SVG>
-        <SVG lightTheme={theme === 'light'}>
+        <SVG $lightTheme={theme === 'light'}>
           <use xlinkHref={SVG_SPRITE.moon} />
         </SVG>
       </ToggleContainer>

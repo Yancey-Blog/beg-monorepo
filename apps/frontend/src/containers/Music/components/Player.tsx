@@ -11,9 +11,8 @@ const Player: FC = () => {
   const [isLoadedScript, setIsLoadedScript] = useState(false)
 
   useEffect(() => {
-    // @ts-ignore
     if (data && plyaerRef && plyaerRef.current && isLoadedScript) {
-      // @ts-ignore
+      // @ts-expect-error TODO:
       const ap = new APlayer({
         container: plyaerRef.current,
         fixed: true,

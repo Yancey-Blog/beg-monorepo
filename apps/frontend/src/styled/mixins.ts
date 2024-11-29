@@ -1,4 +1,5 @@
-import { css, Keyframes } from 'styled-components'
+import { css } from 'styled-components'
+import { Keyframes } from 'styled-components/dist/types'
 
 export const flexMixin = (
   justifyContent = 'center',

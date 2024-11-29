@@ -5,12 +5,11 @@ import { FC, useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark as mdCodeTheme } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import rehypeRaw from 'rehype-raw'
 import gfm from 'remark-gfm'
 import MetaHead from 'src/components/Head/Head'
-import { useTheme } from 'styled-components'
 import PostMeta from '../components/PostMeta/PostMeta'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
 import SharePanel from '../components/SharePanel/SharePanel'
@@ -34,7 +33,6 @@ export interface Props {
 
 const PostDetail: FC<Props> = ({ post }) => {
   const router = useRouter()
-  const theme = useTheme()
 
   const {
     query: { id }
@@ -54,39 +52,36 @@ const PostDetail: FC<Props> = ({ post }) => {
   }
 
   const customMarkdownComponents = {
-    code({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    code({ className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '')
-      return !inline && match ? (
+      return match ? (
         <SyntaxHighlighter
-          style={atomOneDark}
+          style={mdCodeTheme}
           language={match[1]}
           PreTag="div"
-          {...props}
+          customStyle={{ borderRadius: 0, margin: 0 }}
         >
-          {children.toString().replace(/\n$/, '')}
+          {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       ) : (
         <code className={className} {...props}>
-          {children.toString()}
+          `{children}`
         </code>
       )
     },
-    table({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    table({ children, ...props }) {
       return (
         <TableWrapper>
           <table {...props}>{children}</table>
         </TableWrapper>
       )
     },
-    img({ node, inline, className, children, ...props }: any) {
+    img({ ...props }) {
       const { src, alt } = props
       return (
-        <Zoom
-          openText={`Zoom Image for ${alt}`}
-          closeText={`Unzoom Image for ${alt}`}
-          overlayBgColorStart={theme.background.primary}
-          overlayBgColorEnd={theme.background.mask}
-        >
+        <Zoom>
           <ImageGroup {...props}>
             {
               // eslint-disable-next-line @next/next/no-img-element
@@ -97,28 +92,32 @@ const PostDetail: FC<Props> = ({ post }) => {
         </Zoom>
       )
     },
-    h2({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    h2({ children, ...props }) {
       return (
         <h2 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h2>
       )
     },
-    h3({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    h3({ children, ...props }) {
       return (
         <h3 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h3>
       )
     },
-    h4({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    h4({ children, ...props }) {
       return (
         <h3 {...props} id={children ? combineStr(children[0]) : ''}>
           {children}
         </h3>
       )
     },
-    blockquote({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error TODO:
+    blockquote({ children, ...props }) {
       return <Summary {...props}>{children}</Summary>
     }
   }
@@ -175,6 +174,7 @@ const PostDetail: FC<Props> = ({ post }) => {
           <ReactMarkdown
             remarkPlugins={[gfm]}
             rehypePlugins={[rehypeRaw]}
+            // @ts-expect-error TODO:
             components={customMarkdownComponents}
             className="postDetailContent"
           >

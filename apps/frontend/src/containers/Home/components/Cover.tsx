@@ -2,13 +2,16 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import { ICover } from '../types'
 
-const Covers = styled.figure`
+interface FigureProps {
+  $coverUrl: string
+}
+
+const Covers = styled.figure<FigureProps>`
   position: relative;
   margin-bottom: 3.2rem;
   width: 100vw;
   height: 100vh;
-  background: url(${(props: { coverUrl: string }) => props.coverUrl}) center
-    center no-repeat;
+  background: url(${({ $coverUrl }) => $coverUrl}) center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
 
@@ -30,7 +33,7 @@ interface Props {
 }
 
 const Cover: FC<Props> = ({ data }) => (
-  <Covers coverUrl={data && data[0]?.coverUrl} />
+  <Covers $coverUrl={data?.[0]?.coverUrl ?? ''} />
 )
 
 export default Cover

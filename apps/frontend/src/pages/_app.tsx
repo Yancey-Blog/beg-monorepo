@@ -21,7 +21,7 @@ import { darkTheme, lightTheme } from 'src/styled/theme'
 import { ThemeProvider } from 'styled-components'
 
 interface Props extends AppProps {
-  err: any
+  err: unknown
 }
 
 export const reportWebVitals = ({
@@ -54,7 +54,7 @@ const App = ({ Component, pageProps, err }: Props) => {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
+      <GlobalStyle theme={themeMode} />
       <ApolloProvider client={apolloClient}>
         <SnackbarProvider
           maxSnack={SNACKBAR_MAX_NUM}

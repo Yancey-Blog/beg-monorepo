@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { ComponentType } from 'react'
-import { Hit } from 'react-instantsearch-core'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
 import { HitContent, HitDescription, HitName, HitTag } from './styled'
 
@@ -14,7 +13,7 @@ interface HitParams {
 }
 
 interface Props {
-  hit: Hit<HitParams>
+  hit: HitParams
 }
 
 const HitComponent: ComponentType<Props> = ({ hit }) => {
