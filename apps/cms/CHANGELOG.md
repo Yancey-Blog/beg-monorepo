@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- use turborepo instead of rushjs and bump dependencies
+
 ## 5.7.3
 
 Wed, 05 Jun 2024 07:37:27 GMT
