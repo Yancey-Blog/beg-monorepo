@@ -16,7 +16,7 @@ import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
       useFactory: async (configService: ConfigService) => ({
         debug: !configService.isEnvProduction,
         playground: false,
-        introspection: !configService.isEnvProduction,
+        introspection: true,
         installSubscriptionHandlers: true,
         useGlobalPrefix: true,
         typePaths: ['./**/*.gql'],

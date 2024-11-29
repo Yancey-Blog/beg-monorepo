@@ -6,9 +6,9 @@ import { FC } from 'react'
 import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import * as Yup from 'yup'
-import SettingItemWrapper from '../components/SettingItemWrapper/SettingItemWrapper'
-import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
-import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
+import SettingItemWrapper from '../components/SettingItemWrapper'
+import SettingsHeader from '../components/SettingsHeader'
+import SettingWrapper from '../components/SettingWrapper'
 import useStyles from './styles'
 
 const Profile: FC = () => {

@@ -126,33 +126,25 @@ const routes: Route[] = [
       {
         name: 'Profile',
         path: 'settings/profile',
-        component: lazy(
-          () => import('src/containers/Settings/Profile/Profile')
-        ),
+        component: lazy(() => import('src/containers/Settings/Profile')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Account',
         path: 'settings/account',
-        component: lazy(
-          () => import('src/containers/Settings/Account/Account')
-        ),
+        component: lazy(() => import('src/containers/Settings/Account')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Security',
         path: 'settings/security',
-        component: lazy(
-          () => import('src/containers/Settings/Security/Security')
-        ),
+        component: lazy(() => import('src/containers/Settings/Security')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Global Config',
         path: 'settings/global-config',
-        component: lazy(
-          () => import('src/containers/Settings/GlobalConfig/GlobalConfig')
-        ),
+        component: lazy(() => import('src/containers/Settings/GlobalConfig')),
         roles: [Roles.ADMIN]
       }
     ]

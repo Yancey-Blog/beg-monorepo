@@ -1,13 +1,12 @@
 import { FormControlLabel, Switch } from '@mui/material'
 import { createStyles, makeStyles } from '@mui/styles'
+import { GlobalSettingModel } from 'backend/src/__generated__/graphql'
 import { ChangeEvent, FC } from 'react'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
+import useGlobalConfig from '../useGlobalConfig'
 
 interface Props {
-  id: string
-  isSubmitting: boolean
-  isGrayTheme: boolean
-  updateGlobalSettingById: () => void
+  globalSettings?: GlobalSettingModel
 }
 
 const useStyles = makeStyles(() =>
@@ -18,27 +17,29 @@ const useStyles = makeStyles(() =>
   })
 )
 
-const GrayTheme: FC<Props> = ({
-  id,
-  isGrayTheme,
-  isSubmitting,
-  updateGlobalSettingById
-}) => {
+const GrayTheme: FC<Props> = ({ globalSettings }) => {
   const classes = useStyles()
 
+  const { isUpdating, updateGlobalSettingById } = useGlobalConfig()
+
   const handleSwitchChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!globalSettings) return
+
     await updateGlobalSettingById({
-      variables: { input: { isGrayTheme: e.target.checked, id } },
-      optimisticResponse: {
-        __typename: 'Mutation',
-        updateGlobalSettingById: {
-          id,
-          __typename: 'GlobalSettingModel',
-          isGrayTheme: e.target.checked
-        }
+      variables: {
+        input: { isGrayTheme: e.target.checked, id: globalSettings._id }
       }
+      // optimisticResponse: {
+      //   updateGlobalSettingById: {
+      //     ...globalSettings,
+      //     __typename: 'GlobalSettingModel',
+      //     isGrayTheme: e.target.checked
+      //   }
+      // }
     })
   }
+
+  if (!globalSettings) return null
 
   return (
     <SettingItemWrapper title="Gray Theme">
@@ -46,10 +47,10 @@ const GrayTheme: FC<Props> = ({
         className={classes.label}
         control={
           <Switch
-            checked={isGrayTheme}
+            checked={globalSettings.isGrayTheme}
             onChange={handleSwitchChange}
             color="primary"
-            disabled={isSubmitting}
+            disabled={isUpdating}
           />
         }
         label="Is Gray Theme?"

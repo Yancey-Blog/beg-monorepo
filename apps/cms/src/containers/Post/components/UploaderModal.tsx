@@ -41,7 +41,6 @@ const UploaderModal: FC<Props> = ({ open, onClose, editorRef }) => {
   }
 
   const handleOk = () => {
-    console.log(images)
     insertImage(editorRef, images)
     handleClose()
   }

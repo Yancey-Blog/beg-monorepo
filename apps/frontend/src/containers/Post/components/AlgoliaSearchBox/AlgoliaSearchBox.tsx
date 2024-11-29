@@ -48,7 +48,6 @@ const AlgoliaSearchBox: FC = () => {
   }
 
   const handleClose = useCallback(() => {
-    console.log('fuck me')
     setShowDrawer(false)
     closeKeyboard()
 

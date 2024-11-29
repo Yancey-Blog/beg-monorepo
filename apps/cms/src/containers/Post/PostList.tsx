@@ -242,7 +242,6 @@ const PostList: FC = () => {
         paginationModel={pageModel}
         paginationMode="server"
         onPaginationModelChange={(paginationModel) => {
-          console.log(paginationModel)
           setPageModel(paginationModel)
         }}
       />

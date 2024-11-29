@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { FC, useState } from 'react'
-import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
+import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import RecoveryCodes from '../RecoveryCodes/RecoveryCodes'
 import TOTP from '../TOTP/TOTP'

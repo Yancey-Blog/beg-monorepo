@@ -1,20 +1,16 @@
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
-import { useSnackbar } from 'notistack'
+import { useLazyQuery, useQuery } from '@apollo/client'
 import { FC } from 'react'
 import Loading from 'src/components/Loading'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import { Query as PostsQuery } from 'src/containers/Post/types'
-import SettingWrapper from '../components/SettingWrapper/SettingWrapper'
-import SettingsHeader from '../components/SettingsHeader/SettingsHeader'
+import SettingWrapper from '../components/SettingWrapper'
+import SettingsHeader from '../components/SettingsHeader'
 import CVPicker from './components/CVPicker'
 import GrayTheme from './components/GrayTheme'
 import ReleasePicker from './components/ReleasePicker'
-import { GLOBAL_SETTING, UPDATE_GLOBAL_SETTING_BY_ID } from './typeDefs'
-import { Query } from './types'
+import { GLOBAL_SETTING } from './typeDefs'
 
 const GlobalConfig: FC = () => {
-  const { enqueueSnackbar } = useSnackbar()
-
   const [fetchPostsByPage, { loading: isFetchingPosts, data: postsData }] =
     useLazyQuery<PostsQuery>(POSTS, {
       notifyOnNetworkStatusChange: true
@@ -32,19 +28,9 @@ const GlobalConfig: FC = () => {
     })
   }
 
-  const { loading: isFetching, data } = useQuery<Query>(GLOBAL_SETTING, {
+  const { loading: isFetching, data } = useQuery(GLOBAL_SETTING, {
     notifyOnNetworkStatusChange: true
   })
-
-  const [updateGlobalSettingById, { loading: isSubmitting }] = useMutation(
-    UPDATE_GLOBAL_SETTING_BY_ID,
-    {
-      onCompleted() {
-        enqueueSnackbar('Update success!', { variant: 'success' })
-      },
-      onError() {}
-    }
-  )
 
   return (
     <SettingWrapper>
@@ -54,33 +40,24 @@ const GlobalConfig: FC = () => {
         <>
           <SettingsHeader
             title="Global Config"
-            subTitle="Global config for Yancey Blog PC and Mobile"
+            subTitle="Global configuration for Yancey Blog PC and Mobile"
           />
 
           <ReleasePicker
             id={data ? data.getGlobalSetting._id : ''}
-            updateGlobalSettingById={updateGlobalSettingById}
             releasePostId={data ? data.getGlobalSetting.releasePostId : ''}
             isFetching={isFetchingPosts}
-            isSubmitting={isSubmitting}
             fetchPosts={fetchPosts}
             posts={postsData ? postsData.getPostsForCMS.items : []}
           />
           <CVPicker
             id={data ? data.getGlobalSetting._id : ''}
-            updateGlobalSettingById={updateGlobalSettingById}
             cvPostId={data ? data.getGlobalSetting.cvPostId : ''}
             isFetching={isFetchingPosts}
-            isSubmitting={isSubmitting}
             fetchPosts={fetchPosts}
             posts={postsData ? postsData.getPostsForCMS.items : []}
           />
-          <GrayTheme
-            id={data ? data.getGlobalSetting._id : ''}
-            updateGlobalSettingById={updateGlobalSettingById}
-            isSubmitting={isSubmitting}
-            isGrayTheme={data ? data.getGlobalSetting.isGrayTheme : false}
-          />
+          <GrayTheme globalSettings={data?.getGlobalSetting} />
         </>
       )}
     </SettingWrapper>

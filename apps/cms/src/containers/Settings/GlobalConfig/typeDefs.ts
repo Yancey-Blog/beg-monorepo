@@ -1,4 +1,9 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  GlobalSettingModel,
+  UpdateGlobalSettingInput
+} from 'backend/src/__generated__/graphql'
+import { GraphQInputWrapper } from 'src/types/common'
 
 const GLOBAL_SETTING_FRAGMENT = gql`
   fragment GlobalSettingFragment on GlobalSettingModel {
@@ -9,7 +14,9 @@ const GLOBAL_SETTING_FRAGMENT = gql`
   }
 `
 
-export const GLOBAL_SETTING = gql`
+export const GLOBAL_SETTING: TypedDocumentNode<{
+  getGlobalSetting: GlobalSettingModel
+}> = gql`
   query GetGlobalSetting {
     getGlobalSetting {
       ...GlobalSettingFragment
@@ -18,7 +25,10 @@ export const GLOBAL_SETTING = gql`
   ${GLOBAL_SETTING_FRAGMENT}
 `
 
-export const UPDATE_GLOBAL_SETTING_BY_ID = gql`
+export const UPDATE_GLOBAL_SETTING_BY_ID: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<UpdateGlobalSettingInput>
+> = gql`
   mutation UpdateGlobalSettingById($input: UpdateGlobalSettingInput!) {
     updateGlobalSettingById(input: $input) {
       ...GlobalSettingFragment

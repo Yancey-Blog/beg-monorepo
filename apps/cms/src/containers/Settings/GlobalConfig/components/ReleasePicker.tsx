@@ -11,9 +11,10 @@ import {
   TextField
 } from '@mui/material'
 import { ChangeEvent, FC, useState } from 'react'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useStyles from '../styles'
 import { PostFilterProps } from '../types'
+import useGlobalConfig from '../useGlobalConfig'
 
 type Props = PostFilterProps & { releasePostId: string }
 
@@ -21,13 +22,12 @@ const ReleasePicker: FC<Props> = ({
   id,
   posts,
   isFetching,
-  isSubmitting,
   fetchPosts,
-  releasePostId,
-  updateGlobalSettingById
+  releasePostId
 }) => {
   const classes = useStyles()
 
+  const { isUpdating, updateGlobalSettingById } = useGlobalConfig()
   const [searchValue, setSearchValue] = useState('')
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
@@ -73,7 +73,7 @@ const ReleasePicker: FC<Props> = ({
         <Card className={classes.card}>
           <RadioGroup value={checked} onChange={handleRadioChange}>
             {posts.map((post) => (
-              <ListItem key={post._id} button dense>
+              <ListItem key={post._id} dense>
                 <ListItemIcon>
                   <Radio edge="start" value={post._id} />
                 </ListItemIcon>
@@ -92,7 +92,7 @@ const ReleasePicker: FC<Props> = ({
             <Button
               color="primary"
               type="submit"
-              disabled={!checked || isSubmitting}
+              disabled={!checked || isUpdating}
               onClick={onSubmit}
             >
               Save
