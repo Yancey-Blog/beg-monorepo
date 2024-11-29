@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- upgrade dependencies for frontend
+
 ## 4.35.0
 
 Sun, 26 Nov 2023 14:52:06 GMT
