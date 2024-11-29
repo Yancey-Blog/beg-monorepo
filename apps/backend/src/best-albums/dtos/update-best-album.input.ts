@@ -1,4 +1,4 @@
-import { InputType, Field } from '@nestjs/graphql'
+import { Field, InputType } from '@nestjs/graphql'
 import { IsNotEmpty, IsUUID } from 'class-validator'
 import { CreateBestAlbumInput } from './create-best-album.input'
 

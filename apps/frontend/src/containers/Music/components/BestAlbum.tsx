@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import styled from 'styled-components'
-import { transitionMixin } from 'src/styled/mixins'
 import { formatDate } from 'src/shared/utils'
 import breakpoints from 'src/styled/breakpoints'
+import { transitionMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 import { IBestAlbum } from '../types'
 
 const BestAlbumWrapper = styled.div`

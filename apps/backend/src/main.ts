@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
+import { AppModule } from './app.module'
 import { configLogger } from './shared/logger/logger.config'
 import { configMiddlewares } from './shared/middlewares/middleware.config'
-import { AppModule } from './app.module'
 
 const bootstrap = async () => {
   const isEnvProduction = process.env.NODE_ENV === 'production'

@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { Field, ObjectType, ID } from '@nestjs/graphql'
+import { Field, ID, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class DayModel {

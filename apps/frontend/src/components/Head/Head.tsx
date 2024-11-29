@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import Head from 'next/head'
-import { useTheme } from 'styled-components'
+import { FC } from 'react'
 import { RSS } from 'src/shared/constants'
+import { useTheme } from 'styled-components'
 
 interface Props {
   title?: string
@@ -88,7 +88,12 @@ const MetaHead: FC<Props> = ({
         sizes="32x32"
       />
       <link rel="apple-touch-icon" href="/apple-icon.png" />
-      <link rel="alternate" type="application/rss+xml" title="Subscribe to Yancey Blog" href={RSS}></link>
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Subscribe to Yancey Blog"
+        href={RSS}
+      ></link>
 
       {useTwitterCard && (
         <>

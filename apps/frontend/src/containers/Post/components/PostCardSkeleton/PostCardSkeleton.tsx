@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import Skeleton from '@mui/material/Skeleton'
-import styled from 'styled-components'
+import { FC } from 'react'
 import breakpoints from 'src/styled/breakpoints'
+import styled from 'styled-components'
 
 const PostCardSkeletonWrapper = styled.div`
   display: flex;

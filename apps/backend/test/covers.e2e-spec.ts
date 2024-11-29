@@ -1,17 +1,17 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
 import { CoversModule } from '../src/covers/covers.module'
-import { CoverModel } from '../src/covers/models/covers.model'
 import { CreateCoverInput } from '../src/covers/dtos/create-cover.input'
 import { UpdateCoverInput } from '../src/covers/dtos/update-cover.input'
+import { CoverModel } from '../src/covers/models/covers.model'
 import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
 import { BatchUpdateModel } from '../src/database/models/batch-update.model'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 
 describe('CoversController (e2e)', () => {
   let app: NestApplication

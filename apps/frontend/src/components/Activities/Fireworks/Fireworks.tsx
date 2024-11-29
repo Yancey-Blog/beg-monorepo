@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { FireworksWrapper, FireworksElement, AfterFireworks } from './styled'
+import { AfterFireworks, FireworksElement, FireworksWrapper } from './styled'
 
 const Fireworks: FC = () => {
   return (

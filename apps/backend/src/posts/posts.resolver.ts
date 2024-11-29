@@ -1,14 +1,14 @@
-import { Args, Query, Resolver, Mutation, ID, Int } from '@nestjs/graphql'
+import { Args, ID, Int, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { PostsService } from './posts.service'
-import { PostModel } from './models/posts.model'
-import { PostItemModel } from './models/post.model'
-import { ArchiveModel } from './models/archive.model'
-import { TagsModel } from './models/tags.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreatePostInput } from './dtos/create-post.input'
-import { UpdatePostInput } from './dtos/update-post.input'
 import { PaginationInput } from './dtos/pagination.input'
+import { UpdatePostInput } from './dtos/update-post.input'
+import { ArchiveModel } from './models/archive.model'
+import { PostItemModel } from './models/post.model'
+import { PostModel } from './models/posts.model'
+import { TagsModel } from './models/tags.model'
+import { PostsService } from './posts.service'
 
 @Resolver()
 export class PostsResolver {
@@ -29,7 +29,9 @@ export class PostsResolver {
   }
 
   @Query(() => PostItemModel)
-  public async getPostByIdForCMS(@Args({ name: 'id', type: () => ID }) id: string) {
+  public async getPostByIdForCMS(
+    @Args({ name: 'id', type: () => ID }) id: string
+  ) {
     return this.postsService.findOneById(id)
   }
 

@@ -1,66 +1,50 @@
+import { useQuery } from '@apollo/client'
 import { DeleteForever, Edit } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel,
-  GridValueGetterParams
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { MottoModel } from 'backend/src/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import Move from 'src/components/Move/Move'
 import useOpenModal from 'src/hooks/useOpenModal'
 import { formatJSONDate } from 'yancey-js-util'
-import { MOTTOS } from '../typeDefs'
-import { IMotto } from '../types'
-import MottoModal from './MottoModal'
+import MottoModal from './components/MottoModal'
+import { MOTTOS } from './typeDefs'
+import useMotto from './useMotto'
 
-interface Props {
-  dataSource: IMotto[]
-  isFetching: boolean
-  isDeleting: boolean
-  isExchanging: boolean
-  isBatchDeleting: boolean
-  createMotto: () => void
-  updateMottoById: () => void
-  deleteMottoById: () => void
-  deleteMottos: () => void
-  exchangePosition: () => void
-}
+const MottoTable: FC = () => {
+  const { deleteMottoById, deleteMottos, exchangePosition } = useMotto()
+  const { loading, data } = useQuery(MOTTOS, {
+    notifyOnNetworkStatusChange: true
+  })
 
-const MottoTable: FC<Props> = ({
-  dataSource,
-  createMotto,
-  deleteMottos,
-  deleteMottoById,
-  updateMottoById,
-  exchangePosition,
-  isFetching,
-  isDeleting,
-  isExchanging,
-  isBatchDeleting
-}) => {
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 25
+  })
 
-  const columns: GridColDef[] = [
+  const columns: GridColDef<MottoModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'weight', headerName: 'Weight', flex: 0.5 },
     { field: 'content', headerName: 'Content', flex: 2 },
     {
       field: 'createdAt',
       headerName: 'CreatedAt',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'UpdatedAt',
-      valueGetter: (params: GridValueGetterParams) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
@@ -75,14 +59,12 @@ const MottoTable: FC<Props> = ({
           <ConfirmPopover
             onOk={() => deleteMottoById({ variables: { id: params.row._id } })}
           >
-            <DeleteForever
-              style={{ margin: '0 20px', position: 'relative', top: 3 }}
-            />
+            <DeleteForever style={{ margin: '0 20px' }} />
           </ConfirmPopover>
 
           <Move
             refetchQueries={[MOTTOS]}
-            dataSource={dataSource}
+            dataSource={data?.getMottos ?? []}
             curr={params.row}
             exchangePosition={exchangePosition}
           />
@@ -106,7 +88,11 @@ const MottoTable: FC<Props> = ({
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
-              onOk={() => deleteMottos({ variables: { ids: selectedRows } })}
+              onOk={() =>
+                deleteMottos({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
+              }
             >
               Batch Delete
             </ConfirmPopover>
@@ -114,28 +100,22 @@ const MottoTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        loading={loading}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getMottos ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <MottoModal
-        open={open}
-        handleOpen={handleOpen}
-        createMotto={createMotto}
-        updateMottoById={updateMottoById}
-      />
+      <MottoModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }

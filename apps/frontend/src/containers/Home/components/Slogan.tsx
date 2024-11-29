@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import styled from 'styled-components'
-import { noUserSelectMixin } from 'src/styled/mixins'
 import { glitchLoop1, glitchLoop2 } from 'src/styled/animations'
+import { noUserSelectMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const Slogans = styled.h2`
   margin-bottom: 2.4rem;

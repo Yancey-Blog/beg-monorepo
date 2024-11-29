@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import Link from 'next/link'
+import { FC } from 'react'
 import { SVG_SPRITE } from 'src/shared/constants'
 import { NavBar, SVG } from './styled'
 

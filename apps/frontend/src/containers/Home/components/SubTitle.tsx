@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import styled from 'styled-components'
-import { flexMixin } from 'src/styled/mixins'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const Header = styled.h2`
   ${flexMixin('flex-start')}

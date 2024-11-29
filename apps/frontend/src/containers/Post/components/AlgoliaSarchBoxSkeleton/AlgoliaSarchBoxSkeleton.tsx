@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import Skeleton from '@mui/material/Skeleton'
-import styled from 'styled-components'
+import { FC } from 'react'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
+import styled from 'styled-components'
 
 const AlgoliaSarchBoxSkeletonWrapper = styled.div`
   margin: 1rem 0;

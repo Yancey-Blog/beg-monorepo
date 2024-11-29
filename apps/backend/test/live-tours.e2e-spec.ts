@@ -1,16 +1,16 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
-import { LiveToursModule } from '../src/live-tours/live-tours.module'
-import { LiveTourModel } from '../src/live-tours/models/live-tours.model'
+import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
 import { CreateLiveTourInput } from '../src/live-tours/dtos/create-live-tour.input'
 import { UpdateLiveTourInput } from '../src/live-tours/dtos/update-live-tour.input'
-import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
+import { LiveToursModule } from '../src/live-tours/live-tours.module'
+import { LiveTourModel } from '../src/live-tours/models/live-tours.model'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 
 describe('LiveToursController (e2e)', () => {
   let app: NestApplication

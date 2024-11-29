@@ -1,9 +1,9 @@
 import {
-  Injectable,
-  NestInterceptor,
-  ExecutionContext,
   BadGatewayException,
-  CallHandler
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  NestInterceptor
 } from '@nestjs/common'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'

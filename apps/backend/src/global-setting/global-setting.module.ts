@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
-import { GlobalSettingSchema } from './schemas/global-setting.schema'
 import { GlobalSettingResolver } from './global-setting.resolver'
 import { GlobalSettingService } from './global-setting.service'
+import { GlobalSettingSchema } from './schemas/global-setting.schema'
 
 @Module({
   imports: [

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import breakpoints from 'src/styled/breakpoints'
+import styled from 'styled-components'
 
 export const SearchBoxWrapper = styled.div`
   .ais-SearchBox {

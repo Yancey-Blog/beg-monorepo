@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
+import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateLiveTourInput } from './dtos/create-live-tour.input'
 import { UpdateLiveTourInput } from './dtos/update-live-tour.input'
-import { LiveTourModel } from './models/live-tours.model'
 import { LiveTour } from './interfaces/live-tours.interface'
-import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { LiveTourModel } from './models/live-tours.model'
 
 @Injectable()
 export class LiveToursService {

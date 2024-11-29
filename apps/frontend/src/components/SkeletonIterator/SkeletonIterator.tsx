@@ -1,4 +1,4 @@
-import { FC, ReactNode, Fragment } from 'react'
+import { FC, Fragment, ReactNode } from 'react'
 import { randomSeries } from 'yancey-js-util'
 
 interface Props {

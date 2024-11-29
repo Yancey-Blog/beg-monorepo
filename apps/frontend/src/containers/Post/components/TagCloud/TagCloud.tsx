@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import styled from 'styled-components'
 import { SVG_SPRITE } from 'src/shared/constants'
+import styled from 'styled-components'
 import SubHeader from '../SubTitle/SubTitle'
 import Tag from '../Tag/Tag'
 

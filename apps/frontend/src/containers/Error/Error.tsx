@@ -1,8 +1,8 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
-import { flexMixin } from 'src/styled/mixins'
+import { FC } from 'react'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 interface ColorProps {
   is404Page: boolean

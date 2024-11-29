@@ -1,9 +1,9 @@
-import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common'
+import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Express } from 'express'
-import { UploaderService } from './uploader.service'
-import { AzureBlobResponse } from './interfaces/azure-blob-response'
 import { FILE_SIZE_LIMIT } from '../shared/constants'
+import { AzureBlobResponse } from './interfaces/azure-blob-response'
+import { UploaderService } from './uploader.service'
 
 @Controller()
 export class UploaderController {

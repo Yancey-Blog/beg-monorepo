@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import { SOCIAL_MEDIA } from 'src/shared/constants'
-import { Article, Menu, DetailList, UpdateDate, Anchor } from './styled'
+import { Anchor, Article, DetailList, Menu, UpdateDate } from './styled'
 
 const PrivacyPolicy: FC = () => (
   <>

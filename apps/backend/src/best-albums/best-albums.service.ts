@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
+import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateBestAlbumInput } from './dtos/create-best-album.input'
 import { UpdateBestAlbumInput } from './dtos/update-best-album.input'
-import { BestAlbumModel } from './models/best-albums.model'
 import { BestAlbum } from './interfaces/best-albums.interface'
-import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { BestAlbumModel } from './models/best-albums.model'
 
 @Injectable()
 export class BestAlbumsService {

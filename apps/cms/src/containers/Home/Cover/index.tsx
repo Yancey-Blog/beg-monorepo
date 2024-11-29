@@ -8,6 +8,7 @@ import {
   GridRenderCellParams,
   GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { CoverModel } from 'backend/src/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
@@ -33,10 +34,10 @@ const Cover: FC = () => {
   const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
   const [pageModel, setPageModel] = useState<GridPaginationModel>({
     page: 1,
-    pageSize: 20
+    pageSize: 25
   })
 
-  const columns: GridColDef[] = [
+  const columns: GridColDef<CoverModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'weight', headerName: 'Weight', flex: 0.5 },
     { field: 'title', headerName: 'Title', flex: 2 },
@@ -97,9 +98,7 @@ const Cover: FC = () => {
           <ConfirmPopover
             onOk={() => deleteCoverById({ variables: { id: params.row._id } })}
           >
-            <DeleteForever
-              style={{ margin: '0 20px', position: 'relative', top: 3 }}
-            />
+            <DeleteForever style={{ margin: '0 20px' }} />
           </ConfirmPopover>
 
           <Move

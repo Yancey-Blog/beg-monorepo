@@ -33,7 +33,7 @@ export const Article = styled.article`
     a {
       color: ${({ theme }) => theme.colors.linkBlue};
     }
-    
+
     span {
       font-weight: bold;
     }

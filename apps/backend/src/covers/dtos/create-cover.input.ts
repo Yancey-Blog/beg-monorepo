@@ -1,5 +1,5 @@
-import { InputType, Field } from '@nestjs/graphql'
-import { IsString, IsNotEmpty, IsUrl, IsBoolean } from 'class-validator'
+import { Field, InputType } from '@nestjs/graphql'
+import { IsBoolean, IsNotEmpty, IsString, IsUrl } from 'class-validator'
 
 @InputType()
 export class CreateCoverInput {

@@ -31,10 +31,10 @@ const Announcement: FC = () => {
   const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
   const [pageModel, setPageModel] = useState<GridPaginationModel>({
     page: 1,
-    pageSize: 20
+    pageSize: 25
   })
 
-  const columns: GridColDef[] = [
+  const columns: GridColDef<AnnouncementModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'weight', headerName: 'Weight', flex: 0.5 },
     { field: 'content', headerName: 'Content', flex: 2 },
@@ -54,7 +54,7 @@ const Announcement: FC = () => {
       field: 'action',
       headerName: 'Action',
       renderCell: (params: GridRenderCellParams) => (
-        <>
+        <div>
           <Edit
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
           />
@@ -64,9 +64,7 @@ const Announcement: FC = () => {
               deleteAnnouncementById({ variables: { id: params.row._id } })
             }
           >
-            <DeleteForever
-              style={{ margin: '0 20px', position: 'relative', top: 3 }}
-            />
+            <DeleteForever style={{ margin: '0 20px' }} />
           </ConfirmPopover>
 
           <Move
@@ -75,7 +73,7 @@ const Announcement: FC = () => {
             curr={params.row}
             exchangePosition={exchangePosition}
           />
-        </>
+        </div>
       ),
       flex: 1
     }

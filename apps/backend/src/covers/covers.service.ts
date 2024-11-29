@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { CreateCoverInput } from './dtos/create-cover.input'
-import { UpdateCoverInput } from './dtos/update-cover.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
-import { CoverModel } from './models/covers.model'
-import { Cover } from './interfaces/covers.interface'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { BatchUpdateModel } from '../database/models/batch-update.model'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
+import { CreateCoverInput } from './dtos/create-cover.input'
+import { UpdateCoverInput } from './dtos/update-cover.input'
+import { Cover } from './interfaces/covers.interface'
+import { CoverModel } from './models/covers.model'
 
 @Injectable()
 export class CoversService {

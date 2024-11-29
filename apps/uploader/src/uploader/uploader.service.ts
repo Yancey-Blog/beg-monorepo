@@ -1,12 +1,12 @@
-import { Injectable, BadRequestException } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob'
-import { randomSeries, getFileExtension } from 'yancey-js-util'
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import * as Sharp from 'sharp'
+import { getFileExtension, randomSeries } from 'yancey-js-util'
 
 import {
-  AZURE_STORAGE_URL,
   AZURE_STORAGE_CONTAINER_NAME,
+  AZURE_STORAGE_URL,
   BASE_IMAGE_EXTENSIONS
 } from '../shared/constants'
 

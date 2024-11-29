@@ -1,33 +1,32 @@
-import { FC, useEffect, useRef, useState } from 'react'
-import { useTheme } from 'styled-components'
-import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import { useMutation } from '@apollo/client'
-import ReactMarkdown from 'react-markdown'
-import gfm from 'remark-gfm'
-import rehypeRaw from 'rehype-raw'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { DiscussionEmbed } from 'disqus-react'
+import { useRouter } from 'next/router'
+import { FC, useEffect, useRef, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import rehypeRaw from 'rehype-raw'
+import gfm from 'remark-gfm'
 import MetaHead from 'src/components/Head/Head'
+import { useTheme } from 'styled-components'
 import PostMeta from '../components/PostMeta/PostMeta'
-import SharePanel from '../components/SharePanel/SharePanel'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
+import SharePanel from '../components/SharePanel/SharePanel'
 import { UPDATE_PV } from '../typeDefs'
 import { IPostItem } from '../types'
-import { removeEmbededTag, combineStr, generatePostUrl } from './utils'
 import {
+  Content,
+  ImageAlt,
+  ImageGroup,
   PostDetailWrapper,
   Poster,
-  ImageGroup,
-  ImageAlt,
-  Title,
   Summary,
-  Content,
-  TableWrapper
+  TableWrapper,
+  Title
 } from './styled'
+import { combineStr, generatePostUrl, removeEmbededTag } from './utils'
 
 export interface Props {
   post: IPostItem

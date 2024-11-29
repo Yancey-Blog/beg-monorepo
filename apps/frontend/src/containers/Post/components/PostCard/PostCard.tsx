@@ -1,20 +1,20 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import { formatDate } from 'src/shared/utils'
+import { FC } from 'react'
 import { SVG_SPRITE } from 'src/shared/constants'
+import { formatDate } from 'src/shared/utils'
+import { IPostItem } from '../../types'
 import {
-  PostCardWrapper,
-  PosterImg,
-  SummaryWrapper,
-  ReleasedAt,
-  SVG,
-  Title,
   Meta,
   MetaItem,
+  PostCardWrapper,
+  PosterImg,
+  ReadMoreSVG,
+  ReleasedAt,
   Summary,
-  ReadMoreSVG
+  SummaryWrapper,
+  SVG,
+  Title
 } from './styled'
-import { IPostItem } from '../../types'
 
 interface Props {
   post: IPostItem
@@ -26,7 +26,7 @@ const PostCard: FC<Props> = ({ post }) => {
   return (
     <PostCardWrapper>
       <Link href={`/post/${_id}`} passHref>
-        <PosterImg src={posterUrl} alt={title}/>
+        <PosterImg src={posterUrl} alt={title} />
       </Link>
       <SummaryWrapper>
         <ReleasedAt>

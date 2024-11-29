@@ -1,21 +1,21 @@
-import { FC, useState, useEffect, ChangeEvent, useCallback } from 'react'
-import { useRouter } from 'next/router'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useLazyQuery, useQuery } from '@apollo/client'
 import Pagination from '@mui/material/Pagination'
+import { useRouter } from 'next/router'
+import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
-import PostListStatus from '../components/PostListStatus/PostLIstStatus'
 import PostCard from '../components/PostCard/PostCard'
-import Top7PVPosts from '../components/Top7PVPosts/Top7PVPosts'
-import TagCloud from '../components/TagCloud/TagCloud'
 import PostCardSkeleton from '../components/PostCardSkeleton/PostCardSkeleton'
-import { POSTS, GET_TOP_PV_POSTS, GET_ALL_TAGS } from '../typeDefs'
+import PostListStatus from '../components/PostListStatus/PostLIstStatus'
+import TagCloud from '../components/TagCloud/TagCloud'
+import Top7PVPosts from '../components/Top7PVPosts/Top7PVPosts'
+import { GET_ALL_TAGS, GET_TOP_PV_POSTS, POSTS } from '../typeDefs'
 import {
-  PostQuery,
-  PostVars,
+  GetAllTagsQuery,
   GetTopPVPostsQuery,
   GetTopPVPostsVars,
-  GetAllTagsQuery
+  PostQuery,
+  PostVars
 } from '../types'
 import { PostContent, PostItemContainer } from './styled'
 

@@ -1,16 +1,16 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
-import { OpenSourcesModule } from '../src/open-sources/open-sources.module'
-import { OpenSourceModel } from '../src/open-sources/models/open-sources.model'
+import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
 import { CreateOpenSourceInput } from '../src/open-sources/dtos/create-open-source.input'
 import { UpdateOpenSourceInput } from '../src/open-sources/dtos/update-open-source.input'
-import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
+import { OpenSourceModel } from '../src/open-sources/models/open-sources.model'
+import { OpenSourcesModule } from '../src/open-sources/open-sources.module'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 
 describe('OpenSourcesController (e2e)', () => {
   let app: NestApplication

@@ -1,53 +1,44 @@
+import { useQuery } from '@apollo/client'
 import { DeleteForever, Edit } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel,
-  GridValueGetterParams
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { OpenSourceModel } from 'backend/src/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup/ImagePopup'
 import useOpenModal from 'src/hooks/useOpenModal'
 import { formatJSONDate } from 'yancey-js-util'
-import { IOpenSource } from '../types'
-import OpenSourceModal from './OpenSourceModal'
+import OpenSourceModal from './components/OpenSourceModal'
+import { OPEN_SOURCES } from './typeDefs'
+import useOpenSource from './useOpenSource'
 
-interface Props {
-  dataSource: IOpenSource[]
-  isFetching: boolean
-  isDeleting: boolean
-  isBatchDeleting: boolean
-  createOpenSource: () => void
-  updateOpenSourceById: () => void
-  deleteOpenSourceById: () => void
-  deleteOpenSources: () => void
-}
+const OpenSource: FC = () => {
+  const { loading: isFetching, data } = useQuery(OPEN_SOURCES, {
+    notifyOnNetworkStatusChange: true
+  })
 
-const OpenSourceTable: FC<Props> = ({
-  dataSource,
-  createOpenSource,
-  updateOpenSourceById,
-  deleteOpenSourceById,
-  deleteOpenSources,
-  isFetching,
-  isDeleting,
-  isBatchDeleting
-}) => {
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 25
+  })
+  const { deleteOpenSourceById, deleteOpenSources } = useOpenSource()
 
-  const columns: GridColDef<IOpenSource>[] = [
+  const columns: GridColDef<OpenSourceModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'title', headerName: 'Title', flex: 1 },
     { field: 'description', headerName: 'Description', flex: 2 },
     {
       field: 'url',
       headerName: 'Url',
-      renderCell: (params: GridRenderCellParams<'string', IOpenSource>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <Button
           href={params.row.url}
           color="secondary"
@@ -62,7 +53,7 @@ const OpenSourceTable: FC<Props> = ({
     {
       field: 'posterUrl',
       headerName: 'Poster Url',
-      renderCell: (params: GridRenderCellParams<'string', IOpenSource>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.posterUrl} />
       ),
       flex: 1
@@ -70,21 +61,19 @@ const OpenSourceTable: FC<Props> = ({
     {
       field: 'createdAt',
       headerName: 'Created At',
-      valueGetter: (params: GridValueGetterParams<'string', IOpenSource>) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'Updated At',
-      valueGetter: (params: GridValueGetterParams<'string', IOpenSource>) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
       field: 'action',
       headerName: 'Action',
-      renderCell: (params: GridRenderCellParams<'string', IOpenSource>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <>
           <Edit
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
@@ -95,9 +84,7 @@ const OpenSourceTable: FC<Props> = ({
               deleteOpenSourceById({ variables: { id: params.row._id } })
             }
           >
-            <DeleteForever
-              style={{ margin: '0 20px', position: 'relative', top: 3 }}
-            />
+            <DeleteForever style={{ margin: '0 20px' }} />
           </ConfirmPopover>
         </>
       ),
@@ -121,7 +108,9 @@ const OpenSourceTable: FC<Props> = ({
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
               onOk={() =>
-                deleteOpenSources({ variables: { ids: selectedRows } })
+                deleteOpenSources({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
               }
             >
               Batch Delete
@@ -130,30 +119,24 @@ const OpenSourceTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting}
+        loading={isFetching}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getOpenSources ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <OpenSourceModal
-        open={open}
-        handleOpen={handleOpen}
-        createOpenSource={createOpenSource}
-        updateOpenSourceById={updateOpenSourceById}
-      />
+      <OpenSourceModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }
 
-export default OpenSourceTable
+export default OpenSource

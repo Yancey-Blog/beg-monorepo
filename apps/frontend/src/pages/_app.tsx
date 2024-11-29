@@ -1,24 +1,24 @@
-import { SnackbarProvider } from 'notistack'
+import { ApolloProvider } from '@apollo/client'
+import 'aplayer/dist/APlayer.min.css'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
-import { ThemeProvider } from 'styled-components'
-import { ApolloProvider } from '@apollo/client'
-import ToggleTheme from 'src/components/ToggleTheme/ToggleTheme'
+import 'normalize.css'
+import { SnackbarProvider } from 'notistack'
 import { SnackbarUtilsConfigurator } from 'src/components/Toast/Toast'
+import ToggleTheme from 'src/components/ToggleTheme/ToggleTheme'
 import { createApolloClient } from 'src/graphql/apolloClient'
-import { lightTheme, darkTheme } from 'src/styled/theme'
-import GlobalStyle from 'src/styled/globalStyles'
-import { useDarkMode, ThemeMode } from 'src/hooks/useDarkMode'
+import { ThemeMode, useDarkMode } from 'src/hooks/useDarkMode'
 import {
   SNACKBAR_ANCHOR_ORIGIN,
-  SNACKBAR_MAX_NUM,
-  SNACKBAR_AUTO_HIDE_DURATION
+  SNACKBAR_AUTO_HIDE_DURATION,
+  SNACKBAR_MAX_NUM
 } from 'src/shared/constants'
-import { devToolsWarning } from 'src/shared/utils'
 import { NextWebVitalsMetrics } from 'src/shared/types'
-import 'normalize.css'
-import 'aplayer/dist/APlayer.min.css'
+import { devToolsWarning } from 'src/shared/utils'
+import GlobalStyle from 'src/styled/globalStyles'
 import 'src/styled/nprogress.css'
+import { darkTheme, lightTheme } from 'src/styled/theme'
+import { ThemeProvider } from 'styled-components'
 
 interface Props extends AppProps {
   err: any

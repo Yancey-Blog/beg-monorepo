@@ -1,5 +1,5 @@
+import { ProviderContext, useSnackbar, VariantType } from 'notistack'
 import { FC } from 'react'
-import { useSnackbar, VariantType, ProviderContext } from 'notistack'
 
 interface Props {
   setUseSnackbarRef: (showSnackbar: ProviderContext) => void

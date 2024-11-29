@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
+import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateOpenSourceInput } from './dtos/create-open-source.input'
 import { UpdateOpenSourceInput } from './dtos/update-open-source.input'
-import { OpenSourceModel } from './models/open-sources.model'
 import { OpenSource } from './interfaces/open-sources.interface'
-import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { OpenSourceModel } from './models/open-sources.model'
 
 @Injectable()
 export class OpenSourcesService {

@@ -1,8 +1,8 @@
 import {
-  Injectable,
-  NestInterceptor,
+  CallHandler,
   ExecutionContext,
-  CallHandler
+  Injectable,
+  NestInterceptor
 } from '@nestjs/common'
 import { sleep } from 'yancey-js-util'
 import { ConfigService } from '../../config/config.service'

@@ -1,10 +1,10 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { YanceyMusicService } from './yancey-music.service'
-import { YanceyMusicModel } from './models/yancey-music.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateYanceyMusicInput } from './dtos/create-yancey-music.input'
 import { UpdateYanceyMusicInput } from './dtos/update-yancey-music.input'
+import { YanceyMusicModel } from './models/yancey-music.model'
+import { YanceyMusicService } from './yancey-music.service'
 
 @Resolver(() => YanceyMusicModel)
 export class YanceyMusicResolver {

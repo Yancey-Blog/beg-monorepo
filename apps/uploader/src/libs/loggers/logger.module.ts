@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
+import { DateTime } from 'luxon'
 import { WinstonModule, utilities } from 'nest-winston'
 import * as winston from 'winston'
-import { DateTime } from 'luxon'
 
 const {
   errors,

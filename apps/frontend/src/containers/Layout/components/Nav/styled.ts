@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { flexMixin } from 'src/styled/mixins'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 export const NavBar = styled.nav`
   display: none;

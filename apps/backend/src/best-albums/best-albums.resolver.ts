@@ -1,10 +1,10 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { BestAlbumsService } from './best-albums.service'
-import { BestAlbumModel } from './models/best-albums.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { BestAlbumsService } from './best-albums.service'
 import { CreateBestAlbumInput } from './dtos/create-best-album.input'
 import { UpdateBestAlbumInput } from './dtos/update-best-album.input'
+import { BestAlbumModel } from './models/best-albums.model'
 
 @Resolver(() => BestAlbumModel)
 export class BestAlbumsResolver {

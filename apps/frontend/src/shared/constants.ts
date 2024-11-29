@@ -101,6 +101,6 @@ export const months = [
 export const APLAYER_CDN =
   'https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js'
 
-  export const DOMAIN = 'https://yanceyleo.com'
+export const DOMAIN = 'https://yanceyleo.com'
 
-  export const RSS = `${DOMAIN}/rss.xml`
+export const RSS = `${DOMAIN}/rss.xml`

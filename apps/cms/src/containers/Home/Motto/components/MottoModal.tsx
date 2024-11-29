@@ -13,25 +13,19 @@ import { useLocation } from 'react-router-dom'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import * as Yup from 'yup'
-import { IMotto } from '../types'
+import useMotto from '../useMotto'
 
 interface Props {
   open: boolean
   handleOpen: () => void
-  createMotto: () => void
-  updateMottoById: () => void
 }
 
-const MottoModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createMotto,
-  updateMottoById
-}) => {
+const MottoModal: FC<Props> = ({ open, handleOpen }) => {
   const classes = useStyles()
 
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
+  const { createMotto, updateMottoById } = useMotto()
 
   const initialValues = {
     content: ''
@@ -52,7 +46,7 @@ const MottoModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateMottoById({
           variables: { input: { ...values, id } }
         })
@@ -68,7 +62,7 @@ const MottoModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { content } = state as IMotto
+      const { content } = state
       setValues({ content })
     }
   }, [id, resetForm, setValues, state])

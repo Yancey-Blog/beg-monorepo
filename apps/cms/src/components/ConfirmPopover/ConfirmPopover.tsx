@@ -6,7 +6,7 @@ import {
   Popover
 } from '@mui/material'
 import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
-import { FC, ReactNode } from 'react'
+import { cloneElement, FC, ReactNode } from 'react'
 import {
   POPOVER_ANCHOR_ORIGIN,
   POPOVER_TRANSFORM_ORIGIN
@@ -23,9 +23,13 @@ const ConfirmPopover: FC<Props> = ({ children, onOk, title }) => {
     <PopupState variant="popover" popupId="deleteOnePopover">
       {(popupState) => (
         <>
-          <div style={{ cursor: 'pointer' }} {...bindTrigger(popupState)}>
-            {children}
-          </div>
+          {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            cloneElement(children, {
+              ...bindTrigger(popupState)
+            })
+          }
           <Popover
             {...bindPopover(popupState)}
             anchorOrigin={POPOVER_ANCHOR_ORIGIN}

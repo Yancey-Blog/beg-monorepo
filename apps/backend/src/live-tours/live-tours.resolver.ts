@@ -1,10 +1,10 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { LiveToursService } from './live-tours.service'
-import { LiveTourModel } from './models/live-tours.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateLiveTourInput } from './dtos/create-live-tour.input'
 import { UpdateLiveTourInput } from './dtos/update-live-tour.input'
+import { LiveToursService } from './live-tours.service'
+import { LiveTourModel } from './models/live-tours.model'
 
 @Resolver(() => LiveTourModel)
 export class LiveToursResolver {

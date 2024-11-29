@@ -1,19 +1,19 @@
-import { FC, ComponentType, ReactNode } from 'react'
 import dynamic from 'next/dynamic'
+import { FC } from 'react'
 import { Props as HomePageProps } from 'src/pages/index'
 import { isAnniversary } from 'src/shared/utils'
-import {
-  HomeContainer,
-  MottoSocialMediaBar,
-  HomeMain,
-  CoverWrapper
-} from './styled'
 import Announcement from './components/Announcement'
+import Cover from './components/Cover'
 import Motto from './components/Motto'
 import OpenSource from './components/OpenSource'
-import Cover from './components/Cover'
 import PostList from './components/PostList'
 import Slogan from './components/Slogan'
+import {
+  CoverWrapper,
+  HomeContainer,
+  HomeMain,
+  MottoSocialMediaBar
+} from './styled'
 
 export interface Props {
   data: HomePageProps
@@ -35,7 +35,7 @@ const Home: FC<Props> = ({ data }) => {
         // @ts-ignore
         FireWorksComponent && <FireWorksComponent />
       }
-      
+
       <CoverWrapper>
         <Cover data={data.covers} />
         <MottoSocialMediaBar>

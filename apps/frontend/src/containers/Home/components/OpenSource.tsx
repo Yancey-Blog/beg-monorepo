@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import styled from 'styled-components'
-import { transitionMixin } from 'src/styled/mixins'
-import breakpoints from 'src/styled/breakpoints'
 import { SVG_SPRITE } from 'src/shared/constants'
-import SubTitle from './SubTitle'
+import breakpoints from 'src/styled/breakpoints'
+import { transitionMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 import { IOpenSource } from '../types'
+import SubTitle from './SubTitle'
 
 const OpenSourceWrapper = styled.section`
   display: grid;

@@ -3,9 +3,9 @@ import Layout from 'src/containers/Layout/Layout'
 import PostDetailContainer, {
   Props as PostDetailProps
 } from 'src/containers/Post/PostDetail/PostDetail'
-import { createApolloClient } from 'src/graphql/apolloClient'
 import { GET_POST_BY_ID } from 'src/containers/Post/typeDefs'
 import { GetPostByIdQuery, GetPostByIdVar } from 'src/containers/Post/types'
+import { createApolloClient } from 'src/graphql/apolloClient'
 
 const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
   return (

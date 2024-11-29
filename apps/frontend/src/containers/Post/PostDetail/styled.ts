@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { flexMixin } from 'src/styled/mixins'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 export const PostDetailWrapper = styled.article`
   position: relative;
@@ -16,7 +16,8 @@ export const Poster = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px ${({ theme }) => theme.colors.oneOpcityBlack},
+  box-shadow:
+    0 10px 15px -3px ${({ theme }) => theme.colors.oneOpcityBlack},
     0 4px 6px -2px ${({ theme }) => theme.colors.oneOpcityBlack};
 `
 

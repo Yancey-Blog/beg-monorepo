@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import { SVG_SPRITE } from 'src/shared/constants'
+import { FC } from 'react'
 import { IGlobalSetting } from 'src/containers/GlobalSetting/types'
+import { SVG_SPRITE } from 'src/shared/constants'
 import { Logo, NavBar, NavBarItem } from './styled'
 
 interface Props {

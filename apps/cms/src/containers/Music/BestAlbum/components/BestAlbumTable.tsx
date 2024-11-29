@@ -103,9 +103,7 @@ const BestAlbumTable: FC<Props> = ({
               deleteBestAlbumById({ variables: { id: params.row._id } })
             }
           >
-            <DeleteForever
-              style={{ margin: '0 20px', position: 'relative', top: 3 }}
-            />
+            <DeleteForever style={{ margin: '0 20px' }} />
           </ConfirmPopover>
         </>
       ),

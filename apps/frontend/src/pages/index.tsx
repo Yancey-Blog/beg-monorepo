@@ -1,24 +1,24 @@
-import type { NextPage, GetServerSideProps } from 'next'
-import Layout from 'src/containers/Layout/Layout'
+import type { GetServerSideProps, NextPage } from 'next'
 import HomeContainer from 'src/containers/Home/Home'
 import {
-  COVERS,
   ANNOUNCEMENTS,
-  OPEN_SOURCES,
-  MOTTOS
+  COVERS,
+  MOTTOS,
+  OPEN_SOURCES
 } from 'src/containers/Home/typeDefs'
 import {
   AnnouncementQuery,
-  MottoQuery,
   CoverQuery,
-  OpenSourceQuery,
   IAnnouncement,
   ICover,
   IMotto,
-  IOpenSource
+  IOpenSource,
+  MottoQuery,
+  OpenSourceQuery
 } from 'src/containers/Home/types'
+import Layout from 'src/containers/Layout/Layout'
 import { POSTS } from 'src/containers/Post/typeDefs'
-import { PostQuery, PostVars, IPost } from 'src/containers/Post/types'
+import { IPost, PostQuery, PostVars } from 'src/containers/Post/types'
 import { createApolloClient } from 'src/graphql/apolloClient'
 
 export interface Props {

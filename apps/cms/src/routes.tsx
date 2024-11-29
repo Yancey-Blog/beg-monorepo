@@ -56,15 +56,13 @@ const routes: Route[] = [
       {
         name: 'Motto',
         path: 'motto',
-        component: lazy(() => import('src/containers/Home/Motto/Motto')),
+        component: lazy(() => import('src/containers/Home/Motto')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Open Source',
         path: 'open-source',
-        component: lazy(
-          () => import('src/containers/Home/OpenSource/OpenSource')
-        ),
+        component: lazy(() => import('src/containers/Home/OpenSource')),
         roles: [Roles.ADMIN]
       }
     ]

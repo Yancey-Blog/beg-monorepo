@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common'
 import { HttpModule } from '@nestjs/axios'
-import { BandwagonService } from './bandwagon.service'
+import { Module } from '@nestjs/common'
 import { BandwagonResolver } from './bandwagon.resolver'
+import { BandwagonService } from './bandwagon.service'
 
 @Module({
   imports: [

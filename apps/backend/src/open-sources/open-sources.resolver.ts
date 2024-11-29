@@ -1,10 +1,10 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { OpenSourcesService } from './open-sources.service'
-import { OpenSourceModel } from './models/open-sources.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { CreateOpenSourceInput } from './dtos/create-open-source.input'
 import { UpdateOpenSourceInput } from './dtos/update-open-source.input'
+import { OpenSourceModel } from './models/open-sources.model'
+import { OpenSourcesService } from './open-sources.service'
 
 @Resolver(() => OpenSourceModel)
 export class OpenSourcesResolver {

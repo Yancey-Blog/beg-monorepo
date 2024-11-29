@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
-import { CoverSchema } from './schemas/covers.schema'
 import { CoversResolver } from './covers.resolver'
 import { CoversService } from './covers.service'
+import { CoverSchema } from './schemas/covers.schema'
 
 @Module({
   imports: [

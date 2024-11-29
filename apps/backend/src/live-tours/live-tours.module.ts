@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
-import { LiveToursSchema } from './schemas/live-tours.schema'
-import { LiveToursService } from './live-tours.service'
 import { LiveToursResolver } from './live-tours.resolver'
+import { LiveToursService } from './live-tours.service'
+import { LiveToursSchema } from './schemas/live-tours.schema'
 
 @Module({
   imports: [

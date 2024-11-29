@@ -1,9 +1,9 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
-import { flexMixin } from 'src/styled/mixins'
-import breakpoints from 'src/styled/breakpoints'
+import { FC } from 'react'
 import { IPostItem } from 'src/containers/Post/types'
+import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const Wrapper = styled.section`
   ${flexMixin()}

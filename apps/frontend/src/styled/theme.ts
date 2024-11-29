@@ -12,7 +12,7 @@ const light = {
     inlineCode: '#ebedf0',
     searchBox: '#ffffff',
     summaryBg: '#e6f6e6',
-    mask: 'rgba(255, 255, 255, .95)',
+    mask: 'rgba(255, 255, 255, .95)'
   },
   text: {
     primary: '#666666',
@@ -47,7 +47,7 @@ const dark = {
     inlineCode: '#444950',
     searchBox: '#202327',
     summaryBg: '#003130',
-    mask: 'rgba(0, 0, 0, .95)',
+    mask: 'rgba(0, 0, 0, .95)'
   },
   text: {
     primary: '#f5f6f7',
@@ -110,10 +110,10 @@ const defaultTheme = {
     root: 0,
     positive: 1,
     fixed: 200,
-    overlay: 400,
+    overlay: 400
   },
   headerHeight: '4.5rem',
-  headerHeightMobile: '.87rem',
+  headerHeightMobile: '.87rem'
 }
 
 export const lightTheme: ThemeVariables = { ...defaultTheme, ...light }

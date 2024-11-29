@@ -1,5 +1,5 @@
-import { FC, useState, useRef, useEffect, RefObject } from 'react'
 import throttle from 'lodash.throttle'
+import { FC, RefObject, useEffect, useRef, useState } from 'react'
 
 interface Props {
   onBottomHit: () => void
