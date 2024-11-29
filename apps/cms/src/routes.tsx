@@ -75,9 +75,7 @@ const routes: Route[] = [
       {
         name: 'Best Album',
         path: 'best-album',
-        component: lazy(
-          () => import('src/containers/Music/BestAlbum/BestAlbum')
-        ),
+        component: lazy(() => import('src/containers/Music/BestAlbum')),
         roles: [Roles.ADMIN]
       },
       {

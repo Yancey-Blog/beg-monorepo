@@ -8,8 +8,9 @@ import {
   FormLabel,
   TextField
 } from '@mui/material'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { useFormik } from 'formik'
+import { DateTime } from 'luxon'
 import { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Uploader from 'src/components/Uploader'
@@ -39,7 +40,7 @@ const LiveTourModal: FC<Props> = ({
 
   const initialValues = {
     title: '',
-    showTime: new Date(),
+    showTime: DateTime.now(),
     posterUrl: ''
   }
 
@@ -85,9 +86,13 @@ const LiveTourModal: FC<Props> = ({
     if (id) {
       const { title, showTime, posterUrl } = state as ILiveTour
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      setValues({ title, showTime, posterUrl })
+      setValues({
+        title,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        showTime: DateTime.fromISO(showTime),
+        posterUrl
+      })
     }
   }, [id, resetForm, setValues, state])
 
@@ -112,13 +117,11 @@ const LiveTourModal: FC<Props> = ({
             {...getFieldProps('title')}
           />
 
-          <DesktopDatePicker
+          <DatePicker
             className={classes.textFieldSpace}
-            renderInput={(props) => <TextField {...props} />}
             label="Show Time"
             value={values.showTime}
             onChange={(date) => setFieldValue('showTime', date, true)}
-            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>

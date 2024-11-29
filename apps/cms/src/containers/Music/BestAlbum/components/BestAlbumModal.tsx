@@ -8,8 +8,9 @@ import {
   FormLabel,
   TextField
 } from '@mui/material'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { useFormik } from 'formik'
+import { DateTime } from 'luxon'
 import { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Uploader from 'src/components/Uploader'
@@ -17,31 +18,25 @@ import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import * as Yup from 'yup'
-import { IBestAlbum } from '../types'
+import useBestAlbum from '../useBestAlbum'
 
 interface Props {
   open: boolean
   handleOpen: () => void
-  createBestAlbum: () => void
-  updateBestAlbumById: () => void
 }
 
-const BestAlbumModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createBestAlbum,
-  updateBestAlbumById
-}) => {
+const BestAlbumModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
 
   const classes = useStyles()
+  const { updateBestAlbumById, createBestAlbum } = useBestAlbum()
 
   const initialValues = {
     title: '',
     artist: '',
     mvUrl: '',
-    releaseDate: new Date(),
+    releaseDate: DateTime.now(),
     coverUrl: ''
   }
 
@@ -66,7 +61,7 @@ const BestAlbumModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateBestAlbumById({
           variables: { input: { ...values, id } }
         })
@@ -91,12 +86,16 @@ const BestAlbumModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, artist, mvUrl, releaseDate, coverUrl } =
-        state as IBestAlbum
-
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      setValues({ title, artist, mvUrl, releaseDate, coverUrl })
+      const { title, artist, mvUrl, releaseDate, coverUrl } = state
+      setValues({
+        title,
+        artist,
+        mvUrl,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        releaseDate: DateTime.fromISO(releaseDate),
+        coverUrl
+      })
     }
   }, [id, resetForm, setValues, state])
 
@@ -143,13 +142,11 @@ const BestAlbumModal: FC<Props> = ({
             {...getFieldProps('mvUrl')}
           />
 
-          <DesktopDatePicker
+          <DatePicker
             className={classes.textFieldSpace}
-            renderInput={(props) => <TextField {...props} />}
             label="Release Date"
             value={values.releaseDate}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>

@@ -1,53 +1,44 @@
+import { useQuery } from '@apollo/client'
 import { DeleteForever, Edit } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel,
-  GridValueGetterParams
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { BestAlbumModel } from 'backend/src/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup'
 import useOpenModal from 'src/hooks/useOpenModal'
 import { formatJSONDate } from 'yancey-js-util'
-import { IBestAlbum } from '../types'
-import BestAlbumModal from './BestAlbumModal'
+import BestAlbumModal from './components/BestAlbumModal'
+import { BEST_ALBUMS } from './typeDefs'
+import useBestAlbum from './useBestAlbum'
 
-interface Props {
-  dataSource: IBestAlbum[]
-  isFetching: boolean
-  isDeleting: boolean
-  isBatchDeleting: boolean
-  createBestAlbum: () => void
-  updateBestAlbumById: () => void
-  deleteBestAlbumById: () => void
-  deleteBestAlbums: () => void
-}
+const BestAlbumTable: FC = () => {
+  const { loading: isFetching, data } = useQuery(BEST_ALBUMS, {
+    notifyOnNetworkStatusChange: true
+  })
 
-const BestAlbumTable: FC<Props> = ({
-  dataSource,
-  createBestAlbum,
-  updateBestAlbumById,
-  deleteBestAlbumById,
-  deleteBestAlbums,
-  isFetching,
-  isDeleting,
-  isBatchDeleting
-}) => {
+  const { deleteBestAlbumById, deleteBestAlbums } = useBestAlbum()
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 25
+  })
 
-  const columns: GridColDef<IBestAlbum>[] = [
+  const columns: GridColDef<BestAlbumModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'title', headerName: 'Title', flex: 1 },
     { field: 'artist', headerName: 'Artist', flex: 1 },
     {
       field: 'mvUrl',
       headerName: 'Mv Url',
-      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <Button
           href={params.row.mvUrl}
           color="secondary"
@@ -62,7 +53,7 @@ const BestAlbumTable: FC<Props> = ({
     {
       field: 'coverUrl',
       headerName: 'Cover Url',
-      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
       ),
       flex: 1
@@ -70,7 +61,7 @@ const BestAlbumTable: FC<Props> = ({
     {
       field: 'releaseDate',
       headerName: 'Release Date',
-      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <span>{formatJSONDate(params.row.releaseDate)}</span>
       ),
       flex: 1
@@ -78,21 +69,19 @@ const BestAlbumTable: FC<Props> = ({
     {
       field: 'createdAt',
       headerName: 'Created At',
-      valueGetter: (params: GridValueGetterParams<'string', IBestAlbum>) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'Updated At',
-      valueGetter: (params: GridValueGetterParams<'string', IBestAlbum>) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
       field: 'action',
       headerName: 'Action',
-      renderCell: (params: GridRenderCellParams<'string', IBestAlbum>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <>
           <Edit
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
@@ -127,7 +116,9 @@ const BestAlbumTable: FC<Props> = ({
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
               onOk={() =>
-                deleteBestAlbums({ variables: { ids: selectedRows } })
+                deleteBestAlbums({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
               }
             >
               Batch Delete
@@ -136,28 +127,23 @@ const BestAlbumTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting}
+        rowHeight={88}
+        loading={isFetching}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getBestAlbums ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <BestAlbumModal
-        open={open}
-        handleOpen={handleOpen}
-        createBestAlbum={createBestAlbum}
-        updateBestAlbumById={updateBestAlbumById}
-      />
+      <BestAlbumModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }

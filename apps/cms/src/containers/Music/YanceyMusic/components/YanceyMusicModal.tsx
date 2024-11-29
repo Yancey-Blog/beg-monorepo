@@ -8,8 +8,9 @@ import {
   FormLabel,
   TextField
 } from '@mui/material'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { useFormik } from 'formik'
+import { DateTime } from 'luxon'
 import { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Uploader from 'src/components/Uploader'
@@ -40,7 +41,7 @@ const YanceyMusicModal: FC<Props> = ({
   const initialValues = {
     title: '',
     soundCloudUrl: '',
-    releaseDate: new Date(),
+    releaseDate: DateTime.now(),
     posterUrl: ''
   }
 
@@ -88,9 +89,14 @@ const YanceyMusicModal: FC<Props> = ({
       const { title, soundCloudUrl, releaseDate, posterUrl } =
         state as IYanceyMusic
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      setValues({ title, soundCloudUrl, releaseDate, posterUrl })
+      setValues({
+        title,
+        soundCloudUrl,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        releaseDate: DateTime.fromISO(releaseDate),
+        posterUrl
+      })
     }
   }, [id, resetForm, setValues, state])
 
@@ -127,13 +133,11 @@ const YanceyMusicModal: FC<Props> = ({
             {...getFieldProps('soundCloudUrl')}
           />
 
-          <DesktopDatePicker
+          <DatePicker
             className={classes.textFieldSpace}
-            renderInput={(props) => <TextField {...props} />}
             label="Release Date"
             value={values.releaseDate}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>

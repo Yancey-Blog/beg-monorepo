@@ -235,6 +235,7 @@ const PostList: FC = () => {
         columns={columns}
         rowCount={rowCount}
         checkboxSelection
+        disableRowSelectionOnClick
         onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
