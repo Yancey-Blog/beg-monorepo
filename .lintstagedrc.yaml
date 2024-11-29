@@ -1,3 +1,3 @@
 {
-  "apps/*": [pnpm run lint]
+  "apps/*": ['pnpm run lint']
 }
