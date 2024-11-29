@@ -45,7 +45,7 @@ const TwoFactors: FC = () => {
           aria-label="two-factor-nav"
           className={styles.listGroup}
         >
-          <ListItem button onClick={() => setOpenTOTP(true)}>
+          <ListItem onClick={() => setOpenTOTP(true)}>
             <ListItemText
               primary="Authenticator app"
               className={styles.title}
@@ -73,7 +73,7 @@ const TwoFactors: FC = () => {
 
           <Divider />
 
-          <ListItem button onClick={openRecoveryCodesDialog}>
+          <ListItem onClick={openRecoveryCodesDialog}>
             <ListItemText primary="Recovery codes" className={styles.title} />
             <ListItemText
               primary={<p className={styles.phone}>Click to generate</p>}

@@ -398,7 +398,7 @@ const PostEditor: FC = () => {
       </form>
 
       <Editor
-        useCommandShortcut={true}
+        useCommandShortcut
         usageStatistics={false}
         initialValue=""
         previewStyle="vertical"
@@ -420,8 +420,6 @@ const PostEditor: FC = () => {
           [
             'code',
             'codeblock',
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
             {
               el: insertImageButton(setOpen),
               tooltip: 'ImageX'
