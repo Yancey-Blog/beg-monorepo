@@ -32,7 +32,7 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/eslint-config]: ./packages/eslint-config
 [@repo/typescript-config]: ./packages/typescript-config
 [cms-version]: https://img.shields.io/badge/Version-v6.0.0-brightgreen
-[frontend-version]: https://img.shields.io/badge/Version-v4.35.0-brightgreen
+[frontend-version]: https://img.shields.io/badge/Version-v5.0.0-brightgreen
 [backend-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
 [@repo/utils-version]: https://img.shields.io/badge/Version-v1.2.3-brightgreen

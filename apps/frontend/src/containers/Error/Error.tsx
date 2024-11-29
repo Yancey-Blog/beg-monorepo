@@ -5,7 +5,7 @@ import { flexMixin } from 'src/styled/mixins'
 import styled from 'styled-components'
 
 interface ColorProps {
-  is404Page: boolean
+  $is404Page: boolean
 }
 
 const ErrorWrapper = styled.section`
@@ -40,7 +40,7 @@ const Header = styled.div`
 const Title = styled.h1<ColorProps>`
   margin-right: 4rem;
   font-size: 16rem !important;
-  color: ${({ is404Page }) => (is404Page ? '#fef1da' : '#e5f8f2')};
+  color: ${({ $is404Page }) => ($is404Page ? '#fef1da' : '#e5f8f2')};
 
   @media only screen and ${breakpoints.device.laptop} {
     margin-right: 0;
@@ -51,7 +51,7 @@ const Title = styled.h1<ColorProps>`
 
 const Tips = styled.p<ColorProps>`
   font-size: 3.6rem !important;
-  color: ${({ is404Page }) => (is404Page ? '#a89888' : '#88a899')};
+  color: ${({ $is404Page }) => ($is404Page ? '#a89888' : '#88a899')};
 
   @media only screen and ${breakpoints.device.laptop} {
     font-size: 2rem !important;
@@ -72,7 +72,7 @@ const BackToHomeBtn = styled.button<ColorProps>`
   padding: 1rem 1.6rem;
   font-size: 1.4rem;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ is404Page }) => (is404Page ? '#feb641' : '#00ba7c')};
+  background: ${({ $is404Page }) => ($is404Page ? '#feb641' : '#00ba7c')};
   border: none;
   border-radius: 2rem;
   cursor: pointer;
@@ -92,21 +92,21 @@ interface Props {
 
 const Error: FC<Props> = ({ statusCode, imageUrl }) => {
   const imgUrl = `${process.env.NEXT_PUBLIC_STATIC_FILE_URL}/${imageUrl}`
-  const is404Page = statusCode === 404
+  const $is404Page = statusCode === 404
 
   return (
     <ErrorWrapper>
       <Header>
-        <Title is404Page={is404Page}>{statusCode}</Title>
+        <Title $is404Page={$is404Page}>{statusCode}</Title>
         <ContentWrapper>
-          <Tips is404Page={is404Page}>Oops, You found me!</Tips>
-          <SubTips is404Page={is404Page}>
+          <Tips $is404Page={$is404Page}>Oops, You found me!</Tips>
+          <SubTips $is404Page={$is404Page}>
             {statusCode === 404
               ? 'You seem to have found a dead link!'
               : 'An error occurred on server!'}
           </SubTips>
           <Link href="/">
-            <BackToHomeBtn is404Page={is404Page}>TAKE ME HOME</BackToHomeBtn>
+            <BackToHomeBtn $is404Page={$is404Page}>TAKE ME HOME</BackToHomeBtn>
           </Link>
         </ContentWrapper>
       </Header>

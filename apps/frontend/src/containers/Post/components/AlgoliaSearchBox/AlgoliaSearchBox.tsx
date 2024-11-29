@@ -1,4 +1,4 @@
-import algoliasearch from 'algoliasearch/lite'
+import { liteClient } from 'algoliasearch/lite'
 import { useRouter } from 'next/router'
 import {
   FC,
@@ -21,7 +21,7 @@ import AlgoliaSarchBoxSkeleton from '../AlgoliaSarchBoxSkeleton/AlgoliaSarchBoxS
 import Hit from './Hit'
 import { Result, SearchBoxWrapper } from './styled'
 
-const searchClient = algoliasearch(
+const searchClient = liteClient(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
   {}
@@ -33,7 +33,7 @@ const AlgoliaSearchBox: FC = () => {
   const [showDrawer, setShowDrawer] = useState(false)
 
   const closeKeyboard = () => {
-    // @ts-ignore
+    // @ts-expect-error TODO:
     document.activeElement?.blur()
   }
 
@@ -93,7 +93,7 @@ const AlgoliaSearchBox: FC = () => {
       <Result className={showDrawer ? 'showDrawer' : ''}>
         <LoadingIndicator />
         <Hits
-          // @ts-ignore
+          // @ts-expect-error TODO:
           hitComponent={Hit}
         />
         <PoweredBy />

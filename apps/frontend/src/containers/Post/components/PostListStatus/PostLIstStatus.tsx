@@ -34,7 +34,7 @@ const ResetBtn = styled.button`
 interface Props {
   searchTag: string
   postsLength: number | undefined
-  fetchPosts: Function
+  fetchPosts: () => void
 }
 
 const PostListStatus: FC<Props> = ({ searchTag, postsLength, fetchPosts }) => {

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
-import { FC, useEffect } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 import Head from 'src/components/Head/Head'
 import SVGSprite from 'src/components/SVGSprite/SVGSprite'
 import { GET_GLOBAL_SETTING } from 'src/containers/GlobalSetting/typeDefs'
@@ -22,7 +22,7 @@ const initialGlobalSetting = {
 
 interface Props {
   title?: string
-  children?: any // TODO: fix this
+  children?: ReactNode
 }
 
 const Layout: FC<Props> = ({ title, children }) => {
