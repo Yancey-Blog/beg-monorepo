@@ -1,42 +1,35 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
+  DialogTitle,
   FormLabel,
-  Switch
+  Switch,
+  TextField
 } from '@mui/material'
-import { useFormik } from 'formik'
 import classNames from 'classnames'
-import Uploader from 'src/components/Uploader/Uploader'
+import { useFormik } from 'formik'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import globalUseStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
+import * as Yup from 'yup'
 import useStyles from '../styles'
-import { IPlayer } from '../types'
+import usePlayer from '../usePlayer'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createPlayer: Function
-  updatePlayerById: Function
+  handleOpen: () => void
 }
 
-const PlayerModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createPlayer,
-  updatePlayerById
-}) => {
+const PlayerModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createPlayer, updatePlayerById } = usePlayer()
   const globalClasses = globalUseStyles()
   const classes = useStyles()
 
@@ -71,7 +64,7 @@ const PlayerModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updatePlayerById({
           variables: { input: { ...values, id } }
         })
@@ -96,10 +89,7 @@ const PlayerModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } =
-        state as IPlayer
-
-      // @ts-ignore
+      const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } = state
       setValues({ title, artist, lrc, coverUrl, musicFileUrl, isPublic })
     }
   }, [id, resetForm, setValues, state])

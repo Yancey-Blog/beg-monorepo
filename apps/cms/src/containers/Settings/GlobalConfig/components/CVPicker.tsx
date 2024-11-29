@@ -1,19 +1,20 @@
-import { FC, useState, ChangeEvent } from 'react'
 import {
+  Avatar,
   Button,
-  TextField,
+  Card,
   ListItem,
   ListItemAvatar,
-  ListItemText,
-  Avatar,
   ListItemIcon,
-  RadioGroup,
+  ListItemText,
   Radio,
-  Card
+  RadioGroup,
+  TextField
 } from '@mui/material'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
-import { PostFilterProps } from '../types'
+import { ChangeEvent, FC, useState } from 'react'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useStyles from '../styles'
+import { PostFilterProps } from '../types'
+import useGlobalConfig from '../useGlobalConfig'
 
 type Props = PostFilterProps & { cvPostId: string }
 
@@ -21,13 +22,12 @@ const CVPicker: FC<Props> = ({
   id,
   posts,
   isFetching,
-  isSubmitting,
   fetchPosts,
-  cvPostId,
-  updateGlobalSettingById
+  cvPostId
 }) => {
   const classes = useStyles()
 
+  const { updateGlobalSettingById, isUpdating } = useGlobalConfig()
   const [searchValue, setSearchValue] = useState('')
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
@@ -73,7 +73,7 @@ const CVPicker: FC<Props> = ({
         <Card className={classes.card}>
           <RadioGroup value={checked} onChange={handleRadioChange}>
             {posts.map((post) => (
-              <ListItem key={post._id} button dense>
+              <ListItem key={post._id} dense>
                 <ListItemIcon>
                   <Radio edge="start" value={post._id} />
                 </ListItemIcon>
@@ -92,7 +92,7 @@ const CVPicker: FC<Props> = ({
             <Button
               color="primary"
               type="submit"
-              disabled={!checked || isSubmitting}
+              disabled={!checked || isUpdating}
               onClick={onSubmit}
             >
               Save

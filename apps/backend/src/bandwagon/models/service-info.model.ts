@@ -1,10 +1,10 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 import {
-  IsString,
-  IsNumber,
+  IsArray,
   IsBoolean,
   IsNotEmpty,
-  IsArray
+  IsNumber,
+  IsString
 } from 'class-validator'
 
 @ObjectType()

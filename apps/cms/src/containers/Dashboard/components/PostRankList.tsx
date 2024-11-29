@@ -1,19 +1,19 @@
-import { FC } from 'react'
+import { Looks3, Looks4, Looks5, LooksOne, LooksTwo } from '@mui/icons-material'
 import {
-  Paper,
+  Avatar,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
   ListItemSecondaryAction,
-  IconButton,
-  Avatar
+  ListItemText,
+  Paper
 } from '@mui/material'
-import { LooksOne, LooksTwo, Looks3, Looks4, Looks5 } from '@mui/icons-material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import { FC } from 'react'
 import { IPostItem } from 'src/containers/Post/types'
-import PostRankListSkeleton from './PostRankListSkeleton'
 import { PostRankListType } from '../types'
+import PostRankListSkeleton from './PostRankListSkeleton'
 
 const useStyles = makeStyles(() =>
   createStyles({

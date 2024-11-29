@@ -1,9 +1,9 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
-import { transitionMixin } from 'src/styled/mixins'
+import { FC } from 'react'
 import { formatDate } from 'src/shared/utils'
 import breakpoints from 'src/styled/breakpoints'
+import { transitionMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const CardContaiener = styled.div`
   position: relative;

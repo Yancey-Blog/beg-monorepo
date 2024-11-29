@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { PostStatistics } from './interfaces/post-statistics.interface'
+import { Model } from 'mongoose'
 import { CreatePostStatisticsInput } from './dtos/create-post-statistics.input'
+import { PostStatistics } from './interfaces/post-statistics.interface'
 
 @Injectable()
 export class PostStatisticsService {

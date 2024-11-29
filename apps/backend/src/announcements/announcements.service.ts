@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { Announcement } from './interfaces/announcement.interface'
+import { Model } from 'mongoose'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
 import { CreateAnnouncementInput } from './dtos/create-announcement.input'
 import { UpdateAnnouncementInput } from './dtos/update-announcement.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
+import { Announcement } from './interfaces/announcement.interface'
 
 @Injectable()
 export class AnnouncementsService {

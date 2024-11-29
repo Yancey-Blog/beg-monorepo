@@ -3,10 +3,8 @@ import { IPostItem } from 'src/containers/Post/types'
 export interface PostFilterProps {
   id: string
   isFetching: boolean
-  isSubmitting: boolean
-  fetchPosts: Function
-  updateGlobalSettingById: Function
   posts: IPostItem[]
+  fetchPosts: (title: string) => void
 }
 
 export interface IGlobalSetting {
@@ -16,8 +14,4 @@ export interface IGlobalSetting {
   isGrayTheme: boolean
   createdAt: string
   updatedAt: string
-}
-
-export interface Query {
-  getGlobalSetting: IGlobalSetting
 }

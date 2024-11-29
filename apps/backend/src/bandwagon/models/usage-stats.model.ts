@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql'
-import { IsNumber, IsNotEmpty } from 'class-validator'
+import { IsNotEmpty, IsNumber } from 'class-validator'
 
 @ObjectType()
 export class UsageStatesModel {

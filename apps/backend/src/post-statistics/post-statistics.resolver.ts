@@ -1,8 +1,8 @@
-import { Args, Query, Resolver, Mutation } from '@nestjs/graphql'
-import { PostStatisticsService } from './post-statistics.service'
-import { PostStatisticsModel } from './models/post-statistics.model'
-import { PostStatisticsGroupModel } from './models/post-statistics-group.model'
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { CreatePostStatisticsInput } from './dtos/create-post-statistics.input'
+import { PostStatisticsGroupModel } from './models/post-statistics-group.model'
+import { PostStatisticsModel } from './models/post-statistics.model'
+import { PostStatisticsService } from './post-statistics.service'
 
 @Resolver()
 export class PostStatisticsResolver {

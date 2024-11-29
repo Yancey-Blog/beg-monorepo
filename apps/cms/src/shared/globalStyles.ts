@@ -1,5 +1,5 @@
-import { makeStyles, createStyles } from '@mui/styles'
 import { createTheme } from '@mui/material/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 
 export const theme = createTheme({
   breakpoints: {

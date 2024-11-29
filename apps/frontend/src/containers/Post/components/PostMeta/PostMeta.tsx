@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import styled from 'styled-components'
 import { formatDate } from 'src/shared/utils'
+import styled from 'styled-components'
 import Tag from '../Tag/Tag'
 
 const MetaWrapper = styled.div`

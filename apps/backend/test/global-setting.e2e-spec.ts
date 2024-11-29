@@ -1,14 +1,14 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
+import { UpdateGlobalSettingInput } from '../src/global-setting/dtos/update-global-setting.input'
 import { GlobalSettingModule } from '../src/global-setting/global-setting.module'
 import { GlobalSettingModel } from '../src/global-setting/models/global-setting.model'
-import { UpdateGlobalSettingInput } from '../src/global-setting/dtos/update-global-setting.input'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 
 describe('GlobalSettingController (e2e)', () => {
   let app: NestApplication

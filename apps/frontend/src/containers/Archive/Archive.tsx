@@ -1,21 +1,21 @@
-import { FC, Fragment } from 'react'
-import { DateTime } from 'luxon'
-import Link from 'next/link'
 import { useQuery } from '@apollo/client'
 import orderBy from 'lodash.orderby'
-import { months } from 'src/shared/constants'
+import { DateTime } from 'luxon'
+import Link from 'next/link'
+import { FC, Fragment } from 'react'
+import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import { ARCHIVE } from 'src/containers/Post/typeDefs'
 import { ArchiveQuery, IArchive } from 'src/containers/Post/types'
-import ImageHeader from 'src/components/ImageHeader/ImageHeader'
+import { months } from 'src/shared/constants'
 import {
   ArchiveWrapper,
-  Year,
-  YearList,
+  Day,
+  DayItem,
+  DayList,
   Month,
   MonthTxt,
-  DayList,
-  DayItem,
-  Day
+  Year,
+  YearList
 } from './styled'
 
 const Archive: FC = () => {

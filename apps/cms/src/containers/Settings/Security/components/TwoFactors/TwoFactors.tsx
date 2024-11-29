@@ -1,21 +1,21 @@
-import { FC, useState } from 'react'
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Divider
-} from '@mui/material'
 import {
   ArrowForwardIos,
-  SentimentVerySatisfied,
-  SentimentDissatisfied
+  SentimentDissatisfied,
+  SentimentVerySatisfied
 } from '@mui/icons-material'
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText
+} from '@mui/material'
+import { enqueueSnackbar } from 'notistack'
+import { FC, useState } from 'react'
+import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import SnackbarUtils from 'src/components/Toast/Toast'
-import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
-import TOTP from '../TOTP/TOTP'
 import RecoveryCodes from '../RecoveryCodes/RecoveryCodes'
+import TOTP from '../TOTP/TOTP'
 import styles from './twoFactors.module.scss'
 
 const TwoFactors: FC = () => {
@@ -26,7 +26,9 @@ const TwoFactors: FC = () => {
 
   const openRecoveryCodesDialog = () => {
     if (!isTOTP) {
-      SnackbarUtils.error('Please turn on Authenticator app options first!')
+      enqueueSnackbar('Please turn on Authenticator app options first!', {
+        variant: 'error'
+      })
       return
     }
     setOpenRecoveryCodes(true)
@@ -43,7 +45,7 @@ const TwoFactors: FC = () => {
           aria-label="two-factor-nav"
           className={styles.listGroup}
         >
-          <ListItem button onClick={() => setOpenTOTP(true)}>
+          <ListItem onClick={() => setOpenTOTP(true)}>
             <ListItemText
               primary="Authenticator app"
               className={styles.title}
@@ -71,7 +73,7 @@ const TwoFactors: FC = () => {
 
           <Divider />
 
-          <ListItem button onClick={openRecoveryCodesDialog}>
+          <ListItem onClick={openRecoveryCodesDialog}>
             <ListItemText primary="Recovery codes" className={styles.title} />
             <ListItemText
               primary={<p className={styles.phone}>Click to generate</p>}

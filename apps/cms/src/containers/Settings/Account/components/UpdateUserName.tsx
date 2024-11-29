@@ -1,26 +1,24 @@
-import { FC } from 'react'
-import * as Yup from 'yup'
-import { useFormik } from 'formik'
 import { Button, TextField } from '@mui/material'
+import { useFormik } from 'formik'
+import { FC } from 'react'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
+import * as Yup from 'yup'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useStyles from '../styles'
-
-interface Props {
-  username: string
-  updateUserName: Function
-}
+import useAccount from '../useAccount'
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required()
 })
 
-const UpdateUserName: FC<Props> = ({ username, updateUserName }) => {
-  const classes = useStyles()
+const { username } = JSON.parse(localStorage.getItem('userProfile') || '{}')
+const initialValues = {
+  username
+}
 
-  const initialValues = {
-    username
-  }
+const UpdateUserName: FC = () => {
+  const classes = useStyles()
+  const { updateUserName } = useAccount()
 
   const { handleSubmit, getFieldProps, isSubmitting, errors, values } =
     useFormik({
@@ -43,7 +41,6 @@ const UpdateUserName: FC<Props> = ({ username, updateUserName }) => {
           variant="standard"
           className={classes.input}
           error={!!errors.username}
-          helperText={errors.username}
           autoFocus
           fullWidth
           label="User Name"

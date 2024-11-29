@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType, Int } from '@nestjs/graphql'
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class PostItemModel {

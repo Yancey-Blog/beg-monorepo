@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
-import breakpoints from './breakpoints'
 import { ThemeVariables as DefaultTheme } from '../../styled'
+import breakpoints from './breakpoints'
 
 const GlobalStyle = createGlobalStyle`
   html {

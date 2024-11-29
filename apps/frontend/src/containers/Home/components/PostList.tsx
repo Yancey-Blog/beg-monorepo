@@ -1,18 +1,18 @@
+import { ASTNode, print } from 'graphql'
 import { FC, useState } from 'react'
-import { print, ASTNode } from 'graphql'
 // import { useLazyQuery } from '@apollo/client'
-import { SVG_SPRITE } from 'src/shared/constants'
+import InfiniteScroll from 'src/components/InfiniteScroll/InfiniteScroll'
 import PostCard from 'src/containers/Post/components/PostCard/PostCard'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import {
+  IPost,
   // PostQuery,
   // PostVars,
-  IPostItem,
-  IPost
+  IPostItem
 } from 'src/containers/Post/types'
-import InfiniteScroll from 'src/components/InfiniteScroll/InfiniteScroll'
-import SubTitle from './SubTitle'
+import { SVG_SPRITE } from 'src/shared/constants'
 import { Status } from '../styled'
+import SubTitle from './SubTitle'
 
 interface Props {
   data: IPost

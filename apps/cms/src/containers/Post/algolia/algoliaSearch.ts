@@ -1,16 +1,15 @@
-import algoliasearch from 'algoliasearch'
+import { algoliasearch } from 'algoliasearch'
 
 const {
-  REACT_APP_ALGOLIA_APPLICATION_ID,
-  REACT_APP_ALGOLIA_ADMIN_API_KEY,
-  REACT_APP_ALGOLIA_SEARCH_INDEX
-} = process.env
+  VITE_ALGOLIA_APPLICATION_ID,
+  VITE_ALGOLIA_ADMIN_API_KEY,
+  VITE_ALGOLIA_SEARCH_INDEX
+} = import.meta.env
 
 const client = algoliasearch(
-  REACT_APP_ALGOLIA_APPLICATION_ID,
-  REACT_APP_ALGOLIA_ADMIN_API_KEY
+  VITE_ALGOLIA_APPLICATION_ID,
+  VITE_ALGOLIA_ADMIN_API_KEY
 )
-const index = client.initIndex(REACT_APP_ALGOLIA_SEARCH_INDEX)
 
 export const sendPostToAlgolia = async (
   objectID: string,
@@ -20,23 +19,27 @@ export const sendPostToAlgolia = async (
   imageUrl: string,
   labels: string[]
 ) => {
-  await index.saveObject(
-    {
+  await client.saveObject({
+    indexName: VITE_ALGOLIA_SEARCH_INDEX,
+    body: {
       objectID,
       name,
       description,
       content,
       imageUrl,
-      labels
-    },
-    { autoGenerateObjectIDIfNotExist: true }
-  )
+      labels,
+      autoGenerateObjectIDIfNotExist: true
+    }
+  })
 }
 
 export const deletePostOnAlgolia = async (objectID: string) => {
-  await index.deleteObject(objectID)
+  await client.deleteObject({ indexName: VITE_ALGOLIA_SEARCH_INDEX, objectID })
 }
 
 export const deletePostsOnAlgolia = async (objectIDs: string[]) => {
-  await index.deleteObjects(objectIDs)
+  await client.deleteObjects({
+    indexName: VITE_ALGOLIA_SEARCH_INDEX,
+    objectIDs
+  })
 }

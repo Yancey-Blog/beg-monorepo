@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import { makeStyles } from '@mui/styles'
+import { FC } from 'react'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import SettingItemWrapper from '../../../components/SettingItemWrapper/SettingItemWrapper'
+import SettingItemWrapper from '../../../components/SettingItemWrapper'
 
 const useStyles = makeStyles({
   tip: {

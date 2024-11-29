@@ -1,30 +1,30 @@
-import { FC, useState, useEffect } from 'react'
-import * as Yup from 'yup'
-import { useSnackbar } from 'notistack'
-import { useFormik } from 'formik'
-import CopyToClipboard from 'react-copy-to-clipboard'
 import { useMutation } from '@apollo/client'
+import { Close } from '@mui/icons-material'
 import {
   Button,
   CircularProgress,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
-  IconButton,
-  TextField,
+  DialogContent,
+  DialogTitle,
   FormControl,
-  RadioGroup,
+  FormControlLabel,
+  IconButton,
   Radio,
-  FormControlLabel
+  RadioGroup,
+  TextField
 } from '@mui/material'
-import { Close } from '@mui/icons-material'
+import { useFormik } from 'formik'
+import { useSnackbar } from 'notistack'
+import { FC, FormEvent, useEffect, useState } from 'react'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import Transition from 'src/components/Transition'
 import {
   AZURE_BLOB_PATH,
-  GOOGLE_AUTHENTICATOR_FOR_IOS,
-  GOOGLE_AUTHENTICATOR_FOR_ANDROID
+  GOOGLE_AUTHENTICATOR_FOR_ANDROID,
+  GOOGLE_AUTHENTICATOR_FOR_IOS
 } from 'src/shared/constants'
-import Transition from 'src/components/Transition/Transition'
+import * as Yup from 'yup'
 import { CREATE_TOTP, VALIDATE_TOTP } from '../../typeDefs'
 import styles from './totp.module.scss'
 
@@ -34,7 +34,7 @@ interface TOTPRes {
 }
 
 interface Props {
-  setOpen: Function
+  setOpen: (open: boolean) => void
   open: boolean
 }
 
@@ -105,7 +105,6 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
       open={open}
       onClose={onClose}
       className={styles.totpDialog}
-      // @ts-ignore
       TransitionComponent={Transition}
       keepMounted
     >
@@ -132,8 +131,8 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
           {step === 0
             ? 'Get codes from the Authenticator app'
             : qrcodeMode
-            ? 'Set up Authenticator'
-            : "Can't scan the barcode?"}
+              ? 'Set up Authenticator'
+              : "Can't scan the barcode?"}
         </header>
 
         {step === 0 && (
@@ -263,7 +262,9 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
           type="submit"
           disabled={isSubmitting || loading}
           onClick={
-            step === 2 ? (e: any) => handleSubmit(e) : () => setStep(step + 1)
+            step === 2
+              ? (e) => handleSubmit(e as unknown as FormEvent<HTMLFormElement>)
+              : () => setStep(step + 1)
           }
         >
           {step === 2 ? 'Verify' : 'Next'}
@@ -273,4 +274,5 @@ const TOTP: FC<Props> = ({ setOpen, open }) => {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default TOTP

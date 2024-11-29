@@ -390,7 +390,7 @@ Sat, 20 Nov 2021 16:12:33 GMT
 
 ### Features
 
-- add  twoFactorSecret ([8c7e302](https://github.com/Yancey-Blog/blog-be-next/commit/8c7e302e018d8d25a2bb497307db1a1fcdf44995))
+- add twoFactorSecret ([8c7e302](https://github.com/Yancey-Blog/blog-be-next/commit/8c7e302e018d8d25a2bb497307db1a1fcdf44995))
 - add createTOTP ([2fd8b45](https://github.com/Yancey-Blog/blog-be-next/commit/2fd8b4573e5883452e045e20b930039e42423fca))
 - add NEED_SIMULATE_NETWORK_THROTTLE for env ([2d24d58](https://github.com/Yancey-Blog/blog-be-next/commit/2d24d588924e71e7c856dbe72c84ad39492d4107))
 - add network ([4ec4c4d](https://github.com/Yancey-Blog/blog-be-next/commit/4ec4c4d3c3bde4ea532869e71e54dec8add02762))
@@ -399,7 +399,7 @@ Sat, 20 Nov 2021 16:12:33 GMT
 - add ReqDecorator ([4f9f518](https://github.com/Yancey-Blog/blog-be-next/commit/4f9f51808f488e9c59dba8e9811b86434be9484e))
 - add updateUser ([9cc5418](https://github.com/Yancey-Blog/blog-be-next/commit/9cc5418414e279911e1c261706238aa97c72f201))
 - delete useless codes ([fadaf4f](https://github.com/Yancey-Blog/blog-be-next/commit/fadaf4fead5646ad375e299cc1da962a51acbc18))
-- finish  the .env.example ([b6375f3](https://github.com/Yancey-Blog/blog-be-next/commit/b6375f339a834a55aed5bac4f77a254e2da7f330))
+- finish the .env.example ([b6375f3](https://github.com/Yancey-Blog/blog-be-next/commit/b6375f339a834a55aed5bac4f77a254e2da7f330))
 - finish generateRecoveryFile ([a7677a3](https://github.com/Yancey-Blog/blog-be-next/commit/a7677a390479f5b035776149cb1d67a135079344))
 - finish validateRecoveryCode ([587016b](https://github.com/Yancey-Blog/blog-be-next/commit/587016bd5a6810ba215c49b1e9a7b0c4e20b0013))
 - finish validateTOTP ([8887f21](https://github.com/Yancey-Blog/blog-be-next/commit/8887f21d93f1a95f48d383fb14fb3728bf9bc62a))
@@ -407,7 +407,7 @@ Sat, 20 Nov 2021 16:12:33 GMT
 - package generateQRCode function ([cc50b7e](https://github.com/Yancey-Blog/blog-be-next/commit/cc50b7e92cef47d7112adb66900fb3950ea9ef71))
 - support DelayInterceptor ([5829c16](https://github.com/Yancey-Blog/blog-be-next/commit/5829c164f41f101a74eec8b894eb80cb370f692e))
 - support generateRecoveryCodes ([56d84c0](https://github.com/Yancey-Blog/blog-be-next/commit/56d84c0d778b411025553b3d1e45065a4852325b))
-- update   @Field(() => String) ([f846b6b](https://github.com/Yancey-Blog/blog-be-next/commit/f846b6bc492ea50f43141473dba6532c369bbb5a))
+- update @Field(() => String) ([f846b6b](https://github.com/Yancey-Blog/blog-be-next/commit/f846b6bc492ea50f43141473dba6532c369bbb5a))
 - update APP_INTERCEPTOR ([ea3dd60](https://github.com/Yancey-Blog/blog-be-next/commit/ea3dd60d5e8a541c461cf9061a5ec7ac391352ed))
 - update app.module.ts ([adc4feb](https://github.com/Yancey-Blog/blog-be-next/commit/adc4feb8c7f7807d564bed967e7c496e2b540674))
 - update AuthModel ([575ecf1](https://github.com/Yancey-Blog/blog-be-next/commit/575ecf12b369a520bf75158019e153c6364f82fd))

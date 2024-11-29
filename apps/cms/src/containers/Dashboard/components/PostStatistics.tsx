@@ -1,16 +1,19 @@
-import { FC } from 'react'
-import { DateTime } from 'luxon'
-import { formatJSONDate } from 'yancey-js-util'
-import classNames from 'classnames'
-import ReactTooltip from 'react-tooltip'
-import CalendarHeatmap from 'react-calendar-heatmap'
-import 'react-calendar-heatmap/dist/styles.css'
 import { Paper } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import classNames from 'classnames'
+import { DateTime } from 'luxon'
+import { FC } from 'react'
+import CalendarHeatmap, {
+  ReactCalendarHeatmapValue,
+  TooltipDataAttrs
+} from 'react-calendar-heatmap'
+import 'react-calendar-heatmap/dist/styles.css'
+import { Tooltip } from 'react-tooltip'
 import {
   IPostStatistics,
   IPostStatisticsGroupItem
 } from 'src/containers/Post/types'
+import { formatJSONDate } from 'yancey-js-util'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -29,6 +32,10 @@ const useStyles = makeStyles(() =>
         width: '100%',
         height: '100%'
       }
+    },
+
+    preWrap: {
+      whiteSpace: 'pre-wrap'
     }
   })
 )
@@ -38,42 +45,44 @@ interface Props {
   data: IPostStatistics[]
 }
 
-const PostStatistics: FC<Props> = ({ loading, data }) => {
+const PostStatistics: FC<Props> = ({ data }) => {
   const classes = useStyles()
 
   return (
     <Paper className={classNames(classes.paper, classes.heatmapPaper)}>
-      {/* <CalendarHeatmap
+      <CalendarHeatmap
         startDate={new Date(DateTime.now().plus({ years: -1 }).toISODate())}
         endDate={new Date(DateTime.now().toISODate())}
         values={data.map((postStatisticsItem) => ({
           date: postStatisticsItem._id,
           ...postStatisticsItem
         }))}
-        // @ts-ignore
-        classForValue={(value: IPostStatisticsGroupItem) => {
+        classForValue={(value?: ReactCalendarHeatmapValue<string>) => {
           if (!value) {
             return 'color-empty'
           }
           return `color-gitlab-${value.count}`
         }}
-        tooltipDataAttrs={(value: IPostStatisticsGroupItem) => ({
-          'data-tip': value.date
-            ? `
-            ${value.items
-              .map(
-                (item) =>
-                  `「${item.postName}」 is ${item.scenes} at ${formatJSONDate(
-                    item.operatedAt
-                  )}`
-              )
-              .join('<br/>')}
-          `
+        tooltipDataAttrs={(
+          value?: ReactCalendarHeatmapValue<string>
+        ): TooltipDataAttrs => ({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          'data-tooltip-id': 'my-tooltip',
+          'data-tooltip-content': value?.date
+            ? value?.items
+                ?.map(
+                  (item: IPostStatisticsGroupItem) =>
+                    `「${item.postName}」 is ${item.scenes} at ${formatJSONDate(
+                      item.operatedAt
+                    )}`
+                )
+                .join('\n')
             : `No contributions on the day.`
         })}
         showWeekdayLabels
-      /> */}
-      <ReactTooltip multiline />
+      />
+      <Tooltip id="my-tooltip" className={classes.preWrap} />
     </Paper>
   )
 }

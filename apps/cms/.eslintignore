@@ -1,5 +1,0 @@
-/build
-/dist
-node_modules
-.babel.js
-config-overrides.js

@@ -1,6 +1,6 @@
-import { FC } from 'react'
 import { Card, Skeleton } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import { FC } from 'react'
 
 const useStyles = makeStyles(() =>
   createStyles({

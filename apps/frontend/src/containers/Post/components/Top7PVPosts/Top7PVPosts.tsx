@@ -1,14 +1,14 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
+import { FC } from 'react'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
-import { flexMixin } from 'src/styled/mixins'
 import { SVG_SPRITE } from 'src/shared/constants'
 import { PosterProps } from 'src/shared/types'
-import Top7PVPostsSkeleton from '../Top7PVPostsSkeleton/Top7PVPostsSkeleton'
-import SubHeader from '../SubTitle/SubTitle'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 import { generatePostUrl } from '../../PostDetail/utils'
 import { GetTopPVPostsQuery } from '../../types'
+import SubHeader from '../SubTitle/SubTitle'
+import Top7PVPostsSkeleton from '../Top7PVPostsSkeleton/Top7PVPostsSkeleton'
 
 const CardItem = styled.div`
   position: relative;

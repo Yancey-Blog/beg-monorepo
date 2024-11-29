@@ -1,6 +1,6 @@
-import { FC, useRef, useEffect, useState } from 'react'
-import Script from 'next/script'
 import { useQuery } from '@apollo/client'
+import Script from 'next/script'
+import { FC, useEffect, useRef, useState } from 'react'
 import { APLAYER_CDN } from 'src/shared/constants'
 import { PLAYERS } from '../typeDefs'
 import { PlayerQuery } from '../types'

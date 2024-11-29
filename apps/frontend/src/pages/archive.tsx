@@ -1,5 +1,5 @@
-import Layout from 'src/containers/Layout/Layout'
 import ArchiveContainer from 'src/containers/Archive/Archive'
+import Layout from 'src/containers/Layout/Layout'
 
 const Music = () => {
   return (

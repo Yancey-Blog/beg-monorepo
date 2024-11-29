@@ -1,23 +1,23 @@
-import { FC, useState, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import {
-  Dialog,
   Button,
-  DialogTitle,
-  DialogContent,
+  CircularProgress,
+  Dialog,
   DialogActions,
-  CircularProgress
+  DialogContent,
+  DialogTitle
 } from '@mui/material'
 import { DateTime } from 'luxon'
+import { FC, useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import Transition from 'src/components/Transition/Transition'
-import { generateFile } from 'src/shared/utils'
+import Transition from 'src/components/Transition'
 import { RECOVERY_CODES_FILE_NAME } from 'src/shared/constants'
+import { generateFile } from 'src/shared/utils'
 import { CREATE_RECOVERY_CODES } from '../../typeDefs'
 import styles from './recoveryCode.module.scss'
 
 interface Props {
-  setOpen: Function
+  setOpen: (open: boolean) => void
   open: boolean
 }
 
@@ -45,7 +45,6 @@ const RecoveryCodes: FC<Props> = ({ setOpen, open }) => {
       className={styles.recoveryCode}
       open={open}
       onClose={onClose}
-      // @ts-ignore
       TransitionComponent={Transition}
       keepMounted
     >

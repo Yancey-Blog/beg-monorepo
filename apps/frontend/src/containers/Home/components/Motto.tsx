@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import styled, { css } from 'styled-components'
 import { SOCIAL_MEDIA } from 'src/shared/constants'
-import { flexMixin, transitionMixin, backgroundMixin } from 'src/styled/mixins'
+import { backgroundMixin, flexMixin, transitionMixin } from 'src/styled/mixins'
+import styled, { css } from 'styled-components'
 import { IMotto } from '../types'
 
 const TWITTER_QRCODE = `${process.env.NEXT_PUBLIC_STATIC_FILE_URL}/twitter-qr-code.jpg`

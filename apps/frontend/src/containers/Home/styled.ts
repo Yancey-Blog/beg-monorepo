@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import breakpoints from 'src/styled/breakpoints'
+import styled from 'styled-components'
 
 export const HomeContainer = styled.section`
   position: relative;

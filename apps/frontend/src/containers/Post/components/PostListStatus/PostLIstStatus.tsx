@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
+import { FC } from 'react'
 import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const StatusWrapper = styled.div`
   margin-bottom: 2rem;

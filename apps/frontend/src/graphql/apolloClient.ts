@@ -1,8 +1,8 @@
 import {
   ApolloClient,
+  HttpLink,
   InMemoryCache,
-  NormalizedCacheObject,
-  HttpLink
+  NormalizedCacheObject
 } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import SnackbarUtils from 'src/components/Toast/Toast'

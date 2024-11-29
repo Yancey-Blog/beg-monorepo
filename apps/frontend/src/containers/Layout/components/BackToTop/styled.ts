@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { transitionMixin, animationMixin } from 'src/styled/mixins'
 import { float } from 'src/styled/animations'
 import breakpoints from 'src/styled/breakpoints'
+import { animationMixin, transitionMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 export const Cat = styled.div`
   position: fixed;

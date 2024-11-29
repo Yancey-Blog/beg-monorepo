@@ -1,15 +1,15 @@
-import { FC } from 'react'
 import Link from 'next/link'
-import { SOCIAL_MEDIA } from 'src/shared/constants'
+import { FC } from 'react'
 import { IGlobalSetting } from 'src/containers/GlobalSetting/types'
+import { SOCIAL_MEDIA } from 'src/shared/constants'
 import {
-  FooterWrapper,
-  Divider,
-  TechStacks,
   CopyRight,
-  InnerLink,
+  Divider,
+  Email,
   FooterBottom,
-  Email
+  FooterWrapper,
+  InnerLink,
+  TechStacks
 } from './styled'
 
 interface Props {

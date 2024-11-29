@@ -1,8 +1,8 @@
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { Args, Query, Resolver, Mutation } from '@nestjs/graphql'
+import { UpdateGlobalSettingInput } from './dtos/update-global-setting.input'
 import { GlobalSettingService } from './global-setting.service'
 import { GlobalSettingModel } from './models/global-setting.model'
-import { UpdateGlobalSettingInput } from './dtos/update-global-setting.input'
 
 @Resolver(() => GlobalSettingModel)
 export class GlobalSettingResolver {

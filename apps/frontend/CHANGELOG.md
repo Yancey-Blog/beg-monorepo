@@ -843,7 +843,7 @@ Sat, 20 Nov 2021 12:59:36 GMT
 
 ### Features
 
-- define  a new set svg sprite ([b10c115](https://github.com/Yancey-Blog/blog-desktop-v2/commit/b10c11513e9abd1e647a0d963586a519b64e9795))
+- define a new set svg sprite ([b10c115](https://github.com/Yancey-Blog/blog-desktop-v2/commit/b10c11513e9abd1e647a0d963586a519b64e9795))
 - delete useless svg sprite file ([1de9feb](https://github.com/Yancey-Blog/blog-desktop-v2/commit/1de9febac1e67be6f167e983ed2beaab6283c10b))
 - support normal.cur ([4567192](https://github.com/Yancey-Blog/blog-desktop-v2/commit/4567192d024df4e7cc74ca304bbc9a9341b8f8c0))
 - update Cat Scroll right to 4 rem ([6542bf2](https://github.com/Yancey-Blog/blog-desktop-v2/commit/6542bf2ea6c29ab1108d5f447354427f77a7b5c9))

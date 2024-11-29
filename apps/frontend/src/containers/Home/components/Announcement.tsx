@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import styled from 'styled-components'
 import { SVG_SPRITE } from 'src/shared/constants'
-import { flexMixin } from 'src/styled/mixins'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 import { IAnnouncement } from '../types'
 
 interface Props {

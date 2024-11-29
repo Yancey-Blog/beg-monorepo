@@ -1,5 +1,13 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  CreateLiveTourInput,
+  LiveTourModel,
+  MutationDeleteLiveTourByIdArgs,
+  MutationDeleteLiveToursArgs,
+  UpdateLiveTourInput
+} from 'backend/src/__generated__/graphql'
 import { BATCH_DELETE_FRAGMENT } from 'src/graphql/graphqlFragment'
+import { GraphQInputWrapper } from 'src/types/common'
 
 const LIVE_TOUR_FRAGMENT = gql`
   fragment LiveTourFragment on LiveTourModel {
@@ -12,7 +20,10 @@ const LIVE_TOUR_FRAGMENT = gql`
   }
 `
 
-export const CREATE_ONE_LIVE_TOUR = gql`
+export const CREATE_ONE_LIVE_TOUR: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<CreateLiveTourInput>
+> = gql`
   mutation CreateLiveTour($input: CreateLiveTourInput!) {
     createLiveTour(input: $input) {
       ...LiveTourFragment
@@ -21,7 +32,10 @@ export const CREATE_ONE_LIVE_TOUR = gql`
   ${LIVE_TOUR_FRAGMENT}
 `
 
-export const UPDATE_ONE_LIVE_TOUR = gql`
+export const UPDATE_ONE_LIVE_TOUR: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<UpdateLiveTourInput>
+> = gql`
   mutation UpdateLiveTourById($input: UpdateLiveTourInput!) {
     updateLiveTourById(input: $input) {
       ...LiveTourFragment
@@ -30,7 +44,9 @@ export const UPDATE_ONE_LIVE_TOUR = gql`
   ${LIVE_TOUR_FRAGMENT}
 `
 
-export const LIVE_TOURS = gql`
+export const LIVE_TOURS: TypedDocumentNode<{
+  getLiveTours: LiveTourModel[]
+}> = gql`
   query GetLiveTours {
     getLiveTours {
       ...LiveTourFragment
@@ -39,7 +55,10 @@ export const LIVE_TOURS = gql`
   ${LIVE_TOUR_FRAGMENT}
 `
 
-export const DELETE_ONE_LIVE_TOUR = gql`
+export const DELETE_ONE_LIVE_TOUR: TypedDocumentNode<
+  unknown,
+  MutationDeleteLiveTourByIdArgs
+> = gql`
   mutation DeleteLiveTourById($id: ID!) {
     deleteLiveTourById(id: $id) {
       ...LiveTourFragment
@@ -48,7 +67,10 @@ export const DELETE_ONE_LIVE_TOUR = gql`
   ${LIVE_TOUR_FRAGMENT}
 `
 
-export const BATCH_DELETE_LIVE_TOUR = gql`
+export const BATCH_DELETE_LIVE_TOUR: TypedDocumentNode<
+  unknown,
+  MutationDeleteLiveToursArgs
+> = gql`
   mutation DeleteLiveTours($ids: [ID!]!) {
     deleteLiveTours(ids: $ids) {
       ...BatchDeleteFragment

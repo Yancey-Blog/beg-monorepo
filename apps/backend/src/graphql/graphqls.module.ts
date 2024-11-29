@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
-import { ValidationError } from 'apollo-server-express'
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { configCORS } from '@repo/utils'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
+import { ValidationError } from 'apollo-server-express'
 import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
 import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
@@ -16,7 +16,7 @@ import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
       useFactory: async (configService: ConfigService) => ({
         debug: !configService.isEnvProduction,
         playground: false,
-        introspection: !configService.isEnvProduction,
+        introspection: true,
         installSubscriptionHandlers: true,
         useGlobalPrefix: true,
         typePaths: ['./**/*.gql'],

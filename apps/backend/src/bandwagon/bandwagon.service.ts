@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common'
 import { HttpService } from '@nestjs/axios'
+import { Injectable } from '@nestjs/common'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { BandwagonParams } from './interfaces/bandwagon-params.interface'
-import { ServiceInfo } from './interfaces/service-info.interface'
-import { UsageStats } from './interfaces/usage-stats.interface'
 import { ConfigService } from '../config/config.service'
 import {
   BANDWAGON_SERVICE_INFO_URL,
   BANDWAGON_USAGE_STATS_URL
 } from '../shared/constants'
+import { BandwagonParams } from './interfaces/bandwagon-params.interface'
+import { ServiceInfo } from './interfaces/service-info.interface'
+import { UsageStats } from './interfaces/usage-stats.interface'
 
 @Injectable()
 export class BandwagonService {

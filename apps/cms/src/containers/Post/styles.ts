@@ -1,4 +1,4 @@
-import { makeStyles, createStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -51,7 +51,7 @@ const useStyles = makeStyles(() =>
       display: 'flex',
       alignItems: 'center',
       width: 400,
-      zIndex: 1101
+      zIndex: 0
     },
     input: {
       marginLeft: '16px',

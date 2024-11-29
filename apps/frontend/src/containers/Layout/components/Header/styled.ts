@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import {
-  flexMixin,
-  transitionMixin,
-  backgroundMixin,
-  animationMixin
-} from 'src/styled/mixins'
 import { wrench } from 'src/styled/animations'
 import breakpoints from 'src/styled/breakpoints'
+import {
+  animationMixin,
+  backgroundMixin,
+  flexMixin,
+  transitionMixin
+} from 'src/styled/mixins'
+import styled from 'styled-components'
 
 export const NavBar = styled.nav`
   box-sizing: border-box;

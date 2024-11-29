@@ -1,26 +1,26 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
+  DialogTitle,
   TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
-import { AnnouncementModalProps as Props, IAnnouncement } from '../types'
+import * as Yup from 'yup'
+import useAnnouncement from '../useAnnouncement'
 
-const AnnouncementModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createAnnouncement,
-  updateAnnouncementById
-}) => {
+export interface Props {
+  open: boolean
+  handleOpen: () => void
+}
+
+const AnnouncementModal: FC<Props> = ({ open, handleOpen }) => {
   const initialValues = {
     content: ''
   }
@@ -29,8 +29,8 @@ const AnnouncementModal: FC<Props> = ({
     content: Yup.string().required('Content is required.')
   })
 
+  const { createAnnouncement, updateAnnouncementById } = useAnnouncement()
   const classes = useStyles()
-
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
 
@@ -45,7 +45,7 @@ const AnnouncementModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateAnnouncementById({
           variables: { input: { ...values, id } }
         })
@@ -64,7 +64,7 @@ const AnnouncementModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { content } = state as IAnnouncement
+      const { content } = state
       setValues({ content })
     }
   }, [id, resetForm, setValues, state])

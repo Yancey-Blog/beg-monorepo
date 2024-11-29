@@ -44,15 +44,13 @@ export const animationMixin = (
   delay: number,
   timingFunction: string,
   iterationCount: string
-) =>
-  css`
-    animation: ${name} ${delay}ms ${timingFunction} ${iterationCount};
-  `
+) => css`
+  animation: ${name} ${delay}ms ${timingFunction} ${iterationCount};
+`
 
-export const noUserSelectMixin = () =>
-  css`
-    user-select: none;
-  `
+export const noUserSelectMixin = () => css`
+  user-select: none;
+`
 
 export const singleLineEllipsisMixins = () => css`
   overflow: hidden;

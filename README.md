@@ -14,24 +14,24 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 
 ## Ecosystem
 
-| Project               | Version                       | Build Status                       | Description                                             |
-| --------------------- | ----------------------------- | ---------------------------------- | ------------------------------------------------------- |
-| [cms]            | ![cms-version]           | ![cms-build-status]           | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL. |
-| [frontend]            | ![frontend-version]           | ![frontend-build-status]           | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL. |
-| [backend]        | ![backend-version]       | ![backend-build-status]       | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
-| [uploader]    | ![uploader-version]   | ![uploader-build-status]   | The Uploader backend powered by Azure Blob. |
-| [@repo/utils]       | ![@repo/utils-version]      | ![@repo/utils-build-status]      | Common utils library. |
-| [@repo/eslint-config]       | ![@repo/eslint-config-version]      | ![@repo/eslint-config-build-status]      | Common Eslint Config library. |
-| [@repo/typescript-config]       | ![@repo/typescript-config-version]      | ![@repo/typescript-config-build-status]      | Common TypeScript Config library. |
+| Project                   | Version                            | Build Status                            | Description                                                                                         |
+| ------------------------- | ---------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [cms]                     | ![cms-version]                     | ![cms-build-status]                     | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL.                         |
+| [frontend]                | ![frontend-version]                | ![frontend-build-status]                | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.  |
+| [backend]                 | ![backend-version]                 | ![backend-build-status]                 | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
+| [uploader]                | ![uploader-version]                | ![uploader-build-status]                | The Uploader backend powered by Azure Blob.                                                         |
+| [@repo/utils]             | ![@repo/utils-version]             | ![@repo/utils-build-status]             | Common utils library.                                                                               |
+| [@repo/eslint-config]     | ![@repo/eslint-config-version]     | ![@repo/eslint-config-build-status]     | Common Eslint Config library.                                                                       |
+| [@repo/typescript-config] | ![@repo/typescript-config-version] | ![@repo/typescript-config-build-status] | Common TypeScript Config library.                                                                   |
 
 [cms]: ./apps/cms
 [frontend]: ./apps/frontend
 [backend]: ./apps/backend
-[uploader]:./apps/uploader
-[@repo/utils]:./packages/utils
-[@repo/eslint-config]:./packages/eslint-config
-[@repo/typescript-config]:./packages/typescript-config
-[cms-version]: https://img.shields.io/badge/Version-v5.7.3-brightgreen
+[uploader]: ./apps/uploader
+[@repo/utils]: ./packages/utils
+[@repo/eslint-config]: ./packages/eslint-config
+[@repo/typescript-config]: ./packages/typescript-config
+[cms-version]: https://img.shields.io/badge/Version-v6.0.0-brightgreen
 [frontend-version]: https://img.shields.io/badge/Version-v4.35.0-brightgreen
 [backend-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
@@ -84,7 +84,7 @@ To build all **apps** and **packages**, you can run this command under the proje
 pnpm run build
 ```
 
-To build a specific **app**, you can runthis command  under the project root folder:
+To build a specific **app**, you can runthis command under the project root folder:
 
 ```bash
 pnpm run build --filter YOU_APP_NAME

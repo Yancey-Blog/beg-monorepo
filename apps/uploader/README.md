@@ -1,4 +1,3 @@
-
 # Uploader Service
 
 The Uploader service powered by Azure Blob.

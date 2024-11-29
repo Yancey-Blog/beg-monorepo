@@ -1,16 +1,16 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
-import { YanceyMusicModule } from '../src/yancey-music/yancey-music.module'
-import { YanceyMusicModel } from '../src/yancey-music/models/yancey-music.model'
+import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { CreateYanceyMusicInput } from '../src/yancey-music/dtos/create-yancey-music.input'
 import { UpdateYanceyMusicInput } from '../src/yancey-music/dtos/update-yancey-music.input'
-import { BatchDeleteModel } from '../src/database/models/batch-delete.model'
+import { YanceyMusicModel } from '../src/yancey-music/models/yancey-music.model'
+import { YanceyMusicModule } from '../src/yancey-music/yancey-music.module'
 
 describe('YanceyMusicController (e2e)', () => {
   let app: NestApplication

@@ -1,39 +1,32 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
+  DialogTitle,
   FormLabel,
-  Switch
+  Switch,
+  TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
-import Uploader from 'src/components/Uploader/Uploader'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
-import { ICover } from '../types'
+import * as Yup from 'yup'
+import useCover from '../useCover'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createCover: Function
-  updateCoverById: Function
+  handleOpen: () => void
 }
 
-const CoverModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createCover,
-  updateCoverById
-}) => {
+const CoverModal: FC<Props> = ({ open, handleOpen }) => {
   const classes = useStyles()
-
+  const { createCover, updateCoverById } = useCover()
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
 
@@ -62,7 +55,7 @@ const CoverModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateCoverById({
           variables: { input: { ...values, id } }
         })
@@ -83,7 +76,7 @@ const CoverModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { coverUrl, title, isPublic } = state as ICover
+      const { coverUrl, title, isPublic } = state
       setValues({ coverUrl, title, isPublic })
     }
   }, [id, resetForm, setValues, state])

@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import Skeleton from '@mui/material/Skeleton'
+import { FC } from 'react'
 import styled from 'styled-components'
 
 const Top7PVPostsSkeletonWrapper = styled.div`

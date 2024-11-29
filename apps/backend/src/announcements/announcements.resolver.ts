@@ -1,11 +1,11 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
+import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
 import { AnnouncementsService } from './announcements.service'
-import { AnnouncementModel } from './models/announcements.model'
 import { CreateAnnouncementInput } from './dtos/create-announcement.input'
 import { UpdateAnnouncementInput } from './dtos/update-announcement.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
-import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { AnnouncementModel } from './models/announcements.model'
 
 @Resolver(() => AnnouncementModel)
 export class AnnouncementsResolver {

@@ -1,11 +1,11 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { PlayerService } from './player.service'
-import { PlayerModel } from './models/player.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { BatchUpdateModel } from '../database/models/batch-update.model'
 import { CreatePlayerInput } from './dtos/create-player.input'
 import { UpdatePlayerInput } from './dtos/update-player.input'
+import { PlayerModel } from './models/player.model'
+import { PlayerService } from './player.service'
 
 import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
 

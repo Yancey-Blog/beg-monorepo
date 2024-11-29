@@ -1,46 +1,40 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
-  FormLabel
+  DialogTitle,
+  FormLabel,
+  TextField
 } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { useFormik } from 'formik'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
-import Uploader from 'src/components/Uploader/Uploader'
+import { DateTime } from 'luxon'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
-import { IYanceyMusic } from '../types'
+import { parseSearch } from 'src/shared/utils'
+import * as Yup from 'yup'
+import useYanceyMusic from '../useYanceyMusic'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createYanceyMusic: Function
-  updateYanceyMusicById: Function
+  handleOpen: () => void
 }
 
-const YanceyMusicModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createYanceyMusic,
-  updateYanceyMusicById
-}) => {
+const YanceyMusicModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createYanceyMusic, updateYanceyMusicById } = useYanceyMusic()
   const classes = useStyles()
 
   const initialValues = {
     title: '',
     soundCloudUrl: '',
-    releaseDate: new Date(),
+    releaseDate: DateTime.now(),
     posterUrl: ''
   }
 
@@ -64,7 +58,7 @@ const YanceyMusicModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateYanceyMusicById({
           variables: { input: { ...values, id } }
         })
@@ -85,11 +79,16 @@ const YanceyMusicModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, soundCloudUrl, releaseDate, posterUrl } =
-        state as IYanceyMusic
+      const { title, soundCloudUrl, releaseDate, posterUrl } = state
 
-      // @ts-ignore
-      setValues({ title, soundCloudUrl, releaseDate, posterUrl })
+      setValues({
+        title,
+        soundCloudUrl,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        releaseDate: DateTime.fromISO(releaseDate),
+        posterUrl
+      })
     }
   }, [id, resetForm, setValues, state])
 
@@ -126,13 +125,11 @@ const YanceyMusicModal: FC<Props> = ({
             {...getFieldProps('soundCloudUrl')}
           />
 
-          <DesktopDatePicker
+          <DatePicker
             className={classes.textFieldSpace}
-            renderInput={(props) => <TextField {...props} />}
             label="Release Date"
             value={values.releaseDate}
             onChange={(date) => setFieldValue('releaseDate', date, true)}
-            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>

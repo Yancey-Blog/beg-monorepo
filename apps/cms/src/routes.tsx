@@ -1,18 +1,18 @@
-import { ReactElement } from 'react'
 import {
   Dashboard,
-  Home,
   Headset,
+  Home,
   PostAdd,
   Settings
 } from '@mui/icons-material'
+import { FC, lazy, LazyExoticComponent, ReactElement } from 'react'
 import { Roles } from 'src/types/roles'
 
 export interface Route {
   name: string
   path: string
   icon: ReactElement
-  component?: string
+  component?: LazyExoticComponent<FC>
   isExternalLink?: boolean
   routes?: RouteChildren[]
   roles?: Roles[]
@@ -24,7 +24,7 @@ export interface RouteChildren extends Omit<Route, 'icon'> {
 
 export interface MappedRoute {
   path: string
-  component: string
+  component?: LazyExoticComponent<FC>
   roles?: Roles[]
 }
 
@@ -33,7 +33,7 @@ const routes: Route[] = [
     name: 'Dashboard',
     path: '/',
     icon: <Dashboard />,
-    component: 'Dashboard/Dashboard',
+    component: lazy(() => import('src/containers/Dashboard')),
     roles: [Roles.ADMIN]
   },
   {
@@ -44,25 +44,25 @@ const routes: Route[] = [
       {
         name: 'Announcement',
         path: 'announcement',
-        component: 'Home/Announcement/Announcement',
+        component: lazy(() => import('src/containers/Home/Announcement')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Cover',
         path: 'cover',
-        component: 'Home/Cover/Cover',
+        component: lazy(() => import('src/containers/Home/Cover')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Motto',
         path: 'motto',
-        component: 'Home/Motto/Motto',
+        component: lazy(() => import('src/containers/Home/Motto')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Open Source',
         path: 'open-source',
-        component: 'Home/OpenSource/OpenSource',
+        component: lazy(() => import('src/containers/Home/OpenSource')),
         roles: [Roles.ADMIN]
       }
     ]
@@ -75,25 +75,25 @@ const routes: Route[] = [
       {
         name: 'Best Album',
         path: 'best-album',
-        component: 'Music/BestAlbum/BestAlbum',
+        component: lazy(() => import('src/containers/Music/BestAlbum')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Live Tour',
         path: 'live-tour',
-        component: 'Music/LiveTour/LiveTour',
+        component: lazy(() => import('src/containers/Music/LiveTour')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Player',
         path: 'player',
-        component: 'Music/Player/Player',
+        component: lazy(() => import('src/containers/Music/Player')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Yancey Music',
         path: 'yancey-music',
-        component: 'Music/YanceyMusic/YanceyMusic',
+        component: lazy(() => import('src/containers/Music/YanceyMusic')),
         roles: [Roles.ADMIN]
       }
     ]
@@ -102,13 +102,13 @@ const routes: Route[] = [
     name: 'Post',
     path: 'post',
     icon: <PostAdd />,
-    component: 'Post/PostList',
+    component: lazy(() => import('src/containers/Post/PostList')),
     roles: [Roles.ADMIN],
     routes: [
       {
         name: 'Post Editor',
         path: 'post/edit',
-        component: 'Post/PostEditor',
+        component: lazy(() => import('src/containers/Post/PostEditor')),
         hideInMenu: true,
         roles: [Roles.ADMIN]
       }
@@ -122,25 +122,25 @@ const routes: Route[] = [
       {
         name: 'Profile',
         path: 'settings/profile',
-        component: 'Settings/Profile/Profile',
+        component: lazy(() => import('src/containers/Settings/Profile')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Account',
         path: 'settings/account',
-        component: 'Settings/Account/Account',
+        component: lazy(() => import('src/containers/Settings/Account')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Security',
         path: 'settings/security',
-        component: 'Settings/Security/Security',
+        component: lazy(() => import('src/containers/Settings/Security')),
         roles: [Roles.ADMIN]
       },
       {
         name: 'Global Config',
         path: 'settings/global-config',
-        component: 'Settings/GlobalConfig/GlobalConfig',
+        component: lazy(() => import('src/containers/Settings/GlobalConfig')),
         roles: [Roles.ADMIN]
       }
     ]
@@ -153,7 +153,7 @@ export function mapRoutes() {
   routes.forEach(({ path, component, roles, routes }) => {
     routers.push({
       path,
-      component: component as string,
+      component,
       roles
     })
 
@@ -162,7 +162,7 @@ export function mapRoutes() {
         if (!routeChild.isExternalLink) {
           routers.push({
             path: routeChild.path,
-            component: routeChild.component as string,
+            component: routeChild.component,
             roles: routeChild.roles
           })
         }

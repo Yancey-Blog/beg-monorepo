@@ -3,23 +3,23 @@ import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import { PostQuery, PostVars } from 'src/containers/Post/types'
-import LiveTour from './components/LiveTour'
-import Card from './components/Card'
 import BestAlbum from './components/BestAlbum'
-import CardSkeleton from './components/CardSkeleton'
-import LiveTourSkeleton from './components/LiveTourSkeleton'
 import BestAlbumSkeleton from './components/BestAlbumSkeleton'
-import { LiveTourQuery, YanceyMusicQuery, BestAlbumQuery } from './types'
-import { LIVE_TOURS, YANCEY_MUSIC, BEST_ALBUMS } from './typeDefs'
+import Card from './components/Card'
+import CardSkeleton from './components/CardSkeleton'
+import LiveTour from './components/LiveTour'
+import LiveTourSkeleton from './components/LiveTourSkeleton'
 import {
-  Title,
-  MusicWrapper,
-  SubTitle,
+  BestAlbumWrapper,
   LiveToursMusicNotes,
   MusicNotes,
-  BestAlbumWrapper,
+  MusicWrapper,
+  SubTitle,
+  Title,
   YanceyMusicWrapper
 } from './styled'
+import { BEST_ALBUMS, LIVE_TOURS, YANCEY_MUSIC } from './typeDefs'
+import { BestAlbumQuery, LiveTourQuery, YanceyMusicQuery } from './types'
 
 const Music = () => {
   const { data: liveTours } = useQuery<LiveTourQuery>(LIVE_TOURS)

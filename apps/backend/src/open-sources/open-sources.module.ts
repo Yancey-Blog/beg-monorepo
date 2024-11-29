@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
-import { OpenSourceSchema } from './schemas/open-sources.schema'
 import { OpenSourcesResolver } from './open-sources.resolver'
 import { OpenSourcesService } from './open-sources.service'
+import { OpenSourceSchema } from './schemas/open-sources.schema'
 
 @Module({
   imports: [

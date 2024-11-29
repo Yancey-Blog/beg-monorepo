@@ -1,45 +1,39 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
-  FormLabel
+  DialogTitle,
+  FormLabel,
+  TextField
 } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { useFormik } from 'formik'
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
-import useStyles from 'src/shared/globalStyles'
-import Uploader from 'src/components/Uploader/Uploader'
+import { DateTime } from 'luxon'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
+import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
-import { ILiveTour } from '../types'
+import * as Yup from 'yup'
+import useLiveTour from '../useLiveTour'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createLiveTour: Function
-  updateLiveTourById: Function
+  handleOpen: () => void
 }
 
-const LiveTourModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createLiveTour,
-  updateLiveTourById
-}) => {
+const LiveTourModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createLiveTour, updateLiveTourById } = useLiveTour()
   const classes = useStyles()
 
   const initialValues = {
     title: '',
-    showTime: new Date(),
+    showTime: DateTime.now(),
     posterUrl: ''
   }
 
@@ -62,7 +56,7 @@ const LiveTourModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateLiveTourById({
           variables: { input: { ...values, id } }
         })
@@ -83,10 +77,15 @@ const LiveTourModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, showTime, posterUrl } = state as ILiveTour
+      const { title, showTime, posterUrl } = state
 
-      // @ts-ignore
-      setValues({ title, showTime, posterUrl })
+      setValues({
+        title,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        showTime: DateTime.fromISO(showTime),
+        posterUrl
+      })
     }
   }, [id, resetForm, setValues, state])
 
@@ -111,13 +110,11 @@ const LiveTourModal: FC<Props> = ({
             {...getFieldProps('title')}
           />
 
-          <DesktopDatePicker
+          <DatePicker
             className={classes.textFieldSpace}
-            renderInput={(props) => <TextField {...props} />}
             label="Show Time"
             value={values.showTime}
             onChange={(date) => setFieldValue('showTime', date, true)}
-            inputFormat="yyyy/LL/dd"
           />
 
           <div className={classes.uploaderGroup}>

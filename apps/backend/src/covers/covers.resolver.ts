@@ -1,12 +1,12 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { CoversService } from './covers.service'
-import { CoverModel } from './models/covers.model'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
 import { BatchUpdateModel } from '../database/models/batch-update.model'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
+import { CoversService } from './covers.service'
 import { CreateCoverInput } from './dtos/create-cover.input'
 import { UpdateCoverInput } from './dtos/update-cover.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
+import { CoverModel } from './models/covers.model'
 
 @Resolver(() => CoverModel)
 export class CoversResolver {

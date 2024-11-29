@@ -1,16 +1,13 @@
-import { FC, useState } from 'react'
 import { Button, Checkbox, FormControlLabel } from '@mui/material'
+import { FC, useState } from 'react'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useStyles from '../styles'
+import useAccount from '../useAccount'
 
-interface Props {
-  isDeletingAccount: boolean
-  deleteAccount: Function
-}
-
-const DeleteAccount: FC<Props> = ({ isDeletingAccount, deleteAccount }) => {
+const DeleteAccount: FC = () => {
   const classes = useStyles()
+  const { loading, deleteAccount } = useAccount()
 
   const [checked, setChecked] = useState(false)
 
@@ -20,8 +17,8 @@ const DeleteAccount: FC<Props> = ({ isDeletingAccount, deleteAccount }) => {
       imageUrl={`${AZURE_BLOB_PATH}/activitycontrols_scene.png`}
     >
       <p className={classes.tip}>
-        You’re trying to delete your Account, which provides access to various
-        Yancey Blog services. You’ll no longer be able to use any of those
+        You're trying to delete your Account, which provides access to various
+        Yancey Blog services. You'll no longer be able to use any of those
         services, and your account and data will be lost.
       </p>
 
@@ -46,7 +43,7 @@ const DeleteAccount: FC<Props> = ({ isDeletingAccount, deleteAccount }) => {
       <Button
         color="primary"
         variant="contained"
-        disabled={!checked || isDeletingAccount}
+        disabled={!checked || loading}
         onClick={() => deleteAccount()}
       >
         Delete account

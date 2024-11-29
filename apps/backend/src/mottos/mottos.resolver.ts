@@ -1,11 +1,11 @@
-import { Args, Query, Resolver, Mutation, ID } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Public } from 'nest-keycloak-connect'
-import { MottosService } from './mottos.service'
-import { MottoModel } from './models/mottos.model'
+import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
 import { CreateMottoInput } from './dtos/create-motto.input'
 import { UpdateMottoInput } from './dtos/update-motto.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
-import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { MottoModel } from './models/mottos.model'
+import { MottosService } from './mottos.service'
 
 @Resolver(() => MottoModel)
 export class MottosResolver {

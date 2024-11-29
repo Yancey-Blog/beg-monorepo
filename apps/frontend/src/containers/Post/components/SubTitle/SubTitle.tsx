@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import styled from 'styled-components'
 import { flexMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 const SubTitleWrapper = styled.h3`
   ${flexMixin('flex-start')}

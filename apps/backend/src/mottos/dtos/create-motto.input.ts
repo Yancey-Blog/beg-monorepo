@@ -1,5 +1,5 @@
-import { InputType, Field } from '@nestjs/graphql'
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator'
+import { Field, InputType } from '@nestjs/graphql'
+import { IsNotEmpty, IsString } from 'class-validator'
 
 @InputType()
 export class CreateMottoInput {

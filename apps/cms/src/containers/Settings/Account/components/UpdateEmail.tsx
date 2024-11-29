@@ -1,26 +1,26 @@
-import { FC } from 'react'
-import * as Yup from 'yup'
-import { useFormik } from 'formik'
 import { Button, TextField } from '@mui/material'
+import { useFormik } from 'formik'
+import { FC } from 'react'
+import useSSO from 'src/hooks/useSSO'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
-import SettingItemWrapper from '../../components/SettingItemWrapper/SettingItemWrapper'
+import * as Yup from 'yup'
+import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useStyles from '../styles'
-
-interface Props {
-  email: string
-  updateEmail: Function
-}
+import useAccount from '../useAccount'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required()
 })
 
-const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
-  const classes = useStyles()
+const { email } = JSON.parse(localStorage.getItem('userProfile') || '{}')
+const initialValues = {
+  email
+}
 
-  const initialValues = {
-    email
-  }
+const UpdateEmail: FC = () => {
+  const classes = useStyles()
+  const keycloak = useSSO()
+  const { updateEmail } = useAccount()
 
   const { handleSubmit, getFieldProps, isSubmitting, errors, values } =
     useFormik({
@@ -43,7 +43,6 @@ const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
           variant="standard"
           className={classes.input}
           error={!!errors.email}
-          helperText={errors.email}
           autoFocus
           fullWidth
           label="Email"
@@ -53,7 +52,7 @@ const UpdateEmail: FC<Props> = ({ email, updateEmail }) => {
           color="primary"
           variant="contained"
           type="submit"
-          disabled={isSubmitting || values.email === email}
+          disabled={isSubmitting || values.email === keycloak?.profile?.email}
         >
           Update Email
         </Button>

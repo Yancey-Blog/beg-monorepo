@@ -1,5 +1,5 @@
+import { createStyles, makeStyles } from '@mui/styles'
 import { FC } from 'react'
-import { makeStyles, createStyles } from '@mui/styles'
 import { IBandwagonServiceInfo } from '../types'
 import StatusCard from './StatusCard'
 import StatusCardSkeleton from './StatusCardSkeleton'

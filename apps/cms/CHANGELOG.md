@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- use turborepo instead of rushjs and bump dependencies
+
 ## 5.7.3
 
 Wed, 05 Jun 2024 07:37:27 GMT
@@ -898,7 +904,7 @@ Sat, 20 Nov 2021 12:59:36 GMT
 - format pre tag ([87f879a](https://github.com/Yancey-Blog/blog-cms-v2/commit/87f879a941fb2eb3d9703a3724c8af82039294f7))
 - optimization Switch component ([45c6397](https://github.com/Yancey-Blog/blog-cms-v2/commit/45c6397cda06293fd1141157d1ad7729d8ff6364))
 - resolve conflict ([5e046b5](https://github.com/Yancey-Blog/blog-cms-v2/commit/5e046b51926feba209dbd6764bfec9d1424b0d83))
-- support audio/* ([9243344](https://github.com/Yancey-Blog/blog-cms-v2/commit/92433445fa5eb8cc42201c1f7419f7ce1b698032))
+- support audio/\* ([9243344](https://github.com/Yancey-Blog/blog-cms-v2/commit/92433445fa5eb8cc42201c1f7419f7ce1b698032))
 - update BestAlbumTable ([47d57c2](https://github.com/Yancey-Blog/blog-cms-v2/commit/47d57c22c3bbce234773aeda15f2ee86478f88f7))
 - update ConfirmPoper ([2f91fae](https://github.com/Yancey-Blog/blog-cms-v2/commit/2f91fae7578b60b0e2c1b12f0916c0d5e47c7b71))
 - update LiveTourTable ([b409041](https://github.com/Yancey-Blog/blog-cms-v2/commit/b4090413394ac092202acd887e609885ffde469b))

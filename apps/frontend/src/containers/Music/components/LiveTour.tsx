@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import styled from 'styled-components'
 import Carousel from 'nuka-carousel'
+import { FC } from 'react'
 import { formatDate } from 'src/shared/utils'
+import styled from 'styled-components'
 import { ILiveTour } from '../types'
 
 const LiveTourContent = styled.div`

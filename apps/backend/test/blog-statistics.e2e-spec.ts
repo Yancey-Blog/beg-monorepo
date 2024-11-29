@@ -1,15 +1,15 @@
 import { NestApplication } from '@nestjs/core'
-import { Test, TestingModule } from '@nestjs/testing'
-import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
+import { MongooseModule } from '@nestjs/mongoose'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
-import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 import { ConfigModule } from '../src/config/config.module'
 import { ConfigService } from '../src/config/config.service'
-import { PostStatisticsModule } from '../src/post-statistics/post-statistics.module'
-import { PostStatisticsModel } from '../src/post-statistics/models/post-statistics.model'
-import { PostStatisticsGroupModel } from '../src/post-statistics/models/post-statistics-group.model'
 import { CreatePostStatisticsInput } from '../src/post-statistics/dtos/create-post-statistics.input'
+import { PostStatisticsGroupModel } from '../src/post-statistics/models/post-statistics-group.model'
+import { PostStatisticsModel } from '../src/post-statistics/models/post-statistics.model'
+import { PostStatisticsModule } from '../src/post-statistics/post-statistics.module'
+import { SCHEMA_GQL_FILE_NAME } from '../src/shared/constants'
 
 describe('PostStatisticsController (e2e)', () => {
   let app: NestApplication

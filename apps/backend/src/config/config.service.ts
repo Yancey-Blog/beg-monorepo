@@ -1,6 +1,6 @@
 import dotenv, { DotenvParseOutput } from 'dotenv'
-import Joi, { ObjectSchema } from 'joi'
 import fs from 'fs'
+import Joi, { ObjectSchema } from 'joi'
 import { Bandwagon } from './interfaces/bandwagon.interface'
 import { KeyCloak } from './interfaces/key-cloak.interface'
 

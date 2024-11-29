@@ -1,5 +1,14 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  CreatePlayerInput,
+  ExchangePositionInput,
+  MutationDeletePlayerByIdArgs,
+  MutationDeletePlayersArgs,
+  PlayerModel,
+  UpdatePlayerInput
+} from 'backend/src/__generated__/graphql'
 import { BATCH_DELETE_FRAGMENT } from 'src/graphql/graphqlFragment'
+import { GraphQInputWrapper } from 'src/types/common'
 
 const PLAYER_FRAGMENT = gql`
   fragment PlayerFragment on PlayerModel {
@@ -16,7 +25,10 @@ const PLAYER_FRAGMENT = gql`
   }
 `
 
-export const CREATE_ONE_PLAYER = gql`
+export const CREATE_ONE_PLAYER: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<CreatePlayerInput>
+> = gql`
   mutation CreatePlayer($input: CreatePlayerInput!) {
     createPlayer(input: $input) {
       ...PlayerFragment
@@ -25,7 +37,10 @@ export const CREATE_ONE_PLAYER = gql`
   ${PLAYER_FRAGMENT}
 `
 
-export const UPDATE_ONE_PLAYER = gql`
+export const UPDATE_ONE_PLAYER: TypedDocumentNode<
+  unknown,
+  GraphQInputWrapper<UpdatePlayerInput>
+> = gql`
   mutation UpdatePlayerById($input: UpdatePlayerInput!) {
     updatePlayerById(input: $input) {
       ...PlayerFragment
@@ -34,7 +49,10 @@ export const UPDATE_ONE_PLAYER = gql`
   ${PLAYER_FRAGMENT}
 `
 
-export const EXCHANGE_POSITION = gql`
+export const EXCHANGE_POSITION: TypedDocumentNode<
+  unknown,
+  ExchangePositionInput
+> = gql`
   mutation ExchangePositionPlayer($input: ExchangePositionInput!) {
     exchangePositionPlayer(input: $input) {
       ...PlayerFragment
@@ -43,7 +61,9 @@ export const EXCHANGE_POSITION = gql`
   ${PLAYER_FRAGMENT}
 `
 
-export const PLAYERS = gql`
+export const PLAYERS: TypedDocumentNode<{
+  getPlayers: PlayerModel[]
+}> = gql`
   query GetPlayers {
     getPlayers {
       ...PlayerFragment
@@ -52,7 +72,10 @@ export const PLAYERS = gql`
   ${PLAYER_FRAGMENT}
 `
 
-export const DELETE_ONE_PLAYER = gql`
+export const DELETE_ONE_PLAYER: TypedDocumentNode<
+  unknown,
+  MutationDeletePlayerByIdArgs
+> = gql`
   mutation DeletePlayerById($id: ID!) {
     deletePlayerById(id: $id) {
       ...PlayerFragment
@@ -61,7 +84,10 @@ export const DELETE_ONE_PLAYER = gql`
   ${PLAYER_FRAGMENT}
 `
 
-export const BATCH_DELETE_PLAYER = gql`
+export const BATCH_DELETE_PLAYER: TypedDocumentNode<
+  unknown,
+  MutationDeletePlayersArgs
+> = gql`
   mutation DeletePlayers($ids: [ID!]!) {
     deletePlayers(ids: $ids) {
       ...BatchDeleteFragment

@@ -1,19 +1,19 @@
+import algoliasearch from 'algoliasearch/lite'
+import { useRouter } from 'next/router'
 import {
   FC,
-  useState,
   SyntheticEvent,
   useCallback,
   useEffect,
-  useRef
+  useRef,
+  useState
 } from 'react'
-import { useRouter } from 'next/router'
-import algoliasearch from 'algoliasearch/lite'
 import {
-  InstantSearch,
-  Hits,
-  SearchBox,
   Configure,
+  Hits,
+  InstantSearch,
   PoweredBy,
+  SearchBox,
   connectStateResults
 } from 'react-instantsearch-dom'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
@@ -48,7 +48,6 @@ const AlgoliaSearchBox: FC = () => {
   }
 
   const handleClose = useCallback(() => {
-    console.log('fuck me')
     setShowDrawer(false)
     closeKeyboard()
 

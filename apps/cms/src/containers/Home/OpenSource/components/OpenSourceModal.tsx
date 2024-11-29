@@ -1,36 +1,30 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as Yup from 'yup'
 import {
   Button,
-  DialogActions,
-  DialogTitle,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  TextField,
-  FormLabel
+  DialogTitle,
+  FormLabel,
+  TextField
 } from '@mui/material'
 import { useFormik } from 'formik'
-import Uploader from 'src/components/Uploader/Uploader'
+import { FC, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import { parseSearch } from 'src/shared/utils'
 import useStyles from 'src/shared/globalStyles'
-import { IOpenSource } from '../types'
+import { parseSearch } from 'src/shared/utils'
+import * as Yup from 'yup'
+import useOpenSource from '../useOpenSource'
 
 interface Props {
   open: boolean
-  handleOpen: Function
-  createOpenSource: Function
-  updateOpenSourceById: Function
+  handleOpen: () => void
 }
 
-const OpenSourceModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createOpenSource,
-  updateOpenSourceById
-}) => {
+const OpenSourceModal: FC<Props> = ({ open, handleOpen }) => {
+  const { updateOpenSourceById, createOpenSource } = useOpenSource()
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
 
@@ -62,7 +56,7 @@ const OpenSourceModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateOpenSourceById({
           variables: { input: { ...values, id } }
         })
@@ -82,7 +76,7 @@ const OpenSourceModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, description, url, posterUrl } = state as IOpenSource
+      const { title, description, url, posterUrl } = state
       setValues({ title, description, url, posterUrl })
     }
   }, [id, resetForm, setValues, state])

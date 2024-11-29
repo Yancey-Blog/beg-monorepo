@@ -6,9 +6,7 @@ const CORS_ORIGINS_DEVELOPMENT = [
 ]
 
 export const configCORS = (isEnvProduction: boolean) => ({
-  origin: isEnvProduction
-    ? CORS_ORIGINS_PRODUCTION
-    : CORS_ORIGINS_DEVELOPMENT,
+  origin: isEnvProduction ? CORS_ORIGINS_PRODUCTION : CORS_ORIGINS_DEVELOPMENT,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   credentials: true,
   preflightContinue: false,

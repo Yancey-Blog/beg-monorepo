@@ -1,17 +1,17 @@
-import { FC, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
-import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
-import { initGA, logPageView } from 'src/shared/analytics'
+import NProgress from 'nprogress'
+import { FC, useEffect } from 'react'
+import Head from 'src/components/Head/Head'
 import SVGSprite from 'src/components/SVGSprite/SVGSprite'
-import AlgoliaSearchBox from 'src/containers/Post/components/AlgoliaSearchBox/AlgoliaSearchBox'
 import { GET_GLOBAL_SETTING } from 'src/containers/GlobalSetting/typeDefs'
 import { GlobalSettingQuery } from 'src/containers/GlobalSetting/types'
-import Head from 'src/components/Head/Head'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import Nav from './components/Nav/Nav'
+import AlgoliaSearchBox from 'src/containers/Post/components/AlgoliaSearchBox/AlgoliaSearchBox'
+import { initGA, logPageView } from 'src/shared/analytics'
 import BackToTop from './components/BackToTop/BackToTop'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
+import Nav from './components/Nav/Nav'
 import { Layouts, Main } from './styled'
 
 const initialGlobalSetting = {
@@ -50,9 +50,8 @@ const Layout: FC<Props> = ({ title, children }) => {
 
   useEffect(() => {
     if (data?.getGlobalSetting?.isGrayTheme) {
-      document.body.style.cssText = 'filter: grayscale(1); overflow-x: hidden';
+      document.body.style.cssText = 'filter: grayscale(1); overflow-x: hidden'
     }
-
   }, [data?.getGlobalSetting?.isGrayTheme])
 
   return (

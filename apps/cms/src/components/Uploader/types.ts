@@ -10,6 +10,6 @@ export interface Props {
   defaultFile?: string
   needMarginLeft?: boolean
   multiple?: boolean
-  className?: any
+  className?: string
   onChange: (file: UploaderResponse) => void
 }

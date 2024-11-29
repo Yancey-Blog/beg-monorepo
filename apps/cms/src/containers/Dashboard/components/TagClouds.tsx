@@ -1,6 +1,6 @@
+import { Chip, Paper } from '@mui/material'
+import { createStyles, makeStyles } from '@mui/styles'
 import { FC } from 'react'
-import { Paper, Chip } from '@mui/material'
-import { makeStyles, createStyles } from '@mui/styles'
 import PostRankListSkeleton from './PostRankListSkeleton'
 
 interface Props {

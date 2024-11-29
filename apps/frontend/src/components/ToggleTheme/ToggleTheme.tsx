@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import styled from 'styled-components'
 import { ThemeMode } from 'src/hooks/useDarkMode'
-import { flexMixin, transitionMixin } from 'src/styled/mixins'
 import { SVG_SPRITE } from 'src/shared/constants'
 import breakpoints from 'src/styled/breakpoints'
+import { flexMixin, transitionMixin } from 'src/styled/mixins'
+import styled from 'styled-components'
 
 interface Props {
   theme: string

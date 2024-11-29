@@ -1,13 +1,13 @@
-import { FC } from 'react'
-import * as Yup from 'yup'
-import { useSnackbar } from 'notistack'
-import { useFormik } from 'formik'
 import { useMutation } from '@apollo/client'
-import { TextField, Button } from '@mui/material'
-import { PASSWORD_REGEXP, AZURE_BLOB_PATH } from 'src/shared/constants'
-import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper/SettingItemWrapper'
-import styles from './changePassword.module.scss'
+import { Button, TextField } from '@mui/material'
+import { useFormik } from 'formik'
+import { useSnackbar } from 'notistack'
+import { FC } from 'react'
+import SettingItemWrapper from 'src/containers/Settings/components/SettingItemWrapper'
+import { AZURE_BLOB_PATH, PASSWORD_REGEXP } from 'src/shared/constants'
+import * as Yup from 'yup'
 import { CHANGE_PASSWORD } from '../../typeDefs'
+import styles from './changePassword.module.scss'
 
 const ChangePassword: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
@@ -35,7 +35,6 @@ const ChangePassword: FC = () => {
       .required('New Password is required.')
       .matches(PASSWORD_REGEXP, 'Please enter a more complex password'),
     confirmNewPassword: Yup.string()
-      // @ts-ignore
       // FIXME: oneOf's first parameter is an array, and the
       // second element of the array is assignable to type
       // 'string | Ref | undefined', but `@types/yup` has not
@@ -49,6 +48,7 @@ const ChangePassword: FC = () => {
       initialValues,
       validationSchema,
       onSubmit: async (values) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { confirmNewPassword, ...rest } = values
         await changePassword({
           variables: { input: rest }

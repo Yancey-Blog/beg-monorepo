@@ -1,8 +1,8 @@
-import { ComponentType } from 'react'
 import Link from 'next/link'
-import { Snippet, Highlight } from 'react-instantsearch-dom'
+import { ComponentType } from 'react'
 import { Hit } from 'react-instantsearch-core'
-import { HitName, HitTag, HitDescription, HitContent } from './styled'
+import { Highlight, Snippet } from 'react-instantsearch-dom'
+import { HitContent, HitDescription, HitName, HitTag } from './styled'
 
 interface HitParams {
   content: string

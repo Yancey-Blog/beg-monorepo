@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
 import Keycloak from 'keycloak-js'
+import { useEffect, useRef, useState } from 'react'
 
 const instance = new Keycloak({
-  realm: process.env.REACT_APP_KEY_CLOAK_REALM,
-  url: process.env.REACT_APP_KEY_CLOAK_URL,
-  clientId: process.env.REACT_APP_KEY_CLOAK_CLIENT_ID
+  realm: import.meta.env.VITE_KEY_CLOAK_REALM,
+  url: import.meta.env.VITE_KEY_CLOAK_URL,
+  clientId: import.meta.env.VITE_KEY_CLOAK_CLIENT_ID
 })
 
 const useSSO = () => {
@@ -32,7 +32,6 @@ const useSSO = () => {
     didInit.current = true
 
     initial()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [didInit])
 
   return keycloak

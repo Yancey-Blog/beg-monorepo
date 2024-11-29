@@ -2,15 +2,15 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { ForbiddenError } from 'apollo-server-express'
 import { Model } from 'mongoose'
-import { CreatePostInput } from './dtos/create-post.input'
-import { UpdatePostInput } from './dtos/update-post.input'
-import { PaginationInput } from './dtos/pagination.input'
-import { PostModel } from './models/posts.model'
-import { PostItemModel } from './models/post.model'
-import { ArchiveModel } from './models/archive.model'
-import { TagsModel } from './models/tags.model'
-import { PostDocument } from './interfaces/posts.interface'
 import { BatchDeleteModel } from '../database/models/batch-delete.model'
+import { CreatePostInput } from './dtos/create-post.input'
+import { PaginationInput } from './dtos/pagination.input'
+import { UpdatePostInput } from './dtos/update-post.input'
+import { PostDocument } from './interfaces/posts.interface'
+import { ArchiveModel } from './models/archive.model'
+import { PostItemModel } from './models/post.model'
+import { PostModel } from './models/posts.model'
+import { TagsModel } from './models/tags.model'
 
 @Injectable()
 export class PostsService {
@@ -27,7 +27,7 @@ export class PostsService {
 
   private checkNotFound(isNotFound: boolean): void {
     if (isNotFound) {
-      throw new ForbiddenError('Sorry, we couldn\'t find this post.')
+      throw new ForbiddenError("Sorry, we couldn't find this post.")
     }
   }
 
@@ -78,7 +78,7 @@ export class PostsService {
 
   public async findPublicOneById(id: string): Promise<PostItemModel> {
     const curr = await this.postModel.findById(id)
-    this.checkNotFound(!curr || curr.isPublic === false);
+    this.checkNotFound(!curr || curr.isPublic === false)
 
     const prev = await this.postModel
       .find({ createdAt: { $lt: curr.createdAt }, isPublic: { $ne: false } })
@@ -129,14 +129,14 @@ export class PostsService {
 
   public async updatePV(id: string): Promise<PostItemModel> {
     const { pv, isPublic } = await this.findOneById(id)
-    this.checkNotFound(!isPublic);
+    this.checkNotFound(!isPublic)
 
     return this.postModel.findByIdAndUpdate(id, { pv: pv + 1 }, { new: true })
   }
 
   public async updateLike(id: string): Promise<PostItemModel> {
     const { like, isPublic } = await this.findOneById(id)
-    this.checkNotFound(!isPublic);
+    this.checkNotFound(!isPublic)
 
     return this.postModel.findByIdAndUpdate(
       id,

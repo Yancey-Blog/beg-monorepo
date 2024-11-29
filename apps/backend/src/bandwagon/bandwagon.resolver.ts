@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql'
+import { Query, Resolver } from '@nestjs/graphql'
 import { BandwagonService } from './bandwagon.service'
 import { ServiceInfoModel } from './models/service-info.model'
 import { UsageStatesModel } from './models/usage-stats.model'

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { Motto } from './interfaces/motto.interface'
+import { Model } from 'mongoose'
+import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
 import { CreateMottoInput } from './dtos/create-motto.input'
 import { UpdateMottoInput } from './dtos/update-motto.input'
-import { ExchangePositionInput } from '../shared/interfaces/exchange-position.input'
+import { Motto } from './interfaces/motto.interface'
 
 @Injectable()
 export class MottosService {
