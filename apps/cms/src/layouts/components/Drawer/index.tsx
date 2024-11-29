@@ -1,4 +1,4 @@
-import { Home } from '@mui/icons-material'
+import { LanguageRounded } from '@mui/icons-material'
 import { Avatar, Skeleton } from '@mui/material'
 import classNames from 'classnames'
 import { KeycloakProfile } from 'keycloak-js'
@@ -55,7 +55,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
           [classes.hidenNotItem]: !open
         })}
       >
-        <Home className={classes.logo} />
+        <LanguageRounded className={classes.logo} />
 
         <div
           className={classNames(classes.detail, {
@@ -131,7 +131,6 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                   className={({ isActive }) =>
                     classNames(classes.formatArrowTag, {
                       [classes.active]: isActive,
-                      [classes.foldActive]: !open
                     })
                   }
                   to={route.path}
@@ -173,7 +172,6 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                         className={({ isActive }) =>
                           classNames(classes.formatArrowTag, {
                             [classes.active]: isActive,
-                            [classes.foldActive]: !open
                           })
                         }
                         to={childRoute.path}

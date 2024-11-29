@@ -25,7 +25,7 @@ const useStyles = makeStyles(() =>
       position: 'fixed',
       right: 0,
       bottom: 0,
-      zIndex: 10000,
+      zIndex: 0,
       width: 'calc(100% - 260px)',
       background: '#fff',
       transition: 'all 300ms cubic-bezier(0.4, 0, 0.6, 1)'

@@ -7,7 +7,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "analyze": "pnpm run build && source-map-explorer 'build/static/js/*.js'",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged"
   },
