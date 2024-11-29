@@ -81,7 +81,7 @@ const routes: Route[] = [
       {
         name: 'Live Tour',
         path: 'live-tour',
-        component: lazy(() => import('src/containers/Music/LiveTour/LiveTour')),
+        component: lazy(() => import('src/containers/Music/LiveTour')),
         roles: [Roles.ADMIN]
       },
       {

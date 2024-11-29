@@ -18,24 +18,17 @@ import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import * as Yup from 'yup'
-import { ILiveTour } from '../types'
+import useLiveTour from '../useLiveTour'
 
 interface Props {
   open: boolean
   handleOpen: () => void
-  createLiveTour: () => void
-  updateLiveTourById: () => void
 }
 
-const LiveTourModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createLiveTour,
-  updateLiveTourById
-}) => {
+const LiveTourModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createLiveTour, updateLiveTourById } = useLiveTour()
   const classes = useStyles()
 
   const initialValues = {
@@ -63,7 +56,7 @@ const LiveTourModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateLiveTourById({
           variables: { input: { ...values, id } }
         })
@@ -84,7 +77,7 @@ const LiveTourModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, showTime, posterUrl } = state as ILiveTour
+      const { title, showTime, posterUrl } = state
 
       setValues({
         title,

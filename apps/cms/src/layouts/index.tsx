@@ -23,7 +23,11 @@ const Layouts: FC = () => {
 
   return (
     <div className={classes.layouts}>
-      <Drawer open={open} isFetching={!keycloak?.authenticated} userInfo={keycloak.profile} />
+      <Drawer
+        open={open}
+        isFetching={!keycloak?.authenticated}
+        userInfo={keycloak.profile}
+      />
       <section
         className={classNames(
           classes.mainWrapper,

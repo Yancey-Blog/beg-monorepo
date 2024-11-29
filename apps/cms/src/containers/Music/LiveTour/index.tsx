@@ -1,52 +1,42 @@
+import { useQuery } from '@apollo/client'
 import { DeleteForever, Edit } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel,
-  GridValueGetterParams
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { LiveTourModel } from 'backend/src/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup'
 import useOpenModal from 'src/hooks/useOpenModal'
 import { formatJSONDate } from 'yancey-js-util'
-import { ILiveTour } from '../types'
-import LiveTourModal from './LiveTourModal'
+import LiveTourModal from './components/LiveTourModal'
+import { LIVE_TOURS } from './typeDefs'
+import useLiveTour from './useLiveTour'
 
-interface Props {
-  dataSource: ILiveTour[]
-  isFetching: boolean
-  isDeleting: boolean
-  isBatchDeleting: boolean
-  createLiveTour: () => void
-  updateLiveTourById: () => void
-  deleteLiveTourById: () => void
-  deleteLiveTours: () => void
-}
-
-const LiveTourTable: FC<Props> = ({
-  dataSource,
-  createLiveTour,
-  updateLiveTourById,
-  deleteLiveTourById,
-  deleteLiveTours,
-  isFetching,
-  isDeleting,
-  isBatchDeleting
-}) => {
+const LiveTourTable: FC = () => {
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 25
+  })
+  const { deleteLiveTourById, deleteLiveTours } = useLiveTour()
+  const { loading: isFetching, data } = useQuery(LIVE_TOURS, {
+    notifyOnNetworkStatusChange: true
+  })
 
-  const columns: GridColDef<ILiveTour>[] = [
+  const columns: GridColDef<LiveTourModel>[] = [
     { field: '_id', headerName: 'ID' },
     { field: 'title', headerName: 'Title' },
     {
       field: 'posterUrl',
       headerName: 'Poster Url',
-      renderCell: (params: GridRenderCellParams<'string', ILiveTour>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.posterUrl} />
       ),
       flex: 1
@@ -54,28 +44,25 @@ const LiveTourTable: FC<Props> = ({
     {
       field: 'showTime',
       headerName: 'Show Time',
-      valueGetter: (params: GridValueGetterParams<'string', ILiveTour>) =>
-        formatJSONDate(params.row.showTime),
+      valueGetter: (_, row) => formatJSONDate(row.showTime),
       flex: 1
     },
     {
       field: 'createdAt',
       headerName: 'Created At',
-      valueGetter: (params: GridValueGetterParams<'string', ILiveTour>) =>
-        formatJSONDate(params.row.createdAt),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'Updated At',
-      valueGetter: (params: GridValueGetterParams<'string', ILiveTour>) =>
-        formatJSONDate(params.row.updatedAt),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt),
       flex: 1
     },
     {
       field: 'action',
       headerName: 'Action',
-      renderCell: (params: GridRenderCellParams<'string', ILiveTour>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <>
           <Edit
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
@@ -109,7 +96,11 @@ const LiveTourTable: FC<Props> = ({
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
-              onOk={() => deleteLiveTours({ variables: { ids: selectedRows } })}
+              onOk={() =>
+                deleteLiveTours({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
+              }
             >
               Batch Delete
             </ConfirmPopover>
@@ -118,27 +109,22 @@ const LiveTourTable: FC<Props> = ({
       </div>
       <DataGrid
         rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting}
+        loading={isFetching}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getLiveTours ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <LiveTourModal
-        open={open}
-        handleOpen={handleOpen}
-        createLiveTour={createLiveTour}
-        updateLiveTourById={updateLiveTourById}
-      />
+      <LiveTourModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }

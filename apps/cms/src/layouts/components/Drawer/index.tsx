@@ -130,7 +130,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                   end
                   className={({ isActive }) =>
                     classNames(classes.formatArrowTag, {
-                      [classes.active]: isActive,
+                      [classes.active]: isActive
                     })
                   }
                   to={route.path}
@@ -171,7 +171,7 @@ const Drawer: FC<Props> = ({ open, isFetching, userInfo }) => {
                         end
                         className={({ isActive }) =>
                           classNames(classes.formatArrowTag, {
-                            [classes.active]: isActive,
+                            [classes.active]: isActive
                           })
                         }
                         to={childRoute.path}
