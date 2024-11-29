@@ -10,7 +10,7 @@ import {
 import { DateTime } from 'luxon'
 import { FC, useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import Transition from 'src/components/Transition/Transition'
+import Transition from 'src/components/Transition'
 import { RECOVERY_CODES_FILE_NAME } from 'src/shared/constants'
 import { generateFile } from 'src/shared/utils'
 import { CREATE_RECOVERY_CODES } from '../../typeDefs'

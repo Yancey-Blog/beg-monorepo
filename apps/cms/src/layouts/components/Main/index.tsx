@@ -1,7 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Loading from 'src/components/Loading/InstagramLoading'
-import NotFound from 'src/components/NotFound/NotFound'
+import NotFound from 'src/components/NotFound'
 import { mapRoutes } from 'src/routes'
 import useStyles from './styles'
 

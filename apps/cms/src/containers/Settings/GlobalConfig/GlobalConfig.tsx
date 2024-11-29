@@ -1,7 +1,7 @@
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
 import { useSnackbar } from 'notistack'
 import { FC } from 'react'
-import Loading from 'src/components/Loading/Loading'
+import Loading from 'src/components/Loading'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import { Query as PostsQuery } from 'src/containers/Post/types'
 import SettingWrapper from '../components/SettingWrapper/SettingWrapper'

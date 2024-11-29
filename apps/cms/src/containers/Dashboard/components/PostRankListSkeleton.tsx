@@ -1,7 +1,7 @@
 import { Card, Skeleton } from '@mui/material'
 import { createStyles, makeStyles } from '@mui/styles'
 import { FC } from 'react'
-import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
+import SkeletonIterator from 'src/components/SkeletonIterator'
 
 const useStyles = makeStyles(() =>
   createStyles({

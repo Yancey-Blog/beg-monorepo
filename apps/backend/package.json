@@ -21,7 +21,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "codecov": "node_modules/.bin/codecov -t 7b33b616-c7c6-465f-a858-91ca93071f98",
     "gql2ts:compile": "graphql-codegen",
-    "gql2ts:watch": "graphql-codegen -w"
+    "gql2ts:watch": "graphql-codegen -w",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@apollo/gateway": "^0.50.0",

@@ -1,11 +1,11 @@
 import classNames from 'classnames'
 import { FC, useState } from 'react'
-import SSOStatus from 'src/components/SSOStatus/SSOStatus'
+import SSOStatus from 'src/components/SSOStatus'
 import useSSO from 'src/hooks/useSSO'
-import Drawer from './components/Drawer/Drawer'
-import Footer from './components/Footer/Footer'
-import Header from './components/Header/Header'
-import Mains from './components/Main/Main'
+import Drawer from './components/Drawer'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Mains from './components/Main'
 import useStyles from './styles'
 
 const Layouts: FC = () => {

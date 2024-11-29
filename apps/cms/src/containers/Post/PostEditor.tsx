@@ -17,10 +17,10 @@ import Prism from 'prismjs'
 import 'prismjs/themes/prism-dark.css'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import ChipInput from 'src/components/ChipInput/ChipInput'
-import Loading from 'src/components/Loading/Loading'
+import ChipInput from 'src/components/ChipInput'
+import Loading from 'src/components/Loading'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
-import Uploader from 'src/components/Uploader/Uploader'
 import useUploadRequest from 'src/hooks/useUploadRequest'
 import {
   POPOVER_ANCHOR_ORIGIN,

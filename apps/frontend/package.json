@@ -8,7 +8,8 @@
     "lint": "next lint",
     "analyze": "ANALYZE=true pnpm run build",
     "feed": "node scripts/generatorFeed",
-    "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\" --color"
+    "stylelint": "stylelint \"./src/**/*.ts\" \"./src/**/*.tsx\" --color",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@apollo/client": "^3.6.6",

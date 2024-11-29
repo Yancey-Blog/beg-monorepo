@@ -18,7 +18,7 @@ import { useFormik } from 'formik'
 import { useSnackbar } from 'notistack'
 import { FC, FormEvent, useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import Transition from 'src/components/Transition/Transition'
+import Transition from 'src/components/Transition'
 import {
   AZURE_BLOB_PATH,
   GOOGLE_AUTHENTICATOR_FOR_ANDROID,

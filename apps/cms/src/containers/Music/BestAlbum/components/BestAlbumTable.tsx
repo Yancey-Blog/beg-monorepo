@@ -8,8 +8,8 @@ import {
   GridValueGetterParams
 } from '@mui/x-data-grid'
 import { FC, useState } from 'react'
-import ConfirmPopover from 'src/components/ConfirmPopover/ConfirmPopover'
-import ImagePopup from 'src/components/ImagePopup/ImagePopup'
+import ConfirmPopover from 'src/components/ConfirmPopover'
+import ImagePopup from 'src/components/ImagePopup'
 import useOpenModal from 'src/hooks/useOpenModal'
 import { formatJSONDate } from 'yancey-js-util'
 import { IBestAlbum } from '../types'

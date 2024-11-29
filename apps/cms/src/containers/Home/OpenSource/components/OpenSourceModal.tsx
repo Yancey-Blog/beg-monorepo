@@ -11,7 +11,7 @@ import {
 import { useFormik } from 'formik'
 import { FC, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import Uploader from 'src/components/Uploader/Uploader'
+import Uploader from 'src/components/Uploader'
 import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
