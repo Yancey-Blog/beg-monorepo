@@ -25,7 +25,7 @@ import useStyles from './styles'
 import { PLAYERS } from './typeDefs'
 import usePlayer from './usePlayer'
 
-const PlayerTable: FC = () => {
+const Player: FC = () => {
   const { loading: isFetching, data } = useQuery(PLAYERS, {
     notifyOnNetworkStatusChange: true
   })
@@ -207,4 +207,4 @@ const PlayerTable: FC = () => {
   )
 }
 
-export default PlayerTable
+export default Player

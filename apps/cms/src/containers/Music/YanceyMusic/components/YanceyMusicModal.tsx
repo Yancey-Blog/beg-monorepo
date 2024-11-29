@@ -18,24 +18,17 @@ import { UploaderResponse } from 'src/components/Uploader/types'
 import useStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import * as Yup from 'yup'
-import { IYanceyMusic } from '../types'
+import useYanceyMusic from '../useYanceyMusic'
 
 interface Props {
   open: boolean
   handleOpen: () => void
-  createYanceyMusic: () => void
-  updateYanceyMusicById: () => void
 }
 
-const YanceyMusicModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createYanceyMusic,
-  updateYanceyMusicById
-}) => {
+const YanceyMusicModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createYanceyMusic, updateYanceyMusicById } = useYanceyMusic()
   const classes = useStyles()
 
   const initialValues = {
@@ -65,7 +58,7 @@ const YanceyMusicModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updateYanceyMusicById({
           variables: { input: { ...values, id } }
         })
@@ -86,8 +79,7 @@ const YanceyMusicModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, soundCloudUrl, releaseDate, posterUrl } =
-        state as IYanceyMusic
+      const { title, soundCloudUrl, releaseDate, posterUrl } = state
 
       setValues({
         title,

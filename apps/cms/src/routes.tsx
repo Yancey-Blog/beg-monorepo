@@ -93,9 +93,7 @@ const routes: Route[] = [
       {
         name: 'Yancey Music',
         path: 'yancey-music',
-        component: lazy(
-          () => import('src/containers/Music/YanceyMusic/YanceyMusic')
-        ),
+        component: lazy(() => import('src/containers/Music/YanceyMusic')),
         roles: [Roles.ADMIN]
       }
     ]
