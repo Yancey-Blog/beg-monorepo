@@ -1,12 +1,14 @@
+import { useQuery } from '@apollo/client'
 import { DeleteForever, Edit } from '@mui/icons-material'
 import { Button, Popover, Switch } from '@mui/material'
 import {
   DataGrid,
   GridColDef,
+  GridPaginationModel,
   GridRenderCellParams,
-  GridSelectionModel,
-  GridValueGetterParams
+  GridRowSelectionModel
 } from '@mui/x-data-grid'
+import { PlayerModel } from 'backend/src/__generated__/graphql'
 import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover'
@@ -18,43 +20,31 @@ import {
   POPOVER_TRANSFORM_ORIGIN
 } from 'src/shared/constants'
 import { formatJSONDate } from 'yancey-js-util'
-import useStyles from '../styles'
-import { PLAYERS } from '../typeDefs'
-import { IPlayer } from '../types'
-import PlayerModal from './PlayerModal'
+import PlayerModal from './components/PlayerModal'
+import useStyles from './styles'
+import { PLAYERS } from './typeDefs'
+import usePlayer from './usePlayer'
 
-interface Props {
-  dataSource: IPlayer[]
-  isFetching: boolean
-  isExchanging: boolean
-  isDeleting: boolean
-  isBatchDeleting: boolean
-  createPlayer: () => void
-  updatePlayerById: () => void
-  deletePlayerById: () => void
-  deletePlayers: () => void
-  exchangePosition: () => void
-}
-
-const PlayerTable: FC<Props> = ({
-  dataSource,
-  createPlayer,
-  updatePlayerById,
-  deletePlayerById,
-  deletePlayers,
-  exchangePosition,
-  isFetching,
-  isExchanging,
-  isDeleting,
-  isBatchDeleting
-}) => {
+const PlayerTable: FC = () => {
+  const { loading: isFetching, data } = useQuery(PLAYERS, {
+    notifyOnNetworkStatusChange: true
+  })
   const { open, handleOpen } = useOpenModal()
-  const [selectedRows, setSelectedRows] = useState<GridSelectionModel>([])
-  const [pageSize, setPageSize] = useState(20)
+  const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
+  const [pageModel, setPageModel] = useState<GridPaginationModel>({
+    page: 1,
+    pageSize: 25
+  })
+  const {
+    updatePlayerById,
+    deletePlayerById,
+    deletePlayers,
+    exchangePosition
+  } = usePlayer()
 
   const classes = useStyles()
 
-  const columns: GridColDef<IPlayer>[] = [
+  const columns: GridColDef<PlayerModel>[] = [
     { field: '_id', headerName: 'ID', flex: 1 },
     { field: 'weight', headerName: 'Weight', flex: 0.5 },
     { field: 'title', headerName: 'Title', flex: 1.5 },
@@ -62,7 +52,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'lrc',
       headerName: 'LRC',
-      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <PopupState variant="popover" popupId="lrcPoperOver">
           {(popupState) => (
             <div>
@@ -90,7 +80,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'coverUrl',
       headerName: 'Cover Url',
-      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <ImagePopup imgName={params.row.title} imgUrl={params.row.coverUrl} />
       ),
       flex: 1
@@ -98,7 +88,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'musicFileUrl',
       headerName: 'Music File Url',
-      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <audio src={params.row.musicFileUrl} controls>
           Your browser does not support the audio element.
         </audio>
@@ -108,7 +98,7 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'isPublic',
       headerName: 'Is Public',
-      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <Switch
           checked={params.row.isPublic}
           onChange={(e) => {
@@ -133,21 +123,19 @@ const PlayerTable: FC<Props> = ({
     {
       field: 'createdAt',
       headerName: 'Created At',
-      valueGetter: (params: GridValueGetterParams<'string', IPlayer>) =>
-        formatJSONDate(params.row.createdAt.toString()),
+      valueGetter: (_, row) => formatJSONDate(row.createdAt.toString()),
       flex: 1
     },
     {
       field: 'updatedAt',
       headerName: 'Updated At',
-      valueGetter: (params: GridValueGetterParams<'string', IPlayer>) =>
-        formatJSONDate(params.row.updatedAt.toString()),
+      valueGetter: (_, row) => formatJSONDate(row.updatedAt.toString()),
       flex: 1
     },
     {
       field: 'action',
       headerName: 'Action',
-      renderCell: (params: GridRenderCellParams<'string', IPlayer>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <>
           <Edit
             onClick={() => handleOpen({ id: params.row._id, data: params.row })}
@@ -161,7 +149,7 @@ const PlayerTable: FC<Props> = ({
 
           <Move
             refetchQueries={[PLAYERS]}
-            dataSource={dataSource}
+            dataSource={data?.getPlayers ?? []}
             curr={params.row}
             exchangePosition={exchangePosition}
           />
@@ -186,7 +174,11 @@ const PlayerTable: FC<Props> = ({
         {selectedRows.length > 0 && (
           <Button variant="contained" color="error" style={{ marginLeft: 24 }}>
             <ConfirmPopover
-              onOk={() => deletePlayers({ variables: { ids: selectedRows } })}
+              onOk={() =>
+                deletePlayers({
+                  variables: { ids: selectedRows.map((row) => row.toString()) }
+                })
+              }
             >
               Batch Delete
             </ConfirmPopover>
@@ -194,28 +186,23 @@ const PlayerTable: FC<Props> = ({
         )}
       </div>
       <DataGrid
-        rowHeight={100}
-        loading={isFetching || isDeleting || isBatchDeleting || isExchanging}
+        rowHeight={88}
+        loading={isFetching}
         getRowId={(row) => row._id}
-        rows={dataSource}
+        rows={data?.getPlayers ?? []}
         columns={columns}
         checkboxSelection
-        disableSelectionOnClick
-        autoHeight
-        onSelectionModelChange={(selected) => {
+        disableRowSelectionOnClick
+        onRowSelectionModelChange={(selected) => {
           setSelectedRows(selected)
         }}
-        pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[20, 40, 60]}
+        paginationModel={{ page: pageModel.page, pageSize: pageModel.pageSize }}
+        onPaginationModelChange={(paginationModel) =>
+          setPageModel(paginationModel)
+        }
       />
 
-      <PlayerModal
-        open={open}
-        handleOpen={handleOpen}
-        createPlayer={createPlayer}
-        updatePlayerById={updatePlayerById}
-      />
+      <PlayerModal open={open} handleOpen={handleOpen} />
     </div>
   )
 }

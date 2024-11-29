@@ -19,24 +19,17 @@ import globalUseStyles from 'src/shared/globalStyles'
 import { parseSearch } from 'src/shared/utils'
 import * as Yup from 'yup'
 import useStyles from '../styles'
-import { IPlayer } from '../types'
+import usePlayer from '../usePlayer'
 
 interface Props {
   open: boolean
   handleOpen: () => void
-  createPlayer: () => void
-  updatePlayerById: () => void
 }
 
-const PlayerModal: FC<Props> = ({
-  open,
-  handleOpen,
-  createPlayer,
-  updatePlayerById
-}) => {
+const PlayerModal: FC<Props> = ({ open, handleOpen }) => {
   const { search, state } = useLocation()
   const { id } = parseSearch(search)
-
+  const { createPlayer, updatePlayerById } = usePlayer()
   const globalClasses = globalUseStyles()
   const classes = useStyles()
 
@@ -71,7 +64,7 @@ const PlayerModal: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (id) {
+      if (typeof id === 'string') {
         await updatePlayerById({
           variables: { input: { ...values, id } }
         })
@@ -96,11 +89,7 @@ const PlayerModal: FC<Props> = ({
     resetForm()
 
     if (id) {
-      const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } =
-        state as IPlayer
-
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      const { title, artist, lrc, coverUrl, musicFileUrl, isPublic } = state
       setValues({ title, artist, lrc, coverUrl, musicFileUrl, isPublic })
     }
   }, [id, resetForm, setValues, state])

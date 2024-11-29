@@ -18,7 +18,7 @@ import LiveTourModal from './components/LiveTourModal'
 import { LIVE_TOURS } from './typeDefs'
 import useLiveTour from './useLiveTour'
 
-const LiveTourTable: FC = () => {
+const LiveTour: FC = () => {
   const { open, handleOpen } = useOpenModal()
   const [selectedRows, setSelectedRows] = useState<GridRowSelectionModel>([])
   const [pageModel, setPageModel] = useState<GridPaginationModel>({
@@ -108,7 +108,7 @@ const LiveTourTable: FC = () => {
         )}
       </div>
       <DataGrid
-        rowHeight={100}
+        rowHeight={88}
         loading={isFetching}
         getRowId={(row) => row._id}
         rows={data?.getLiveTours ?? []}
@@ -129,4 +129,4 @@ const LiveTourTable: FC = () => {
   )
 }
 
-export default LiveTourTable
+export default LiveTour
