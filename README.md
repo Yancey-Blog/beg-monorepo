@@ -33,16 +33,14 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/eslint-config]: ./packages/eslint-config
 [@repo/typescript-config]: ./packages/typescript-config
 [@repo/graphql-types]: ./packages/graphql-types
-
 [cms-version]: https://img.shields.io/badge/Version-v6.1.0-brightgreen
 [frontend-version]: https://img.shields.io/badge/Version-v5.1.0-brightgreen
 [backend-version]: https://img.shields.io/badge/Version-v3.1.0-brightgreen
-[uploader-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
+[uploader-version]: https://img.shields.io/badge/Version-v2.0.1-brightgreen
 [@repo/utils-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
 [@repo/eslint-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/typescript-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/graphql-types-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
-
 [cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-cms.yml/badge.svg
 [frontend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-frontend.yml/badge.svg
 [backend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-backend.yml/badge.svg

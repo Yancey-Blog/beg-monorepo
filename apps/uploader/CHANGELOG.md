@@ -1,5 +1,11 @@
 # Change Log - uploader-service
 
+## 2.0.1
+
+### Patch Changes
+
+- suports logger
+
 ## 2.0.0
 
 ### Major Changes

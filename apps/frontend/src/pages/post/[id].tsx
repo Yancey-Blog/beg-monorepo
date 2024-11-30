@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import Layout from 'src/containers/Layout/Layout'
+import Layout from 'src/containers/Layout'
 import PostDetailContainer, {
   Props as PostDetailProps
-} from 'src/containers/Post/PostDetail/PostDetail'
+} from 'src/containers/Post/PostDetail'
 import { GET_POST_BY_ID } from 'src/containers/Post/typeDefs'
 import { createApolloClient } from 'src/graphql/apolloClient'
 

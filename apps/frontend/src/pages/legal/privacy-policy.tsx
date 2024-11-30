@@ -1,5 +1,5 @@
-import Layout from 'src/containers/Layout/Layout'
-import PrivacyPolicyContainer from 'src/containers/Legal/PrivacyPolicy/PrivacyPolicy'
+import Layout from 'src/containers/Layout'
+import PrivacyPolicyContainer from 'src/containers/Legal/PrivacyPolicy'
 
 const PrivacyPolicy = () => {
   return (

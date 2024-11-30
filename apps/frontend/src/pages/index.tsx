@@ -6,14 +6,14 @@ import {
   PostModel
 } from '@repo/graphql-types/__generated__/graphql'
 import type { GetServerSideProps, NextPage } from 'next'
-import HomeContainer from 'src/containers/Home/Home'
+import HomeContainer from 'src/containers/Home'
 import {
   ANNOUNCEMENTS,
   COVERS,
   MOTTOS,
   OPEN_SOURCES
 } from 'src/containers/Home/typeDefs'
-import Layout from 'src/containers/Layout/Layout'
+import Layout from 'src/containers/Layout'
 import { POSTS } from 'src/containers/Post/typeDefs'
 import { createApolloClient } from 'src/graphql/apolloClient'
 

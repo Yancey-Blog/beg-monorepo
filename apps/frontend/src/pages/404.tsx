@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import ErrorContainer from 'src/containers/Error/Error'
-import Layout from 'src/containers/Layout/Layout'
+import ErrorContainer from 'src/containers/Error'
+import Layout from 'src/containers/Layout'
 
 const NotFound: FC = () => {
   return (
