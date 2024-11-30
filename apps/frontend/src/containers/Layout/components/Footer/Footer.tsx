@@ -1,6 +1,6 @@
+import { GlobalSettingModel } from '@repo/graphql-types/__generated__/graphql'
 import Link from 'next/link'
 import { FC } from 'react'
-import { IGlobalSetting } from 'src/containers/GlobalSetting/types'
 import { SOCIAL_MEDIA } from 'src/shared/constants'
 import {
   CopyRight,
@@ -13,7 +13,7 @@ import {
 } from './styled'
 
 interface Props {
-  globalSetting: IGlobalSetting
+  globalSetting: GlobalSettingModel
 }
 
 const Footer: FC<Props> = ({ globalSetting }) => {

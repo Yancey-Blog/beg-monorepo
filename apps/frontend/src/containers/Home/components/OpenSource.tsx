@@ -1,9 +1,9 @@
+import { OpenSourceModel } from '@repo/graphql-types/__generated__/graphql'
 import { FC } from 'react'
 import { SVG_SPRITE } from 'src/shared/constants'
 import breakpoints from 'src/styled/breakpoints'
 import { transitionMixin } from 'src/styled/mixins'
 import styled from 'styled-components'
-import { IOpenSource } from '../types'
 import SubTitle from './SubTitle'
 
 const OpenSourceWrapper = styled.section`
@@ -95,7 +95,7 @@ const Overlay = styled.div`
 `
 
 interface Props {
-  data: IOpenSource[]
+  data: OpenSourceModel[]
 }
 
 const OpenSource: FC<Props> = ({ data }) => {

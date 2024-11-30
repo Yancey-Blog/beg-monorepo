@@ -3,10 +3,9 @@ import Script from 'next/script'
 import { FC, useEffect, useRef, useState } from 'react'
 import { APLAYER_CDN } from 'src/shared/constants'
 import { PLAYERS } from '../typeDefs'
-import { PlayerQuery } from '../types'
 
 const Player: FC = () => {
-  const { data } = useQuery<PlayerQuery>(PLAYERS)
+  const { data } = useQuery(PLAYERS)
   const plyaerRef = useRef<HTMLDivElement>(null)
   const [isLoadedScript, setIsLoadedScript] = useState(false)
 

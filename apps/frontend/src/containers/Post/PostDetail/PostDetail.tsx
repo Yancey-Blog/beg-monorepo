@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client'
+import { PostItemModel } from '@repo/graphql-types/__generated__/graphql'
 import { DiscussionEmbed } from 'disqus-react'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useRef, useState } from 'react'
@@ -14,7 +15,6 @@ import PostMeta from '../components/PostMeta/PostMeta'
 import PrevAndNext from '../components/PrevAndNext/PrevAndNext'
 import SharePanel from '../components/SharePanel/SharePanel'
 import { UPDATE_PV } from '../typeDefs'
-import { IPostItem } from '../types'
 import {
   Content,
   ImageAlt,
@@ -28,7 +28,7 @@ import {
 import { combineStr, generatePostUrl, removeEmbededTag } from './utils'
 
 export interface Props {
-  post: IPostItem
+  post: PostItemModel
 }
 
 const PostDetail: FC<Props> = ({ post }) => {
@@ -43,7 +43,7 @@ const PostDetail: FC<Props> = ({ post }) => {
   const markdownWrapperEl = useRef<HTMLDivElement>(null)
 
   const [updatePV] = useMutation(UPDATE_PV, {
-    variables: { id },
+    variables: { id: id as string },
     onError() {}
   })
 

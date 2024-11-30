@@ -1,3 +1,4 @@
+import { PostItemModel } from '@repo/graphql-types/__generated__/graphql'
 import Link from 'next/link'
 import { FC } from 'react'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
@@ -6,7 +7,6 @@ import { PosterProps } from 'src/shared/types'
 import { flexMixin } from 'src/styled/mixins'
 import styled from 'styled-components'
 import { generatePostUrl } from '../../PostDetail/utils'
-import { GetTopPVPostsQuery } from '../../types'
 import SubHeader from '../SubTitle/SubTitle'
 import Top7PVPostsSkeleton from '../Top7PVPostsSkeleton/Top7PVPostsSkeleton'
 
@@ -68,7 +68,7 @@ const Thumb = styled.img`
 `
 
 interface Props {
-  topPVPosts: GetTopPVPostsQuery | undefined
+  topPVPosts?: PostItemModel[]
 }
 
 const Top7PVPosts: FC<Props> = ({ topPVPosts }) => {
@@ -82,7 +82,7 @@ const Top7PVPosts: FC<Props> = ({ topPVPosts }) => {
           skeletonComponent={<Top7PVPostsSkeleton />}
         />
       ) : (
-        topPVPosts.getTopPVPosts.map((post) => {
+        topPVPosts?.map((post) => {
           const { _id, title, posterUrl } = post
           return (
             <Link href={`/post/${_id}`} key={_id}>

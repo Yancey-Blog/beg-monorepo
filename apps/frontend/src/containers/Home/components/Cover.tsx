@@ -1,6 +1,6 @@
+import { CoverModel } from '@repo/graphql-types/__generated__/graphql'
 import { FC } from 'react'
 import styled from 'styled-components'
-import { ICover } from '../types'
 
 interface FigureProps {
   $coverUrl: string
@@ -29,7 +29,7 @@ const Covers = styled.figure<FigureProps>`
 `
 
 interface Props {
-  data: ICover[]
+  data: CoverModel[]
 }
 
 const Cover: FC<Props> = ({ data }) => (

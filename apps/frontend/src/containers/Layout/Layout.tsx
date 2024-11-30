@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
+import { GlobalSettingModel } from '@repo/graphql-types/__generated__/graphql'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { FC, ReactNode, useEffect } from 'react'
 import Head from 'src/components/Head/Head'
 import SVGSprite from 'src/components/SVGSprite/SVGSprite'
 import { GET_GLOBAL_SETTING } from 'src/containers/GlobalSetting/typeDefs'
-import { GlobalSettingQuery } from 'src/containers/GlobalSetting/types'
 import AlgoliaSearchBox from 'src/containers/Post/components/AlgoliaSearchBox/AlgoliaSearchBox'
 import { initGA, logPageView } from 'src/shared/analytics'
 import BackToTop from './components/BackToTop/BackToTop'
@@ -14,10 +14,13 @@ import Header from './components/Header/Header'
 import Nav from './components/Nav/Nav'
 import { Layouts, Main } from './styled'
 
-const initialGlobalSetting = {
+const initialGlobalSetting: GlobalSettingModel = {
   cvPostId: '',
   releasePostId: '',
-  isGrayTheme: false
+  isGrayTheme: false,
+  _id: '',
+  createdAt: undefined,
+  updatedAt: undefined
 }
 
 interface Props {
@@ -27,7 +30,7 @@ interface Props {
 
 const Layout: FC<Props> = ({ title, children }) => {
   const router = useRouter()
-  const { data } = useQuery<GlobalSettingQuery>(GET_GLOBAL_SETTING)
+  const { data } = useQuery(GET_GLOBAL_SETTING)
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production' && window !== undefined) {

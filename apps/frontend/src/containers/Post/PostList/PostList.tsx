@@ -10,13 +10,6 @@ import PostListStatus from '../components/PostListStatus/PostLIstStatus'
 import TagCloud from '../components/TagCloud/TagCloud'
 import Top7PVPosts from '../components/Top7PVPosts/Top7PVPosts'
 import { GET_ALL_TAGS, GET_TOP_PV_POSTS, POSTS } from '../typeDefs'
-import {
-  GetAllTagsQuery,
-  GetTopPVPostsQuery,
-  GetTopPVPostsVars,
-  PostQuery,
-  PostVars
-} from '../types'
 import { PostContent, PostItemContainer } from './styled'
 
 const PostList: FC = () => {
@@ -26,21 +19,18 @@ const PostList: FC = () => {
 
   const [page, setPage] = useState(1)
 
-  const [getPosts, { data: posts }] = useLazyQuery<PostQuery, PostVars>(POSTS, {
+  const [getPosts, { data: posts }] = useLazyQuery(POSTS, {
     notifyOnNetworkStatusChange: true
   })
 
-  const { data: topPVPosts } = useQuery<GetTopPVPostsQuery, GetTopPVPostsVars>(
-    GET_TOP_PV_POSTS,
-    {
-      notifyOnNetworkStatusChange: true,
-      variables: {
-        limit: 7
-      }
+  const { data: topPVPosts } = useQuery(GET_TOP_PV_POSTS, {
+    notifyOnNetworkStatusChange: true,
+    variables: {
+      limit: 7
     }
-  )
+  })
 
-  const { data: tagCloud } = useQuery<GetAllTagsQuery>(GET_ALL_TAGS, {
+  const { data: tagCloud } = useQuery(GET_ALL_TAGS, {
     notifyOnNetworkStatusChange: true
   })
 
@@ -109,7 +99,7 @@ const PostList: FC = () => {
         </PostItemContainer>
 
         <div>
-          <Top7PVPosts topPVPosts={topPVPosts} />
+          <Top7PVPosts topPVPosts={topPVPosts?.getTopPVPosts} />
           <TagCloud tagCloud={tagCloud ? tagCloud.getAllTags.tags : []} />
         </div>
       </PostContent>

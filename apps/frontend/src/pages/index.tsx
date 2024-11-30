@@ -1,3 +1,10 @@
+import {
+  AnnouncementModel,
+  CoverModel,
+  MottoModel,
+  OpenSourceModel,
+  PostModel
+} from '@repo/graphql-types/__generated__/graphql'
 import type { GetServerSideProps, NextPage } from 'next'
 import HomeContainer from 'src/containers/Home/Home'
 import {
@@ -6,27 +13,16 @@ import {
   MOTTOS,
   OPEN_SOURCES
 } from 'src/containers/Home/typeDefs'
-import {
-  AnnouncementQuery,
-  CoverQuery,
-  IAnnouncement,
-  ICover,
-  IMotto,
-  IOpenSource,
-  MottoQuery,
-  OpenSourceQuery
-} from 'src/containers/Home/types'
 import Layout from 'src/containers/Layout/Layout'
 import { POSTS } from 'src/containers/Post/typeDefs'
-import { IPost, PostQuery, PostVars } from 'src/containers/Post/types'
 import { createApolloClient } from 'src/graphql/apolloClient'
 
 export interface Props {
-  announcements: IAnnouncement[]
-  mottos: IMotto[]
-  covers: ICover[]
-  openSources: IOpenSource[]
-  posts: IPost
+  announcements: AnnouncementModel[]
+  mottos: MottoModel[]
+  covers: CoverModel[]
+  openSources: OpenSourceModel[]
+  posts: PostModel
 }
 
 const Home: NextPage<Props> = (props) => {
@@ -40,19 +36,19 @@ const Home: NextPage<Props> = (props) => {
 export const getServerSideProps: GetServerSideProps = async () => {
   const client = createApolloClient()
 
-  const { data: announcements } = await client.query<AnnouncementQuery>({
+  const { data: announcements } = await client.query({
     query: ANNOUNCEMENTS
   })
-  const { data: mottos } = await client.query<MottoQuery>({
+  const { data: mottos } = await client.query({
     query: MOTTOS
   })
-  const { data: covers } = await client.query<CoverQuery>({
+  const { data: covers } = await client.query({
     query: COVERS
   })
-  const { data: openSources } = await client.query<OpenSourceQuery>({
+  const { data: openSources } = await client.query({
     query: OPEN_SOURCES
   })
-  const { data } = await client.query<PostQuery, PostVars>({
+  const { data } = await client.query({
     query: POSTS,
     variables: {
       input: {
