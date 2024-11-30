@@ -1,5 +1,16 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- update dependencies
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @repo/graphql-types@1.0.0
+
 ## 6.0.0
 
 ### Major Changes

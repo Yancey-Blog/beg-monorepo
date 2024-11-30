@@ -1,5 +1,16 @@
 # Change Log - uploader-service
 
+## 2.0.0
+
+### Major Changes
+
+- update dependencies
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @repo/utils@2.0.0
+
 This log was last generated on Mon, 23 Oct 2023 05:51:02 GMT and should not be manually modified.
 
 ## 1.4.0

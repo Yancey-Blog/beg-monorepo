@@ -1,5 +1,11 @@
 # Change Log - @shared/utils
 
+## 2.0.0
+
+### Major Changes
+
+- update dependencies
+
 This log was last generated on Thu, 30 May 2024 15:38:51 GMT and should not be manually modified.
 
 ## 1.2.3
