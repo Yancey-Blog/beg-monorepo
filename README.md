@@ -20,10 +20,10 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 | [frontend]                | ![frontend-version]                | ![frontend-build-status]                | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.  |
 | [backend]                 | ![backend-version]                 | ![backend-build-status]                 | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
 | [uploader]                | ![uploader-version]                | ![uploader-build-status]                | The Uploader backend powered by Azure Blob.                                                         |
-| [@repo/utils]             | ![@repo/utils-version]             | ![@repo/utils-build-status]             | Common utils library.                                                                               |
-| [@repo/eslint-config]     | ![@repo/eslint-config-version]     | ![@repo/eslint-config-build-status]     | Common Eslint Config library.                                                                       |
-| [@repo/typescript-config] | ![@repo/typescript-config-version] | ![@repo/typescript-config-build-status] | Common TypeScript Config library.                                                                   |
-| [@repo/graphql-types]     | ![@repo/graphql-types-version]     | ![@repo/graphql-types-build-status]     | Graphql types of backend.                                                                           |
+| [@repo/utils]             | ![@repo/utils-version]             | -             | Common utils library.                                                                               |
+| [@repo/eslint-config]     | ![@repo/eslint-config-version]     | -     | Common Eslint Config library.                                                                       |
+| [@repo/typescript-config] | ![@repo/typescript-config-version] | - | Common TypeScript Config library.                                                                   |
+| [@repo/graphql-types]     | ![@repo/graphql-types-version]     | -    | Graphql types of backend.                                                                           |
 
 [cms]: ./apps/cms
 [frontend]: ./apps/frontend
@@ -45,10 +45,6 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [frontend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-frontend.yml/badge.svg
 [backend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-backend.yml/badge.svg
 [uploader-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-uploader.yml/badge.svg
-[@repo/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-utils.yml/badge.svg
-[@repo/eslint-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-eslint-config.yml/badge.svg
-[@repo/typescript-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-typescript-config.yml/badge.svg
-[@repo/graphql-types-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-graphql-types.yml/badge.svg
 
 ## Prerequisite
 
