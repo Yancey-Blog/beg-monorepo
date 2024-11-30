@@ -31,7 +31,7 @@ export class UploaderService {
         .toBuffer()
 
       return buffer
-    } catch (e) {
+    } catch {
       throw new BadRequestException('Failed to convert to webp format.')
     }
   }

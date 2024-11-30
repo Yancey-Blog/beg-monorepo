@@ -6,7 +6,7 @@ import {
   MutationDeleteCoverByIdArgs,
   MutationDeleteCoversArgs,
   UpdateCoverInput
-} from 'backend/src/__generated__/graphql'
+} from '@repo/graphql-types/__generated__/graphql'
 import {
   BATCH_DELETE_FRAGMENT,
   BATCH_UPDATE_FRAGMENT

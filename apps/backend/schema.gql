@@ -2,6 +2,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BatchDeleteModel {
+  ok: Float
+  n: Float
+  deletedCount: Float
+  ids: [ID!]!
+}
+
 type AnnouncementModel {
   _id: String!
   content: String!
@@ -14,23 +21,6 @@ type AnnouncementModel {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
-
-type BatchDeleteModel {
-  ok: Float
-  n: Float
-  deletedCount: Float
-  ids: [ID!]!
-}
-
-type OpenSourceModel {
-  _id: ID!
-  title: String!
-  description: String!
-  url: String!
-  posterUrl: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
 
 type ServiceInfoModel {
   vm_type: String!
@@ -93,6 +83,43 @@ type UsageStatesModel {
   cpu_usage: Float!
 }
 
+type BestAlbumModel {
+  _id: ID!
+  title: String!
+  artist: String!
+  coverUrl: String!
+  mvUrl: String!
+  releaseDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BatchUpdateModel {
+  ok: Float
+  n: Float
+  nModified: Float
+  ids: [ID!]!
+}
+
+type CoverModel {
+  _id: ID!
+  title: String!
+  coverUrl: String!
+  weight: Float!
+  isPublic: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type GlobalSettingModel {
+  _id: ID!
+  releasePostId: ID!
+  cvPostId: ID!
+  isGrayTheme: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type LiveTourModel {
   _id: ID!
   title: String!
@@ -102,23 +129,20 @@ type LiveTourModel {
   updatedAt: DateTime!
 }
 
-type YanceyMusicModel {
-  _id: ID!
-  title: String!
-  soundCloudUrl: String!
-  posterUrl: String!
-  releaseDate: DateTime!
+type MottoModel {
+  _id: String!
+  content: String!
+  weight: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type BestAlbumModel {
+type OpenSourceModel {
   _id: ID!
   title: String!
-  artist: String!
-  coverUrl: String!
-  mvUrl: String!
-  releaseDate: DateTime!
+  description: String!
+  url: String!
+  posterUrl: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -136,11 +160,43 @@ type PlayerModel {
   updatedAt: DateTime!
 }
 
-type BatchUpdateModel {
-  ok: Float
-  n: Float
-  nModified: Float
-  ids: [ID!]!
+type PostStatisticsGroupItemModel {
+  postId: String!
+  postName: String!
+  scenes: String!
+  operatedAt: DateTime!
+}
+
+type PostStatisticsGroupModel {
+  _id: String!
+  count: Float!
+  items: [PostStatisticsGroupItemModel!]!
+}
+
+type PostStatisticsModel {
+  _id: String!
+  postId: String!
+  postName: String!
+  scenes: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type DayModel {
+  id: ID!
+  title: String!
+  pv: Float!
+  createdAt: DateTime!
+}
+
+type MonthModel {
+  month: Float!
+  days: [DayModel!]!
+}
+
+type ArchiveModel {
+  _id: Float!
+  months: [MonthModel!]!
 }
 
 type PostItemModel {
@@ -167,74 +223,18 @@ type PostModel {
   items: [PostItemModel!]!
 }
 
-type DayModel {
-  id: ID!
-  title: String!
-  pv: Float!
-  createdAt: DateTime!
-}
-
-type MonthModel {
-  month: Float!
-  days: [DayModel!]!
-}
-
-type ArchiveModel {
-  _id: Float!
-  months: [MonthModel!]!
-}
-
 type TagsModel {
   tags: [String!]!
 }
 
-type MottoModel {
-  _id: String!
-  content: String!
-  weight: Float!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type CoverModel {
+type YanceyMusicModel {
   _id: ID!
   title: String!
-  coverUrl: String!
-  weight: Float!
-  isPublic: Boolean!
+  soundCloudUrl: String!
+  posterUrl: String!
+  releaseDate: DateTime!
   createdAt: DateTime!
   updatedAt: DateTime!
-}
-
-type GlobalSettingModel {
-  _id: ID!
-  releasePostId: ID!
-  cvPostId: ID!
-  isGrayTheme: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type PostStatisticsModel {
-  _id: String!
-  postId: String!
-  postName: String!
-  scenes: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type PostStatisticsGroupItemModel {
-  postId: String!
-  postName: String!
-  scenes: String!
-  operatedAt: DateTime!
-}
-
-type PostStatisticsGroupModel {
-  _id: String!
-  count: Float!
-  items: [PostStatisticsGroupItemModel!]!
 }
 
 type Query {
