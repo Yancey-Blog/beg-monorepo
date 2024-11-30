@@ -1,6 +1,14 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  BestAlbumModel,
+  LiveTourModel,
+  PlayerModel,
+  YanceyMusicModel
+} from '@repo/graphql-types/__generated__/graphql'
 
-export const PLAYERS = gql`
+export const PLAYERS: TypedDocumentNode<{
+  players: PlayerModel[]
+}> = gql`
   query Players {
     players {
       title
@@ -12,7 +20,9 @@ export const PLAYERS = gql`
   }
 `
 
-export const BEST_ALBUMS = gql`
+export const BEST_ALBUMS: TypedDocumentNode<{
+  getBestAlbums: BestAlbumModel[]
+}> = gql`
   query GetBestAlbums {
     getBestAlbums {
       _id
@@ -27,7 +37,9 @@ export const BEST_ALBUMS = gql`
   }
 `
 
-export const LIVE_TOURS = gql`
+export const LIVE_TOURS: TypedDocumentNode<{
+  getLiveTours: LiveTourModel[]
+}> = gql`
   query GetLiveTours {
     getLiveTours {
       _id
@@ -40,7 +52,9 @@ export const LIVE_TOURS = gql`
   }
 `
 
-export const YANCEY_MUSIC = gql`
+export const YANCEY_MUSIC: TypedDocumentNode<{
+  getYanceyMusic: YanceyMusicModel[]
+}> = gql`
   query GetYanceyMusic {
     getYanceyMusic {
       _id

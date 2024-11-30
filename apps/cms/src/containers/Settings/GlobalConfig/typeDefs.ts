@@ -2,7 +2,7 @@ import { gql, TypedDocumentNode } from '@apollo/client'
 import {
   GlobalSettingModel,
   UpdateGlobalSettingInput
-} from 'backend/src/__generated__/graphql'
+} from '@repo/graphql-types/__generated__/graphql'
 import { GraphQInputWrapper } from 'src/types/common'
 
 const GLOBAL_SETTING_FRAGMENT = gql`

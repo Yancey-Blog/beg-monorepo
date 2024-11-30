@@ -8,7 +8,7 @@ import {
   GridRenderCellParams,
   GridRowSelectionModel
 } from '@mui/x-data-grid'
-import { PlayerModel } from 'backend/src/__generated__/graphql'
+import { PlayerModel } from '@repo/graphql-types/__generated__/graphql'
 import PopupState, { bindPopover, bindTrigger } from 'material-ui-popup-state'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover'

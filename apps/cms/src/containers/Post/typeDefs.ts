@@ -8,7 +8,7 @@ import {
   PostItemModel,
   PostModel,
   UpdatePostInput
-} from 'backend/src/__generated__/graphql'
+} from '@repo/graphql-types/__generated__/graphql'
 import { BATCH_DELETE_FRAGMENT } from 'src/graphql/graphqlFragment'
 import { GraphQInputWrapper } from 'src/types/common'
 

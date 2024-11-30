@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
+import { ArchiveModel } from '@repo/graphql-types/__generated__/graphql'
 import orderBy from 'lodash.orderby'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
 import { FC, Fragment } from 'react'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import { ARCHIVE } from 'src/containers/Post/typeDefs'
-import { ArchiveQuery, IArchive } from 'src/containers/Post/types'
 import { months } from 'src/shared/constants'
 import {
   ArchiveWrapper,
@@ -19,11 +19,11 @@ import {
 } from './styled'
 
 const Archive: FC = () => {
-  const { data } = useQuery<ArchiveQuery>(ARCHIVE, {
+  const { data } = useQuery(ARCHIVE, {
     notifyOnNetworkStatusChange: true
   })
 
-  const totalYearCount = (year: IArchive) => {
+  const totalYearCount = (year: ArchiveModel) => {
     const total = year.months.reduce((acc, month) => acc + month.days.length, 0)
     return total > 1 ? `${total} posts` : `${total} post`
   }

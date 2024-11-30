@@ -1,8 +1,8 @@
+import { PostItemModel } from '@repo/graphql-types/__generated__/graphql'
 import Link from 'next/link'
 import { FC } from 'react'
 import { SVG_SPRITE } from 'src/shared/constants'
 import { formatDate } from 'src/shared/utils'
-import { IPostItem } from '../../types'
 import {
   Meta,
   MetaItem,
@@ -17,7 +17,7 @@ import {
 } from './styled'
 
 interface Props {
-  post: IPostItem
+  post: PostItemModel
 }
 
 const PostCard: FC<Props> = ({ post }) => {

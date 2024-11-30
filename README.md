@@ -23,6 +23,7 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 | [@repo/utils]             | ![@repo/utils-version]             | ![@repo/utils-build-status]             | Common utils library.                                                                               |
 | [@repo/eslint-config]     | ![@repo/eslint-config-version]     | ![@repo/eslint-config-build-status]     | Common Eslint Config library.                                                                       |
 | [@repo/typescript-config] | ![@repo/typescript-config-version] | ![@repo/typescript-config-build-status] | Common TypeScript Config library.                                                                   |
+| [@repo/graphql-types]     | ![@repo/graphql-types-version]     | ![@repo/graphql-types-build-status]     | Graphql types of backend.                                                                           |
 
 [cms]: ./apps/cms
 [frontend]: ./apps/frontend
@@ -31,13 +32,17 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/utils]: ./packages/utils
 [@repo/eslint-config]: ./packages/eslint-config
 [@repo/typescript-config]: ./packages/typescript-config
-[cms-version]: https://img.shields.io/badge/Version-v6.0.0-brightgreen
-[frontend-version]: https://img.shields.io/badge/Version-v5.0.0-brightgreen
-[backend-version]: https://img.shields.io/badge/Version-v2.5.1-brightgreen
-[uploader-version]: https://img.shields.io/badge/Version-v1.4.0-brightgreen
-[@repo/utils-version]: https://img.shields.io/badge/Version-v1.2.3-brightgreen
+[@repo/graphql-types]: ./packages/graphql-types
+
+[cms-version]: https://img.shields.io/badge/Version-v6.1.0-brightgreen
+[frontend-version]: https://img.shields.io/badge/Version-v5.1.0-brightgreen
+[backend-version]: https://img.shields.io/badge/Version-v3.0.0-brightgreen
+[uploader-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
+[@repo/utils-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
 [@repo/eslint-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/typescript-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
+[@repo/graphql-types-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
+
 [cms-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-cms.yml/badge.svg
 [frontend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-frontend.yml/badge.svg
 [backend-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-backend.yml/badge.svg
@@ -45,6 +50,7 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/utils-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-utils.yml/badge.svg
 [@repo/eslint-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-eslint-config.yml/badge.svg
 [@repo/typescript-config-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-typescript-config.yml/badge.svg
+[@repo/graphql-types-build-status]: https://github.com/Yancey-Blog/beg-monorepo/actions/workflows/github-actions-@repo-graphql-types.yml/badge.svg
 
 ## Prerequisite
 

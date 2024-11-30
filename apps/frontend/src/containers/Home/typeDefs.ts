@@ -1,6 +1,14 @@
-import { gql } from '@apollo/client'
+import { gql, TypedDocumentNode } from '@apollo/client'
+import {
+  AnnouncementModel,
+  CoverModel,
+  MottoModel,
+  OpenSourceModel
+} from '@repo/graphql-types/__generated__/graphql'
 
-export const ANNOUNCEMENTS = gql`
+export const ANNOUNCEMENTS: TypedDocumentNode<{
+  getAnnouncements: AnnouncementModel[]
+}> = gql`
   query GetAnnouncements {
     getAnnouncements {
       content
@@ -8,7 +16,9 @@ export const ANNOUNCEMENTS = gql`
   }
 `
 
-export const MOTTOS = gql`
+export const MOTTOS: TypedDocumentNode<{
+  getMottos: MottoModel[]
+}> = gql`
   query GetMottos {
     getMottos {
       content
@@ -16,7 +26,9 @@ export const MOTTOS = gql`
   }
 `
 
-export const COVERS = gql`
+export const COVERS: TypedDocumentNode<{
+  getAllPublicCovers: CoverModel[]
+}> = gql`
   query GetAllPublicCovers {
     getAllPublicCovers {
       title
@@ -25,7 +37,9 @@ export const COVERS = gql`
   }
 `
 
-export const OPEN_SOURCES = gql`
+export const OPEN_SOURCES: TypedDocumentNode<{
+  getOpenSources: OpenSourceModel[]
+}> = gql`
   query GetOpenSources {
     getOpenSources {
       _id

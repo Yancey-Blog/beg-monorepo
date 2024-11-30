@@ -1,6 +1,6 @@
 import { FormControlLabel, Switch } from '@mui/material'
 import { createStyles, makeStyles } from '@mui/styles'
-import { GlobalSettingModel } from 'backend/src/__generated__/graphql'
+import { GlobalSettingModel } from '@repo/graphql-types/__generated__/graphql'
 import { ChangeEvent, FC } from 'react'
 import SettingItemWrapper from '../../components/SettingItemWrapper'
 import useGlobalConfig from '../useGlobalConfig'

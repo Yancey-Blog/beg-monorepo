@@ -23,3 +23,7 @@ export type NextWebVitalsMetrics = {
   startTime: number
   value: number
 }
+
+export interface GraphQInputWrapper<T> {
+  input: T
+}

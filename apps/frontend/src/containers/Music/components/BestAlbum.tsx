@@ -1,9 +1,9 @@
+import { BestAlbumModel } from '@repo/graphql-types/__generated__/graphql'
 import { FC } from 'react'
 import { formatDate } from 'src/shared/utils'
 import breakpoints from 'src/styled/breakpoints'
 import { transitionMixin } from 'src/styled/mixins'
 import styled from 'styled-components'
-import { IBestAlbum } from '../types'
 
 const BestAlbumWrapper = styled.div`
   width: 100%;
@@ -62,7 +62,7 @@ const Btn = styled.button`
 `
 
 interface Props {
-  bestAlbum: IBestAlbum
+  bestAlbum: BestAlbumModel
 }
 
 const BestAlbum: FC<Props> = ({ bestAlbum }) => {

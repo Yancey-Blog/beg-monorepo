@@ -8,7 +8,7 @@ import {
   GridRenderCellParams,
   GridRowSelectionModel
 } from '@mui/x-data-grid'
-import { YanceyMusicModel } from 'backend/src/__generated__/graphql'
+import { YanceyMusicModel } from '@repo/graphql-types/__generated__/graphql'
 import { FC, useState } from 'react'
 import ConfirmPopover from 'src/components/ConfirmPopover'
 import ImagePopup from 'src/components/ImagePopup'

@@ -4,7 +4,6 @@ import PostDetailContainer, {
   Props as PostDetailProps
 } from 'src/containers/Post/PostDetail/PostDetail'
 import { GET_POST_BY_ID } from 'src/containers/Post/typeDefs'
-import { GetPostByIdQuery, GetPostByIdVar } from 'src/containers/Post/types'
 import { createApolloClient } from 'src/graphql/apolloClient'
 
 const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
@@ -18,10 +17,7 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const client = createApolloClient()
 
-  const { data: post, error } = await client.query<
-    GetPostByIdQuery,
-    GetPostByIdVar
-  >({
+  const { data: post, error } = await client.query({
     query: GET_POST_BY_ID,
     variables: {
       id: context.params?.id as string

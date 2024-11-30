@@ -1,52 +1,25 @@
+import {
+  PostItemModel,
+  PostModel
+} from '@repo/graphql-types/__generated__/graphql'
 import { ASTNode, print } from 'graphql'
 import { FC, useState } from 'react'
-// import { useLazyQuery } from '@apollo/client'
 import InfiniteScroll from 'src/components/InfiniteScroll/InfiniteScroll'
 import PostCard from 'src/containers/Post/components/PostCard/PostCard'
 import { POSTS } from 'src/containers/Post/typeDefs'
-import {
-  IPost,
-  // PostQuery,
-  // PostVars,
-  IPostItem
-} from 'src/containers/Post/types'
 import { SVG_SPRITE } from 'src/shared/constants'
 import { Status } from '../styled'
 import SubTitle from './SubTitle'
 
 interface Props {
-  data: IPost
+  data: PostModel
 }
 
 const PostList: FC<Props> = ({ data: ssrData }) => {
-  const [data, setData] = useState<IPostItem[]>(ssrData.items)
+  const [data, setData] = useState<PostItemModel[]>(ssrData.items)
   const [page, setPage] = useState(2)
   const [hasMore, setHasMore] = useState(true)
   const [loading, setLoading] = useState(false)
-
-  // const [fetchMore, { loading }] = useLazyQuery<PostQuery, PostVars>(POSTS, {
-  //   onCompleted(continuousPosts) {
-  //     const { items, total, page: currentPage } = continuousPosts.posts
-  //     setData([...data, ...items])
-  //     if (Math.ceil(total / 10) === currentPage) {
-  //       setHasMore(false)
-  //       return
-  //     }
-  //     setPage(currentPage + 1)
-  //   }
-  // })
-
-  // const fetchPosts = (tag?: string) => {
-  //   fetchMore({
-  //     variables: {
-  //       input: {
-  //         page,
-  //         pageSize: 10,
-  //         tag
-  //       }
-  //     }
-  //   })
-  // }
 
   const fetchData = () => {
     setLoading(true)
@@ -67,7 +40,7 @@ const PostList: FC<Props> = ({ data: ssrData }) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        const { items, total, page: currentPage } = result.data.posts as IPost
+        const { items, total, page: currentPage } = result.data.posts
         setData([...data, ...items])
         if (Math.ceil(total / 10) === currentPage) {
           setHasMore(false)

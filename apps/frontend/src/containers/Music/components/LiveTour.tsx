@@ -1,8 +1,8 @@
+import { LiveTourModel } from '@repo/graphql-types/__generated__/graphql'
 import Carousel from 'nuka-carousel'
 import { FC } from 'react'
 import { formatDate } from 'src/shared/utils'
 import styled from 'styled-components'
-import { ILiveTour } from '../types'
 
 const LiveTourContent = styled.div`
   position: relative;
@@ -37,7 +37,7 @@ const Title = styled.p`
 `
 
 interface Props {
-  liveTours: ILiveTour[]
+  liveTours: LiveTourModel[]
 }
 
 const LiveTour: FC<Props> = ({ liveTours }) => {

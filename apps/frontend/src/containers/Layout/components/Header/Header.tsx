@@ -1,11 +1,11 @@
+import { GlobalSettingModel } from '@repo/graphql-types/__generated__/graphql'
 import Link from 'next/link'
 import { FC } from 'react'
-import { IGlobalSetting } from 'src/containers/GlobalSetting/types'
 import { SVG_SPRITE } from 'src/shared/constants'
 import { Logo, NavBar, NavBarItem } from './styled'
 
 interface Props {
-  globalSetting: IGlobalSetting
+  globalSetting: GlobalSettingModel
 }
 
 const Header: FC<Props> = ({ globalSetting }) => {

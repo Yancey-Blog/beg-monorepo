@@ -1,0 +1,16 @@
+{
+  "name": "@repo/graphql-types",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "gql2ts:compile": "graphql-codegen",
+    "gql2ts:watch": "graphql-codegen -w"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/client-preset": "^4.5.1",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "graphql": "^16.9.0"
+  }
+}

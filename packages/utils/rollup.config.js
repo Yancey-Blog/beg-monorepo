@@ -1,13 +1,14 @@
-import typescript from '@rollup/plugin-typescript'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const typescript = require('@rollup/plugin-typescript')
 
 /**
  * @type {import('rollup').RollupOptions}
  */
-const config = {
+module.exports = {
   input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
-    format: 'cjs',
+    format: 'commonjs',
     sourcemap: true
   },
   plugins: [
@@ -16,9 +17,7 @@ const config = {
      */
     typescript({
       outputToFilesystem: true,
-      tsconfig: './tsconfig.json',
+      tsconfig: './tsconfig.json'
     })
   ]
 }
-
-export default config

@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client'
 import ImageHeader from 'src/components/ImageHeader/ImageHeader'
 import SkeletonIterator from 'src/components/SkeletonIterator/SkeletonIterator'
 import { POSTS } from 'src/containers/Post/typeDefs'
-import { PostQuery, PostVars } from 'src/containers/Post/types'
 import BestAlbum from './components/BestAlbum'
 import BestAlbumSkeleton from './components/BestAlbumSkeleton'
 import Card from './components/Card'
@@ -19,13 +18,12 @@ import {
   YanceyMusicWrapper
 } from './styled'
 import { BEST_ALBUMS, LIVE_TOURS, YANCEY_MUSIC } from './typeDefs'
-import { BestAlbumQuery, LiveTourQuery, YanceyMusicQuery } from './types'
 
 const Music = () => {
-  const { data: liveTours } = useQuery<LiveTourQuery>(LIVE_TOURS)
-  const { data: bestAlbums } = useQuery<BestAlbumQuery>(BEST_ALBUMS)
-  const { data: yanceymusics } = useQuery<YanceyMusicQuery>(YANCEY_MUSIC)
-  const { data: posts } = useQuery<PostQuery, PostVars>(POSTS, {
+  const { data: liveTours } = useQuery(LIVE_TOURS)
+  const { data: bestAlbums } = useQuery(BEST_ALBUMS)
+  const { data: yanceymusics } = useQuery(YANCEY_MUSIC)
+  const { data: posts } = useQuery(POSTS, {
     variables: {
       input: {
         page: 1,

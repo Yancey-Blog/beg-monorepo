@@ -43,7 +43,7 @@ export class PostsService {
 
     const _params = tag ? { ...params, tags: tag } : params
 
-    const count = await this.postModel.find(_params).count()
+    const count = await this.postModel.find(_params).countDocuments()
     const res = await this.postModel
       .find(_params)
       .sort({ createdAt: -1 })
