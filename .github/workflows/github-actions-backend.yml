@@ -31,22 +31,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create .env file
-        run: |
-          mkdir -p ./apps/backend
-          echo "DATABASE_USER=${{ secrets.DATABASE_USER }}" >> ./apps/backend/.env
-          echo "DATABASE_PWD=${{ secrets.DATABASE_PWD }}" >> ./apps/backend/.env
-          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> ./apps/backend/.env
-          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> ./apps/backend/.env
-          echo "DATABASE_COLLECTION=${{ secrets.DATABASE_COLLECTION }}" >> ./apps/backend/.env
-          echo "BANDWAGON_SECRET_KEY=${{ secrets.BANDWAGON_SECRET_KEY }}" >> ./apps/backend/.env
-          echo "BANDWAGON_SERVER_ID=${{ secrets.BANDWAGON_SERVER_ID }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
-          echo "NODE_ENV=production" >> ./apps/backend/.env
-
       - name: Pre compilation
         run: pnpm run build --filter backend
 
@@ -92,22 +76,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Create .env file
-        run: |
-          mkdir -p ./apps/backend
-          echo "DATABASE_USER=${{ secrets.DATABASE_USER }}" >> ./apps/backend/.env
-          echo "DATABASE_PWD=${{ secrets.DATABASE_PWD }}" >> ./apps/backend/.env
-          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> ./apps/backend/.env
-          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> ./apps/backend/.env
-          echo "DATABASE_COLLECTION=${{ secrets.DATABASE_COLLECTION }}" >> ./apps/backend/.env
-          echo "BANDWAGON_SECRET_KEY=${{ secrets.BANDWAGON_SECRET_KEY }}" >> ./apps/backend/.env
-          echo "BANDWAGON_SERVER_ID=${{ secrets.BANDWAGON_SERVER_ID }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
-          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
-          echo "NODE_ENV=production" >> ./apps/backend/.env
 
       - name: Compilation
         run: pnpm run build --filter backend
