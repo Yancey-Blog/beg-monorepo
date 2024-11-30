@@ -106,8 +106,8 @@ jobs:
 
       - name: Prepare files for deployment
         run: |
-          mkdir -p build
-          cp -r apps/cms/build/* build/
+          mkdir -p dist
+          cp -r apps/cms/dist/* dist/
 
       - name: Copy file via ssh key
         uses: appleboy/scp-action@v0.1.7
@@ -116,7 +116,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: 'build/*'
+          source: 'dist/*'
           target: '/var/www/beg-monorepo/apps/cms'
           overwrite: true
 
