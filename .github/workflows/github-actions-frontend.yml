@@ -3,14 +3,14 @@ name: frontend
 on:
   push:
     paths:
-      - "apps/frontend/**"
-    branches: 
-      - "**"
+      - 'apps/frontend/**'
+    branches:
+      - '**'
   pull_request:
     paths:
-      - "apps/frontend/**"
+      - 'apps/frontend/**'
     branches:
-      - "**"
+      - '**'
 
 jobs:
   test:
@@ -26,12 +26,26 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-         version: 9.14.2
+          version: 9.14.2
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Pre compilation
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/frontend
+          echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_DOMAIN_URL=${{ vars.NEXT_PUBLIC_DOMAIN_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_STATIC_FILE_URL=${{ vars.NEXT_PUBLIC_STATIC_FILE_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_GA_KEY=${{ vars.NEXT_PUBLIC_GA_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_SENTRY_DSN=${{ vars.NEXT_PUBLIC_SENTRY_DSN }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_DISCUSSION_KEY=${{ vars.NEXT_PUBLIC_DISCUSSION_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_SENTRY_AUTH_TOKEN=${{ vars.NEXT_PUBLIC_SENTRY_AUTH_TOKEN }}" >> ./apps/frontend/.env
+
+      - name: Compilation
         run: pnpm run build --filter frontend
 
       # テスト成功時はこちらのステップが実行される
@@ -62,13 +76,64 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.4
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.14.2
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/frontend
+          echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_DOMAIN_URL=${{ vars.NEXT_PUBLIC_DOMAIN_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_STATIC_FILE_URL=${{ vars.NEXT_PUBLIC_STATIC_FILE_URL }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_GA_KEY=${{ vars.NEXT_PUBLIC_GA_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_SENTRY_DSN=${{ vars.NEXT_PUBLIC_SENTRY_DSN }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_DISCUSSION_KEY=${{ vars.NEXT_PUBLIC_DISCUSSION_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_APP_ID }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME=${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_INDEX_NAME }}" >> ./apps/frontend/.env
+          echo "NEXT_PUBLIC_SENTRY_AUTH_TOKEN=${{ vars.NEXT_PUBLIC_SENTRY_AUTH_TOKEN }}" >> ./apps/frontend/.env
+
+      - name: Compilation
+        run: pnpm run build --filter frontend
+
+      - name: Prepare files for deployment
+        run: |
+          mkdir -p .next
+          cp -r apps/frontend/.next/* .next/
+
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-frontend-deploy.sh
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: '.next/*'
+          target: '/var/www/beg-monorepo/apps/frontend'
+          overwrite: true
+
+      - name: SSH to Server and Run Command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/beg-monorepo/apps/frontend
+            /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage

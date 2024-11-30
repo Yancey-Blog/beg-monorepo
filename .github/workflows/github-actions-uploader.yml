@@ -3,14 +3,14 @@ name: uploader
 on:
   push:
     paths:
-      - "apps/uploader/**"
-    branches: 
-      - "**"
+      - 'apps/uploader/**'
+    branches:
+      - '**'
   pull_request:
     paths:
-      - "apps/uploader/**"
+      - 'apps/uploader/**'
     branches:
-      - "**"
+      - '**'
 
 jobs:
   test:
@@ -26,10 +26,19 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-         version: 9.14.2
+          version: 9.14.2
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/uploader
+          echo "AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/uploader/.env
 
       - name: Pre compilation
         run: pnpm run build --filter uploader
@@ -62,13 +71,59 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.4
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.14.2
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/uploader
+          echo "AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/uploader/.env
+
+      - name: Pre compilation
+        run: pnpm run build --filter uploader
+
+      - name: Prepare files for deployment
+        run: |
+          mkdir -p dist
+          cp -r apps/uploader/dist/* dist/
+
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: sh ./@beg-monorepo-uploader-deploy.sh
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: 'dist/*'
+          target: '/var/www/beg-monorepo/apps/uploader'
+          overwrite: true
+
+      - name: SSH to Server and Run Command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/beg-monorepo/apps/uploader
+            /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
