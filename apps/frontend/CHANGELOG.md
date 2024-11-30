@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- format code
+
 ## 5.1.0
 
 ### Minor Changes

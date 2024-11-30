@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Code Style](https://img.shields.io/badge/code%20style-prettier-green)](https://prettier.io/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/Yancey-Blog/beg-monorepo/pulls)
-[![Node](https://img.shields.io/badge/node-%3E%3D18.19.0-orange.svg)](https://nodejs.org/en/)
+[![Node](https://img.shields.io/badge/node-%3E%3D20.18.0-orange.svg)](https://nodejs.org/en/)
 [![Gitter](https://badges.gitter.im/yancey-official/community.svg)](https://gitter.im/yancey-official/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Yancey-Blog/beg-monorepo.svg)](https://isitmaintained.com/project/Yancey-Blog/beg-monorepo)
@@ -34,7 +34,7 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/typescript-config]: ./packages/typescript-config
 [@repo/graphql-types]: ./packages/graphql-types
 [cms-version]: https://img.shields.io/badge/Version-v6.1.0-brightgreen
-[frontend-version]: https://img.shields.io/badge/Version-v5.1.0-brightgreen
+[frontend-version]: https://img.shields.io/badge/Version-v5.2.0-brightgreen
 [backend-version]: https://img.shields.io/badge/Version-v3.1.0-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v2.0.1-brightgreen
 [@repo/utils-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
