@@ -10,10 +10,13 @@ import useStyles from './styles'
 
 const Layouts: FC = () => {
   const classes = useStyles()
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(
+    window.localStorage.getItem('isFoldedDrawer') !== 'true'
+  )
   const keycloak = useSSO()
 
   const handleDrawerChange = () => {
+    window.localStorage.setItem('isFoldedDrawer', open.toString())
     setOpen(!open)
   }
 
