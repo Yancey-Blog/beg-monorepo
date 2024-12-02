@@ -14,16 +14,16 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 
 ## Ecosystem
 
-| Project                   | Version                            | Build Status                            | Description                                                                                         |
-| ------------------------- | ---------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [cms]                     | ![cms-version]                     | ![cms-build-status]                     | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL.                         |
-| [frontend]                | ![frontend-version]                | ![frontend-build-status]                | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.  |
-| [backend]                 | ![backend-version]                 | ![backend-build-status]                 | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
-| [uploader]                | ![uploader-version]                | ![uploader-build-status]                | The Uploader backend powered by Azure Blob.                                                         |
-| [@repo/utils]             | ![@repo/utils-version]             |                                         | Common utils library.                                                                               |
-| [@repo/eslint-config]     | ![@repo/eslint-config-version]     |                                         | Common Eslint Config library.                                                                       |
-| [@repo/typescript-config] | ![@repo/typescript-config-version] |                                         | Common TypeScript Config library.                                                                   |
-| [@repo/graphql-types]     | ![@repo/graphql-types-version]     |                                         | Graphql types of backend.                                                                           |
+| Project                   | Version                            | Build Status             | Description                                                                                         |
+| ------------------------- | ---------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------- |
+| [cms]                     | ![cms-version]                     | ![cms-build-status]      | The CMS for Yancey blog with React, Apollo Client, Material-UI and GraphQL.                         |
+| [frontend]                | ![frontend-version]                | ![frontend-build-status] | The website app for Yancey blog with React, Next.js, styled-components, Apollo Client and GraphQL.  |
+| [backend]                 | ![backend-version]                 | ![backend-build-status]  | The backend platform for Yancey Official Blog with Node.js, NestJS, MongoDB, GraphQL, JWT and more. |
+| [uploader]                | ![uploader-version]                | ![uploader-build-status] | The Uploader backend powered by Azure Blob.                                                         |
+| [@repo/utils]             | ![@repo/utils-version]             |                          | Common utils library.                                                                               |
+| [@repo/eslint-config]     | ![@repo/eslint-config-version]     |                          | Common Eslint Config library.                                                                       |
+| [@repo/typescript-config] | ![@repo/typescript-config-version] |                          | Common TypeScript Config library.                                                                   |
+| [@repo/graphql-types]     | ![@repo/graphql-types-version]     |                          | Graphql types of backend.                                                                           |
 
 [cms]: ./apps/cms
 [frontend]: ./apps/frontend
@@ -37,7 +37,7 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [frontend-version]: https://img.shields.io/badge/Version-v5.2.0-brightgreen
 [backend-version]: https://img.shields.io/badge/Version-v3.1.1-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v2.0.1-brightgreen
-[@repo/utils-version]: https://img.shields.io/badge/Version-v2.0.0-brightgreen
+[@repo/utils-version]: https://img.shields.io/badge/Version-v3.0.0-brightgreen
 [@repo/eslint-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/typescript-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/graphql-types-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen

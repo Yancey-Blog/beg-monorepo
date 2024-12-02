@@ -1,5 +1,11 @@
 # Change Log - @shared/utils
 
+## 3.0.0
+
+### Major Changes
+
+- compile both esm and cjs
+
 ## 2.0.0
 
 ### Major Changes

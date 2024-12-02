@@ -1,5 +1,12 @@
 # Change Log - uploader-service
 
+## 2.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @repo/utils@3.0.0
+
 ## 2.0.1
 
 ### Patch Changes
