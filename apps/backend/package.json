@@ -22,6 +22,7 @@
     "codecov": "node_modules/.bin/codecov -t 7b33b616-c7c6-465f-a858-91ca93071f98"
   },
   "dependencies": {
+    "@apollo/gateway": "^2.9.3",
     "@apollo/server": "^4.11.2",
     "@azure/storage-blob": "^12.26.0",
     "@nestjs/apollo": "^12.2.1",
