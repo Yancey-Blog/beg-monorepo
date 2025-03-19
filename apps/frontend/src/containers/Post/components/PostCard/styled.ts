@@ -41,6 +41,7 @@ export const PosterImg = styled.img`
   height: 22rem;
   overflow: hidden;
   cursor: pointer;
+  object-fit: cover;
 
   @media only screen and ${breakpoints.device.laptop} {
     width: 100%;
