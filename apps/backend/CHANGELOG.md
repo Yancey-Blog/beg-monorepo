@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.3
+
+### Patch Changes
+
+- adapt new config of keycloak
+
 ## 3.1.2
 
 ### Patch Changes
