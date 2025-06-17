@@ -18,9 +18,9 @@ import { POSTS } from 'src/containers/Post/typeDefs'
 import { createApolloClient } from 'src/graphql/apolloClient'
 
 export interface Props {
+  covers: CoverModel[]
   announcements: AnnouncementModel[]
   mottos: MottoModel[]
-  covers: CoverModel[]
   openSources: OpenSourceModel[]
   posts: PostModel
 }
