@@ -26,7 +26,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 10.12.1
 
       - name: Install dependencies
         run: pnpm install
@@ -81,7 +81,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 10.12.1
 
       - name: Install dependencies
         run: pnpm install
