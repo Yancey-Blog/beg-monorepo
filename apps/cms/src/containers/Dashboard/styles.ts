@@ -9,10 +9,10 @@ const useStyles = makeStyles(() =>
     group: {
       display: 'grid',
       gridTemplateColumns: '2fr 1fr',
-      gridColumnGap: 24,
+      gridColumnGap: 16,
       gridTemplateRows: '375px 375px 375px',
-      gridRowGap: 24,
-      marginBottom: 24
+      gridRowGap: 16,
+      marginBottom: 16
     }
   })
 )
