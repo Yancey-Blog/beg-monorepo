@@ -135,6 +135,8 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             cd /srv/beg-monorepo/apps/backend
             pm2 reload ecosystem.config.js
 
