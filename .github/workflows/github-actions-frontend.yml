@@ -26,7 +26,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
@@ -86,7 +86,7 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
@@ -114,25 +114,25 @@ jobs:
           cp -r apps/frontend/.next/* .next/
 
       - name: Copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: '.next/*'
-          target: '/var/www/beg-monorepo/apps/frontend'
+          target: '/srv/beg-monorepo/apps/frontend'
           overwrite: true
 
       - name: SSH to Server and Run Command
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/beg-monorepo/apps/frontend
+            cd /srv/beg-monorepo/apps/frontend
             /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される

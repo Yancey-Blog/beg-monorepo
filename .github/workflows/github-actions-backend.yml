@@ -18,18 +18,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/backend
+          echo "DATABASE_USER=${{ secrets.DATABASE_USER }}" >> ./apps/backend/.env
+          echo "DATABASE_PWD=${{ secrets.DATABASE_PWD }}" >> ./apps/backend/.env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> ./apps/backend/.env
+          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> ./apps/backend/.env
+          echo "DATABASE_COLLECTION=${{ secrets.DATABASE_COLLECTION }}" >> ./apps/backend/.env
+          echo "BANDWAGON_SECRET_KEY=${{ secrets.BANDWAGON_SECRET_KEY }}" >> ./apps/backend/.env
+          echo "BANDWAGON_SERVER_ID=${{ secrets.BANDWAGON_SERVER_ID }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
 
       - name: Pre compilation
         run: pnpm run build --filter backend
@@ -64,18 +79,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/backend
+          echo "DATABASE_USER=${{ secrets.DATABASE_USER }}" >> ./apps/backend/.env
+          echo "DATABASE_PWD=${{ secrets.DATABASE_PWD }}" >> ./apps/backend/.env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> ./apps/backend/.env
+          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> ./apps/backend/.env
+          echo "DATABASE_COLLECTION=${{ secrets.DATABASE_COLLECTION }}" >> ./apps/backend/.env
+          echo "BANDWAGON_SECRET_KEY=${{ secrets.BANDWAGON_SECRET_KEY }}" >> ./apps/backend/.env
+          echo "BANDWAGON_SERVER_ID=${{ secrets.BANDWAGON_SERVER_ID }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
 
       - name: Compilation
         run: pnpm run build --filter backend
@@ -84,27 +114,28 @@ jobs:
         run: |
           mkdir -p dist
           cp -r apps/backend/dist/* dist/
+          cp apps/backend/.env .env
 
       - name: Copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: 'dist/*'
-          target: '/var/www/beg-monorepo/apps/backend'
+          source: '.env,dist/*'
+          target: '/srv/beg-monorepo/apps/backend'
           overwrite: true
 
       - name: SSH to Server and Run Command
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/beg-monorepo/apps/backend
+            cd /srv/beg-monorepo/apps/backend
             /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される

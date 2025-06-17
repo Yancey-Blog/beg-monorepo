@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.0
+
+### Minor Changes
+
+- support refresh token via Keycloak
+
 ## 6.2.1
 
 ### Patch Changes

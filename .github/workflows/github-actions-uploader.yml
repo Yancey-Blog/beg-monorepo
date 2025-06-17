@@ -26,10 +26,19 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/uploader
+          echo "AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/uploader/.env
 
       - name: Pre compilation
         run: pnpm run build --filter uploader
@@ -72,10 +81,19 @@ jobs:
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.14.2
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Create .env file
+        run: |
+          mkdir -p ./apps/uploader
+          echo "AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_URL=${{ secrets.KEY_CLOAK_URL }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/uploader/.env
+          echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/uploader/.env
 
       - name: Pre compilation
         run: pnpm run build --filter uploader
@@ -84,27 +102,39 @@ jobs:
         run: |
           mkdir -p dist
           cp -r apps/uploader/dist/* dist/
+          cp apps/uploader/.env .env
 
       - name: Copy file via ssh key
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: 'dist/*'
-          target: '/var/www/beg-monorepo/apps/uploader'
+          source: '.env,dist/*'
+          target: '/srv/beg-monorepo/apps/uploader'
+          overwrite: true
+
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: '.env'
+          target: '/srv/beg-monorepo/apps/uploader'
           overwrite: true
 
       - name: SSH to Server and Run Command
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/beg-monorepo/apps/uploader
+            cd /srv/beg-monorepo/apps/uploader
             /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
