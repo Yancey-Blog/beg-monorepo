@@ -126,7 +126,6 @@ jobs:
           source: '.env,dist/*'
           target: '/srv/beg-monorepo/apps/backend'
           overwrite: true
-
       - name: SSH to Server and Run Command
         uses: appleboy/ssh-action@v1
         with:
@@ -135,7 +134,8 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            bash -l -c "cd /srv/beg-monorepo/apps/frontend && /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js"
+            cd /srv/beg-monorepo/apps/backend
+            pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
