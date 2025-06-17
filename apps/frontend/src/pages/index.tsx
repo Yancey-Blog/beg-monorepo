@@ -60,9 +60,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
+      covers: covers.getAllPublicCovers,
       announcements: announcements.getAnnouncements,
       mottos: mottos.getMottos,
-      covers: covers.getAllPublicCovers,
       openSources: openSources.getOpenSources,
       posts: data.posts
     }

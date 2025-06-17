@@ -12,6 +12,7 @@ async function bootstrap() {
   app.setGlobalPrefix('uploader')
   configSecurityMiddleWares(app)
   configLogger(app)
+
   await app.listen(3003)
 }
 

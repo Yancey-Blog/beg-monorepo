@@ -5,15 +5,13 @@ import NotFound from 'src/components/NotFound'
 import { mapRoutes } from 'src/routes'
 import useStyles from './styles'
 
-const routes = mapRoutes()
-
 const Main: FC = () => {
   const classes = useStyles()
 
   return (
     <main className={classes.main}>
       <Routes>
-        {routes.map((route) => {
+        {mapRoutes().map((route) => {
           const { component: LazyComponent } = route
           if (!LazyComponent) return
 
