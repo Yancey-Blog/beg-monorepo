@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { FC, useState } from 'react'
+import { useAuth } from 'src/components/AuthProvider'
 import SSOStatus from 'src/components/SSOStatus'
-import useSSO from 'src/hooks/useSSO'
 import Drawer from './components/Drawer'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -13,7 +13,7 @@ const Layouts: FC = () => {
   const [open, setOpen] = useState(
     window.localStorage.getItem('isFoldedDrawer') !== 'true'
   )
-  const keycloak = useSSO()
+  const { keycloak } = useAuth()
 
   const handleDrawerChange = () => {
     window.localStorage.setItem('isFoldedDrawer', open.toString())
