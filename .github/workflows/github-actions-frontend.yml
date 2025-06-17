@@ -133,6 +133,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /srv/beg-monorepo/apps/frontend
+            pnpm i
             pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
