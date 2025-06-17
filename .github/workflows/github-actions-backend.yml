@@ -136,7 +136,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /srv/beg-monorepo/apps/backend
-            /home/${{ secrets.USERNAME }}/.local/share/pnpm/pm2 reload ecosystem.config.js
+            pm2 reload ecosystem.config.js
 
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success at Deployment Stage
