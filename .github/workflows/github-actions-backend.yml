@@ -45,6 +45,7 @@ jobs:
           echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
           echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
           echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
+          echo "NODE_ENV=production" >> ./apps/backend/.env
 
       - name: Pre compilation
         run: pnpm run build --filter backend
@@ -106,6 +107,7 @@ jobs:
           echo "KEY_CLOAK_REALM=${{ secrets.KEY_CLOAK_REALM }}" >> ./apps/backend/.env
           echo "KEY_CLOAK_CLIENT_ID=${{ secrets.KEY_CLOAK_CLIENT_ID }}" >> ./apps/backend/.env
           echo "KEY_CLOAK_CLIENT_SECRET=${{ secrets.KEY_CLOAK_CLIENT_SECRET }}" >> ./apps/backend/.env
+          echo "NODE_ENV=production" >> ./apps/backend/.env
 
       - name: Compilation
         run: pnpm run build --filter backend
