@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.4
+
+### Patch Changes
+
+- fix cors
+
 ## 3.1.3
 
 ### Patch Changes

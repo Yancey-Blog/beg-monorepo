@@ -33,11 +33,11 @@ All services for Blog Environment Group. The monorepo system is powered by [Turb
 [@repo/eslint-config]: ./packages/eslint-config
 [@repo/typescript-config]: ./packages/typescript-config
 [@repo/graphql-types]: ./packages/graphql-types
-[cms-version]: https://img.shields.io/badge/Version-v6.3.0-brightgreen
+[cms-version]: https://img.shields.io/badge/Version-v6.3.1-brightgreen
 [frontend-version]: https://img.shields.io/badge/Version-v5.2.0-brightgreen
-[backend-version]: https://img.shields.io/badge/Version-v3.1.3-brightgreen
+[backend-version]: https://img.shields.io/badge/Version-v3.1.4-brightgreen
 [uploader-version]: https://img.shields.io/badge/Version-v2.0.1-brightgreen
-[@repo/utils-version]: https://img.shields.io/badge/Version-v3.0.0-brightgreen
+[@repo/utils-version]: https://img.shields.io/badge/Version-v3.0.1-brightgreen
 [@repo/eslint-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/typescript-config-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen
 [@repo/graphql-types-version]: https://img.shields.io/badge/Version-v1.0.0-brightgreen

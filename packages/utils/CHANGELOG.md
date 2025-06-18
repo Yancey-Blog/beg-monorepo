@@ -1,5 +1,11 @@
 # Change Log - @shared/utils
 
+## 3.0.1
+
+### Patch Changes
+
+- fix cors
+
 ## 3.0.0
 
 ### Major Changes
