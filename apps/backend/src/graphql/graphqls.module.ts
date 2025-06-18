@@ -2,7 +2,6 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
-import { configCORS } from '@repo/utils'
 import { ValidationError } from 'apollo-server-express'
 import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
@@ -38,8 +37,7 @@ import { SCHEMA_GQL_FILE_NAME } from '../shared/constants'
         plugins: [
           !configService.isEnvProduction &&
             ApolloServerPluginLandingPageLocalDefault()
-        ].filter(Boolean),
-        cors: configCORS(configService.isEnvProduction)
+        ].filter(Boolean)
       }),
 
       inject: [ConfigService]

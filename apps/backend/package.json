@@ -33,7 +33,6 @@
     "@nestjs/graphql": "^12.2.1",
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.4.12",
-    "@repo/utils": "workspace:*",
     "apollo-server-core": "^3.13.0",
     "apollo-server-express": "^3.13.0",
     "axios": "^1.7.8",
