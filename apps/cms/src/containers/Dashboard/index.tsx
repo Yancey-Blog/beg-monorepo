@@ -18,15 +18,10 @@ import {
   GET_TOP_LIKE_POSTS,
   GET_TOP_PV_POSTS
 } from '../Post/typeDefs'
-import BandwagonServiceStatus from './components/BandwagonServiceStatus'
-import CPUChart from './components/CPUChart'
-import DiskChart from './components/DiskChart'
-import NetWorkChart from './components/NetWorkChart'
 import PostRankList from './components/PostRankList'
 import PostStatistics from './components/PostStatistics'
 import TagClouds from './components/TagClouds'
 import useStyles from './styles'
-import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
 import { PostRankListType } from './types'
 
 Chart.register(
@@ -43,20 +38,6 @@ Chart.register(
 
 const Dashboard: FC = () => {
   const classes = useStyles()
-
-  const { loading: isFechingServiceInfo, data: serviceInfo } = useQuery(
-    GET_BANWAGON_SERVICE_INFO,
-    {
-      notifyOnNetworkStatusChange: true
-    }
-  )
-
-  const { loading: isFetchingUsageStatus, data: usageStatus } = useQuery(
-    GET_BANWAGON_USAGE_STATS,
-    {
-      notifyOnNetworkStatusChange: true
-    }
-  )
 
   const { loading: isFetchingTopPVPosts, data: topPVPosts } = useQuery(
     GET_TOP_PV_POSTS,
@@ -86,37 +67,18 @@ const Dashboard: FC = () => {
   )
 
   return (
-    <section className={classes.dashboradWrapper}>
-      <BandwagonServiceStatus
-        serviceInfo={serviceInfo ? serviceInfo.getBanwagonServiceInfo : {}}
-        isFechingServiceInfo={isFechingServiceInfo}
-      />
-
+    <section className={classes.dashboardWrapper}>
       <div className={classes.group}>
-        <NetWorkChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
-        />
-
         <PostRankList
           type={PostRankListType.PV}
           topPosts={topPVPosts ? topPVPosts.getTopPVPosts : []}
           loading={isFetchingTopPVPosts}
         />
 
-        <DiskChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
-        />
         <PostRankList
           type={PostRankListType.LIKE}
           topPosts={topLikePosts ? topLikePosts.getTopLikePosts : []}
           loading={isFetchingTopLikePosts}
-        />
-
-        <CPUChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
         />
 
         <TagClouds

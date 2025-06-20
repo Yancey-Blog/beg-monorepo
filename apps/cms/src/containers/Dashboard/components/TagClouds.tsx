@@ -11,6 +11,9 @@ interface Props {
 const useStyles = makeStyles(() =>
   createStyles({
     paper: {
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
       padding: 16,
       overflowY: 'scroll',
       boxShadow:

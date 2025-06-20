@@ -2,17 +2,16 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() =>
   createStyles({
-    dashboradWrapper: {
-      width: '100%'
+    dashboardWrapper: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
     },
 
     group: {
-      display: 'grid',
-      gridTemplateColumns: '2fr 1fr',
-      gridColumnGap: 16,
-      gridTemplateRows: '375px 375px 375px',
-      gridRowGap: 16,
-      marginBottom: 16
+      display: 'flex',
+      gap: 16
     }
   })
 )
