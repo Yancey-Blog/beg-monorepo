@@ -42,16 +42,17 @@ const TagClouds: FC<Props> = ({ tags, loading }) => {
         <PostRankListSkeleton />
       ) : (
         <Paper className={classes.paper}>
-          {' '}
           <header className={classes.header}>Tag Clouds</header>
-          {tags.map((tag) => (
-            <Chip
-              key={tag}
-              label={tag}
-              color="primary"
-              className={classes.chip}
-            />
-          ))}
+          <div>
+            {tags.map((tag) => (
+              <Chip
+                key={tag}
+                label={tag}
+                color="primary"
+                className={classes.chip}
+              />
+            ))}
+          </div>
         </Paper>
       )}
     </>
