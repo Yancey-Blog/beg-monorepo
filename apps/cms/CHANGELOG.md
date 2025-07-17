@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.1
+
+### Patch Changes
+
+- solve ts error
+
 ## 6.4.0
 
 ### Minor Changes
