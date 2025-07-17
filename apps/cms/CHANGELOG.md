@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- supports tiptap editor and embed server status iframe from grafana
+
 ## 6.3.1
 
 ### Patch Changes
