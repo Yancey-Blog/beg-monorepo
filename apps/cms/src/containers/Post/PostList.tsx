@@ -90,13 +90,7 @@ const PostList: FC = () => {
       renderCell: (params: GridRenderCellParams<IPostItem>) => (
         <>
           {params.row.tags.map((tag: string) => (
-            <Chip
-              key={tag}
-              className={classes.btn}
-              label={tag}
-              clickable
-              color="primary"
-            />
+            <Chip key={tag} label={tag} clickable color="primary" />
           ))}
         </>
       ),
@@ -154,7 +148,7 @@ const PostList: FC = () => {
       field: 'action',
       headerName: 'Action',
       renderCell: (params: GridRenderCellParams<IPostItem>) => (
-        <>
+        <div className={classes.actionCell}>
           <FormControl>
             <Edit
               className={globalClasses.editIcon}
@@ -168,7 +162,7 @@ const PostList: FC = () => {
               <DeleteOutline />
             </ConfirmPopover>
           </FormControl>
-        </>
+        </div>
       ),
       flex: 1
     }

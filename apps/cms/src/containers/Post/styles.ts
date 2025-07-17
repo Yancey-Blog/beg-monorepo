@@ -2,31 +2,47 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() =>
   createStyles({
-    editorWrapper: {
-      marginTop: '8px',
-      width: '100%'
-    },
-
-    header: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)'
-    },
-
-    publishTools: {
+    postDetailWrapper: {
+      width: '100%',
+      overflowY: 'scroll',
       display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center'
+      gap: 16
     },
 
-    summary: { width: '50%', margin: '24px 0 48px' },
+    editorWrapper: {
+      borderRadius: 8,
+      width: '100%',
+      height: 'calc(100dvh - 144px)',
+      overflowX: 'scroll'
+    },
 
-    chipInput: { margin: '24px 0 48px' },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+      minWidth: 400,
+      flex: 1,
+      justifyContent: 'space-between'
+    },
+
+    formItem: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16
+    },
+
+    action: {
+      display: 'flex'
+    },
+
+    actionCell: {
+      display: 'flex',
+      alignItems: 'center',
+      height: '100%'
+    },
 
     summaryTxtFiled: {
       marginBottom: '24px'
     },
-
-    btn: { marginLeft: '16px', marginBottom: '16px' },
 
     pagination: {
       display: 'flex',
@@ -42,8 +58,11 @@ const useStyles = makeStyles(() =>
     },
 
     uploadImageIcon: {
-      position: 'relative',
-      top: -6
+      width: 128,
+      height: 128,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     },
 
     search: {
