@@ -18,6 +18,7 @@ export const Link = TiptapLink.extend({
     const { editor } = this
 
     return [
+      // @ts-expect-error the inner logic of TipTap
       ...(this.parent?.() || []),
       new Plugin({
         props: {
