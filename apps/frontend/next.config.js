@@ -1,8 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { withSentryConfig } = require('@sentry/nextjs')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const withPWA = require('next-pwa')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const runtimeCaching = require('next-pwa/cache')
 
 const sentryWebpackPluginOptions = {
@@ -64,18 +68,19 @@ const config = {
   styledComponents: true,
   maximumFileSizeToCacheInBytes: 10000000,
   productionBrowserSourceMaps: true,
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.module.rules.push({
-      test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/, /\.cur$/],
-      use: [
-        {
-          loader: 'url-loader'
-        }
-      ]
-    })
+  turbopack: {},
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   config.module.rules.push({
+  //     test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/, /\.cur$/],
+  //     use: [
+  //       {
+  //         loader: 'url-loader'
+  //       }
+  //     ]
+  //   })
 
-    return config
-  },
+  //   return config
+  // },
   async headers() {
     return [
       {
