@@ -1,7 +1,7 @@
 import { Button, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import { FC } from 'react'
-import useSSO from 'src/hooks/useSSO'
+import { useAuth } from 'src/components/AuthProvider'
 import { AZURE_BLOB_PATH } from 'src/shared/constants'
 import * as Yup from 'yup'
 import SettingItemWrapper from '../../components/SettingItemWrapper'
@@ -19,7 +19,7 @@ const initialValues = {
 
 const UpdateEmail: FC = () => {
   const classes = useStyles()
-  const keycloak = useSSO()
+  const { keycloak } = useAuth()
   const { updateEmail } = useAccount()
 
   const { handleSubmit, getFieldProps, isSubmitting, errors, values } =

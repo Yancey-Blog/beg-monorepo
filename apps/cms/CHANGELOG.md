@@ -1,5 +1,35 @@
 # Changelog
 
+## 6.4.1
+
+### Patch Changes
+
+- solve ts error
+
+## 6.4.0
+
+### Minor Changes
+
+- supports tiptap editor and embed server status iframe from grafana
+
+## 6.3.1
+
+### Patch Changes
+
+- fix cors
+
+## 6.3.0
+
+### Minor Changes
+
+- support refresh token via Keycloak
+
+## 6.2.1
+
+### Patch Changes
+
+- adapt new config of keycloak
+
 ## 6.2.0
 
 ### Minor Changes

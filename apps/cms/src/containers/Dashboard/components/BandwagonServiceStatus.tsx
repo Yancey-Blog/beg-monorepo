@@ -14,8 +14,8 @@ const useStyles = makeStyles(() =>
     statusCardGrid: {
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
-      gridColumnGap: 24,
-      marginBottom: 24
+      gridColumnGap: 16,
+      marginBottom: 16
     }
   })
 )

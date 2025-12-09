@@ -27,7 +27,7 @@ import {
   Typography
 } from '@mui/material'
 import classNames from 'classnames'
-import { KeycloakProfile } from 'keycloak-js'
+import type { KeycloakProfile } from 'keycloak-js'
 import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'

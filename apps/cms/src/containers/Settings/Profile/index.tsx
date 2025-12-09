@@ -14,9 +14,11 @@ import useStyles from './styles'
 const Profile: FC = () => {
   const classes = useStyles()
   const { enqueueSnackbar } = useSnackbar()
-  const { id: userId, attributes } = JSON.parse(
-    localStorage.getItem('userProfile') || '{}'
-  )
+  const {
+    id: userId,
+    firstName,
+    lastName
+  } = JSON.parse(localStorage.getItem('userProfile') || '{}')
 
   const validationSchema = Yup.object().shape({
     website: Yup.string().url()
@@ -35,12 +37,12 @@ const Profile: FC = () => {
 
   // TODO:
   const initialValues = {
-    name: (attributes?.['name']?.[0] as string) || '',
-    location: (attributes?.['location']?.[0] as string) || '',
-    organization: (attributes?.['organization']?.[0] as string) || '',
-    website: (attributes?.['website']?.[0] as string) || '',
-    bio: (attributes?.['bio']?.[0] as string) || '',
-    avatarUrl: (attributes?.['avatarUrl']?.[0] as string) || ''
+    name: firstName + ' ' + lastName || '',
+    location: '',
+    organization: '',
+    website: '',
+    bio: '',
+    avatarUrl: ''
   }
 
   const updateUser = async (data: typeof initialValues) => {

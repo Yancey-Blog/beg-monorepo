@@ -7,6 +7,7 @@ import { SnackbarProvider } from 'notistack'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './assets/global.scss'
+import { AuthProvider } from './components/AuthProvider'
 import client from './graphql/apolloClient'
 import Layouts from './layouts'
 import {
@@ -17,23 +18,25 @@ import {
 import { theme } from './shared/globalStyles'
 
 createRoot(document.getElementById('root')!).render(
-  <ApolloProvider client={client}>
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider
-          maxSnack={SNACKBAR_MAX_NUM}
-          anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
-          autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
-          preventDuplicate
-        >
-          <LocalizationProvider dateAdapter={AdapterLuxon}>
-            <CssBaseline />
-            <BrowserRouter>
-              <Layouts />
-            </BrowserRouter>
-          </LocalizationProvider>
-        </SnackbarProvider>
-      </ThemeProvider>
-    </StyledEngineProvider>
-  </ApolloProvider>
+  <AuthProvider>
+    <ApolloProvider client={client}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider
+            maxSnack={SNACKBAR_MAX_NUM}
+            anchorOrigin={SNACKBAR_ANCHOR_ORIGIN}
+            autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
+            preventDuplicate
+          >
+            <LocalizationProvider dateAdapter={AdapterLuxon}>
+              <CssBaseline />
+              <BrowserRouter>
+                <Layouts />
+              </BrowserRouter>
+            </LocalizationProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </ApolloProvider>
+  </AuthProvider>
 )

@@ -19,8 +19,8 @@ import { createApolloClient } from 'src/graphql/apolloClient'
 
 export interface Props {
   announcements: AnnouncementModel[]
-  mottos: MottoModel[]
   covers: CoverModel[]
+  mottos: MottoModel[]
   openSources: OpenSourceModel[]
   posts: PostModel
 }
@@ -60,9 +60,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
+      covers: covers.getAllPublicCovers,
       announcements: announcements.getAnnouncements,
       mottos: mottos.getMottos,
-      covers: covers.getAllPublicCovers,
       openSources: openSources.getOpenSources,
       posts: data.posts
     }

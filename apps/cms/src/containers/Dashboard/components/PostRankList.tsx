@@ -18,7 +18,9 @@ import PostRankListSkeleton from './PostRankListSkeleton'
 const useStyles = makeStyles(() =>
   createStyles({
     paper: {
-      display: 'grid',
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
       boxShadow:
         'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px!important',
       borderRadius: '16px!important'

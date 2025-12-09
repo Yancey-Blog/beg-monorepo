@@ -20,9 +20,7 @@ describe('GlobalSettingController (e2e)', () => {
         MongooseModule.forRootAsync({
           useFactory: async (configService: ConfigService) => ({
             uri: configService.getMongoURI(),
-            useFindAndModify: false,
-            useUnifiedTopology: true,
-            useNewUrlParser: true
+            useFindAndModify: false
           }),
           inject: [ConfigService]
         }),

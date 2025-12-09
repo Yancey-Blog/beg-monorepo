@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client'
+import { Paper } from '@mui/material'
 import {
   CategoryScale,
   Chart,
@@ -18,15 +19,10 @@ import {
   GET_TOP_LIKE_POSTS,
   GET_TOP_PV_POSTS
 } from '../Post/typeDefs'
-import BandwagonServiceStatus from './components/BandwagonServiceStatus'
-import CPUChart from './components/CPUChart'
-import DiskChart from './components/DiskChart'
-import NetWorkChart from './components/NetWorkChart'
 import PostRankList from './components/PostRankList'
 import PostStatistics from './components/PostStatistics'
 import TagClouds from './components/TagClouds'
 import useStyles from './styles'
-import { GET_BANWAGON_SERVICE_INFO, GET_BANWAGON_USAGE_STATS } from './typeDefs'
 import { PostRankListType } from './types'
 
 Chart.register(
@@ -43,20 +39,6 @@ Chart.register(
 
 const Dashboard: FC = () => {
   const classes = useStyles()
-
-  const { loading: isFechingServiceInfo, data: serviceInfo } = useQuery(
-    GET_BANWAGON_SERVICE_INFO,
-    {
-      notifyOnNetworkStatusChange: true
-    }
-  )
-
-  const { loading: isFetchingUsageStatus, data: usageStatus } = useQuery(
-    GET_BANWAGON_USAGE_STATS,
-    {
-      notifyOnNetworkStatusChange: true
-    }
-  )
 
   const { loading: isFetchingTopPVPosts, data: topPVPosts } = useQuery(
     GET_TOP_PV_POSTS,
@@ -86,37 +68,52 @@ const Dashboard: FC = () => {
   )
 
   return (
-    <section className={classes.dashboradWrapper}>
-      <BandwagonServiceStatus
-        serviceInfo={serviceInfo ? serviceInfo.getBanwagonServiceInfo : {}}
-        isFechingServiceInfo={isFechingServiceInfo}
-      />
-
+    <section className={classes.dashboardWrapper}>
       <div className={classes.group}>
-        <NetWorkChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
-        />
-
+        <Paper className={classes.serverStatusWrapper}>
+          <iframe
+            className={classes.serverStatusItem}
+            src="https://grafana.yanceyleo.com/d-solo/rYdddlPWk/node-exporter-full?orgId=1&from=1752663542242&to=1752749942242&timezone=browser&var-DS_PROMETHEUS=ceqp24hd2d1q8c&var-job=node_exporter&var-nodename=548b83124228&var-node=node_exporter:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&theme=light&panelId=323&__feature.dashboardSceneSolo"
+            width="100%"
+            height="200"
+          />
+        </Paper>
+        <Paper className={classes.serverStatusWrapper}>
+          <iframe
+            className={classes.serverStatusItem}
+            src="https://grafana.yanceyleo.com/d-solo/rYdddlPWk/node-exporter-full?orgId=1&from=1752663602266&to=1752750002266&timezone=browser&var-DS_PROMETHEUS=ceqp24hd2d1q8c&var-job=node_exporter&var-nodename=548b83124228&var-node=node_exporter:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&theme=light&panelId=20&__feature.dashboardSceneSolo"
+            width="100%"
+            height="200"
+          />
+        </Paper>
+        <Paper className={classes.serverStatusWrapper}>
+          <iframe
+            className={classes.serverStatusItem}
+            src="https://grafana.yanceyleo.com/d-solo/rYdddlPWk/node-exporter-full?orgId=1&from=1752663602266&to=1752750002266&timezone=browser&var-DS_PROMETHEUS=ceqp24hd2d1q8c&var-job=node_exporter&var-nodename=548b83124228&var-node=node_exporter:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&theme=light&panelId=155&__feature.dashboardSceneSolo"
+            width="100%"
+            height="200"
+          />
+        </Paper>
+        <Paper className={classes.serverStatusWrapper}>
+          <iframe
+            className={classes.serverStatusItem}
+            src="https://grafana.yanceyleo.com/d-solo/rYdddlPWk/node-exporter-full?orgId=1&from=1752663602266&to=1752750002266&timezone=browser&var-DS_PROMETHEUS=ceqp24hd2d1q8c&var-job=node_exporter&var-nodename=548b83124228&var-node=node_exporter:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&theme=light&panelId=16&__feature.dashboardSceneSolo"
+            width="100%"
+            height="200"
+          />
+        </Paper>
+      </div>
+      <div className={classes.group}>
         <PostRankList
           type={PostRankListType.PV}
           topPosts={topPVPosts ? topPVPosts.getTopPVPosts : []}
           loading={isFetchingTopPVPosts}
         />
 
-        <DiskChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
-        />
         <PostRankList
           type={PostRankListType.LIKE}
           topPosts={topLikePosts ? topLikePosts.getTopLikePosts : []}
           loading={isFetchingTopLikePosts}
-        />
-
-        <CPUChart
-          usageStatus={usageStatus ? usageStatus.getBanwagonUsageStats : []}
-          isFetchingUsageStatus={isFetchingUsageStatus}
         />
 
         <TagClouds

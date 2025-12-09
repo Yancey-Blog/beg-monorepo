@@ -24,8 +24,7 @@ describe('CoversController (e2e)', () => {
           useFactory: async (configService: ConfigService) => ({
             uri: configService.getMongoURI(),
             useFindAndModify: false,
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
+
             useCreateIndex: true
           }),
           inject: [ConfigService]

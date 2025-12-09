@@ -1,7 +1,7 @@
 import { LanguageRounded } from '@mui/icons-material'
 import { Avatar, Skeleton } from '@mui/material'
 import classNames from 'classnames'
-import { KeycloakProfile } from 'keycloak-js'
+import type { KeycloakProfile } from 'keycloak-js'
 import { FC, Fragment, useCallback, useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import SkeletonIterator from 'src/components/SkeletonIterator'

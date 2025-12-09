@@ -10,6 +10,7 @@ const bootstrap = async () => {
   app.setGlobalPrefix('beg')
   configMiddlewares(app)
   configLogger(app)
+
   await app.listen(3002)
 }
 
