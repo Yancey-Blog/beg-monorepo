@@ -4,4 +4,7 @@ packages:
 
 onlyBuiltDependencies:
   - '@nestjs/core'
+  - '@sentry/cli'
+  - '@swc/core'
   - chromedriver
+  - sharp
